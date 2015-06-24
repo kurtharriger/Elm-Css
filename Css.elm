@@ -1,13 +1,46 @@
 module Css where
 
-import Html exposing (Html, Attribute, div, code, text, pre)
-import Html.Attributes exposing (style)
+{-| This module provides a few helper functions that make dealing with
+css in Elm more pleasant and concise.
+
+#Definition
+@docs Styles
+
+#String
+@docs colorString
+
+#Functions
+@docs px, url
+-}
+
+-- Native Imports
 import Color exposing (toRgb, Color, rgba)
 
+-- Third Party Imports
+import Html exposing (Html, Attribute, div, code, text, pre)
+import Html.Attributes exposing (style)
+
+
+-- This type alias allows us to be more expressive.
 type alias Styles = List (String, String)
 
+
+{-- This is the one and only infix operator used in this library.
+It is only used internally but is also available for you if it is convenient.
+
+It allows you to write tuples slightly differently
+
+[ ("color", "rgba(0, 0, 0, 1)") ] -> [ "color" ::: "rgba(0, 0, 0, 1)" ]
+--}
 (:::) = (,)
 
+
+{-| Convert a color type to string form so it works with css.
+
+    import Css exposing (colorString)
+
+    colorString (rgba 0 0 0 1) -- "rgba(0, 0, 0, 1)"
+-}
 colorString : Color -> String
 colorString color =
   let rgba = toRgb color
@@ -16,3 +49,25 @@ colorString color =
       b   = (toString rgba.blue) ++ ", "
       a   = (toString rgba.alpha) ++ ")"
   in r ++ g ++ b ++ a
+
+
+{-| Add a px post fix to the end of any integer.
+
+    import Css exposing (px)
+
+    px 5 -- "5px"
+-}
+px : Int -> String
+px num =
+  (toString num) ++ "px "
+
+
+{-| Add a url prefix to a string.
+
+    import Css exposing (url)
+
+    url "smiley.gif" -- "url(\"smiley.gif\")"
+-}
+url : String -> String
+url path =
+  "url(\"" ++ path ++ "\")"

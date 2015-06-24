@@ -5,14 +5,13 @@ You can set the color, style, and width.
 
 # Functions
 @docs color, style, width
-
 -}
 
 -- Native Imports
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString)
+import Css exposing (Styles, (:::), colorString, px)
 import Css.Border.Style as BorderStyle exposing (Style)
 
 
@@ -56,4 +55,4 @@ style s styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "border-left-width" ::: ((toString w) ++ "px") ]
+  List.append styles [ "border-left-width" ::: px w ]

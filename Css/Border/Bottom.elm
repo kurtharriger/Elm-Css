@@ -5,14 +5,13 @@ You can set the color, style, width, and radius of the bottom border.
 
 # Functions
 @docs color, style, width, rightRadius, leftRadius
-
 -}
 
 -- Native Imports
 import Color exposing (Color)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString)
+import Css exposing (Styles, (:::), colorString, px)
 import Css.Border.Style as BorderStyle exposing (Style)
 
 
@@ -55,7 +54,7 @@ style s styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "border-bottom-width" ::: ((toString w) ++ "px") ]
+  List.append styles [ "border-bottom-width" ::: px w ]
 
 
 {-| Sets the right radius of the bottom border
@@ -69,7 +68,7 @@ width w styles =
 -}
 rightRadius : Int -> Styles -> Styles
 rightRadius r styles =
-  List.append styles [ "border-bottom-right-radius" ::: ((toString r) ++ "px") ]
+  List.append styles [ "border-bottom-right-radius" ::: px r ]
 
 
 {-| Sets the left radius of the bottom border
@@ -82,5 +81,5 @@ rightRadius r styles =
     BorderBottom.leftRadius 25 []
 -}
 leftRadius : Int -> Styles -> Styles
-leftRadius r styles =
-  List.append styles [ "border-bottom-left-radius" ::: ((toString r) ++ "px") ]
+leftRadius l styles =
+  List.append styles [ "border-bottom-left-radius" ::: px l ]

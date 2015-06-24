@@ -1,0 +1,10 @@
+My Tasks:
+☐ Refactor cursor into a standalone module Css.Cursor
+☐ Refactor all shadows into a standalone module Css.Shadow
+☐ Write tests that ensures everything works as expected
+☐ Write examples that will also provide a built in tutorial
+☐ Get the code peer revied and ready for initial release
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+  ✔ Finish writing all documentation @done(2015-06-24 15:22)

@@ -5,14 +5,13 @@ You can set the color, style, and width.
 
 # Functions
 @docs color, style, width
-
 -}
 
 -- Native Imports
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString)
+import Css exposing (Styles, (:::), colorString, px)
 import Css.Border.Style as BorderStyle exposing (Style)
 
 
@@ -20,7 +19,6 @@ import Css.Border.Style as BorderStyle exposing (Style)
 
     -- Set the right border color to red
     import Css.Border.Right as BorderRight
-
 
     -- [ ("border-right-color", "rgba(255, 0, 0, 1)") ]
     BorderRight.color (rgba 255 0 0 1) []
@@ -36,7 +34,6 @@ color c styles =
     import Css.Border.Style as BorderStyle
     import Css.Border.Right as BorderRight
 
-
     -- [ ("border-right-style, "dashed") ]
     BorderRight.style BorderStyle.Dashed []
 -}
@@ -50,8 +47,9 @@ style s styles =
     -- Set the right border width to 5 pixels
     import Css.Border.Right as BorderRight
 
+    -- [ ("border-right-width, "5px") ]
     BorderRight.width 5 []
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "border-right-width" ::: ((toString w) ++ "px") ]
+  List.append styles [ "border-right-width" ::: px w ]

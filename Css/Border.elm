@@ -5,7 +5,6 @@ You can set the color, style, width, and border radius
 
 #Functions
 @docs color, style, width, radius
-
 -}
 
 -- Native Imports

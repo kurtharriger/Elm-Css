@@ -1,6 +1,6 @@
 module Main where
 
-import Html exposing (Html, div, text)
+import Html exposing (Html, div, text, ul, li)
 import Html.Attributes exposing (style)
 import Color exposing (Color, rgba, complement)
 
@@ -90,14 +90,31 @@ showStyles num width colorFrom =
     List.map getStyleHtml [1..num]
 
 
+listStyle : Styles -> Styles
+listStyle styles =
+  Margin.left 100
+  <| ListStyle.bulletType ListStyle.UpperRoman styles
+
+
+listItem : Int -> Html
+listItem index =
+  li [] [ text ("item " ++ (toString index)) ]
+
+
+listItems : Int -> List Html
+listItems num =
+  List.map listItem [1..num]
+
+
 main : Html
 main =
-  let numSquares = 9
+  let numSquares = 13
       squareWidth = 100
   in
+    -- ul [ style <| listStyle [] ] <| listItems 1000
     div
       []
-      [ Util.toCss "squares" <| squaresStyle []
+      [ squares numSquares squareWidth getColor
       , div [] <| showStyles numSquares squareWidth getColor
-      , squares numSquares squareWidth getColor
+      , Util.toCss "squares" <| squaresStyle []
       ]

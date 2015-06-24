@@ -8,7 +8,6 @@ style of the border.
 
 # String
 @docs string
-
 -}
 
 {-| Represent the types of styles that can be

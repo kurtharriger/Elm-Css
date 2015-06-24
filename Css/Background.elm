@@ -17,7 +17,7 @@ You can set the color, image, position, size, repeat, and attachment.
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing ((:::), Styles, colorString)
+import Css exposing ((:::), Styles, colorString, px, url)
 
 
 {-| Represent how to repeat the background image
@@ -27,7 +27,7 @@ Repeat -
 
 RepeatX -
   The background image will be repeated only horizontally.
-  This is really usefull to repeat a gradient or some other thin
+  This is really useful to repeat a gradient or some other thin
   background to save on storage space, and decrease loading time.
 
 RepeatY -
@@ -110,33 +110,94 @@ attachmentString attachment =
 -}
 pointString : Int -> Int -> String
 pointString x y =
-  (toString x) ++ "px " ++ (toString y) ++ "px"
+  (px x) ++ (px y)
 
 
 {-| Set the background color.
 
+    import Css.Background as Background
 
+    -- [ ("background-color", "rgba(255, 0, 0, 1)") ]
+    Background.color (rgba 255 0 0 1) []
 -}
 color : Color -> Styles -> Styles
 color c styles =
   List.append styles [ "background-color" ::: colorString c ]
 
+
+{-| Set the background image.
+
+
+    import Css.Background as Background
+
+    -- [ ("background-image", "url(\"paper.gif\")") ]
+    Background.image "paper.gif" []
+-}
 image : String -> Styles -> Styles
 image path styles =
-  List.append styles [ "background-image" ::: path ]
+  List.append styles [ "background-image" ::: url path ]
 
+
+{-| Set the starting position of the background image.
+
+    import Css.Background as Background
+
+    -- [ ("background-image", "url(\"smiley.gif\")")
+       , ("background-position", "50px 100px")
+       ]
+    Background.image "smiley.gif"
+    <| Background.position 50 100 []
+-}
 position : Int -> Int -> Styles -> Styles
 position x y styles =
   List.append styles [ "background-position" ::: pointString x y ]
 
+
+{-| Set the size of the background image
+
+    import Css.Background as Background
+
+    -- [ ("background-image", "url(\"img_flwr.gif\")")
+       , ("background-size", "80px 60px")
+       ]
+    Background.image "img_flwr.gif"
+    <| Background.size 80 60 []
+-}
 size : Int -> Int -> Styles -> Styles
 size width height styles =
   List.append styles [ "background-size" ::: pointString width height ]
 
+
+{-| Set how the background repeats
+
+    import Css.Background as Background
+
+    -- [ ("background-image", "url(\"img_flwr.gif\")")
+       , ("background-size", "80px 60px")
+       , ("background-repeat", "no-repeat")
+       ]
+    Background.image "img_flwr.gif"
+    <| Background.size 80 60
+    <| Background.repeat Background.NoRepeat []
+-}
 repeat : Repeat -> Styles -> Styles
 repeat r styles =
   List.append styles [ "background-repeat" ::: repeatString r ]
 
+
+{-| Set whether a background image is fixed
+or scrolls with the rest of the page.
+
+    import Css.Background as Background
+
+    -- [ ("background-image", "url(\"w3css.gif\")")
+       , ("background-repeat", "no-repeat")
+       , ("background-attachment", "fixed")
+       ]
+    Background.image "img_flwr.gif"
+    <| Background.repeat Background.NoRepeat
+    <| Background.attachment Background.Fixed []
+-}
 attachment : Attachment -> Styles -> Styles
 attachment a styles =
   List.append styles [ "background-repeat" ::: attachmentString a ]

@@ -1,23 +1,70 @@
 module Css.Margin where
 
-import Css exposing (Styles, (:::))
+{-| Margins define the space around elements.
 
+#Functions
+@docs bottom, left, right, top, all
+-}
+
+-- My Imports
+import Css exposing (Styles, (:::), px)
+
+
+{-| Set the bottom margin of an element
+
+    import Css.Margin as Margin
+
+    -- [ ("margin-bottom", "10px")]
+    Margin.bottom 10 []
+-}
 bottom : Int -> Styles -> Styles
-bottom m styles =
-  List.append styles [ "margin-bottom" ::: ((toString m) ++ "px") ]
+bottom b styles =
+  List.append styles [ "margin-bottom" ::: px b ]
 
+
+{-| Set the left margin of an element
+
+    import Css.Margin as Margin
+
+    -- [ ("margin-left", "10px")]
+    Margin.left 10 []
+-}
 left : Int -> Styles -> Styles
-left m styles =
-  List.append styles [ "margin-left" ::: ((toString m) ++ "px") ]
+left l styles =
+  List.append styles [ "margin-left" ::: px l ]
 
+
+{-| Set the right margin of an element
+
+    import Css.Margin as Margin
+
+    -- [ ("margin-right", "10px")]
+    Margin.right 10 []
+-}
 right : Int -> Styles -> Styles
-right m styles =
-  List.append styles [ "margin-right" ::: ((toString m) ++ "px") ]
+right r styles =
+  List.append styles [ "margin-right" ::: px r ]
 
+
+{-| Set the top margin of an element
+
+    import Css.Margin as Margin
+
+    -- [ ("margin-top", "10px")]
+    Margin.top 10 []
+-}
 top : Int -> Styles -> Styles
-top m styles =
-  List.append styles [ "margin-top" ::: ((toString m) ++ "px") ]
+top t styles =
+  List.append styles [ "margin-top" ::: px t ]
 
+
+{-| Set all the margins of an element
+
+    import Css.Margin as Margin
+
+    -- [ ("margin", "10px 10px 5px 8px")]
+    Margin.top 10 10 5 8 []
+-}
 all : Int -> Int -> Int -> Int -> Styles -> Styles
 all t r b l styles =
   top t

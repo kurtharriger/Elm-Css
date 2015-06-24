@@ -798,6 +798,18 @@ Elm.Css.make = function (_elm) {
    $moduleName = "Css",
    $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm);
+   var url = function (path) {
+      return A2($Basics._op["++"],
+      "url(\"",
+      A2($Basics._op["++"],
+      path,
+      "\")"));
+   };
+   var px = function (num) {
+      return A2($Basics._op["++"],
+      $Basics.toString(num),
+      "px ");
+   };
    var colorString = function (color) {
       return function () {
          var rgba = $Color.toRgb(color);
@@ -829,7 +841,9 @@ Elm.Css.make = function (_elm) {
              ,_1: v1};
    });
    _elm.Css.values = {_op: _op
-                     ,colorString: colorString};
+                     ,colorString: colorString
+                     ,px: px
+                     ,url: url};
    return _elm.Css.values;
 };
 Elm.Css = Elm.Css || {};
@@ -855,7 +869,7 @@ Elm.Css.Background.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "background-image",
-      path)]));
+      $Css.url(path))]));
    });
    var color = F2(function (c,
    styles) {
@@ -868,12 +882,8 @@ Elm.Css.Background.make = function (_elm) {
    var pointString = F2(function (x,
    y) {
       return A2($Basics._op["++"],
-      $Basics.toString(x),
-      A2($Basics._op["++"],
-      "px ",
-      A2($Basics._op["++"],
-      $Basics.toString(y),
-      "px")));
+      $Css.px(x),
+      $Css.px(y));
    });
    var position = F3(function (x,
    y,
@@ -1031,20 +1041,17 @@ Elm.Css.Border.Bottom.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Border.Bottom",
-   $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $Css$Border$Style = Elm.Css.Border.Style.make(_elm),
    $List = Elm.List.make(_elm);
-   var leftRadius = F2(function (r,
+   var leftRadius = F2(function (l,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-bottom-left-radius",
-      A2($Basics._op["++"],
-      $Basics.toString(r),
-      "px"))]));
+      $Css.px(l))]));
    });
    var rightRadius = F2(function (r,
    styles) {
@@ -1052,9 +1059,7 @@ Elm.Css.Border.Bottom.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-bottom-right-radius",
-      A2($Basics._op["++"],
-      $Basics.toString(r),
-      "px"))]));
+      $Css.px(r))]));
    });
    var width = F2(function (w,
    styles) {
@@ -1062,9 +1067,7 @@ Elm.Css.Border.Bottom.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-bottom-width",
-      A2($Basics._op["++"],
-      $Basics.toString(w),
-      "px"))]));
+      $Css.px(w))]));
    });
    var style = F2(function (s,
    styles) {
@@ -1105,7 +1108,6 @@ Elm.Css.Border.Left.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Border.Left",
-   $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $Css$Border$Style = Elm.Css.Border.Style.make(_elm),
@@ -1116,9 +1118,7 @@ Elm.Css.Border.Left.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-left-width",
-      A2($Basics._op["++"],
-      $Basics.toString(w),
-      "px"))]));
+      $Css.px(w))]));
    });
    var style = F2(function (s,
    styles) {
@@ -1157,7 +1157,6 @@ Elm.Css.Border.Right.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Border.Right",
-   $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $Css$Border$Style = Elm.Css.Border.Style.make(_elm),
@@ -1168,9 +1167,7 @@ Elm.Css.Border.Right.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-right-width",
-      A2($Basics._op["++"],
-      $Basics.toString(w),
-      "px"))]));
+      $Css.px(w))]));
    });
    var style = F2(function (s,
    styles) {
@@ -1223,7 +1220,7 @@ Elm.Css.Border.Style.make = function (_elm) {
             case "Ridge": return "ridge";
             case "Solid": return "solid";}
          _U.badCase($moduleName,
-         "between lines 73 and 102");
+         "between lines 72 and 101");
       }();
    };
    var Outset = {ctor: "Outset"};
@@ -1265,20 +1262,17 @@ Elm.Css.Border.Top.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Border.Top",
-   $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $Css$Border$Style = Elm.Css.Border.Style.make(_elm),
    $List = Elm.List.make(_elm);
-   var leftRadius = F2(function (r,
+   var leftRadius = F2(function (l,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-top-left-radius",
-      A2($Basics._op["++"],
-      $Basics.toString(r),
-      "px"))]));
+      $Css.px(l))]));
    });
    var rightRadius = F2(function (r,
    styles) {
@@ -1286,9 +1280,7 @@ Elm.Css.Border.Top.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-top-right-radius",
-      A2($Basics._op["++"],
-      $Basics.toString(r),
-      "px"))]));
+      $Css.px(r))]));
    });
    var width = F2(function (w,
    styles) {
@@ -1296,9 +1288,7 @@ Elm.Css.Border.Top.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "border-top-width",
-      A2($Basics._op["++"],
-      $Basics.toString(w),
-      "px"))]));
+      $Css.px(w))]));
    });
    var style = F2(function (s,
    styles) {
@@ -1337,28 +1327,23 @@ Elm.Css.Dimension.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Dimension",
-   $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
-   var width = F2(function (h,
+   var width = F2(function (w,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "width",
-      A2($Basics._op["++"],
-      $Basics.toString(h),
-      "px"))]));
+      $Css.px(w))]));
    });
-   var minWidth = F2(function (h,
+   var minWidth = F2(function (w,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "min-width",
-      A2($Basics._op["++"],
-      $Basics.toString(h),
-      "px"))]));
+      $Css.px(w))]));
    });
    var minHeight = F2(function (h,
    styles) {
@@ -1366,19 +1351,15 @@ Elm.Css.Dimension.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "min-height",
-      A2($Basics._op["++"],
-      $Basics.toString(h),
-      "px"))]));
+      $Css.px(h))]));
    });
-   var maxWidth = F2(function (h,
+   var maxWidth = F2(function (w,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "max-width",
-      A2($Basics._op["++"],
-      $Basics.toString(h),
-      "px"))]));
+      $Css.px(w))]));
    });
    var maxHeight = F2(function (h,
    styles) {
@@ -1386,9 +1367,7 @@ Elm.Css.Dimension.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "max-height",
-      A2($Basics._op["++"],
-      $Basics.toString(h),
-      "px"))]));
+      $Css.px(h))]));
    });
    var height = F2(function (h,
    styles) {
@@ -1396,9 +1375,7 @@ Elm.Css.Dimension.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "height",
-      A2($Basics._op["++"],
-      $Basics.toString(h),
-      "px"))]));
+      $Css.px(h))]));
    });
    _elm.Css.Dimension.values = {_op: _op
                                ,height: height
@@ -1424,7 +1401,7 @@ Elm.Css.Display.make = function (_elm) {
    $moduleName = "Css.Display",
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
-   var displayString = function (display) {
+   var string = function (display) {
       return function () {
          switch (display.ctor)
          {case "Block": return "block";
@@ -1458,7 +1435,7 @@ Elm.Css.Display.make = function (_elm) {
             case "TableRowGroup":
             return "table-row-group";}
          _U.badCase($moduleName,
-         "between lines 27 and 80");
+         "between lines 105 and 167");
       }();
    };
    var display = F2(function (d,
@@ -1467,7 +1444,7 @@ Elm.Css.Display.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "display",
-      displayString(d))]));
+      string(d))]));
    });
    var None = {ctor: "None"};
    var TableRow = {ctor: "TableRow"};
@@ -1506,7 +1483,7 @@ Elm.Css.Display.make = function (_elm) {
                              ,TableColumn: TableColumn
                              ,TableRow: TableRow
                              ,None: None
-                             ,displayString: displayString
+                             ,string: string
                              ,display: display};
    return _elm.Css.Display.values;
 };
@@ -1573,7 +1550,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "ACStretch":
             return "stretch";}
          _U.badCase($moduleName,
-         "between lines 107 and 124");
+         "between lines 246 and 273");
       }();
    };
    var alignContent = F2(function (a,
@@ -1597,7 +1574,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "AIStretch":
             return "stretch";}
          _U.badCase($moduleName,
-         "between lines 88 and 102");
+         "between lines 221 and 243");
       }();
    };
    var alignItems = F2(function (a,
@@ -1629,7 +1606,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "JCStart":
             return "flex-start";}
          _U.badCase($moduleName,
-         "between lines 69 and 83");
+         "between lines 196 and 218");
       }();
    };
    var justifyContent = F2(function (j,
@@ -1643,13 +1620,12 @@ Elm.Css.Flex.make = function (_elm) {
    var wrapString = function (wrap) {
       return function () {
          switch (wrap.ctor)
-         {case "NoWrap":
-            return "no-wrap";
+         {case "NoWrap": return "nowrap";
             case "Wrap": return "wrap";
             case "WrapReverse":
             return "wrap-reverse";}
          _U.badCase($moduleName,
-         "between lines 56 and 64");
+         "between lines 177 and 193");
       }();
    };
    var wrap = F2(function (w,
@@ -1670,7 +1646,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "RowReverse":
             return "row-reverse";}
          _U.badCase($moduleName,
-         "between lines 40 and 51");
+         "between lines 155 and 174");
       }();
    };
    var direction = F2(function (d,
@@ -1775,7 +1751,7 @@ Elm.Css.Float.make = function (_elm) {
             case "None": return "none";
             case "Right": return "right";}
          _U.badCase($moduleName,
-         "between lines 33 and 41");
+         "between lines 90 and 108");
       }();
    };
    var $float = F2(function (f,
@@ -1796,7 +1772,7 @@ Elm.Css.Float.make = function (_elm) {
             case "ClearRight":
             return "right";}
          _U.badCase($moduleName,
-         "between lines 18 and 29");
+         "between lines 68 and 87");
       }();
    };
    var clear = F2(function (c,
@@ -1864,9 +1840,7 @@ Elm.Css.Font.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "font-size",
-      A2($Basics._op["++"],
-      $Basics.toString(length),
-      "px"))]));
+      $Css.px(length))]));
    });
    var family = F2(function (f,
    styles) {
@@ -1876,15 +1850,15 @@ Elm.Css.Font.make = function (_elm) {
       "font-family",
       f)]));
    });
-   var variantString = function (variant) {
+   var variantString = function (v) {
       return function () {
-         switch (variant.ctor)
+         switch (v.ctor)
          {case "NormalVariant":
             return "normal";
             case "SmallCaps":
             return "small-caps";}
          _U.badCase($moduleName,
-         "between lines 29 and 34");
+         "between lines 88 and 102");
       }();
    };
    var variant = F2(function (v,
@@ -1904,7 +1878,7 @@ Elm.Css.Font.make = function (_elm) {
             case "Oblique":
             return "oblique";}
          _U.badCase($moduleName,
-         "between lines 16 and 24");
+         "between lines 69 and 85");
       }();
    };
    var style = F2(function (s,
@@ -1914,16 +1888,6 @@ Elm.Css.Font.make = function (_elm) {
       _L.fromArray([A2($Css._op[":::"],
       "font-style",
       styleString(s))]));
-   });
-   var all = F6(function (f,
-   l,
-   s,
-   v,
-   w,
-   styles) {
-      return family(f)(size(l)(style(s)(variant(v)(A2(weight,
-      w,
-      styles)))));
    });
    var SmallCaps = {ctor: "SmallCaps"};
    var NormalVariant = {ctor: "NormalVariant"};
@@ -1942,8 +1906,7 @@ Elm.Css.Font.make = function (_elm) {
                           ,size: size
                           ,style: style
                           ,variant: variant
-                          ,weight: weight
-                          ,all: all};
+                          ,weight: weight};
    return _elm.Css.Font.values;
 };
 Elm.Css = Elm.Css || {};
@@ -1959,7 +1922,6 @@ Elm.Css.ListStyle.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.ListStyle",
-   $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
    var image = F2(function (path,
@@ -1968,9 +1930,9 @@ Elm.Css.ListStyle.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "list-style-image",
-      path)]));
+      $Css.url(path))]));
    });
-   var typeString = function (t) {
+   var bulletTypeString = function (t) {
       return function () {
          switch (t.ctor)
          {case "Armenian":
@@ -2011,7 +1973,7 @@ Elm.Css.ListStyle.make = function (_elm) {
             case "UpperRoman":
             return "upper-roman";}
          _U.badCase($moduleName,
-         "between lines 44 and 106");
+         "between lines 148 and 219");
       }();
    };
    var bulletType = F2(function (t,
@@ -2020,7 +1982,7 @@ Elm.Css.ListStyle.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "list-style-type",
-      typeString(t))]));
+      bulletTypeString(t))]));
    });
    var positionString = function (position) {
       return function () {
@@ -2029,7 +1991,7 @@ Elm.Css.ListStyle.make = function (_elm) {
             case "Outside":
             return "outside";}
          _U.badCase($moduleName,
-         "between lines 34 and 39");
+         "between lines 132 and 145");
       }();
    };
    var position = F2(function (p,
@@ -2039,14 +2001,6 @@ Elm.Css.ListStyle.make = function (_elm) {
       _L.fromArray([A2($Css._op[":::"],
       "list-style-position",
       positionString(p))]));
-   });
-   var all = F4(function (path,
-   p,
-   t,
-   styles) {
-      return image(path)(position(p)(A2(bulletType,
-      t,
-      styles)));
    });
    var UpperRoman = {ctor: "UpperRoman"};
    var UpperLatin = {ctor: "UpperLatin"};
@@ -2096,11 +2050,10 @@ Elm.Css.ListStyle.make = function (_elm) {
                                ,UpperLatin: UpperLatin
                                ,UpperRoman: UpperRoman
                                ,positionString: positionString
-                               ,typeString: typeString
+                               ,bulletTypeString: bulletTypeString
                                ,image: image
                                ,position: position
-                               ,bulletType: bulletType
-                               ,all: all};
+                               ,bulletType: bulletType};
    return _elm.Css.ListStyle.values;
 };
 Elm.Css = Elm.Css || {};
@@ -2119,45 +2072,37 @@ Elm.Css.Margin.make = function (_elm) {
    $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
-   var top = F2(function (m,
+   var top = F2(function (t,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "margin-top",
-      A2($Basics._op["++"],
-      $Basics.toString(m),
-      "px"))]));
+      $Css.px(t))]));
    });
-   var right = F2(function (m,
+   var right = F2(function (r,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "margin-right",
-      A2($Basics._op["++"],
-      $Basics.toString(m),
-      "px"))]));
+      $Css.px(r))]));
    });
-   var left = F2(function (m,
+   var left = F2(function (l,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "margin-left",
-      A2($Basics._op["++"],
-      $Basics.toString(m),
-      "px"))]));
+      $Css.px(l))]));
    });
-   var bottom = F2(function (m,
+   var bottom = F2(function (b,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "margin-bottom",
-      A2($Basics._op["++"],
-      $Basics.toString(m),
-      "px"))]));
+      $Css.px(b))]));
    });
    var all = F5(function (t,
    r,
@@ -2225,7 +2170,7 @@ Elm.Css.Outline.make = function (_elm) {
             case "Ridge": return "ridge";
             case "Solid": return "solid";}
          _U.badCase($moduleName,
-         "between lines 20 and 49");
+         "between lines 81 and 121");
       }();
    };
    var style = F2(function (s,
@@ -2288,45 +2233,37 @@ Elm.Css.Padding.make = function (_elm) {
    $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
-   var top = F2(function (p,
+   var top = F2(function (t,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "padding-top",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(t))]));
    });
-   var right = F2(function (p,
+   var right = F2(function (r,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "padding-right",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(r))]));
    });
-   var left = F2(function (p,
+   var left = F2(function (l,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "padding-left",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(l))]));
    });
-   var bottom = F2(function (p,
+   var bottom = F2(function (b,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "padding-bottom",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(b))]));
    });
    var all = F5(function (t,
    r,
@@ -2369,45 +2306,37 @@ Elm.Css.Position.make = function (_elm) {
       "z-index",
       $Basics.toString(p))]));
    });
-   var top = F2(function (p,
+   var top = F2(function (t,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "top",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(t))]));
    });
-   var right = F2(function (p,
+   var right = F2(function (r,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "right",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(r))]));
    });
-   var left = F2(function (p,
+   var left = F2(function (l,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "left",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(l))]));
    });
-   var bottom = F2(function (p,
+   var bottom = F2(function (b,
    styles) {
       return A2($List.append,
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "bottom",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      "px"))]));
+      $Css.px(b))]));
    });
    var positionString = function (position) {
       return function () {
@@ -2419,7 +2348,7 @@ Elm.Css.Position.make = function (_elm) {
             return "relative";
             case "Static": return "static";}
          _U.badCase($moduleName,
-         "between lines 206 and 217");
+         "between lines 411 and 431");
       }();
    };
    var position = F2(function (p,
@@ -2440,7 +2369,7 @@ Elm.Css.Position.make = function (_elm) {
             case "Visible":
             return "visible";}
          _U.badCase($moduleName,
-         "between lines 190 and 201");
+         "between lines 389 and 408");
       }();
    };
    var overflow = F2(function (o,
@@ -2477,8 +2406,6 @@ Elm.Css.Position.make = function (_elm) {
             case "Grabbing":
             return "grabbign";
             case "Help": return "help";
-            case "Initial":
-            return "initial";
             case "Move": return "move";
             case "NResize":
             return "n-resize";
@@ -2510,11 +2437,7 @@ Elm.Css.Position.make = function (_elm) {
             return "sw-resize";
             case "Text": return "text";
             case "Url":
-            return A2($Basics._op["++"],
-              "url(",
-              A2($Basics._op["++"],
-              cursor._0,
-              ")"));
+            return $Css.url(cursor._0);
             case "VerticalText":
             return "vertical-text";
             case "WResize":
@@ -2524,7 +2447,7 @@ Elm.Css.Position.make = function (_elm) {
             case "ZoomOut":
             return "zoom-out";}
          _U.badCase($moduleName,
-         "between lines 72 and 185");
+         "between lines 268 and 386");
       }();
    };
    var cursor = F2(function (c,
@@ -2538,10 +2461,10 @@ Elm.Css.Position.make = function (_elm) {
    var clipString = function (clip) {
       return function () {
          switch (clip.ctor)
-         {case "AutoClip": return "auto";
+         {case "NoClip": return "auto";
             case "Shape": return "shape";}
          _U.badCase($moduleName,
-         "between lines 63 and 68");
+         "between lines 252 and 265");
       }();
    };
    var Static = {ctor: "Static"};
@@ -2552,7 +2475,6 @@ Elm.Css.Position.make = function (_elm) {
    var Scroll = {ctor: "Scroll"};
    var Hidden = {ctor: "Hidden"};
    var AutoOverflow = {ctor: "AutoOverflow"};
-   var Initial = {ctor: "Initial"};
    var ZoomOut = {ctor: "ZoomOut"};
    var ZoomIn = {ctor: "ZoomIn"};
    var Wait = {ctor: "Wait"};
@@ -2592,11 +2514,11 @@ Elm.Css.Position.make = function (_elm) {
    var AutoCursor = {ctor: "AutoCursor"};
    var AllScroll = {ctor: "AllScroll"};
    var Alias = {ctor: "Alias"};
-   var AutoClip = {ctor: "AutoClip"};
+   var NoClip = {ctor: "NoClip"};
    var Shape = {ctor: "Shape"};
    _elm.Css.Position.values = {_op: _op
                               ,Shape: Shape
-                              ,AutoClip: AutoClip
+                              ,NoClip: NoClip
                               ,Alias: Alias
                               ,AllScroll: AllScroll
                               ,AutoCursor: AutoCursor
@@ -2634,7 +2556,6 @@ Elm.Css.Position.make = function (_elm) {
                               ,Wait: Wait
                               ,ZoomIn: ZoomIn
                               ,ZoomOut: ZoomOut
-                              ,Initial: Initial
                               ,AutoOverflow: AutoOverflow
                               ,Hidden: Hidden
                               ,Scroll: Scroll
@@ -2674,11 +2595,6 @@ Elm.Css.Shadow.make = function (_elm) {
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
-   var px = function (x) {
-      return A2($Basics._op["++"],
-      $Basics.toString(x),
-      "px ");
-   };
    var boxString = F6(function (hShadow,
    vShadow,
    blur,
@@ -2688,10 +2604,10 @@ Elm.Css.Shadow.make = function (_elm) {
       return function () {
          var i = inset ? "inset" : "";
          var c = $Css.colorString(color);
-         var s = px(spread);
-         var b = px(blur);
-         var v = px(vShadow);
-         var h = px(hShadow);
+         var s = $Css.px(spread);
+         var b = $Css.px(blur);
+         var v = $Css.px(vShadow);
+         var h = $Css.px(hShadow);
          return A2($Basics._op["++"],
          h,
          A2($Basics._op["++"],
@@ -2752,9 +2668,7 @@ Elm.Css.Text.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "word-spacing",
-      A2($Basics._op["++"],
-      $Basics.toString(length),
-      "px"))]));
+      $Css.px(length))]));
    });
    var indent = F2(function (length,
    styles) {
@@ -2762,9 +2676,7 @@ Elm.Css.Text.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "text-indent",
-      A2($Basics._op["++"],
-      $Basics.toString(length),
-      "px"))]));
+      $Css.px(length))]));
    });
    var lineHeight = F2(function (length,
    styles) {
@@ -2772,9 +2684,7 @@ Elm.Css.Text.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "line-height",
-      A2($Basics._op["++"],
-      $Basics.toString(length),
-      "px"))]));
+      $Css.px(length))]));
    });
    var letterSpacing = F2(function (length,
    styles) {
@@ -2782,9 +2692,7 @@ Elm.Css.Text.make = function (_elm) {
       styles,
       _L.fromArray([A2($Css._op[":::"],
       "letter-spacing",
-      A2($Basics._op["++"],
-      $Basics.toString(length),
-      "px"))]));
+      $Css.px(length))]));
    });
    var color = F2(function (c,
    styles) {
@@ -2806,7 +2714,7 @@ Elm.Css.Text.make = function (_elm) {
             case "PreWrap":
             return "pre-wrap";}
          _U.badCase($moduleName,
-         "between lines 120 and 134");
+         "between lines 272 and 295");
       }();
    };
    var whiteSpace = F2(function (ws,
@@ -2826,7 +2734,7 @@ Elm.Css.Text.make = function (_elm) {
             case "NormalUnicodeBidi":
             return "normal";}
          _U.badCase($moduleName,
-         "between lines 107 and 115");
+         "between lines 254 and 270");
       }();
    };
    var unicodeBidi = F2(function (u,
@@ -2849,7 +2757,7 @@ Elm.Css.Text.make = function (_elm) {
             case "Uppercase":
             return "uppercase";}
          _U.badCase($moduleName,
-         "between lines 91 and 102");
+         "between lines 232 and 251");
       }();
    };
    var transform = F2(function (t,
@@ -2901,7 +2809,7 @@ Elm.Css.Text.make = function (_elm) {
             case "Underline":
             return "underline";}
          _U.badCase($moduleName,
-         "between lines 68 and 79");
+         "between lines 196 and 215");
       }();
    };
    var decoration = F2(function (d,
@@ -2921,7 +2829,7 @@ Elm.Css.Text.make = function (_elm) {
             case "Left": return "left";
             case "Right": return "right";}
          _U.badCase($moduleName,
-         "between lines 52 and 63");
+         "between lines 174 and 193");
       }();
    };
    var align = F2(function (a,
@@ -2938,7 +2846,7 @@ Elm.Css.Text.make = function (_elm) {
          {case "Ltr": return "ltr";
             case "Rtl": return "Rtl";}
          _U.badCase($moduleName,
-         "between lines 42 and 47");
+         "between lines 158 and 171");
       }();
    };
    var direction = F2(function (d,
@@ -3069,7 +2977,7 @@ Elm.Css.Util.make = function (_elm) {
               _v0._1,
               ";")))))]))]));}
          _U.badCase($moduleName,
-         "between lines 31 and 36");
+         "between lines 55 and 60");
       }();
    };
    var columnStyle = function (styles) {
@@ -3078,8 +2986,11 @@ Elm.Css.Util.make = function (_elm) {
       styles));
    };
    var containerStyle = function (styles) {
-      return columnStyle(A2($Css$Margin.bottom,
+      return columnStyle(A5($Css$Margin.all,
       20,
+      0,
+      20,
+      0,
       styles));
    };
    var toCss = F2(function (className,
@@ -6382,6 +6293,7 @@ Elm.Main.make = function (_elm) {
    $Css$Display = Elm.Css.Display.make(_elm),
    $Css$Flex = Elm.Css.Flex.make(_elm),
    $Css$Font = Elm.Css.Font.make(_elm),
+   $Css$ListStyle = Elm.Css.ListStyle.make(_elm),
    $Css$Margin = Elm.Css.Margin.make(_elm),
    $Css$Shadow = Elm.Css.Shadow.make(_elm),
    $Css$Text = Elm.Css.Text.make(_elm),
@@ -6389,6 +6301,23 @@ Elm.Main.make = function (_elm) {
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
    $List = Elm.List.make(_elm);
+   var listItem = function (index) {
+      return A2($Html.li,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(A2($Basics._op["++"],
+      "item ",
+      $Basics.toString(index)))]));
+   };
+   var listItems = function (num) {
+      return A2($List.map,
+      listItem,
+      _L.range(1,num));
+   };
+   var listStyle = function (styles) {
+      return $Css$Margin.left(100)(A2($Css$ListStyle.bulletType,
+      $Css$ListStyle.UpperRoman,
+      styles));
+   };
    var getColor = function (index) {
       return _U.eq(A2($Basics._op["%"],
       index,
@@ -6496,18 +6425,18 @@ Elm.Main.make = function (_elm) {
    });
    var main = function () {
       var squareWidth = 100;
-      var numSquares = 9;
+      var numSquares = 13;
       return A2($Html.div,
       _L.fromArray([]),
-      _L.fromArray([$Css$Util.toCss("squares")(squaresStyle(_L.fromArray([])))
+      _L.fromArray([A3(squares,
+                   numSquares,
+                   squareWidth,
+                   getColor)
                    ,$Html.div(_L.fromArray([]))(A3(showStyles,
                    numSquares,
                    squareWidth,
                    getColor))
-                   ,A3(squares,
-                   numSquares,
-                   squareWidth,
-                   getColor)]));
+                   ,$Css$Util.toCss("squares")(squaresStyle(_L.fromArray([])))]));
    }();
    _elm.Main.values = {_op: _op
                       ,squareStyle: squareStyle
@@ -6516,6 +6445,9 @@ Elm.Main.make = function (_elm) {
                       ,squares: squares
                       ,getColor: getColor
                       ,showStyles: showStyles
+                      ,listStyle: listStyle
+                      ,listItem: listItem
+                      ,listItems: listItems
                       ,main: main};
    return _elm.Main.values;
 };

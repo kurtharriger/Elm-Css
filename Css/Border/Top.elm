@@ -5,15 +5,14 @@ You can set the color, style, width, and radius of the top border.
 
 # Functions
 @docs color, style, width, rightRadius, leftRadius
-
 -}
 
 -- Native Imports
-import Css exposing (Styles, (:::), colorString)
+import Color exposing (Color, rgba)
 
 -- My Imports
+import Css exposing (Styles, (:::), colorString, px)
 import Css.Border.Style as BorderStyle exposing (Style)
-import Color exposing (Color, rgba)
 
 
 {-| Set the color of the top border
@@ -53,7 +52,7 @@ style s styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "border-top-width" ::: ((toString w) ++ "px") ]
+  List.append styles [ "border-top-width" ::: px w ]
 
 
 {-| Set the top radius of the top border
@@ -67,7 +66,7 @@ width w styles =
 -}
 rightRadius : Int -> Styles -> Styles
 rightRadius r styles =
-  List.append styles [ "border-top-right-radius" ::: ((toString r) ++ "px") ]
+  List.append styles [ "border-top-right-radius" ::: px r ]
 
 
 {-| Set the top radius of the top border
@@ -80,5 +79,5 @@ rightRadius r styles =
     BorderTop.leftRadius 25 []
 -}
 leftRadius : Int -> Styles -> Styles
-leftRadius r styles =
-  List.append styles [ "border-top-left-radius" ::: ((toString r) ++ "px") ]
+leftRadius l styles =
+  List.append styles [ "border-top-left-radius" ::: px l ]

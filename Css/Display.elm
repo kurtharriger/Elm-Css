@@ -1,7 +1,78 @@
 module Css.Display where
 
+{-| Set how an element is displayed, and whether it is hidden or visible.
+
+#Definition
+@docs Display
+
+#String
+@docs string
+
+#Function
+@docs display
+-}
+
+-- My Imports
 import Css exposing (Styles, (:::))
 
+{-| Represent the display types an element can have.
+
+Inline -
+  Displays an element as an inline element (like <span>).
+
+Block -
+  Displays an element as a block element (like <p>).
+
+Flex -
+  Displays an element as an block-level flex container.
+
+InlineBlock -
+  Displays an element as an inline-level block container.
+  The inside of this block is formatted as block-level box,
+  and the element itself is formatted as an inline-level box
+
+InlineFlex -
+  Displays an element as an inline-level flex container.
+
+InlineTable -
+  The element is displayed as an inline-level table.
+
+ListItem -
+  Let the element behave like a <li> element.
+
+RunIn -
+  Displays an element as either block or inline, depending on context.
+
+Table -
+  Let the element behave like a <table> element.
+
+TableCaption -
+  Let the element behave like a <caption> element.
+
+TableColumnGroup -
+  Let the element behave like a <colgroup> element.
+
+TableHeaderGroup -
+  Let the element behave like a <thead> element.
+
+TableFooterGroup -
+  Let the element behave like a <tfoot> element.
+
+TableRowGroup -
+  Let the element behave like a <tbody> element.
+
+TableCell -
+  Let the element behave like a <td> element.
+
+TableColumn -
+  Let the element behave like a <col> element.
+
+TableRow -
+  Let the element behave like a <tr> element.
+
+None -
+  The element will not be displayed at all (has no effect on layout).
+-}
 type Display
     = Inline
     | Block
@@ -22,8 +93,15 @@ type Display
     | TableRow
     | None
 
-displayString : Display -> String
-displayString display =
+
+{-| Convert a display type to string form so it works with css.
+
+    import Css.Display as Display
+
+    Display.string Display.Inline -- "inline"
+-}
+string : Display -> String
+string display =
   case display of
     Inline ->
         "inline"
@@ -80,6 +158,13 @@ displayString display =
         "none"
 
 
+{-| Sets the display type of an element
+
+    import Css.Display as Display exposing (display)
+
+    -- [ ("display", "flex") ]
+    display Display.Flex []
+-}
 display : Display -> Styles -> Styles
 display d styles =
-  List.append styles [ "display" ::: displayString d ]
+  List.append styles [ "display" ::: string d ]
