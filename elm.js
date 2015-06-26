@@ -797,7 +797,14 @@ Elm.Css.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Css",
    $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm);
+   $Color = Elm.Color.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm);
+   var setViewport = A3($Html.node,
+   "meta",
+   _L.fromArray([$Html$Attributes.name("viewport")
+                ,$Html$Attributes.content("width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")]),
+   _L.fromArray([]));
    var url = function (path) {
       return A2($Basics._op["++"],
       "url(\"",
@@ -843,7 +850,8 @@ Elm.Css.make = function (_elm) {
    _elm.Css.values = {_op: _op
                      ,colorString: colorString
                      ,px: px
-                     ,url: url};
+                     ,url: url
+                     ,setViewport: setViewport};
    return _elm.Css.values;
 };
 Elm.Css = Elm.Css || {};
@@ -1313,6 +1321,179 @@ Elm.Css.Border.Top.make = function (_elm) {
                                 ,rightRadius: rightRadius
                                 ,leftRadius: leftRadius};
    return _elm.Css.Border.Top.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Cursor = Elm.Css.Cursor || {};
+Elm.Css.Cursor.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Cursor = _elm.Css.Cursor || {};
+   if (_elm.Css.Cursor.values)
+   return _elm.Css.Cursor.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Cursor",
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm);
+   var cursorString = function (cursor) {
+      return function () {
+         switch (cursor.ctor)
+         {case "Alias": return "alias";
+            case "AllScroll":
+            return "all-scroll";
+            case "Auto": return "auto";
+            case "Cell": return "cell";
+            case "ColResize":
+            return "col-resize";
+            case "ContextMenu":
+            return "context-menu";
+            case "Copy": return "copy";
+            case "Crosshair":
+            return "crosshair";
+            case "Default":
+            return "default";
+            case "EResize":
+            return "e-resize";
+            case "EwResize":
+            return "ew-resize";
+            case "Grab": return "grab";
+            case "Grabbing":
+            return "grabbign";
+            case "Help": return "help";
+            case "Move": return "move";
+            case "NResize":
+            return "n-resize";
+            case "NeResize":
+            return "ne-resize";
+            case "NeswResize":
+            return "nesw-resize";
+            case "NoDrop": return "no-drop";
+            case "None": return "none";
+            case "NotAllowed":
+            return "not-allowed";
+            case "NsResize":
+            return "ns-resize";
+            case "NwResize":
+            return "nw-resize";
+            case "NwseResize":
+            return "nwse-resize";
+            case "Pointer":
+            return "pointer";
+            case "Progress":
+            return "progress";
+            case "RowResize":
+            return "row-resize";
+            case "SResize":
+            return "s-resize";
+            case "SeResize":
+            return "se-resize";
+            case "SwResize":
+            return "sw-resize";
+            case "Text": return "text";
+            case "Url":
+            return $Css.url(cursor._0);
+            case "VerticalText":
+            return "vertical-text";
+            case "WResize":
+            return "w-resize";
+            case "Wait": return "wait";
+            case "ZoomIn": return "zoom-in";
+            case "ZoomOut":
+            return "zoom-out";}
+         _U.badCase($moduleName,
+         "between lines 186 and 305");
+      }();
+   };
+   var cursor = F2(function (c,
+   styles) {
+      return A2($List.append,
+      styles,
+      _L.fromArray([A2($Css._op[":::"],
+      "cursor",
+      cursorString(c))]));
+   });
+   var ZoomOut = {ctor: "ZoomOut"};
+   var ZoomIn = {ctor: "ZoomIn"};
+   var Wait = {ctor: "Wait"};
+   var WResize = {ctor: "WResize"};
+   var VerticalText = {ctor: "VerticalText"};
+   var Url = function (a) {
+      return {ctor: "Url",_0: a};
+   };
+   var Text = {ctor: "Text"};
+   var SwResize = {ctor: "SwResize"};
+   var SeResize = {ctor: "SeResize"};
+   var SResize = {ctor: "SResize"};
+   var RowResize = {ctor: "RowResize"};
+   var Progress = {ctor: "Progress"};
+   var Pointer = {ctor: "Pointer"};
+   var NotAllowed = {ctor: "NotAllowed"};
+   var None = {ctor: "None"};
+   var NoDrop = {ctor: "NoDrop"};
+   var NwseResize = {ctor: "NwseResize"};
+   var NwResize = {ctor: "NwResize"};
+   var NsResize = {ctor: "NsResize"};
+   var NeswResize = {ctor: "NeswResize"};
+   var NeResize = {ctor: "NeResize"};
+   var NResize = {ctor: "NResize"};
+   var Move = {ctor: "Move"};
+   var Help = {ctor: "Help"};
+   var Grabbing = {ctor: "Grabbing"};
+   var Grab = {ctor: "Grab"};
+   var EwResize = {ctor: "EwResize"};
+   var EResize = {ctor: "EResize"};
+   var Default = {ctor: "Default"};
+   var Crosshair = {ctor: "Crosshair"};
+   var Copy = {ctor: "Copy"};
+   var ColResize = {ctor: "ColResize"};
+   var ContextMenu = {ctor: "ContextMenu"};
+   var Cell = {ctor: "Cell"};
+   var Auto = {ctor: "Auto"};
+   var AllScroll = {ctor: "AllScroll"};
+   var Alias = {ctor: "Alias"};
+   _elm.Css.Cursor.values = {_op: _op
+                            ,Alias: Alias
+                            ,AllScroll: AllScroll
+                            ,Auto: Auto
+                            ,Cell: Cell
+                            ,ContextMenu: ContextMenu
+                            ,ColResize: ColResize
+                            ,Copy: Copy
+                            ,Crosshair: Crosshair
+                            ,Default: Default
+                            ,EResize: EResize
+                            ,EwResize: EwResize
+                            ,Grab: Grab
+                            ,Grabbing: Grabbing
+                            ,Help: Help
+                            ,Move: Move
+                            ,NResize: NResize
+                            ,NeResize: NeResize
+                            ,NeswResize: NeswResize
+                            ,NsResize: NsResize
+                            ,NwResize: NwResize
+                            ,NwseResize: NwseResize
+                            ,NoDrop: NoDrop
+                            ,None: None
+                            ,NotAllowed: NotAllowed
+                            ,Pointer: Pointer
+                            ,Progress: Progress
+                            ,RowResize: RowResize
+                            ,SResize: SResize
+                            ,SeResize: SeResize
+                            ,SwResize: SwResize
+                            ,Text: Text
+                            ,Url: Url
+                            ,VerticalText: VerticalText
+                            ,WResize: WResize
+                            ,Wait: Wait
+                            ,ZoomIn: ZoomIn
+                            ,ZoomOut: ZoomOut
+                            ,cursorString: cursorString
+                            ,cursor: cursor};
+   return _elm.Css.Cursor.values;
 };
 Elm.Css = Elm.Css || {};
 Elm.Css.Dimension = Elm.Css.Dimension || {};
@@ -2348,7 +2529,7 @@ Elm.Css.Position.make = function (_elm) {
             return "relative";
             case "Static": return "static";}
          _U.badCase($moduleName,
-         "between lines 411 and 431");
+         "between lines 131 and 151");
       }();
    };
    var position = F2(function (p,
@@ -2369,7 +2550,7 @@ Elm.Css.Position.make = function (_elm) {
             case "Visible":
             return "visible";}
          _U.badCase($moduleName,
-         "between lines 389 and 408");
+         "between lines 109 and 128");
       }();
    };
    var overflow = F2(function (o,
@@ -2380,91 +2561,13 @@ Elm.Css.Position.make = function (_elm) {
       "overflow",
       overflowString(o))]));
    });
-   var cursorString = function (cursor) {
-      return function () {
-         switch (cursor.ctor)
-         {case "Alias": return "alias";
-            case "AllScroll":
-            return "all-scroll";
-            case "AutoCursor":
-            return "auto";
-            case "Cell": return "cell";
-            case "ColResize":
-            return "col-resize";
-            case "ContextMenu":
-            return "context-menu";
-            case "Copy": return "copy";
-            case "Crosshair":
-            return "crosshair";
-            case "Default":
-            return "default";
-            case "EResize":
-            return "e-resize";
-            case "EwResize":
-            return "ew-resize";
-            case "Grab": return "grab";
-            case "Grabbing":
-            return "grabbign";
-            case "Help": return "help";
-            case "Move": return "move";
-            case "NResize":
-            return "n-resize";
-            case "NeResize":
-            return "ne-resize";
-            case "NeswResize":
-            return "nesw-resize";
-            case "NoDrop": return "no-drop";
-            case "None": return "none";
-            case "NotAllowed":
-            return "not-allowed";
-            case "NsResize":
-            return "ns-resize";
-            case "NwResize":
-            return "nw-resize";
-            case "NwseResize":
-            return "nwse-resize";
-            case "Pointer":
-            return "pointer";
-            case "Progress":
-            return "progress";
-            case "RowResize":
-            return "row-resize";
-            case "SResize":
-            return "s-resize";
-            case "SeResize":
-            return "se-resize";
-            case "SwResize":
-            return "sw-resize";
-            case "Text": return "text";
-            case "Url":
-            return $Css.url(cursor._0);
-            case "VerticalText":
-            return "vertical-text";
-            case "WResize":
-            return "w-resize";
-            case "Wait": return "wait";
-            case "ZoomIn": return "zoom-in";
-            case "ZoomOut":
-            return "zoom-out";}
-         _U.badCase($moduleName,
-         "between lines 268 and 386");
-      }();
-   };
-   var cursor = F2(function (c,
-   styles) {
-      return A2($List.append,
-      styles,
-      _L.fromArray([A2($Css._op[":::"],
-      "cursor",
-      cursorString(c))]));
-   });
    var clipString = function (clip) {
       return function () {
          switch (clip.ctor)
          {case "NoClip": return "auto";
             case "Shape": return "shape";}
          _U.badCase($moduleName,
-         "between lines 252 and 265");
+         "between lines 93 and 106");
       }();
    };
    var Static = {ctor: "Static"};
@@ -2475,87 +2578,11 @@ Elm.Css.Position.make = function (_elm) {
    var Scroll = {ctor: "Scroll"};
    var Hidden = {ctor: "Hidden"};
    var AutoOverflow = {ctor: "AutoOverflow"};
-   var ZoomOut = {ctor: "ZoomOut"};
-   var ZoomIn = {ctor: "ZoomIn"};
-   var Wait = {ctor: "Wait"};
-   var WResize = {ctor: "WResize"};
-   var VerticalText = {ctor: "VerticalText"};
-   var Url = function (a) {
-      return {ctor: "Url",_0: a};
-   };
-   var Text = {ctor: "Text"};
-   var SwResize = {ctor: "SwResize"};
-   var SeResize = {ctor: "SeResize"};
-   var SResize = {ctor: "SResize"};
-   var RowResize = {ctor: "RowResize"};
-   var Progress = {ctor: "Progress"};
-   var Pointer = {ctor: "Pointer"};
-   var NotAllowed = {ctor: "NotAllowed"};
-   var None = {ctor: "None"};
-   var NoDrop = {ctor: "NoDrop"};
-   var NwseResize = {ctor: "NwseResize"};
-   var NwResize = {ctor: "NwResize"};
-   var NsResize = {ctor: "NsResize"};
-   var NeswResize = {ctor: "NeswResize"};
-   var NeResize = {ctor: "NeResize"};
-   var NResize = {ctor: "NResize"};
-   var Move = {ctor: "Move"};
-   var Help = {ctor: "Help"};
-   var Grabbing = {ctor: "Grabbing"};
-   var Grab = {ctor: "Grab"};
-   var EwResize = {ctor: "EwResize"};
-   var EResize = {ctor: "EResize"};
-   var Default = {ctor: "Default"};
-   var Crosshair = {ctor: "Crosshair"};
-   var Copy = {ctor: "Copy"};
-   var ColResize = {ctor: "ColResize"};
-   var ContextMenu = {ctor: "ContextMenu"};
-   var Cell = {ctor: "Cell"};
-   var AutoCursor = {ctor: "AutoCursor"};
-   var AllScroll = {ctor: "AllScroll"};
-   var Alias = {ctor: "Alias"};
    var NoClip = {ctor: "NoClip"};
    var Shape = {ctor: "Shape"};
    _elm.Css.Position.values = {_op: _op
                               ,Shape: Shape
                               ,NoClip: NoClip
-                              ,Alias: Alias
-                              ,AllScroll: AllScroll
-                              ,AutoCursor: AutoCursor
-                              ,Cell: Cell
-                              ,ContextMenu: ContextMenu
-                              ,ColResize: ColResize
-                              ,Copy: Copy
-                              ,Crosshair: Crosshair
-                              ,Default: Default
-                              ,EResize: EResize
-                              ,EwResize: EwResize
-                              ,Grab: Grab
-                              ,Grabbing: Grabbing
-                              ,Help: Help
-                              ,Move: Move
-                              ,NResize: NResize
-                              ,NeResize: NeResize
-                              ,NeswResize: NeswResize
-                              ,NsResize: NsResize
-                              ,NwResize: NwResize
-                              ,NwseResize: NwseResize
-                              ,NoDrop: NoDrop
-                              ,None: None
-                              ,NotAllowed: NotAllowed
-                              ,Pointer: Pointer
-                              ,Progress: Progress
-                              ,RowResize: RowResize
-                              ,SResize: SResize
-                              ,SeResize: SeResize
-                              ,SwResize: SwResize
-                              ,Text: Text
-                              ,Url: Url
-                              ,VerticalText: VerticalText
-                              ,WResize: WResize
-                              ,Wait: Wait
-                              ,ZoomIn: ZoomIn
-                              ,ZoomOut: ZoomOut
                               ,AutoOverflow: AutoOverflow
                               ,Hidden: Hidden
                               ,Scroll: Scroll
@@ -2565,11 +2592,9 @@ Elm.Css.Position.make = function (_elm) {
                               ,Relative: Relative
                               ,Static: Static
                               ,clipString: clipString
-                              ,cursorString: cursorString
                               ,overflowString: overflowString
                               ,positionString: positionString
                               ,bottom: bottom
-                              ,cursor: cursor
                               ,left: left
                               ,overflow: overflow
                               ,position: position
@@ -2595,54 +2620,121 @@ Elm.Css.Shadow.make = function (_elm) {
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
-   var boxString = F6(function (hShadow,
-   vShadow,
-   blur,
-   spread,
-   color,
-   inset) {
+   var boxString = function (_v0) {
       return function () {
-         var i = inset ? "inset" : "";
-         var c = $Css.colorString(color);
-         var s = $Css.px(spread);
-         var b = $Css.px(blur);
-         var v = $Css.px(vShadow);
-         var h = $Css.px(hShadow);
-         return A2($Basics._op["++"],
-         h,
-         A2($Basics._op["++"],
-         v,
-         A2($Basics._op["++"],
-         b,
-         A2($Basics._op["++"],
-         s,
-         A2($Basics._op["++"],c,i)))));
+         switch (_v0.ctor)
+         {case "_Tuple6":
+            return function () {
+                 var i = _v0._5 ? "inset" : "";
+                 var c = $Css.colorString(_v0._4);
+                 var s = $Css.px(_v0._3);
+                 var b = $Css.px(_v0._2);
+                 var v = $Css.px(_v0._1);
+                 var h = $Css.px(_v0._0);
+                 return A2($Basics._op["++"],
+                 h,
+                 A2($Basics._op["++"],
+                 v,
+                 A2($Basics._op["++"],
+                 b,
+                 A2($Basics._op["++"],
+                 s,
+                 A2($Basics._op["++"],c,i)))));
+              }();}
+         _U.badCase($moduleName,
+         "between lines 66 and 73");
+      }();
+   };
+   var listBoxString = F2(function (accumulator,
+   boxShadows) {
+      return function () {
+         switch (boxShadows.ctor)
+         {case "::":
+            switch (boxShadows._1.ctor)
+              {case "[]":
+                 return A2(listBoxString,
+                   A2($Basics._op["++"],
+                   accumulator,
+                   boxString(boxShadows._0)),
+                   _L.fromArray([]));}
+              return A2(listBoxString,
+              A2($Basics._op["++"],
+              accumulator,
+              A2($Basics._op["++"],
+              boxString(boxShadows._0),
+              ", ")),
+              boxShadows._1);
+            case "[]": return accumulator;}
+         _U.badCase($moduleName,
+         "between lines 85 and 97");
       }();
    });
-   var box = F7(function (hShadow,
-   vShadow,
-   blur,
-   spread,
-   color,
-   inset,
+   var box = F2(function (boxShadows,
    styles) {
+      return A2($List.append,
+      styles,
+      _L.fromArray([A2($Css._op[":::"],
+      "box-shadow",
+      A2(listBoxString,
+      "",
+      boxShadows))]));
+   });
+   var textString = function (_v11) {
       return function () {
-         var string = A6(boxString,
-         hShadow,
-         vShadow,
-         blur,
-         spread,
-         color,
-         inset);
-         return A2($List.append,
-         styles,
-         _L.fromArray([A2($Css._op[":::"],
-         "box-shadow",
-         string)]));
+         switch (_v11.ctor)
+         {case "_Tuple4":
+            return A2($Basics._op["++"],
+              $Css.px(_v11._0),
+              A2($Basics._op["++"],
+              $Css.px(_v11._1),
+              A2($Basics._op["++"],
+              $Css.px(_v11._2),
+              $Css.colorString(_v11._3))));}
+         _U.badCase($moduleName,
+         "on line 39, column 4 to 70");
       }();
+   };
+   var listTextString = F2(function (accumulator,
+   textShadows) {
+      return function () {
+         switch (textShadows.ctor)
+         {case "::":
+            switch (textShadows._1.ctor)
+              {case "[]":
+                 return A2(listTextString,
+                   A2($Basics._op["++"],
+                   accumulator,
+                   textString(textShadows._0)),
+                   _L.fromArray([]));}
+              return A2(listTextString,
+              A2($Basics._op["++"],
+              accumulator,
+              A2($Basics._op["++"],
+              textString(textShadows._0),
+              ", ")),
+              textShadows._1);
+            case "[]": return accumulator;}
+         _U.badCase($moduleName,
+         "between lines 51 and 63");
+      }();
+   });
+   var text = F2(function (textShadows,
+   styles) {
+      return A2($List.append,
+      styles,
+      _L.fromArray([A2($Css._op[":::"],
+      "text-shadow",
+      A2(listTextString,
+      "",
+      textShadows))]));
    });
    _elm.Css.Shadow.values = {_op: _op
-                            ,box: box};
+                            ,textString: textString
+                            ,listTextString: listTextString
+                            ,boxString: boxString
+                            ,listBoxString: listBoxString
+                            ,box: box
+                            ,text: text};
    return _elm.Css.Shadow.values;
 };
 Elm.Css = Elm.Css || {};
@@ -2658,7 +2750,6 @@ Elm.Css.Text.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Text",
-   $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm);
@@ -2714,7 +2805,7 @@ Elm.Css.Text.make = function (_elm) {
             case "PreWrap":
             return "pre-wrap";}
          _U.badCase($moduleName,
-         "between lines 272 and 295");
+         "between lines 215 and 238");
       }();
    };
    var whiteSpace = F2(function (ws,
@@ -2734,7 +2825,7 @@ Elm.Css.Text.make = function (_elm) {
             case "NormalUnicodeBidi":
             return "normal";}
          _U.badCase($moduleName,
-         "between lines 254 and 270");
+         "between lines 197 and 213");
       }();
    };
    var unicodeBidi = F2(function (u,
@@ -2744,58 +2835,6 @@ Elm.Css.Text.make = function (_elm) {
       _L.fromArray([A2($Css._op[":::"],
       "unicode-bidi",
       unicodeBidiString(u))]));
-   });
-   var transformString = function (transform) {
-      return function () {
-         switch (transform.ctor)
-         {case "Capitalize":
-            return "capitalize";
-            case "Lowercase":
-            return "lowercase";
-            case "NoTransform":
-            return "none";
-            case "Uppercase":
-            return "uppercase";}
-         _U.badCase($moduleName,
-         "between lines 232 and 251");
-      }();
-   };
-   var transform = F2(function (t,
-   styles) {
-      return A2($List.append,
-      styles,
-      _L.fromArray([A2($Css._op[":::"],
-      "text-transform",
-      transformString(t))]));
-   });
-   var shadowString = F4(function (h,
-   v,
-   b,
-   c) {
-      return A2($Basics._op["++"],
-      A2($Basics._op["++"],
-      $Basics.toString(h),
-      "px "),
-      A2($Basics._op["++"],
-      A2($Basics._op["++"],
-      $Basics.toString(v),
-      "px "),
-      A2($Basics._op["++"],
-      A2($Basics._op["++"],
-      $Basics.toString(b),
-      "px "),
-      $Css.colorString(c))));
-   });
-   var shadow = F5(function (h,
-   v,
-   b,
-   c,
-   styles) {
-      return A2($List.append,
-      styles,
-      _L.fromArray([A2($Css._op[":::"],
-      "text-shadow",
-      A4(shadowString,h,v,b,c))]));
    });
    var decorationString = function (decoration) {
       return function () {
@@ -2809,7 +2848,7 @@ Elm.Css.Text.make = function (_elm) {
             case "Underline":
             return "underline";}
          _U.badCase($moduleName,
-         "between lines 196 and 215");
+         "between lines 175 and 194");
       }();
    };
    var decoration = F2(function (d,
@@ -2829,7 +2868,7 @@ Elm.Css.Text.make = function (_elm) {
             case "Left": return "left";
             case "Right": return "right";}
          _U.badCase($moduleName,
-         "between lines 174 and 193");
+         "between lines 153 and 172");
       }();
    };
    var align = F2(function (a,
@@ -2846,7 +2885,7 @@ Elm.Css.Text.make = function (_elm) {
          {case "Ltr": return "ltr";
             case "Rtl": return "Rtl";}
          _U.badCase($moduleName,
-         "between lines 158 and 171");
+         "between lines 137 and 150");
       }();
    };
    var direction = F2(function (d,
@@ -2865,10 +2904,6 @@ Elm.Css.Text.make = function (_elm) {
    var BidiOverride = {ctor: "BidiOverride"};
    var Embed = {ctor: "Embed"};
    var NormalUnicodeBidi = {ctor: "NormalUnicodeBidi"};
-   var Lowercase = {ctor: "Lowercase"};
-   var Uppercase = {ctor: "Uppercase"};
-   var Capitalize = {ctor: "Capitalize"};
-   var NoTransform = {ctor: "NoTransform"};
    var LineThrough = {ctor: "LineThrough"};
    var Overline = {ctor: "Overline"};
    var Underline = {ctor: "Underline"};
@@ -2890,10 +2925,6 @@ Elm.Css.Text.make = function (_elm) {
                           ,Underline: Underline
                           ,Overline: Overline
                           ,LineThrough: LineThrough
-                          ,NoTransform: NoTransform
-                          ,Capitalize: Capitalize
-                          ,Uppercase: Uppercase
-                          ,Lowercase: Lowercase
                           ,NormalUnicodeBidi: NormalUnicodeBidi
                           ,Embed: Embed
                           ,BidiOverride: BidiOverride
@@ -2905,8 +2936,6 @@ Elm.Css.Text.make = function (_elm) {
                           ,directionString: directionString
                           ,alignString: alignString
                           ,decorationString: decorationString
-                          ,shadowString: shadowString
-                          ,transformString: transformString
                           ,unicodeBidiString: unicodeBidiString
                           ,whiteSpaceString: whiteSpaceString
                           ,color: color
@@ -2916,8 +2945,6 @@ Elm.Css.Text.make = function (_elm) {
                           ,align: align
                           ,decoration: decoration
                           ,indent: indent
-                          ,shadow: shadow
-                          ,transform: transform
                           ,unicodeBidi: unicodeBidi
                           ,whiteSpace: whiteSpace
                           ,wordSpacing: wordSpacing};
@@ -6289,6 +6316,7 @@ Elm.Main.make = function (_elm) {
    $Css = Elm.Css.make(_elm),
    $Css$Background = Elm.Css.Background.make(_elm),
    $Css$Border = Elm.Css.Border.make(_elm),
+   $Css$Cursor = Elm.Css.Cursor.make(_elm),
    $Css$Dimension = Elm.Css.Dimension.make(_elm),
    $Css$Display = Elm.Css.Display.make(_elm),
    $Css$Flex = Elm.Css.Flex.make(_elm),
@@ -6344,6 +6372,20 @@ Elm.Main.make = function (_elm) {
       $Css$Flex.Wrap,
       styles));
    };
+   var shadows = _L.fromArray([{ctor: "_Tuple6"
+                               ,_0: 10
+                               ,_1: 10
+                               ,_2: 10
+                               ,_3: 0
+                               ,_4: A4($Color.rgba,0,0,255,1)
+                               ,_5: false}
+                              ,{ctor: "_Tuple6"
+                               ,_0: -5
+                               ,_1: -5
+                               ,_2: 10
+                               ,_3: 0
+                               ,_4: A4($Color.rgba,0,0,100,1)
+                               ,_5: false}]);
    var squareStyle = F5(function (num,
    index,
    width,
@@ -6359,13 +6401,7 @@ Elm.Main.make = function (_elm) {
          segment1,
          segment2,
          segment1,
-         segment2)(A6($Css$Shadow.box,
-         0,
-         0,
-         10,
-         0,
-         A4($Color.rgba,0,0,0,1),
-         false)(A4($Css$Margin.all,
+         segment2)($Css$Cursor.cursor($Css$Cursor.Cell)($Css$Shadow.box(shadows)(A4($Css$Margin.all,
          10,
          0,
          0,
@@ -6375,7 +6411,7 @@ Elm.Main.make = function (_elm) {
          241,
          1))($Css$Background.color(color)($Css$Dimension.height(width)(A2($Css$Dimension.width,
          width,
-         styles)))))))))));
+         styles))))))))))));
       }();
    });
    var square = F4(function (num,
@@ -6425,10 +6461,11 @@ Elm.Main.make = function (_elm) {
    });
    var main = function () {
       var squareWidth = 100;
-      var numSquares = 13;
+      var numSquares = 100;
       return A2($Html.div,
       _L.fromArray([]),
-      _L.fromArray([A3(squares,
+      _L.fromArray([$Css.setViewport
+                   ,A3(squares,
                    numSquares,
                    squareWidth,
                    getColor)
@@ -6439,6 +6476,7 @@ Elm.Main.make = function (_elm) {
                    ,$Css$Util.toCss("squares")(squaresStyle(_L.fromArray([])))]));
    }();
    _elm.Main.values = {_op: _op
+                      ,shadows: shadows
                       ,squareStyle: squareStyle
                       ,squaresStyle: squaresStyle
                       ,square: square

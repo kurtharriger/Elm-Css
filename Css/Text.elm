@@ -3,13 +3,13 @@ module Css.Text where
 {-| Change the way that text is displayed on the screen.
 
 #Definitions
-@docs Direction, Align, Decoration, Transform, UnicodeBidi, WhiteSpace
+@docs Direction, Align, Decoration, UnicodeBidi, WhiteSpace
 
 #Strings
-@docs directionString, alignString, decorationString, shadowString, transformString, unicodeBidiString, whiteSpaceString
+@docs directionString, alignString, decorationString, unicodeBidiString, whiteSpaceString
 
 #Functions
-@docs color, direction, letterSpacing, lineHeight, align, decoration, indent, shadow, transform, unicodeBidi, whiteSpace, wordSpacing
+@docs color, direction, letterSpacing, lineHeight, align, decoration, indent, unicodeBidi, whiteSpace, wordSpacing
 -}
 
 -- Native Imports
@@ -73,27 +73,6 @@ type Decoration
     | Underline
     | Overline
     | LineThrough
-
-
-{-| Represent the capitalization of text.
-
-NoTransform -
-  No capitalization. The text renders as it is.
-
-Capitalize -
-  Transforms the first character of each word to uppercase.
-
-Uppercase -
-  Transforms all characters to uppercase.
-
-Lowercase -
-  Transforms all characters to lowercase.
--}
-type Transform
-    = NoTransform
-    | Capitalize
-    | Uppercase
-    | Lowercase
 
 
 {-| The unicode-bidi property is used together with the direction property to
@@ -205,42 +184,6 @@ decorationString decoration =
 
     LineThrough ->
         "line-through"
-
-
-{-| Convert an shadow to string form so it works with css.
-
-    import Css.Text as Text
-
-    Text.shadowString 10 10 10 (rgba 0 0 0 1) -- "10px 10px 10px rgba(0, 0, 0, 1)"
--}
-shadowString : Int -> Int -> Int -> Color -> String
-shadowString h v b c =
-  ((toString h) ++ "px ")
-  ++ ((toString v) ++ "px ")
-  ++ ((toString b) ++ "px ")
-  ++ (colorString c)
-
-
-{-| Convert an transform type to string form so it works with css.
-
-    import Css.Text as Text
-
-    Text.transformString Text.Capitalize -- "capitalize"
--}
-transformString : Transform -> String
-transformString transform =
-  case transform of
-    NoTransform ->
-        "none"
-
-    Capitalize ->
-        "capitalize"
-
-    Uppercase ->
-        "uppercase"
-
-    Lowercase ->
-        "lowercase"
 
 
 {-| Convert an unicode bidi type to string form so it works with css.
@@ -368,30 +311,6 @@ decoration d styles =
 indent : Int -> Styles -> Styles
 indent length styles =
   List.append styles [ "text-indent" ::: px length ]
-
-
-{-| Set the shadow effect added to text.
-
-    import Css.Text as Text
-
-    -- [ ("text-shadow", "10px 10px 10px rgba(0, 0, 0, 1)") ]
-    Text.shadow 10 10 10 (rgba 0 0 0 1) []
--}
-shadow : Int -> Int -> Int -> Color -> Styles -> Styles
-shadow h v b c styles =
-  List.append styles [ "text-shadow" ::: shadowString h v b c ]
-
-
-{-| Set the capitalization of text.
-
-    import Css.Text as Text
-
-    -- [ ("text-transform", "capitalize") ]
-    Text.transform Text.Capitalize []
--}
-transform : Transform -> Styles -> Styles
-transform t styles =
-  List.append styles [ "text-transform" ::: transformString t ]
 
 
 {-| Used together with the direction property to set or return whether

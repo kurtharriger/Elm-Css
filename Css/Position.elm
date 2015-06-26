@@ -5,13 +5,13 @@ and element behind another, and specify what should happen when an
 element's content is too big.
 
 #Definitions
-@docs Clip, Cursor, Overflow, Position
+@docs Clip, Overflow, Position
 
 #Strings
-@docs clipString, cursorString, overflowString, positionString
+@docs clipString, overflowString, positionString
 
 #Functions
-@docs bottom, cursor, left, overflow, position, right, top, zIndex
+@docs bottom, left, overflow, position, right, top, zIndex
 -}
 
 -- My Imports
@@ -34,165 +34,6 @@ NoClip -
 type Clip
     = Shape
     | NoClip
-
-
-{-| Represent the type of cursor to be displayed when pointing on an element.
-
-Alias -
-  The cursor indicates an alias of something is to be created.
-
-AllScroll -
-  The cursor indicates that something can be scrolled in any direction.
-
-AutoCursor -
-  The browser sets a cursor.
-
-Cell -
-  The cursor indicates that a cell (or set of cells) may be selected.
-
-ContextMenu -
-  The cursor indicates that a context-menu is available.
-
-ColResize -
-  The cursor indicates that the column can be resized horizontally.
-
-Copy -
-  The cursor indicates something is to be copied.
-
-Crosshair -
-  The cursor render as a crosshair.
-
-Default -
-  The default cursor.
-
-EResize -
-  The cursor indicates that an edge of a box is to be moved right (east).
-
-EwResize -
-  Indicates a bidirectional resize cursor.
-
-Grab -
-  The cursor indicates that something can be grabbed.
-
-Grabbing -
-  The cursor indicates that something can be grabbed.
-
-Help -
-  The cursor indicates that help is available.
-
-Move -
-  The cursor indicates something is to be moved.
-
-NResize -
-  The cursor indicates that an edge of a box is to be moved up (north).
-
-NeResize -
-  The cursor indicates that an edge of a box is to be moved up
-  and right (north/east).
-
-NeswResize -
-  Indicates a bidirectional resize cursor.
-
-NsResize -
-  Indicates a bidirectional resize cursor.
-
-NwResize -
-  The cursor indicates that an edge of a box is to be moved up
-  and left (north/west).
-
-NwseResize -
-  Indicates a bidirectional resize cursor.
-
-NoDrop -
-  The cursor indicates that the dragged item cannot be dropped here.
-
-None -
-  No cursor is rendered for the element.
-
-NotAllowed -
-  The cursor indicates that the requested action will not be executed.
-
-Pointer -
-  The cursor is a pointer and indicates a link.
-
-Progress -
-  The cursor indicates that the program is busy (in progress).
-
-RowResize -
-  The cursor indicates that the row can be resized vertically.
-
-SResize -
-  The cursor indicates that an edge of a box is to be moved down (south).
-
-SeResize -
-  The cursor indicates that an edge of a box is to be moved down
-  and right (south/east).
-
-SwResize -
-  The cursor indicates that an edge of a box is to be moved down
-  and left (south/west).
-
-Text -
-  The cursor indicates text that may be selected.
-
-Url String -
-  A comma separated list of URLs to custom cursors.
-  Note: Always specify a generic cursor at the end of the list,
-  in case none of the URL-defined cursors can be used.
-
-VerticalText -
-  The cursor indicates vertical-text that may be selected.
-
-WResize -
-  The cursor indicates that an edge of a box is to be moved left (west).
-
-Wait -
-  The cursor indicates that the program is busy.
-
-ZoomIn -
-  The cursor indicates that something can be zoomed in.
-
-ZoomOut -
-  The cursor indicates that something can be zoomed out.
--}
-type Cursor
-    = Alias
-    | AllScroll
-    | AutoCursor
-    | Cell
-    | ContextMenu
-    | ColResize
-    | Copy
-    | Crosshair
-    | Default
-    | EResize
-    | EwResize
-    | Grab
-    | Grabbing
-    | Help
-    | Move
-    | NResize
-    | NeResize
-    | NeswResize
-    | NsResize
-    | NwResize
-    | NwseResize
-    | NoDrop
-    | None
-    | NotAllowed
-    | Pointer
-    | Progress
-    | RowResize
-    | SResize
-    | SeResize
-    | SwResize
-    | Text
-    | Url String
-    | VerticalText
-    | WResize
-    | Wait
-    | ZoomIn
-    | ZoomOut
 
 
 {-| Represent what happens if content overflows an element's box.
@@ -257,127 +98,6 @@ clipString clip =
         "auto"
 
 
-{-| Convert a cursor type to string form so it works with css.
-
-    import Css.Position as Position
-
-    Position.cursorString Position.Cell -- "cell"
--}
-cursorString : Cursor -> String
-cursorString cursor =
-  case cursor of
-    Alias ->
-        "alias"
-
-    AllScroll ->
-        "all-scroll"
-
-    AutoCursor ->
-        "auto"
-
-    Cell ->
-        "cell"
-
-    ContextMenu ->
-        "context-menu"
-
-    ColResize ->
-        "col-resize"
-
-    Copy ->
-        "copy"
-
-    Crosshair ->
-        "crosshair"
-
-    Default ->
-        "default"
-
-    EResize ->
-        "e-resize"
-
-    EwResize ->
-        "ew-resize"
-
-    Grab ->
-        "grab"
-
-    Grabbing ->
-        "grabbign"
-
-    Help ->
-        "help"
-
-    Move ->
-        "move"
-
-    NResize ->
-        "n-resize"
-
-    NeResize ->
-        "ne-resize"
-
-    NeswResize ->
-        "nesw-resize"
-
-    NsResize ->
-        "ns-resize"
-
-    NwResize ->
-        "nw-resize"
-
-    NwseResize ->
-        "nwse-resize"
-
-    NoDrop ->
-        "no-drop"
-
-    None ->
-        "none"
-
-    NotAllowed ->
-        "not-allowed"
-
-    Pointer ->
-        "pointer"
-
-    Progress ->
-        "progress"
-
-    RowResize ->
-        "row-resize"
-
-    SResize ->
-        "s-resize"
-
-    SeResize ->
-        "se-resize"
-
-    SwResize ->
-        "sw-resize"
-
-    Text ->
-        "text"
-
-    Url path ->
-        url path
-
-    VerticalText ->
-        "vertical-text"
-
-    WResize ->
-        "w-resize"
-
-    Wait ->
-        "wait"
-
-    ZoomIn ->
-        "zoom-in"
-
-    ZoomOut ->
-        "zoom-out"
-
-
 {-| Convert a overflow type to string form so it works with css.
 
     import Css.Position as Position
@@ -432,18 +152,6 @@ positionString position =
 bottom : Int -> Styles -> Styles
 bottom b styles =
   List.append styles [ "bottom" ::: px b ]
-
-
-{-| Set the type of cursor to be displayed.
-
-    import Css.Position as Position
-
-    -- [ ("cursor", "crosshair") ]
-    Position.cursor Position.CrossHair []
--}
-cursor : Cursor -> Styles -> Styles
-cursor c styles =
-  List.append styles [ "cursor" ::: cursorString c ]
 
 
 {-| Set the left margin edge for a positioned box.

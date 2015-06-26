@@ -10,15 +10,15 @@ css in Elm more pleasant and concise.
 @docs colorString
 
 #Functions
-@docs px, url
+@docs px, url, setViewport
 -}
 
 -- Native Imports
 import Color exposing (toRgb, Color, rgba)
 
 -- Third Party Imports
-import Html exposing (Html, Attribute, div, code, text, pre)
-import Html.Attributes exposing (style)
+import Html exposing (Html, Attribute, div, code, text, pre, node)
+import Html.Attributes exposing (style, content, name)
 
 
 -- This type alias allows us to be more expressive.
@@ -71,3 +71,13 @@ px num =
 url : String -> String
 url path =
   "url(\"" ++ path ++ "\")"
+
+
+{-| Set the proper width and scaling to allow for responsive design -}
+setViewport : Html
+setViewport =
+  node "meta"
+    [ name "viewport"
+    , content "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    ]
+    []

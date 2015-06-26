@@ -1,16 +1,17 @@
 module Main where
 
 import Html exposing (Html, div, text, ul, li)
-import Html.Attributes exposing (style)
+import Html.Attributes as Attributes exposing (style)
 import Color exposing (Color, rgba, complement)
 
-import Css exposing (Styles)
+import Css exposing (Styles, setViewport)
 import Css.Border.Bottom as BorderBottom
 import Css.Border.Left as BorderLeft
 import Css.Border.Right as BorderRight
 import Css.Border.Style as BorderStyle
 import Css.Border.Top as BorderTop
 import Css.Background as Background
+import Css.Cursor as Cursor exposing (cursor)
 import Css.Border as Border
 import Css.Dimension as Dimension
 import Css.Display as Display exposing (display)
@@ -27,6 +28,13 @@ import Css.Text as Text
 import Css.Util as Util
 
 
+shadows : List Shadow.Box
+shadows =
+  [ (10, 10, 10, 0, (rgba 0 0 255 1), False)
+  , (-5, -5, 10, 0, (rgba 0 0 100 1), False)
+  ]
+
+
 squareStyle : Int -> Int -> Int -> Color -> Styles -> Styles
 squareStyle num index width color styles =
   let w = (toFloat width) / 2
@@ -39,7 +47,8 @@ squareStyle num index width color styles =
     <| Flex.justifyContent Flex.JCCenter
     <| Flex.alignItems Flex.AICenter
     <| Border.radius segment1 segment2 segment1 segment2
-    <| Shadow.box 0 0 10 0 (rgba 0 0 0 1) False
+    <| cursor Cursor.Cell
+    <| Shadow.box shadows
     <| Margin.all 10 0 0 10
     <| Font.size (width // 4)
     <| Text.color (rgba 236 240 241 1)
@@ -108,13 +117,14 @@ listItems num =
 
 main : Html
 main =
-  let numSquares = 13
+  let numSquares = 100
       squareWidth = 100
   in
     -- ul [ style <| listStyle [] ] <| listItems 1000
     div
       []
-      [ squares numSquares squareWidth getColor
+      [ setViewport
+      , squares numSquares squareWidth getColor
       , div [] <| showStyles numSquares squareWidth getColor
       , Util.toCss "squares" <| squaresStyle []
       ]
