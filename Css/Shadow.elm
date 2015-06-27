@@ -106,7 +106,7 @@ boxString (horizontal, vertical, blur, spread, color, inset) =
       b = px blur
       s = px spread
       c = colorString color
-      i = if inset then "inset" else ""
+      i = if inset then " inset" else ""
   in
     h ++ v ++ b ++ s ++ c ++ i
 
@@ -135,7 +135,7 @@ listBoxString accumulator boxShadows =
 -}
 box : List Box -> Styles -> Styles
 box boxShadows styles =
-  List.append styles [ "box-shadow" ::: listBoxString "" boxShadows ]
+  Css.style "box-shadow" (listBoxString "" boxShadows) []
 
 
 {-| Set the shadow effect added to text.
@@ -147,4 +147,4 @@ box boxShadows styles =
 -}
 text : List Text -> Styles -> Styles
 text textShadows styles =
-  List.append styles [ "text-shadow" ::: listTextString "" textShadows ]
+  Css.style "text-shadow" (listTextString "" textShadows) styles

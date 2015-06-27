@@ -24,7 +24,7 @@ Monospace -
 -}
 
 -- My Imports
-import Css exposing ((:::), Styles, px)
+import Css exposing (Styles, px)
 
 
 {-| Represent the style of the font.
@@ -102,7 +102,7 @@ variantString v =
 -}
 family : String -> Styles -> Styles
 family f styles =
-  List.append styles [ "font-family" ::: f ]
+  Css.style "font-family" (f) styles
 
 
 {-| Set the font size of text.
@@ -114,7 +114,7 @@ family f styles =
 -}
 size : Int -> Styles -> Styles
 size length styles =
-  List.append styles [ "font-size" ::: px length ]
+  Css.style "font-size" (px length) styles
 
 
 {-| Set the font style for text.
@@ -126,7 +126,7 @@ size length styles =
 -}
 style : Style -> Styles -> Styles
 style s styles =
-  List.append styles [ "font-style" ::: styleString s ]
+  Css.style "font-style" (styleString s) styles
 
 
 {-| Set whether or not a text should be displayed in a small-caps font.
@@ -138,7 +138,7 @@ style s styles =
 -}
 variant : Variant -> Styles -> Styles
 variant v styles =
-  List.append styles [ "font-variant" ::: variantString v ]
+  Css.style "font-variant" (variantString v) styles
 
 
 {-| Set the weight of the font. (Only values 1-9 have any significance)
@@ -153,4 +153,4 @@ weight w styles =
   let ub = if w > 9 then 9 else w
       lb = if ub < 1 then 1 else ub
   in
-    List.append styles [ "font-weight" ::: toString (lb * 100) ]
+    Css.style "font-weight" (toString (lb * 100)) styles

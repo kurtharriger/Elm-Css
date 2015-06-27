@@ -11,7 +11,7 @@ You can set the height, maxHeight, maxWidth, minHeight, minWidth, and width.
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::), px)
+import Css exposing (Styles, px)
 
 
 {-| Set the height of an element.
@@ -23,7 +23,7 @@ import Css exposing (Styles, (:::), px)
 -}
 height : Int -> Styles -> Styles
 height h styles =
-  List.append styles [ "height" ::: px h ]
+  Css.style "height" (px h) styles
 
 
 {-| Set the max height of an element.
@@ -35,7 +35,7 @@ height h styles =
 -}
 maxHeight : Int -> Styles -> Styles
 maxHeight h styles =
-  List.append styles [ "max-height" ::: px h ]
+  Css.style "max-height" (px h) styles
 
 
 {-| Set the max width of an element.
@@ -47,7 +47,7 @@ maxHeight h styles =
 -}
 maxWidth : Int -> Styles -> Styles
 maxWidth w styles =
-  List.append styles [ "max-width" ::: px w ]
+  Css.style "max-width" (px w) styles
 
 
 {-| Set the min height of an element.
@@ -59,7 +59,7 @@ maxWidth w styles =
 -}
 minHeight : Int -> Styles -> Styles
 minHeight h styles =
-  List.append styles [ "min-height" ::: px h ]
+  Css.style "min-height" (px h) styles
 
 
 {-| Set the min width of an element.
@@ -71,7 +71,7 @@ minHeight h styles =
 -}
 minWidth : Int -> Styles -> Styles
 minWidth w styles =
-  List.append styles [ "min-width" ::: px w ]
+  Css.style "min-width" (px w) styles
 
 
 {-| Set the width of an element.
@@ -83,4 +83,4 @@ minWidth w styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "width" ::: px w ]
+  Css.style "width" (px w) styles

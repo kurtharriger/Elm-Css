@@ -7,7 +7,7 @@ module Css.Padding where
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::), px)
+import Css exposing (Styles, px)
 
 
 {-| Set the bottom padding of an element
@@ -19,7 +19,7 @@ import Css exposing (Styles, (:::), px)
 -}
 bottom : Int -> Styles -> Styles
 bottom b styles =
-  List.append styles [ "padding-bottom" ::: px b ]
+  Css.style "padding-bottom" (px b) styles
 
 
 {-| Set the left padding of an element
@@ -31,7 +31,7 @@ bottom b styles =
 -}
 left : Int -> Styles -> Styles
 left l styles =
-  List.append styles [ "padding-left" ::: px l ]
+  Css.style "padding-left" (px l) styles
 
 
 {-| Set the right padding of an element
@@ -43,7 +43,7 @@ left l styles =
 -}
 right : Int -> Styles -> Styles
 right r styles =
-  List.append styles [ "padding-right" ::: px r ]
+  Css.style "padding-right" (px r) styles
 
 
 {-| Set the top padding of an element
@@ -55,7 +55,7 @@ right r styles =
 -}
 top : Int -> Styles -> Styles
 top t styles =
-  List.append styles [ "padding-top" ::: px t ]
+  Css.style "padding-top" (px t) styles
 
 
 {-| Set all the padding an element has

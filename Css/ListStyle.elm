@@ -219,7 +219,7 @@ bulletTypeString t =
 -}
 image : String -> Styles -> Styles
 image path styles =
-  List.append styles [ "list-style-image" ::: url path ]
+  Css.style "list-style-image" (url path) styles
 
 {-|
 
@@ -230,7 +230,7 @@ image path styles =
 -}
 position : Position -> Styles -> Styles
 position p styles =
-  List.append styles [ "list-style-position" ::: positionString p ]
+  Css.style "list-style-position" (positionString p) styles
 
 
 {-|
@@ -242,4 +242,4 @@ position p styles =
 -}
 bulletType : BulletType -> Styles -> Styles
 bulletType t styles =
-  List.append styles [ "list-style-type" ::: bulletTypeString t ]
+  Css.style "list-style-type" (bulletTypeString t) styles

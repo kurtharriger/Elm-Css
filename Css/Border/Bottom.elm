@@ -11,7 +11,7 @@ You can set the color, style, width, and radius of the bottom border.
 import Color exposing (Color)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString, px)
+import Css exposing (Styles, colorString, px)
 import Css.Border.Style as BorderStyle exposing (Style)
 
 
@@ -26,7 +26,7 @@ import Css.Border.Style as BorderStyle exposing (Style)
 -}
 color : Color -> Styles -> Styles
 color c styles =
-  List.append styles [ "border-bottom-color" ::: colorString c ]
+  Css.style "border-bottom-color" (colorString c) styles
 
 
 {-| Sets the style of the bottom border
@@ -41,7 +41,7 @@ color c styles =
 -}
 style : Style -> Styles -> Styles
 style s styles =
-  List.append styles [ "border-bottom-style" ::: BorderStyle.string s ]
+  Css.style "border-bottom-style" (BorderStyle.string s) styles
 
 
 {-| Sets the width of the bottom border
@@ -54,7 +54,7 @@ style s styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "border-bottom-width" ::: px w ]
+  Css.style "border-bottom-width" (px w) styles
 
 
 {-| Sets the right radius of the bottom border
@@ -68,7 +68,7 @@ width w styles =
 -}
 rightRadius : Int -> Styles -> Styles
 rightRadius r styles =
-  List.append styles [ "border-bottom-right-radius" ::: px r ]
+  Css.style "border-bottom-right-radius" (px r) styles
 
 
 {-| Sets the left radius of the bottom border
@@ -82,4 +82,4 @@ rightRadius r styles =
 -}
 leftRadius : Int -> Styles -> Styles
 leftRadius l styles =
-  List.append styles [ "border-bottom-left-radius" ::: px l ]
+  Css.style "border-bottom-left-radius" (px l) styles

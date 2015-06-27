@@ -108,7 +108,7 @@ floating elements are not allowed to float.
 -}
 clear : Clear -> Styles -> Styles
 clear c styles =
-  List.append styles [ "clear" ::: clearString c ]
+  Css.style "clear" (clearString c) styles
 
 
 {-| Set whether or not an element should float.
@@ -120,4 +120,4 @@ clear c styles =
 -}
 float : FloatType -> Styles -> Styles
 float f styles =
-  List.append styles [ "float" ::: floatString f ]
+  Css.style "float" (floatString f) styles

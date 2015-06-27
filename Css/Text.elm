@@ -238,7 +238,7 @@ whiteSpaceString whiteSpace = case whiteSpace of
 -}
 color : Color -> Styles -> Styles
 color c styles =
-  List.append styles [ "color" ::: colorString c ]
+  Css.style "color" (colorString c) styles
 
 
 {-| Set the text direction/writing direction.
@@ -250,7 +250,7 @@ color c styles =
 -}
 direction : Direction -> Styles -> Styles
 direction d styles =
-  List.append styles [ "direction" ::: directionString d ]
+  Css.style "direction" (directionString d) styles
 
 
 {-| Increases or decreases the space between characters in a text.
@@ -262,7 +262,7 @@ direction d styles =
 -}
 letterSpacing : Int -> Styles -> Styles
 letterSpacing length styles =
-  List.append styles [ "letter-spacing" :::  px length ]
+  Css.style "letter-spacing" (px length) styles
 
 
 {-| Set the line height.
@@ -274,7 +274,7 @@ letterSpacing length styles =
 -}
 lineHeight : Int -> Styles -> Styles
 lineHeight length styles =
-  List.append styles [ "line-height" ::: px length ]
+  Css.style "line-height" (px length) styles
 
 
 {-| Set the horizontal alignment of text.
@@ -286,7 +286,7 @@ lineHeight length styles =
 -}
 align : Align -> Styles -> Styles
 align a styles =
-  List.append styles [ "text-align" ::: alignString a ]
+  Css.style "text-align" (alignString a) styles
 
 
 {-| Set the decoration added to text.
@@ -298,7 +298,7 @@ align a styles =
 -}
 decoration : Decoration -> Styles -> Styles
 decoration d styles =
-  List.append styles [ "text-decoration" ::: decorationString d ]
+  Css.style "text-decoration" (decorationString d) styles
 
 
 {-| Set the indentation of the first line in a text-block.
@@ -310,7 +310,7 @@ decoration d styles =
 -}
 indent : Int -> Styles -> Styles
 indent length styles =
-  List.append styles [ "text-indent" ::: px length ]
+  Css.style "text-indent" (px length) styles
 
 
 {-| Used together with the direction property to set or return whether
@@ -324,7 +324,7 @@ in the same document.
 -}
 unicodeBidi : UnicodeBidi -> Styles -> Styles
 unicodeBidi u styles =
-  List.append styles [ "unicode-bidi" ::: unicodeBidiString u]
+  Css.style "unicode-bidi" (unicodeBidiString u) styles
 
 
 {-| Set how white space inside an element is handled.
@@ -336,7 +336,7 @@ unicodeBidi u styles =
 -}
 whiteSpace : WhiteSpace -> Styles -> Styles
 whiteSpace ws styles =
-  List.append styles [ "white-space" ::: whiteSpaceString ws ]
+  Css.style "white-space" (whiteSpaceString ws) styles
 
 
 {-| Increases or decreases the space between words in a text.
@@ -348,4 +348,4 @@ whiteSpace ws styles =
 -}
 wordSpacing : Int -> Styles -> Styles
 wordSpacing length styles =
-  List.append styles [ "word-spacing" ::: px length ]
+  Css.style "word-spacing" (px length) styles

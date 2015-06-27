@@ -17,7 +17,7 @@ You can set the color, image, position, size, repeat, and attachment.
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing ((:::), Styles, colorString, px, url)
+import Css exposing (Styles, colorString, px, url)
 
 
 {-| Represent how to repeat the background image
@@ -122,7 +122,7 @@ pointString x y =
 -}
 color : Color -> Styles -> Styles
 color c styles =
-  List.append styles [ "background-color" ::: colorString c ]
+  Css.style "background-color" (colorString c) styles
 
 
 {-| Set the background image.
@@ -135,7 +135,7 @@ color c styles =
 -}
 image : String -> Styles -> Styles
 image path styles =
-  List.append styles [ "background-image" ::: url path ]
+  Css.style "background-image" (url path) styles
 
 
 {-| Set the starting position of the background image.
@@ -150,7 +150,7 @@ image path styles =
 -}
 position : Int -> Int -> Styles -> Styles
 position x y styles =
-  List.append styles [ "background-position" ::: pointString x y ]
+  Css.style "background-position" (pointString x y) styles
 
 
 {-| Set the size of the background image
@@ -165,7 +165,7 @@ position x y styles =
 -}
 size : Int -> Int -> Styles -> Styles
 size width height styles =
-  List.append styles [ "background-size" ::: pointString width height ]
+  Css.style "background-size" (pointString width height) styles
 
 
 {-| Set how the background repeats
@@ -182,7 +182,7 @@ size width height styles =
 -}
 repeat : Repeat -> Styles -> Styles
 repeat r styles =
-  List.append styles [ "background-repeat" ::: repeatString r ]
+  Css.style "background-repeat" (repeatString r) styles
 
 
 {-| Set whether a background image is fixed
@@ -200,4 +200,4 @@ or scrolls with the rest of the page.
 -}
 attachment : Attachment -> Styles -> Styles
 attachment a styles =
-  List.append styles [ "background-repeat" ::: attachmentString a ]
+  Css.style "background-attachment" (attachmentString a) styles

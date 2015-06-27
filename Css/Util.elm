@@ -8,6 +8,9 @@ but it is quite interesting to see.
 @docs toCss
 -}
 
+-- Native Imports
+import String
+
 -- Third Party Imports
 import Html exposing (Html, Attribute, div, code, text, pre)
 import Html.Attributes exposing (style)
@@ -52,12 +55,15 @@ ie ("color", "rgba(0, 0, 0, 1)") -> color: rgba(0, 0, 0, 1);
 --}
 getCode : (String, String) -> Html
 getCode (name, value) =
-  pre
-    [ style <| codeStyle [] ]
-    [ code
+  let pc = String.right 1 value
+      v = if pc == " " then String.dropRight 1 value else value
+  in
+    pre
       [ style <| codeStyle [] ]
-      [ text ("  " ++ name ++ ": " ++ value ++ ";") ]
-    ]
+      [ code
+        [ style <| codeStyle [] ]
+        [ text ("  " ++ name ++ ": " ++ v ++ ";") ]
+      ]
 
 
 {-| This function takes a class name and a list of styles.

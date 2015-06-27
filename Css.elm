@@ -10,7 +10,7 @@ css in Elm more pleasant and concise.
 @docs colorString
 
 #Functions
-@docs px, url, setViewport
+@docs px, url, setViewport, webkit, style
 -}
 
 -- Native Imports
@@ -81,3 +81,63 @@ setViewport =
     , content "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     ]
     []
+
+
+{-| Add a webkit prefix to a value.
+
+    import Css
+
+    [ ("cursor", "-webkit-zoom-out") ]
+    Css.webkit "cursor" "zoom-out" []
+-}
+webkit : String -> String -> Styles -> Styles
+webkit name value styles =
+  style name ("-webkit-" ++ value) styles
+
+
+{-| Add a webkit prefix to a name.
+
+    import Css
+
+    [ ("-webkit-box-orient", "horizontal") ]
+    Css.webkitName "box-orient" "horizontal" []
+-}
+webkitName : String -> String -> Styles -> Styles
+webkitName name value styles =
+  style ("-webkit-" ++ name) value styles
+
+
+{-| Add a ms prefix to a value.
+
+    import Css
+
+    [ ("display", "-ms-flexbox") ]
+    Css.ms "display" "flexbox" []
+-}
+ms : String -> String -> Styles -> Styles
+ms name value styles =
+  style name ("-ms-" ++ value) styles
+
+
+{-| Add a ms prefix to a name.
+
+    import Css
+
+    [ ("-ms-flex-direction", "row") ]
+    Css.webkitName "flex-direction" "row" []
+-}
+msName : String -> String -> Styles -> Styles
+msName name value styles =
+  style ("-ms-" ++ name) value styles
+
+
+{-| Add a css style to a list of styles.
+
+    import Css
+
+    [ ("cursor", "zoom-out") ]
+    Css.style "cursor" "zoom-out" []
+-}
+style : String -> String -> Styles -> Styles
+style name value styles =
+  List.append styles [ name ::: value ]

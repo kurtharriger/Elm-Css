@@ -11,7 +11,7 @@ You can set the color, style, and width.
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString, px)
+import Css exposing (Styles, colorString, px)
 import Css.Border.Style as BorderStyle exposing (Style)
 
 
@@ -25,7 +25,7 @@ import Css.Border.Style as BorderStyle exposing (Style)
 -}
 color : Color -> Styles -> Styles
 color c styles =
-  List.append styles [ "border-right-color" ::: colorString c ]
+  Css.style "border-right-color" (colorString c) styles
 
 
 {-| Set the style of the right border
@@ -39,7 +39,7 @@ color c styles =
 -}
 style : Style -> Styles -> Styles
 style s styles =
-  List.append styles [ "border-right-style" ::: BorderStyle.string s ]
+  Css.style "border-right-style" (BorderStyle.string s) styles
 
 
 {-| Set the width of the right border
@@ -52,4 +52,4 @@ style s styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "border-right-width" ::: px w ]
+  Css.style "border-right-width" (px w) styles

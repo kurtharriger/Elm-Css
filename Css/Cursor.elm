@@ -13,7 +13,7 @@ module Css.Cursor where
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::), url)
+import Css exposing (Styles, (:::), url, webkit, style)
 
 
 {-| Represent the type of cursor to be displayed when pointing on an element.
@@ -181,8 +181,8 @@ type Cursor
 
     Cursor.string Cursor.Cell -- "cell"
 -}
-cursorString : Cursor -> String
-cursorString cursor =
+string : Cursor -> String
+string cursor =
   case cursor of
     Alias ->
         "alias"
@@ -305,4 +305,15 @@ cursorString cursor =
 -}
 cursor : Cursor -> Styles -> Styles
 cursor c styles =
-  List.append styles [ "cursor" ::: cursorString c ]
+  case c of
+    Grab ->
+      webkit "cursor" (string c)
+      <| style "cursor" (string c) styles
+    ZoomIn ->
+      webkit "cursor" (string c)
+      <| style "cursor" (string c) styles
+    ZoomOut ->
+      webkit "cursor" (string c)
+      <| style "cursor" (string c) styles
+    _ ->
+      style "cursor" (string c) styles

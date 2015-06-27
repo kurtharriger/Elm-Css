@@ -19,7 +19,7 @@ module Css.Flex where
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::))
+import Css exposing (Styles, (:::), style, webkitName, msName)
 
 {-| Represent the main-axis, thus defining the direction
 flex items are placed in the flex container.
@@ -273,7 +273,34 @@ are placed in the flex container.
 -}
 direction : Direction -> Styles -> Styles
 direction d styles =
-  List.append styles [ "flex-direction" ::: directionString d ]
+  case d of
+    Row ->
+      style "flex-direction" "row"
+      <| webkitName "box-orient" "horizontal"
+      <| webkitName "box-direction" "normal"
+      <| webkitName "flex-direction" "row"
+      <| msName "flex-direction" "row" styles
+
+    RowReverse ->
+      style "flex-direction" "row-reverse"
+      <| webkitName "box-orient" "horizontal"
+      <| webkitName "box-direction" "reverse"
+      <| webkitName "flex-direction" "row-reverse"
+      <| msName "flex-direction" "row-reverse" styles
+
+    Column ->
+      style "flex-direction" "column"
+      <| webkitName "box-orient" "vertical"
+      <| webkitName "box-direction" "normal"
+      <| webkitName "flex-direction" "column"
+      <| msName "flex-direction" "column" styles
+
+    ColumnReverse ->
+      style "flex-direction" "column-reverse"
+      <| webkitName "box-orient" "vertical"
+      <| webkitName "box-direction" "reverse"
+      <| webkitName "flex-direction" "column-reverse"
+      <| msName "flex-direction" "column-reverse" styles
 
 
 {-| Set the wrap behavior of flex items.
@@ -285,7 +312,9 @@ direction d styles =
 -}
 wrap : Wrap -> Styles -> Styles
 wrap w styles =
-  List.append styles [ "flex-wrap" ::: wrapString w ]
+  style "flex-wrap" (wrapString w)
+  <| webkitName "flex-wrap" (wrapString w)
+  <| msName "flex-wrap" (wrapString w) styles
 
 
 {-| Set the direction and the wrap together.
@@ -312,7 +341,35 @@ flow d w styles =
 -}
 justifyContent : JustifyContent -> Styles -> Styles
 justifyContent j styles =
-  List.append styles [ "justify-content" ::: justifyContentString j ]
+  case j of
+    JCStart ->
+      style "justify-content" "space-around"
+      <| webkitName "box-pack" "start"
+      <| webkitName "justify-content" "flex-start"
+      <| msName "flex-pack" "start" styles
+
+    JCEnd ->
+      style "justify-content" "space-around"
+      <| webkitName "box-pack" "end"
+      <| webkitName "justify-content" "flex-end"
+      <| msName "flex-pack" "end" styles
+
+    JCCenter ->
+      style "justify-content" "space-around"
+      <| webkitName "box-pack" "center"
+      <| webkitName "justify-content" "center"
+      <| msName "flex-pack" "center" styles
+
+    JCBetween ->
+      style "justify-content" "space-around"
+      <| webkitName "box-pack" "justify"
+      <| webkitName "justify-content" "space-between"
+      <| msName "flex-pack" "justify" styles
+
+    JCAround ->
+      style "justify-content" "space-around"
+      <| webkitName "justify-content" "space-around"
+      <| msName "flex-pack" "distribute" styles
 
 
 {-| Set how the flex items are laid out along the
@@ -326,7 +383,24 @@ for the cross axis (perpendicular to the main axis).
 -}
 alignItems : AlignItem -> Styles -> Styles
 alignItems a styles =
-  List.append styles [ "align-items" ::: alignItemString a ]
+  case a of
+    AIStart ->
+      style "align-items" (alignItemString a)
+      <| webkitName "box-align" "start"
+      <| webkitName "align-items" "flex-start"
+      <| msName "flex-align" "start" styles
+
+    AIEnd ->
+      style "align-items" (alignItemString a)
+      <| webkitName "box-align" "end"
+      <| webkitName "align-items" "flex-end"
+      <| msName "flex-align" "end" styles
+
+    _ ->
+      style "align-items" (alignItemString a)
+      <| webkitName "box-align" (alignItemString  a)
+      <| webkitName "align-items" (alignItemString  a)
+      <| msName "flex-align" (alignItemString a) styles
 
 
 {-| Set how to align the flex container's lines within when
@@ -339,7 +413,31 @@ there is extra space in the cross axis.
 -}
 alignContent : AlignContent -> Styles -> Styles
 alignContent a styles =
-  List.append styles [ "align-content" ::: alignContentString a ]
+  case a of
+    ACStart ->
+      style "align-content" (alignContentString a)
+      <| webkitName "align-content" "flex-start"
+      <| msName "flex-line-pack" "start" styles
+
+    ACEnd ->
+      style "align-content" (alignContentString a)
+      <| webkitName "align-content" "flex-end"
+      <| msName "flex-line-pack" "end" styles
+
+    ACBetween ->
+      style "align-content" (alignContentString a)
+      <| webkitName "align-content" "space-between"
+      <| msName "flex-line-pack" "justify" styles
+
+    ACAround ->
+      style "align-content" (alignContentString a)
+      <| webkitName "align-content" "space-around"
+      <| msName "flex-line-pack" "distribute" styles
+
+    _ ->
+      style "align-content" (alignContentString a)
+      <| webkitName "align-content" (alignContentString a)
+      <| msName "flex-line-pack" (alignContentString a) styles
 
 
 {-| Set the order in which items appear in the flex container.
@@ -351,7 +449,10 @@ alignContent a styles =
 -}
 order : Int -> Styles -> Styles
 order o styles =
-  List.append styles [ "order" ::: toString o ]
+  style "order" (toString o)
+  <| webkitName "box-ordinal-group" (toString (o + 1))
+  <| webkitName "order" (toString o)
+  <| msName "flex-order" (toString o) styles
 
 
 {-| Set the ability for a flex item to grow if necessary.
@@ -366,7 +467,10 @@ flex container the item should take up.
 -}
 grow : Int -> Styles -> Styles
 grow g styles =
-  List.append styles [ "flex-grow" ::: toString g ]
+  style "flex-grow" (toString g)
+  <| webkitName "box-flex" (toString g)
+  <| webkitName "flex-grow" (toString g)
+  <| msName "flex-positive" (toString g) styles
 
 
 {-| Set the ability for a flex item to shrink if necessary.
@@ -378,7 +482,9 @@ grow g styles =
 -}
 shrink : Int -> Styles -> Styles
 shrink s styles =
-  List.append styles [ "flex-shrink" ::: toString s ]
+  style "flex-shrink" (toString s)
+  <| webkitName "flex-shrink" (toString s)
+  <| msName "flex-negative" (toString s) styles
 
 
 {-| Set the default size of an element before the remaining space is distributed.
@@ -390,7 +496,9 @@ shrink s styles =
 -}
 basis : Int -> Styles -> Styles
 basis b styles =
-  List.append styles [ "flex-basis" ::: toString b ]
+  style "flex-basis" (toString b)
+  <| webkitName "flex-basis" (toString b)
+  <| msName "flex-preferred-size" (toString b) styles
 
 
 {-| Set the default alignment (or the one specified by align-items)
@@ -403,4 +511,18 @@ to be overridden for individual flex items.
 -}
 alignSelf : AlignItem -> Styles -> Styles
 alignSelf a styles =
-  List.append styles [ "align-self" ::: alignItemString a ]
+  case a of
+    AIStart ->
+      style "align-self" "flex-start"
+      <| webkitName "align-self" "flex-start"
+      <| msName "flex-item-align" "start" styles
+
+    AIEnd ->
+      style "align-self" (alignItemString a)
+      <| webkitName "align-self" "flex-end"
+      <| msName "flex-item-align" "end" styles
+
+    _ ->
+      style "align-self" (alignItemString a)
+      <| webkitName "align-self" (alignItemString a)
+      <| msName "flex-item-align" (alignItemString a) styles

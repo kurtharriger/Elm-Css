@@ -18,7 +18,7 @@ to make the element "stand out".
 import Color exposing (Color)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString)
+import Css exposing (Styles, colorString, px)
 
 
 {-| Represent the style of the outline
@@ -121,7 +121,7 @@ styleString style =
 -}
 color : Color -> Styles -> Styles
 color c styles =
-  List.append styles [ "outline-color" ::: colorString c ]
+  Css.style "outline-color" (colorString c) styles
 
 
 {-| Set the style of the outline.
@@ -133,7 +133,7 @@ color c styles =
 -}
 style : Style -> Styles -> Styles
 style s styles =
-  List.append styles [ "outline-style" ::: styleString s ]
+  Css.style "outline-style" (styleString s) styles
 
 
 {-| Set the width of the outline.
@@ -145,7 +145,7 @@ style s styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "outline-width" ::: ((toString w) ++ "px") ]
+  Css.style "outline-width" (px w) styles
 
 
 {-| Set all of the outline properties in one function

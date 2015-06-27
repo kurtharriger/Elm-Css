@@ -5,35 +5,20 @@ and element behind another, and specify what should happen when an
 element's content is too big.
 
 #Definitions
-@docs Clip, Overflow, Position
+@docs Overflow, Position
 
 #Strings
-@docs clipString, overflowString, positionString
+@docs overflowString, positionString
 
 #Functions
 @docs bottom, left, overflow, position, right, top, zIndex
 -}
 
+-- Native Imports
+import String
+
 -- My Imports
 import Css exposing (Styles, (:::), url, px)
-
-
-{-| What happens if an image is larger than its containing element?
-The clip property lets you specify a rectangle to clip an absolutely
-positioned element.  The rectangle is specified as four coordinates,
-all from the top-left corner of the element to be clipped.
-
-Note: The clip property does not work if "overflow:visible".
-
-Shape -
-  Clips an element.
-
-NoClip -
-  No clipping will be applied.
--}
-type Clip
-    = Shape
-    | NoClip
 
 
 {-| Represent what happens if content overflows an element's box.
@@ -82,22 +67,6 @@ type Position
     | Static
 
 
-{-| Convert a clip type to string form so it works with css.
-
-    import Css.Position as Position
-
-    Position.clipString Position.Shape -- "shape"
--}
-clipString : Clip -> String
-clipString clip =
-  case clip of
-    Shape ->
-        "shape"
-
-    NoClip  ->
-        "auto"
-
-
 {-| Convert a overflow type to string form so it works with css.
 
     import Css.Position as Position
@@ -142,6 +111,25 @@ positionString position =
         "static"
 
 
+{-| What happens if an image is larger than its containing element?
+The clip property lets you specify a rectangle to clip an absolutely
+positioned element. The rectangle is specified as four coordinates,
+all from the top-left corner of the element to be clipped.
+
+    import Css.Position as Position
+
+    -- [ ("clip", "rect(0px, 60px, 200px, 0px)") ]
+    Position.clip 0 60 200 0 []
+-}
+clip : Int -> Int -> Int -> Int -> Styles -> Styles
+clip t r b l styles =
+  let string =
+    "rect(" ++ (toString t) ++ "px, " ++ (toString r) ++
+    "px, " ++ (toString b) ++ "px, " ++ (toString l) ++ "px)"
+  in
+    Css.style "clip" string styles
+
+
 {-| Set the bottom margin edge for a positioned box.
 
     import Css.Position as Position
@@ -151,7 +139,7 @@ positionString position =
 -}
 bottom : Int -> Styles -> Styles
 bottom b styles =
-  List.append styles [ "bottom" ::: px b ]
+  Css.style "bottom" (px b) styles
 
 
 {-| Set the left margin edge for a positioned box.
@@ -163,7 +151,7 @@ bottom b styles =
 -}
 left : Int -> Styles -> Styles
 left l styles =
-  List.append styles [ "left" ::: px l ]
+  Css.style "left" (px l) styles
 
 
 {-| Set what happens if content overflows an element's box.
@@ -175,7 +163,7 @@ left l styles =
 -}
 overflow : Overflow -> Styles -> Styles
 overflow o styles =
-  List.append styles [ "overflow" ::: overflowString o ]
+  Css.style "overflow" (overflowString o) styles
 
 
 {-| Set the type of positioning for an element.
@@ -187,7 +175,7 @@ overflow o styles =
 -}
 position : Position -> Styles -> Styles
 position p styles =
-  List.append styles [ "position" ::: positionString p ]
+  Css.style "position" (positionString p) styles
 
 
 {-| Set the right margin edge for a positioned box.
@@ -199,7 +187,7 @@ position p styles =
 -}
 right : Int -> Styles -> Styles
 right r styles =
-  List.append styles [ "right" ::: px r ]
+  Css.style "right" (px r) styles
 
 
 {-| Set the top margin edge for a positioned box.
@@ -211,7 +199,7 @@ right r styles =
 -}
 top : Int -> Styles -> Styles
 top t styles =
-  List.append styles [ "top" ::: px t ]
+  Css.style "top" (px t) styles
 
 
 {-| Set the stack order of an element.
@@ -223,4 +211,4 @@ top t styles =
 -}
 zIndex : Int -> Styles -> Styles
 zIndex p styles =
-  List.append styles [ "z-index" ::: (toString p) ]
+  Css.style "z-index" (toString p) styles

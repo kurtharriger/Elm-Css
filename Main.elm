@@ -11,18 +11,18 @@ import Css.Border.Right as BorderRight
 import Css.Border.Style as BorderStyle
 import Css.Border.Top as BorderTop
 import Css.Background as Background
-import Css.Cursor as Cursor exposing (cursor)
+import Css.Cursor as Cursor exposing (Cursor, cursor)
 import Css.Border as Border
 import Css.Dimension as Dimension
-import Css.Display as Display exposing (display)
+import Css.Display as Display exposing (Display, display)
 import Css.Flex as Flex
-import Css.Float as Float
+import Css.Float as Float exposing (float)
 import Css.Font as Font
 import Css.ListStyle as ListStyle
 import Css.Margin as Margin
 import Css.Outline as Outline
 import Css.Padding as Padding
-import Css.Position as Position
+import Css.Position as Position exposing (Position, position)
 import Css.Shadow as Shadow
 import Css.Text as Text
 import Css.Util as Util
@@ -60,7 +60,7 @@ squareStyle num index width color styles =
 squaresStyle : Styles -> Styles
 squaresStyle styles =
   display Display.Flex
-  <| Flex.wrap Flex.Wrap styles
+  <| Flex.flow Flex.Row Flex.Wrap styles
 
 
 square : Int -> Int -> Int -> Color -> Html
@@ -115,16 +115,40 @@ listItems num =
   List.map listItem [1..num]
 
 
+demoStyles : Styles -> Styles
+demoStyles styles =
+  Shadow.text [ (10, 10, 10, (rgba 0 0 0 1)) ]
+  <| Shadow.box [ (10, 10, 10, 10, (rgba 0 0 0 1), True) ] styles
+
+
+demo : List Text.WhiteSpace -> Html
+demo xs =
+  let getHtml =
+    (\index x ->
+      Util.toCss ("a" ++ (toString index))
+        <| Text.whiteSpace x [])
+  in
+    div [] <| List.map2 getHtml [1..(List.length xs)] xs
+
+
 main : Html
 main =
-  let numSquares = 100
+  let numSquares = 13
       squareWidth = 100
   in
     -- ul [ style <| listStyle [] ] <| listItems 1000
     div
       []
       [ setViewport
-      , squares numSquares squareWidth getColor
-      , div [] <| showStyles numSquares squareWidth getColor
-      , Util.toCss "squares" <| squaresStyle []
+      , Util.toCss "a" <| demoStyles []
+      , demo
+        [ Text.NormalWhiteSpace
+        , Text.NoWrap
+        , Text.Pre
+        , Text.PreLine
+        , Text.PreWrap
+        ]
+      -- , squares numSquares squareWidth getColor
+      -- , div [] <| showStyles numSquares squareWidth getColor
+      -- , Util.toCss "squares" <| squaresStyle []
       ]

@@ -7,7 +7,7 @@ module Css.Margin where
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::), px)
+import Css exposing (Styles, px)
 
 
 {-| Set the bottom margin of an element
@@ -19,7 +19,7 @@ import Css exposing (Styles, (:::), px)
 -}
 bottom : Int -> Styles -> Styles
 bottom b styles =
-  List.append styles [ "margin-bottom" ::: px b ]
+  Css.style "margin-bottom" (px b) styles
 
 
 {-| Set the left margin of an element
@@ -31,7 +31,7 @@ bottom b styles =
 -}
 left : Int -> Styles -> Styles
 left l styles =
-  List.append styles [ "margin-left" ::: px l ]
+  Css.style "margin-left" (px l) styles
 
 
 {-| Set the right margin of an element
@@ -43,7 +43,7 @@ left l styles =
 -}
 right : Int -> Styles -> Styles
 right r styles =
-  List.append styles [ "margin-right" ::: px r ]
+  Css.style "margin-right" (px r) styles
 
 
 {-| Set the top margin of an element
@@ -55,7 +55,7 @@ right r styles =
 -}
 top : Int -> Styles -> Styles
 top t styles =
-  List.append styles [ "margin-top" ::: px t ]
+  Css.style "margin-top" (px t) styles
 
 
 {-| Set all the margins of an element

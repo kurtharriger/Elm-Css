@@ -13,7 +13,7 @@ module Css.Display where
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::))
+import Css exposing (Styles, (:::), webkit, ms, style)
 
 {-| Represent the display types an element can have.
 
@@ -167,4 +167,18 @@ string display =
 -}
 display : Display -> Styles -> Styles
 display d styles =
-  List.append styles [ "display" ::: string d ]
+  case d of
+    Flex ->
+      style "display" "flex"
+      <| webkit "display" "box"
+      <| webkit "display" "flex"
+      <| ms "display" "flexbox" styles
+
+    InlineFlex ->
+      style "display" "inline-flex"
+      <| webkit "display" "inline-box"
+      <| webkit "display" "inline-flex"
+      <| ms "display" "inline-flexbox" styles
+
+    _ ->
+      style "display" (string d) styles

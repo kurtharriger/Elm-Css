@@ -11,7 +11,7 @@ You can set the color, style, width, and radius of the top border.
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString, px)
+import Css exposing (Styles, colorString, px)
 import Css.Border.Style as BorderStyle exposing (Style)
 
 
@@ -25,7 +25,7 @@ import Css.Border.Style as BorderStyle exposing (Style)
 -}
 color : Color -> Styles -> Styles
 color c styles =
-  List.append styles [ "border-top-color" ::: colorString c ]
+  Css.style "border-top-color" (colorString c) styles
 
 
 {-| Set the style of the top border
@@ -39,7 +39,7 @@ color c styles =
 -}
 style : Style -> Styles -> Styles
 style s styles =
-  List.append styles [ "border-top-style" ::: BorderStyle.string s ]
+  Css.style "border-top-style" (BorderStyle.string s) styles
 
 
 {-| Set the width of the top border
@@ -52,7 +52,7 @@ style s styles =
 -}
 width : Int -> Styles -> Styles
 width w styles =
-  List.append styles [ "border-top-width" ::: px w ]
+  Css.style "border-top-width" (px w) styles
 
 
 {-| Set the top radius of the top border
@@ -66,7 +66,7 @@ width w styles =
 -}
 rightRadius : Int -> Styles -> Styles
 rightRadius r styles =
-  List.append styles [ "border-top-right-radius" ::: px r ]
+  Css.style "border-top-right-radius" (px r) styles
 
 
 {-| Set the top radius of the top border
@@ -80,4 +80,4 @@ rightRadius r styles =
 -}
 leftRadius : Int -> Styles -> Styles
 leftRadius l styles =
-  List.append styles [ "border-top-left-radius" ::: px l ]
+  Css.style "border-top-left-radius" (px l) styles
