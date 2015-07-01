@@ -1026,525 +1026,6 @@ Elm.Css.Background.make = function (_elm) {
    return _elm.Css.Background.values;
 };
 Elm.Css = Elm.Css || {};
-Elm.Css.Border = Elm.Css.Border || {};
-Elm.Css.Border.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Border = _elm.Css.Border || {};
-   if (_elm.Css.Border.values)
-   return _elm.Css.Border.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Border",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Border$Bottom = Elm.Css.Border.Bottom.make(_elm),
-   $Css$Border$Left = Elm.Css.Border.Left.make(_elm),
-   $Css$Border$Right = Elm.Css.Border.Right.make(_elm),
-   $Css$Border$Style = Elm.Css.Border.Style.make(_elm),
-   $Css$Border$Top = Elm.Css.Border.Top.make(_elm);
-   var radius = F5(function (tl,
-   tr,
-   br,
-   bl,
-   styles) {
-      return $Css$Border$Top.leftRadius(tl)($Css$Border$Top.rightRadius(tr)($Css$Border$Bottom.leftRadius(bl)(A2($Css$Border$Bottom.rightRadius,
-      br,
-      styles))));
-   });
-   var width = F2(function (w,
-   styles) {
-      return $Css$Border$Bottom.width(w)($Css$Border$Left.width(w)($Css$Border$Right.width(w)(A2($Css$Border$Top.width,
-      w,
-      styles))));
-   });
-   var style = F2(function (s,
-   styles) {
-      return $Css$Border$Bottom.style(s)($Css$Border$Left.style(s)($Css$Border$Right.style(s)(A2($Css$Border$Top.style,
-      s,
-      styles))));
-   });
-   var color = F2(function (c,
-   styles) {
-      return $Css$Border$Bottom.color(c)($Css$Border$Left.color(c)($Css$Border$Right.color(c)(A2($Css$Border$Top.color,
-      c,
-      styles))));
-   });
-   _elm.Css.Border.values = {_op: _op
-                            ,color: color
-                            ,style: style
-                            ,width: width
-                            ,radius: radius};
-   return _elm.Css.Border.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Border = Elm.Css.Border || {};
-Elm.Css.Border.Bottom = Elm.Css.Border.Bottom || {};
-Elm.Css.Border.Bottom.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Border = _elm.Css.Border || {};
-   _elm.Css.Border.Bottom = _elm.Css.Border.Bottom || {};
-   if (_elm.Css.Border.Bottom.values)
-   return _elm.Css.Border.Bottom.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Border.Bottom",
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Border$Style = Elm.Css.Border.Style.make(_elm);
-   var leftRadius = F2(function (l,
-   styles) {
-      return A3($Css.style,
-      "border-bottom-left-radius",
-      $Css.px(l),
-      styles);
-   });
-   var rightRadius = F2(function (r,
-   styles) {
-      return A3($Css.style,
-      "border-bottom-right-radius",
-      $Css.px(r),
-      styles);
-   });
-   var width = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "border-bottom-width",
-      $Css.px(w),
-      styles);
-   });
-   var style = F2(function (s,
-   styles) {
-      return A3($Css.style,
-      "border-bottom-style",
-      $Css$Border$Style.string(s),
-      styles);
-   });
-   var color = F2(function (c,
-   styles) {
-      return A3($Css.style,
-      "border-bottom-color",
-      $Css.colorString(c),
-      styles);
-   });
-   _elm.Css.Border.Bottom.values = {_op: _op
-                                   ,color: color
-                                   ,style: style
-                                   ,width: width
-                                   ,rightRadius: rightRadius
-                                   ,leftRadius: leftRadius};
-   return _elm.Css.Border.Bottom.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Border = Elm.Css.Border || {};
-Elm.Css.Border.Left = Elm.Css.Border.Left || {};
-Elm.Css.Border.Left.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Border = _elm.Css.Border || {};
-   _elm.Css.Border.Left = _elm.Css.Border.Left || {};
-   if (_elm.Css.Border.Left.values)
-   return _elm.Css.Border.Left.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Border.Left",
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Border$Style = Elm.Css.Border.Style.make(_elm);
-   var width = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "border-left-width",
-      $Css.px(w),
-      styles);
-   });
-   var style = F2(function (s,
-   styles) {
-      return A3($Css.style,
-      "border-left-style",
-      $Css$Border$Style.string(s),
-      styles);
-   });
-   var color = F2(function (c,
-   styles) {
-      return A3($Css.style,
-      "border-left-color",
-      $Css.colorString(c),
-      styles);
-   });
-   _elm.Css.Border.Left.values = {_op: _op
-                                 ,color: color
-                                 ,style: style
-                                 ,width: width};
-   return _elm.Css.Border.Left.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Border = Elm.Css.Border || {};
-Elm.Css.Border.Right = Elm.Css.Border.Right || {};
-Elm.Css.Border.Right.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Border = _elm.Css.Border || {};
-   _elm.Css.Border.Right = _elm.Css.Border.Right || {};
-   if (_elm.Css.Border.Right.values)
-   return _elm.Css.Border.Right.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Border.Right",
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Border$Style = Elm.Css.Border.Style.make(_elm);
-   var width = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "border-right-width",
-      $Css.px(w),
-      styles);
-   });
-   var style = F2(function (s,
-   styles) {
-      return A3($Css.style,
-      "border-right-style",
-      $Css$Border$Style.string(s),
-      styles);
-   });
-   var color = F2(function (c,
-   styles) {
-      return A3($Css.style,
-      "border-right-color",
-      $Css.colorString(c),
-      styles);
-   });
-   _elm.Css.Border.Right.values = {_op: _op
-                                  ,color: color
-                                  ,style: style
-                                  ,width: width};
-   return _elm.Css.Border.Right.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Border = Elm.Css.Border || {};
-Elm.Css.Border.Style = Elm.Css.Border.Style || {};
-Elm.Css.Border.Style.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Border = _elm.Css.Border || {};
-   _elm.Css.Border.Style = _elm.Css.Border.Style || {};
-   if (_elm.Css.Border.Style.values)
-   return _elm.Css.Border.Style.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Border.Style";
-   var string = function (style) {
-      return function () {
-         switch (style.ctor)
-         {case "Dashed": return "dashed";
-            case "Dotted": return "dotted";
-            case "Double": return "double";
-            case "Groove": return "groove";
-            case "Hidden": return "hidden";
-            case "Inset": return "inset";
-            case "None": return "none";
-            case "Outset": return "outset";
-            case "Ridge": return "ridge";
-            case "Solid": return "solid";}
-         _U.badCase($moduleName,
-         "between lines 72 and 101");
-      }();
-   };
-   var Outset = {ctor: "Outset"};
-   var Inset = {ctor: "Inset"};
-   var Ridge = {ctor: "Ridge"};
-   var Groove = {ctor: "Groove"};
-   var Double = {ctor: "Double"};
-   var Solid = {ctor: "Solid"};
-   var Dashed = {ctor: "Dashed"};
-   var Dotted = {ctor: "Dotted"};
-   var Hidden = {ctor: "Hidden"};
-   var None = {ctor: "None"};
-   _elm.Css.Border.Style.values = {_op: _op
-                                  ,None: None
-                                  ,Hidden: Hidden
-                                  ,Dotted: Dotted
-                                  ,Dashed: Dashed
-                                  ,Solid: Solid
-                                  ,Double: Double
-                                  ,Groove: Groove
-                                  ,Ridge: Ridge
-                                  ,Inset: Inset
-                                  ,Outset: Outset
-                                  ,string: string};
-   return _elm.Css.Border.Style.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Border = Elm.Css.Border || {};
-Elm.Css.Border.Top = Elm.Css.Border.Top || {};
-Elm.Css.Border.Top.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Border = _elm.Css.Border || {};
-   _elm.Css.Border.Top = _elm.Css.Border.Top || {};
-   if (_elm.Css.Border.Top.values)
-   return _elm.Css.Border.Top.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Border.Top",
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Border$Style = Elm.Css.Border.Style.make(_elm);
-   var leftRadius = F2(function (l,
-   styles) {
-      return A3($Css.style,
-      "border-top-left-radius",
-      $Css.px(l),
-      styles);
-   });
-   var rightRadius = F2(function (r,
-   styles) {
-      return A3($Css.style,
-      "border-top-right-radius",
-      $Css.px(r),
-      styles);
-   });
-   var width = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "border-top-width",
-      $Css.px(w),
-      styles);
-   });
-   var style = F2(function (s,
-   styles) {
-      return A3($Css.style,
-      "border-top-style",
-      $Css$Border$Style.string(s),
-      styles);
-   });
-   var color = F2(function (c,
-   styles) {
-      return A3($Css.style,
-      "border-top-color",
-      $Css.colorString(c),
-      styles);
-   });
-   _elm.Css.Border.Top.values = {_op: _op
-                                ,color: color
-                                ,style: style
-                                ,width: width
-                                ,rightRadius: rightRadius
-                                ,leftRadius: leftRadius};
-   return _elm.Css.Border.Top.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Cursor = Elm.Css.Cursor || {};
-Elm.Css.Cursor.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Cursor = _elm.Css.Cursor || {};
-   if (_elm.Css.Cursor.values)
-   return _elm.Css.Cursor.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Cursor",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm);
-   var string = function (cursor) {
-      return function () {
-         switch (cursor.ctor)
-         {case "Alias": return "alias";
-            case "AllScroll":
-            return "all-scroll";
-            case "Auto": return "auto";
-            case "Cell": return "cell";
-            case "ColResize":
-            return "col-resize";
-            case "ContextMenu":
-            return "context-menu";
-            case "Copy": return "copy";
-            case "Crosshair":
-            return "crosshair";
-            case "Default":
-            return "default";
-            case "EResize":
-            return "e-resize";
-            case "EwResize":
-            return "ew-resize";
-            case "Grab": return "grab";
-            case "Grabbing":
-            return "grabbign";
-            case "Help": return "help";
-            case "Move": return "move";
-            case "NResize":
-            return "n-resize";
-            case "NeResize":
-            return "ne-resize";
-            case "NeswResize":
-            return "nesw-resize";
-            case "NoDrop": return "no-drop";
-            case "None": return "none";
-            case "NotAllowed":
-            return "not-allowed";
-            case "NsResize":
-            return "ns-resize";
-            case "NwResize":
-            return "nw-resize";
-            case "NwseResize":
-            return "nwse-resize";
-            case "Pointer":
-            return "pointer";
-            case "Progress":
-            return "progress";
-            case "RowResize":
-            return "row-resize";
-            case "SResize":
-            return "s-resize";
-            case "SeResize":
-            return "se-resize";
-            case "SwResize":
-            return "sw-resize";
-            case "Text": return "text";
-            case "Url":
-            return $Css.url(cursor._0);
-            case "VerticalText":
-            return "vertical-text";
-            case "WResize":
-            return "w-resize";
-            case "Wait": return "wait";
-            case "ZoomIn": return "zoom-in";
-            case "ZoomOut":
-            return "zoom-out";}
-         _U.badCase($moduleName,
-         "between lines 186 and 305");
-      }();
-   };
-   var cursor = F2(function (c,
-   styles) {
-      return function () {
-         switch (c.ctor)
-         {case "Grab":
-            return A2($Css.webkit,
-              "cursor",
-              string(c))(A3($Css.style,
-              "cursor",
-              string(c),
-              styles));
-            case "ZoomIn":
-            return A2($Css.webkit,
-              "cursor",
-              string(c))(A3($Css.style,
-              "cursor",
-              string(c),
-              styles));
-            case "ZoomOut":
-            return A2($Css.webkit,
-              "cursor",
-              string(c))(A3($Css.style,
-              "cursor",
-              string(c),
-              styles));}
-         return A3($Css.style,
-         "cursor",
-         string(c),
-         styles);
-      }();
-   });
-   var ZoomOut = {ctor: "ZoomOut"};
-   var ZoomIn = {ctor: "ZoomIn"};
-   var Wait = {ctor: "Wait"};
-   var WResize = {ctor: "WResize"};
-   var VerticalText = {ctor: "VerticalText"};
-   var Url = function (a) {
-      return {ctor: "Url",_0: a};
-   };
-   var Text = {ctor: "Text"};
-   var SwResize = {ctor: "SwResize"};
-   var SeResize = {ctor: "SeResize"};
-   var SResize = {ctor: "SResize"};
-   var RowResize = {ctor: "RowResize"};
-   var Progress = {ctor: "Progress"};
-   var Pointer = {ctor: "Pointer"};
-   var NotAllowed = {ctor: "NotAllowed"};
-   var None = {ctor: "None"};
-   var NoDrop = {ctor: "NoDrop"};
-   var NwseResize = {ctor: "NwseResize"};
-   var NwResize = {ctor: "NwResize"};
-   var NsResize = {ctor: "NsResize"};
-   var NeswResize = {ctor: "NeswResize"};
-   var NeResize = {ctor: "NeResize"};
-   var NResize = {ctor: "NResize"};
-   var Move = {ctor: "Move"};
-   var Help = {ctor: "Help"};
-   var Grabbing = {ctor: "Grabbing"};
-   var Grab = {ctor: "Grab"};
-   var EwResize = {ctor: "EwResize"};
-   var EResize = {ctor: "EResize"};
-   var Default = {ctor: "Default"};
-   var Crosshair = {ctor: "Crosshair"};
-   var Copy = {ctor: "Copy"};
-   var ColResize = {ctor: "ColResize"};
-   var ContextMenu = {ctor: "ContextMenu"};
-   var Cell = {ctor: "Cell"};
-   var Auto = {ctor: "Auto"};
-   var AllScroll = {ctor: "AllScroll"};
-   var Alias = {ctor: "Alias"};
-   _elm.Css.Cursor.values = {_op: _op
-                            ,Alias: Alias
-                            ,AllScroll: AllScroll
-                            ,Auto: Auto
-                            ,Cell: Cell
-                            ,ContextMenu: ContextMenu
-                            ,ColResize: ColResize
-                            ,Copy: Copy
-                            ,Crosshair: Crosshair
-                            ,Default: Default
-                            ,EResize: EResize
-                            ,EwResize: EwResize
-                            ,Grab: Grab
-                            ,Grabbing: Grabbing
-                            ,Help: Help
-                            ,Move: Move
-                            ,NResize: NResize
-                            ,NeResize: NeResize
-                            ,NeswResize: NeswResize
-                            ,NsResize: NsResize
-                            ,NwResize: NwResize
-                            ,NwseResize: NwseResize
-                            ,NoDrop: NoDrop
-                            ,None: None
-                            ,NotAllowed: NotAllowed
-                            ,Pointer: Pointer
-                            ,Progress: Progress
-                            ,RowResize: RowResize
-                            ,SResize: SResize
-                            ,SeResize: SeResize
-                            ,SwResize: SwResize
-                            ,Text: Text
-                            ,Url: Url
-                            ,VerticalText: VerticalText
-                            ,WResize: WResize
-                            ,Wait: Wait
-                            ,ZoomIn: ZoomIn
-                            ,ZoomOut: ZoomOut
-                            ,string: string
-                            ,cursor: cursor};
-   return _elm.Css.Cursor.values;
-};
-Elm.Css = Elm.Css || {};
 Elm.Css.Dimension = Elm.Css.Dimension || {};
 Elm.Css.Dimension.make = function (_elm) {
    "use strict";
@@ -1733,6 +1214,561 @@ Elm.Css.Display.make = function (_elm) {
                              ,string: string
                              ,display: display};
    return _elm.Css.Display.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Example = Elm.Css.Example || {};
+Elm.Css.Example.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Example = _elm.Css.Example || {};
+   if (_elm.Css.Example.values)
+   return _elm.Css.Example.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Example",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $Css$Background = Elm.Css.Background.make(_elm),
+   $Css$Dimension = Elm.Css.Dimension.make(_elm),
+   $Css$Display = Elm.Css.Display.make(_elm),
+   $Css$Example$Example1 = Elm.Css.Example.Example1.make(_elm),
+   $Css$Example$Example2 = Elm.Css.Example.Example2.make(_elm),
+   $Css$Example$Example3 = Elm.Css.Example.Example3.make(_elm),
+   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
+   $Css$Flex = Elm.Css.Flex.make(_elm),
+   $Css$Font = Elm.Css.Font.make(_elm),
+   $Css$Margin = Elm.Css.Margin.make(_elm),
+   $Css$Padding = Elm.Css.Padding.make(_elm),
+   $Css$Shadow = Elm.Css.Shadow.make(_elm),
+   $Css$Text = Elm.Css.Text.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $Window = Elm.Window.make(_elm);
+   var column = function (styles) {
+      return A2($Css$Flex.direction,
+      $Css$Flex.Column,
+      styles);
+   };
+   var wrap = function (styles) {
+      return A2($Css$Flex.wrap,
+      $Css$Flex.Wrap,
+      styles);
+   };
+   var middle = function (styles) {
+      return $Css$Display.display($Css$Display.Flex)(A2($Css$Flex.justifyContent,
+      $Css$Flex.JCCenter,
+      styles));
+   };
+   var example = F2(function (_v0,
+   _v1) {
+      return function () {
+         switch (_v1.ctor)
+         {case "_Tuple5":
+            return function () {
+                 switch (_v0.ctor)
+                 {case "_Tuple2":
+                    return function () {
+                         var styles = A4($Css$Padding.all,
+                         20,
+                         20,
+                         0,
+                         20)($Css$Dimension.maxWidth(1000)(A2($Css$Dimension.width,
+                         _v0._0,
+                         _L.fromArray([]))));
+                         return A2($Html.div,
+                         _L.fromArray([$Html$Attributes.style(styles)]),
+                         _L.fromArray([A2($Html.div,
+                                      _L.fromArray([$Html$Attributes.style(A2($Css$Font.size,
+                                      24,
+                                      _L.fromArray([])))]),
+                                      _L.fromArray([$Html.text(_v1._0)]))
+                                      ,A2($Html.div,
+                                      _L.fromArray([$Html$Attributes.style(A2($Css$Margin.top,
+                                      10,
+                                      _L.fromArray([])))]),
+                                      _L.fromArray([$Html.text(_v1._1)]))
+                                      ,A2($Html.div,
+                                      _L.fromArray([$Html$Attributes.style(middle(wrap(A2($Css$Margin.bottom,
+                                      10,
+                                      _L.fromArray([])))))]),
+                                      _L.fromArray([A2($Html.pre,
+                                                   _L.fromArray([]),
+                                                   _L.fromArray([A2($Html.code,
+                                                   _L.fromArray([$Html$Attributes.style(A2($Css$Font.size,
+                                                   18,
+                                                   _L.fromArray([])))]),
+                                                   _L.fromArray([$Html.text(_v1._2)]))]))
+                                                   ,_v1._3]))
+                                      ,_v1._4]));
+                      }();}
+                 _U.badCase($moduleName,
+                 "between lines 66 and 81");
+              }();}
+         _U.badCase($moduleName,
+         "between lines 66 and 81");
+      }();
+   });
+   var centered = function (styles) {
+      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Display.display,
+      $Css$Display.Flex,
+      styles)));
+   };
+   var header = function () {
+      var styles = $Css$Shadow.box(_L.fromArray([{ctor: "_Tuple6"
+                                                 ,_0: 0
+                                                 ,_1: 0
+                                                 ,_2: 10
+                                                 ,_3: 1
+                                                 ,_4: A4($Color.rgba,0,0,0,1)
+                                                 ,_5: false}]))($Css$Background.color(A4($Color.rgba,
+      26,
+      188,
+      156,
+      1))($Css$Text.color(A4($Color.rgba,
+      255,
+      255,
+      255,
+      1))($Css$Font.size(36)(A4($Css$Padding.all,
+      10,
+      0,
+      10,
+      0)(centered(_L.fromArray([])))))));
+      return A2($Html.div,
+      _L.fromArray([$Html$Attributes.style(styles)]),
+      _L.fromArray([$Html.text("Elm Css")]));
+   }();
+   var view = function (dimensions) {
+      return A2($Html.div,
+      _L.fromArray([]),
+      _L.fromArray([$Css.setViewport
+                   ,header
+                   ,$Html.div(_L.fromArray([$Html$Attributes.style(column(centered(_L.fromArray([]))))]))(A2($List.map,
+                   example(dimensions),
+                   _L.fromArray([$Css$Example$Example1.example1
+                                ,$Css$Example$Example2.example2
+                                ,$Css$Example$Example3.example3(dimensions)])))]));
+   };
+   var main = A2($Signal._op["<~"],
+   view,
+   $Window.dimensions);
+   _elm.Css.Example.values = {_op: _op
+                             ,centered: centered
+                             ,middle: middle
+                             ,wrap: wrap
+                             ,column: column
+                             ,header: header
+                             ,example: example
+                             ,view: view
+                             ,main: main};
+   return _elm.Css.Example.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Example = Elm.Css.Example || {};
+Elm.Css.Example.Example1 = Elm.Css.Example.Example1 || {};
+Elm.Css.Example.Example1.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Example = _elm.Css.Example || {};
+   _elm.Css.Example.Example1 = _elm.Css.Example.Example1 || {};
+   if (_elm.Css.Example.Example1.values)
+   return _elm.Css.Example.Example1.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Example.Example1",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $Css$Background = Elm.Css.Background.make(_elm),
+   $Css$Dimension = Elm.Css.Dimension.make(_elm),
+   $Css$Display = Elm.Css.Display.make(_elm),
+   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
+   $Css$Flex = Elm.Css.Flex.make(_elm),
+   $Css$Font = Elm.Css.Font.make(_elm),
+   $Css$Margin = Elm.Css.Margin.make(_elm),
+   $Css$Text = Elm.Css.Text.make(_elm),
+   $Css$Util = Elm.Css.Util.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $List = Elm.List.make(_elm);
+   var column = function (styles) {
+      return A2($Css$Flex.direction,
+      $Css$Flex.Column,
+      styles);
+   };
+   var centered = function (styles) {
+      return $Css$Flex.justifyContent($Css$Flex.JCCenter)(A2($Css$Flex.alignItems,
+      $Css$Flex.AICenter,
+      styles));
+   };
+   var flex = function (styles) {
+      return A2($Css$Display.display,
+      $Css$Display.Flex,
+      styles);
+   };
+   var square = function (sideLength) {
+      return function () {
+         var styles = flex(centered(A4($Css$Margin.all,
+         10,
+         10,
+         10,
+         10)($Css$Text.color(A4($Color.rgba,
+         255,
+         255,
+         255,
+         1))($Css$Background.color(A4($Color.rgba,
+         255,
+         0,
+         0,
+         1))($Css$Dimension.width(sideLength)(A2($Css$Dimension.height,
+         sideLength,
+         _L.fromArray([]))))))));
+         return A2($Html.div,
+         _L.fromArray([$Html$Attributes.style(styles)]),
+         _L.fromArray([$Html.text($Basics.toString(sideLength))]));
+      }();
+   };
+   var view = $Html.div(_L.fromArray([$Html$Attributes.style(centered(column(flex(_L.fromArray([])))))]))(A2($List.map,
+   square,
+   _L.fromArray([50
+                ,60
+                ,70
+                ,80
+                ,90])));
+   var explanation = A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(column(A2($Css$Margin.bottom,
+   50,
+   _L.fromArray([]))))]),
+   _L.fromArray([A2($Html.div,
+                _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
+                10,
+                _L.fromArray([])))]),
+                _L.fromArray([$Html.text("\nThe first thing to notice is how every style is composable. We can mix and match\nstyles as a result of this allowing us to have progressively more and more\ncomplex styles. Using this approach also allows for type checking in our Css.\nThis means it becomes a lot simpler to diagnose the cause of problems, and allows\nthe compiler to help you not make mistakes.\n")]))
+                ,A2($Html.div,
+                _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
+                10,
+                _L.fromArray([])))]),
+                _L.fromArray([$Html.text("\nWhen creating simple styles it may be easy to see how it transforms into Css,\nbut as the scale of your projects increases this may no longer be the case.\nFor debugging purposes it may be desirable to see a representation of what\nthe Css looks like for a given style. It takes in the class name as well as a\nlist of styles.\n")]))
+                ,A2($Html.div,
+                _L.fromArray([$Html$Attributes.style(flex(centered(A2($Css$Font.size,
+                18,
+                _L.fromArray([])))))]),
+                _L.fromArray([A2($Html.code,
+                _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
+                10,
+                _L.fromArray([])))]),
+                _L.fromArray([$Html.text("Util.toCss \"centered\" <| centered []")]))]))
+                ,$Css$Util.toCss("centered")(centered(_L.fromArray([])))]));
+   var codeString = "\nmain : Html\nmain =\n  div\n  [ style <| centered <| column <| flex [] ]\n  <| List.map square [ 50, 60, 70, 80, 90 ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  Flex.justifyContent Flex.JCCenter\n  <| Flex.alignItems Flex.AICenter styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  Flex.direction Flex.Column styles\n\n\nsquare : Int ->  Html\nsquare sideLength =\n  let styles = flex\n    <| centered\n    <| Margin.all 10 10 10 10\n    <| Text.color (rgba 255 255 255 1)\n    <| Background.color (rgba 255 0 0 1)\n    <| Dimension.width sideLength\n    <| Dimension.height sideLength []\n  in div\n    [ style styles ]\n    [ text <| toString sideLength ]\n";
+   var example1 = {ctor: "_Tuple5"
+                  ,_0: "Example 1"
+                  ,_1: "Elm Css allows you to harness all the power of Css inside of Elm.\n     This allows you to construct all of your styles dynamically.\n     Here is an example of how we can create a reusable square component."
+                  ,_2: codeString
+                  ,_3: view
+                  ,_4: explanation};
+   _elm.Css.Example.Example1.values = {_op: _op
+                                      ,example1: example1
+                                      ,codeString: codeString
+                                      ,explanation: explanation
+                                      ,view: view
+                                      ,flex: flex
+                                      ,centered: centered
+                                      ,column: column
+                                      ,square: square};
+   return _elm.Css.Example.Example1.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Example = Elm.Css.Example || {};
+Elm.Css.Example.Example2 = Elm.Css.Example.Example2 || {};
+Elm.Css.Example.Example2.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Example = _elm.Css.Example || {};
+   _elm.Css.Example.Example2 = _elm.Css.Example.Example2 || {};
+   if (_elm.Css.Example.Example2.values)
+   return _elm.Css.Example.Example2.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Example.Example2",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $Css$Background = Elm.Css.Background.make(_elm),
+   $Css$Dimension = Elm.Css.Dimension.make(_elm),
+   $Css$Display = Elm.Css.Display.make(_elm),
+   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
+   $Css$Flex = Elm.Css.Flex.make(_elm),
+   $Css$Margin = Elm.Css.Margin.make(_elm),
+   $Css$Text = Elm.Css.Text.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm);
+   var flex = function (styles) {
+      return A2($Css$Display.display,
+      $Css$Display.Flex,
+      styles);
+   };
+   var column = function (styles) {
+      return flex(A2($Css$Flex.direction,
+      $Css$Flex.Column,
+      styles));
+   };
+   var centered = function (styles) {
+      return flex($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Flex.justifyContent,
+      $Css$Flex.JCCenter,
+      styles)));
+   };
+   var end = function (styles) {
+      return $Css$Dimension.height(50)($Css$Background.color(A4($Color.rgba,
+      26,
+      188,
+      156,
+      1))(centered(styles)));
+   };
+   var side = function (styles) {
+      return $Css$Dimension.width(50)($Css$Background.color(A4($Color.rgba,
+      52,
+      152,
+      219,
+      1))(centered(styles)));
+   };
+   var content = function (styles) {
+      return $Css$Dimension.width(200)($Css$Dimension.height(200)($Css$Background.color(A4($Color.rgba,
+      52,
+      73,
+      94,
+      1))(centered(styles))));
+   };
+   var view = A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(column(A2($Css$Text.color,
+   A4($Color.rgba,255,255,255,1),
+   _L.fromArray([]))))]),
+   _L.fromArray([A2($Html.div,
+                _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
+                _L.fromArray([$Html.text("header")]))
+                ,A2($Html.div,
+                _L.fromArray([$Html$Attributes.style(flex(_L.fromArray([])))]),
+                _L.fromArray([A2($Html.div,
+                             _L.fromArray([$Html$Attributes.style(side(_L.fromArray([])))]),
+                             _L.fromArray([$Html.text("left")]))
+                             ,A2($Html.div,
+                             _L.fromArray([$Html$Attributes.style(content(_L.fromArray([])))]),
+                             _L.fromArray([A2($Html.div,
+                             _L.fromArray([]),
+                             _L.fromArray([$Html.text("content")]))]))
+                             ,A2($Html.div,
+                             _L.fromArray([$Html$Attributes.style(side(_L.fromArray([])))]),
+                             _L.fromArray([$Html.text("right")]))]))
+                ,A2($Html.div,
+                _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
+                _L.fromArray([$Html.text("footer")]))]));
+   var explanation = A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(column(_L.fromArray([])))]),
+   _L.fromArray([A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
+   10,
+   _L.fromArray([])))]),
+   _L.fromArray([$Html.text("\nHere we use the \"setViewport\" function to enable a meta tag which effectively\nallows us to have a nice design regardless of the size of the screen.\n")]))]));
+   var codeString = "\nmain : Html\nmain =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div [ style <| end [] ] [ text \"header\" ]\n  , div\n    [ style <| flex [] ]\n    [ div [ style <| side [] ] [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div [ style <| side [] ] [ text \"right\" ]\n    ]\n  , div [ style <| end [] ] [ text \"footer\" ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nend : Styles -> Styles\nend styles =\n  Dimension.height 50\n  <| Background.color (rgba 26 188 156 1)\n  <| centered styles\n\n\nside : Styles -> Styles\nside styles =\n  Dimension.width 50\n  <| Background.color (rgba 52 152 219 1)\n  <| centered styles\n\n\ncontent : Styles -> Styles\ncontent styles =\n  Dimension.width 200\n  <| Dimension.height 200\n  <| Background.color (rgba 52 73 94 1)\n  <| centered styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  flex\n  <| Flex.direction Flex.Column styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  flex\n  <| Flex.alignItems Flex.AICenter\n  <| Flex.justifyContent Flex.JCCenter styles\n";
+   var example2 = {ctor: "_Tuple5"
+                  ,_0: "Example 2"
+                  ,_1: "Now that we know how to create styles, and view a snapshot of the generated Css,\n     lets do something a little more practical. Lets see how we can create the\n     \"Holy Grail\" layout with flexbox."
+                  ,_2: codeString
+                  ,_3: view
+                  ,_4: explanation};
+   _elm.Css.Example.Example2.values = {_op: _op
+                                      ,example2: example2
+                                      ,codeString: codeString
+                                      ,explanation: explanation
+                                      ,view: view
+                                      ,flex: flex
+                                      ,end: end
+                                      ,side: side
+                                      ,content: content
+                                      ,column: column
+                                      ,centered: centered};
+   return _elm.Css.Example.Example2.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Example = Elm.Css.Example || {};
+Elm.Css.Example.Example3 = Elm.Css.Example.Example3 || {};
+Elm.Css.Example.Example3.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Example = _elm.Css.Example || {};
+   _elm.Css.Example.Example3 = _elm.Css.Example.Example3 || {};
+   if (_elm.Css.Example.Example3.values)
+   return _elm.Css.Example.Example3.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Example.Example3",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $Css$Background = Elm.Css.Background.make(_elm),
+   $Css$Dimension = Elm.Css.Dimension.make(_elm),
+   $Css$Display = Elm.Css.Display.make(_elm),
+   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
+   $Css$Flex = Elm.Css.Flex.make(_elm),
+   $Css$Margin = Elm.Css.Margin.make(_elm),
+   $Css$Text = Elm.Css.Text.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm);
+   var flex = function (styles) {
+      return A2($Css$Display.display,
+      $Css$Display.Flex,
+      styles);
+   };
+   var column = function (styles) {
+      return flex(A2($Css$Flex.direction,
+      $Css$Flex.Column,
+      styles));
+   };
+   var centered = function (styles) {
+      return flex($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Flex.justifyContent,
+      $Css$Flex.JCCenter,
+      styles)));
+   };
+   var end = function (styles) {
+      return $Css$Dimension.height(50)($Css$Background.color(A4($Color.rgba,
+      26,
+      188,
+      156,
+      1))(centered(styles)));
+   };
+   var content = function (styles) {
+      return $Css$Dimension.width(200)($Css$Dimension.height(200)($Css$Background.color(A4($Color.rgba,
+      52,
+      73,
+      94,
+      1))(centered(styles))));
+   };
+   var medium = 900;
+   var responsiveRow = F2(function (width,
+   styles) {
+      return _U.cmp(width,
+      medium) < 0 ? column(flex(styles)) : flex(styles);
+   });
+   var side = F2(function (width,
+   styles) {
+      return function () {
+         var h = A2($Css$Dimension.height,
+         50,
+         styles);
+         var s = _U.cmp(width,
+         medium) < 0 ? h : styles;
+         var w = _U.cmp(width,
+         medium) < 0 ? 200 : 50;
+         return $Css$Dimension.width(w)($Css$Background.color(A4($Color.rgba,
+         52,
+         152,
+         219,
+         1))(centered(s)));
+      }();
+   });
+   var view = function (_v0) {
+      return function () {
+         switch (_v0.ctor)
+         {case "_Tuple2":
+            return A2($Html.div,
+              _L.fromArray([$Html$Attributes.style(column(A2($Css$Text.color,
+              A4($Color.rgba,255,255,255,1),
+              _L.fromArray([]))))]),
+              _L.fromArray([A2($Html.div,
+                           _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
+                           _L.fromArray([$Html.text("header")]))
+                           ,A2($Html.div,
+                           _L.fromArray([$Html$Attributes.style(A2(responsiveRow,
+                           _v0._0,
+                           _L.fromArray([])))]),
+                           _L.fromArray([A2($Html.div,
+                                        _L.fromArray([$Html$Attributes.style(A2(side,
+                                        _v0._0,
+                                        _L.fromArray([])))]),
+                                        _L.fromArray([$Html.text("left")]))
+                                        ,A2($Html.div,
+                                        _L.fromArray([$Html$Attributes.style(content(_L.fromArray([])))]),
+                                        _L.fromArray([A2($Html.div,
+                                        _L.fromArray([]),
+                                        _L.fromArray([$Html.text("content")]))]))
+                                        ,A2($Html.div,
+                                        _L.fromArray([$Html$Attributes.style(A2(side,
+                                        _v0._0,
+                                        _L.fromArray([])))]),
+                                        _L.fromArray([$Html.text("right")]))]))
+                           ,A2($Html.div,
+                           _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
+                           _L.fromArray([$Html.text("footer")]))]));}
+         _U.badCase($moduleName,
+         "between lines 141 and 159");
+      }();
+   };
+   var explanation = A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(column(_L.fromArray([])))]),
+   _L.fromArray([A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
+   10,
+   _L.fromArray([])))]),
+   _L.fromArray([$Html.text("\nIf we know the size of the screen we can create different styles based on\nthe dimensions, and allow our site to feel natural regardless screen size and\nresolution.\n")]))]));
+   var codeString = "\nmain : Signal Html\nmain =\n  view <~ Window.dimensions\n\n\nview : (Int, Int) -> Html\nview (width, height) =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) []\n  ]\n  [ setViewport\n  , div\n    [ style <| end [] ]\n    [ text \"header\" ]\n  , div\n    [ style <| responsiveRow width [] ]\n    [ div\n      [ style <| side width [] ]\n      [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div\n      [ style <| side width [] ]\n      [ text \"right\" ]\n    ]\n  , div\n    [ style <| end [] ]\n    [ text \"footer\" ]\n  ]\n\n\nmedium : Int\nmedium =\n  900\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nresponsiveRow : Int -> Styles -> Styles\nresponsiveRow width styles =\n  if | width < medium -> column <| flex styles\n     | otherwise -> flex styles\n\n\nend : Styles -> Styles\nend styles =\n  Dimension.height 50\n  <| Background.color (rgba 26 188 156 1)\n  <| centered styles\n\n\nside : Int -> Styles -> Styles\nside width styles =\n  let w = if width < medium then 200 else 50\n      h = Dimension.height 50 styles\n      s = if width < medium then h else styles\n  in\n    Dimension.width w\n    <| Background.color (rgba 52 152 219 1)\n    <| centered s\n\n\ncontent : Styles -> Styles\ncontent styles =\n  Dimension.width 200\n  <| Dimension.height 200\n  <| Background.color (rgba 52 73 94 1)\n  <| centered styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  flex\n  <| Flex.direction Flex.Column styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  flex\n  <| Flex.alignItems Flex.AICenter\n  <| Flex.justifyContent Flex.JCCenter styles\n";
+   var example3 = function (_v4) {
+      return function () {
+         switch (_v4.ctor)
+         {case "_Tuple2":
+            return {ctor: "_Tuple5"
+                   ,_0: "Example 3"
+                   ,_1: "Lets expand on our idea and tackle another common challenge we face.\n     Mobile is a huge industry and we must take this into consideration.\n     Allowing our websites to react seamlessly to the size of the device the user\n     is viewing is a difficult problem that is made a little easier with signals."
+                   ,_2: codeString
+                   ,_3: view({ctor: "_Tuple2"
+                             ,_0: _v4._0
+                             ,_1: _v4._1})
+                   ,_4: explanation};}
+         _U.badCase($moduleName,
+         "between lines 22 and 29");
+      }();
+   };
+   _elm.Css.Example.Example3.values = {_op: _op
+                                      ,example3: example3
+                                      ,codeString: codeString
+                                      ,explanation: explanation
+                                      ,view: view
+                                      ,medium: medium
+                                      ,flex: flex
+                                      ,responsiveRow: responsiveRow
+                                      ,end: end
+                                      ,side: side
+                                      ,content: content
+                                      ,column: column
+                                      ,centered: centered};
+   return _elm.Css.Example.Example3.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Example = Elm.Css.Example || {};
+Elm.Css.Example.Util = Elm.Css.Example.Util || {};
+Elm.Css.Example.Util.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Example = _elm.Css.Example || {};
+   _elm.Css.Example.Util = _elm.Css.Example.Util || {};
+   if (_elm.Css.Example.Util.values)
+   return _elm.Css.Example.Util.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Example.Util",
+   $Html = Elm.Html.make(_elm);
+   _elm.Css.Example.Util.values = {_op: _op};
+   return _elm.Css.Example.Util.values;
 };
 Elm.Css = Elm.Css || {};
 Elm.Css.Flex = Elm.Css.Flex || {};
@@ -2196,78 +2232,6 @@ Elm.Css.Flex.make = function (_elm) {
    return _elm.Css.Flex.values;
 };
 Elm.Css = Elm.Css || {};
-Elm.Css.Float = Elm.Css.Float || {};
-Elm.Css.Float.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Float = _elm.Css.Float || {};
-   if (_elm.Css.Float.values)
-   return _elm.Css.Float.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Float",
-   $Css = Elm.Css.make(_elm);
-   var floatString = function ($float) {
-      return function () {
-         switch ($float.ctor)
-         {case "Left": return "left";
-            case "None": return "none";
-            case "Right": return "right";}
-         _U.badCase($moduleName,
-         "between lines 90 and 108");
-      }();
-   };
-   var $float = F2(function (f,
-   styles) {
-      return A3($Css.style,
-      "float",
-      floatString(f),
-      styles);
-   });
-   var clearString = function (clear) {
-      return function () {
-         switch (clear.ctor)
-         {case "ClearBoth":
-            return "both";
-            case "ClearLeft": return "left";
-            case "ClearNone": return "none";
-            case "ClearRight":
-            return "right";}
-         _U.badCase($moduleName,
-         "between lines 68 and 87");
-      }();
-   };
-   var clear = F2(function (c,
-   styles) {
-      return A3($Css.style,
-      "clear",
-      clearString(c),
-      styles);
-   });
-   var None = {ctor: "None"};
-   var Right = {ctor: "Right"};
-   var Left = {ctor: "Left"};
-   var ClearNone = {ctor: "ClearNone"};
-   var ClearBoth = {ctor: "ClearBoth"};
-   var ClearRight = {ctor: "ClearRight"};
-   var ClearLeft = {ctor: "ClearLeft"};
-   _elm.Css.Float.values = {_op: _op
-                           ,ClearLeft: ClearLeft
-                           ,ClearRight: ClearRight
-                           ,ClearBoth: ClearBoth
-                           ,ClearNone: ClearNone
-                           ,Left: Left
-                           ,Right: Right
-                           ,None: None
-                           ,clearString: clearString
-                           ,floatString: floatString
-                           ,clear: clear
-                           ,$float: $float};
-   return _elm.Css.Float.values;
-};
-Elm.Css = Elm.Css || {};
 Elm.Css.Font = Elm.Css.Font || {};
 Elm.Css.Font.make = function (_elm) {
    "use strict";
@@ -2367,149 +2331,6 @@ Elm.Css.Font.make = function (_elm) {
    return _elm.Css.Font.values;
 };
 Elm.Css = Elm.Css || {};
-Elm.Css.ListStyle = Elm.Css.ListStyle || {};
-Elm.Css.ListStyle.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.ListStyle = _elm.Css.ListStyle || {};
-   if (_elm.Css.ListStyle.values)
-   return _elm.Css.ListStyle.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.ListStyle",
-   $Css = Elm.Css.make(_elm);
-   var image = F2(function (path,
-   styles) {
-      return A3($Css.style,
-      "list-style-image",
-      $Css.url(path),
-      styles);
-   });
-   var bulletTypeString = function (t) {
-      return function () {
-         switch (t.ctor)
-         {case "Armenian":
-            return "armenian";
-            case "Circle": return "circle";
-            case "CjkIdeographic":
-            return "cjk-ideographic";
-            case "Decimal":
-            return "decimal";
-            case "DecimalLeadingZero":
-            return "decimal-leading-zero";
-            case "Disc": return "disc";
-            case "Georgian":
-            return "georgian";
-            case "Hebrew": return "hebrew";
-            case "Hiragana":
-            return "hiragana";
-            case "HiraganaIroha":
-            return "hiragana-iroha";
-            case "Katakana":
-            return "katakana";
-            case "KatakanaIroha":
-            return "katakana-iroha";
-            case "LowerAlpha":
-            return "lower-alpha";
-            case "LowerGreek":
-            return "lower-greek";
-            case "LowerLatin":
-            return "lower-latin";
-            case "LowerRoman":
-            return "lower-roman";
-            case "None": return "none";
-            case "Square": return "square";
-            case "UpperAlpha":
-            return "upper-alpha";
-            case "UpperLatin":
-            return "upper-latin";
-            case "UpperRoman":
-            return "upper-roman";}
-         _U.badCase($moduleName,
-         "between lines 148 and 219");
-      }();
-   };
-   var bulletType = F2(function (t,
-   styles) {
-      return A3($Css.style,
-      "list-style-type",
-      bulletTypeString(t),
-      styles);
-   });
-   var positionString = function (position) {
-      return function () {
-         switch (position.ctor)
-         {case "Inside": return "inside";
-            case "Outside":
-            return "outside";}
-         _U.badCase($moduleName,
-         "between lines 132 and 145");
-      }();
-   };
-   var position = F2(function (p,
-   styles) {
-      return A3($Css.style,
-      "list-style-position",
-      positionString(p),
-      styles);
-   });
-   var UpperRoman = {ctor: "UpperRoman"};
-   var UpperLatin = {ctor: "UpperLatin"};
-   var UpperAlpha = {ctor: "UpperAlpha"};
-   var Square = {ctor: "Square"};
-   var None = {ctor: "None"};
-   var LowerRoman = {ctor: "LowerRoman"};
-   var LowerLatin = {ctor: "LowerLatin"};
-   var LowerGreek = {ctor: "LowerGreek"};
-   var LowerAlpha = {ctor: "LowerAlpha"};
-   var KatakanaIroha = {ctor: "KatakanaIroha"};
-   var Katakana = {ctor: "Katakana"};
-   var HiraganaIroha = {ctor: "HiraganaIroha"};
-   var Hiragana = {ctor: "Hiragana"};
-   var Hebrew = {ctor: "Hebrew"};
-   var Georgian = {ctor: "Georgian"};
-   var DecimalLeadingZero = {ctor: "DecimalLeadingZero"};
-   var Decimal = {ctor: "Decimal"};
-   var CjkIdeographic = {ctor: "CjkIdeographic"};
-   var Circle = {ctor: "Circle"};
-   var Armenian = {ctor: "Armenian"};
-   var Disc = {ctor: "Disc"};
-   var Outside = {ctor: "Outside"};
-   var Inside = {ctor: "Inside"};
-   _elm.Css.ListStyle.values = {_op: _op
-                               ,Inside: Inside
-                               ,Outside: Outside
-                               ,Disc: Disc
-                               ,Armenian: Armenian
-                               ,Circle: Circle
-                               ,CjkIdeographic: CjkIdeographic
-                               ,Decimal: Decimal
-                               ,DecimalLeadingZero: DecimalLeadingZero
-                               ,Georgian: Georgian
-                               ,Hebrew: Hebrew
-                               ,Hiragana: Hiragana
-                               ,HiraganaIroha: HiraganaIroha
-                               ,Katakana: Katakana
-                               ,KatakanaIroha: KatakanaIroha
-                               ,LowerAlpha: LowerAlpha
-                               ,LowerGreek: LowerGreek
-                               ,LowerLatin: LowerLatin
-                               ,LowerRoman: LowerRoman
-                               ,None: None
-                               ,Square: Square
-                               ,UpperAlpha: UpperAlpha
-                               ,UpperLatin: UpperLatin
-                               ,UpperRoman: UpperRoman
-                               ,positionString: positionString
-                               ,bulletTypeString: bulletTypeString
-                               ,image: image
-                               ,position: position
-                               ,bulletType: bulletType};
-   return _elm.Css.ListStyle.values;
-};
-Elm.Css = Elm.Css || {};
 Elm.Css.Margin = Elm.Css.Margin || {};
 Elm.Css.Margin.make = function (_elm) {
    "use strict";
@@ -2570,96 +2391,6 @@ Elm.Css.Margin.make = function (_elm) {
    return _elm.Css.Margin.values;
 };
 Elm.Css = Elm.Css || {};
-Elm.Css.Outline = Elm.Css.Outline || {};
-Elm.Css.Outline.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Outline = _elm.Css.Outline || {};
-   if (_elm.Css.Outline.values)
-   return _elm.Css.Outline.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Outline",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm);
-   var width = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "outline-width",
-      $Css.px(w),
-      styles);
-   });
-   var color = F2(function (c,
-   styles) {
-      return A3($Css.style,
-      "outline-color",
-      $Css.colorString(c),
-      styles);
-   });
-   var styleString = function (style) {
-      return function () {
-         switch (style.ctor)
-         {case "Dashed": return "dashed";
-            case "Dotted": return "dotted";
-            case "Double": return "double";
-            case "Groove": return "groove";
-            case "Hidden": return "hidden";
-            case "Inset": return "inset";
-            case "None": return "none";
-            case "Outset": return "outset";
-            case "Ridge": return "ridge";
-            case "Solid": return "solid";}
-         _U.badCase($moduleName,
-         "between lines 81 and 121");
-      }();
-   };
-   var style = F2(function (s,
-   styles) {
-      return A3($Css.style,
-      "outline-style",
-      styleString(s),
-      styles);
-   });
-   var all = F4(function (c,
-   s,
-   w,
-   styles) {
-      return color(c)(style(s)(A2(width,
-      w,
-      styles)));
-   });
-   var Outset = {ctor: "Outset"};
-   var Inset = {ctor: "Inset"};
-   var Ridge = {ctor: "Ridge"};
-   var Groove = {ctor: "Groove"};
-   var Double = {ctor: "Double"};
-   var Solid = {ctor: "Solid"};
-   var Dashed = {ctor: "Dashed"};
-   var Dotted = {ctor: "Dotted"};
-   var Hidden = {ctor: "Hidden"};
-   var None = {ctor: "None"};
-   _elm.Css.Outline.values = {_op: _op
-                             ,None: None
-                             ,Hidden: Hidden
-                             ,Dotted: Dotted
-                             ,Dashed: Dashed
-                             ,Solid: Solid
-                             ,Double: Double
-                             ,Groove: Groove
-                             ,Ridge: Ridge
-                             ,Inset: Inset
-                             ,Outset: Outset
-                             ,styleString: styleString
-                             ,color: color
-                             ,style: style
-                             ,width: width
-                             ,all: all};
-   return _elm.Css.Outline.values;
-};
-Elm.Css = Elm.Css || {};
 Elm.Css.Padding = Elm.Css.Padding || {};
 Elm.Css.Padding.make = function (_elm) {
    "use strict";
@@ -2718,154 +2449,6 @@ Elm.Css.Padding.make = function (_elm) {
                              ,top: top
                              ,all: all};
    return _elm.Css.Padding.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Position = Elm.Css.Position || {};
-Elm.Css.Position.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Position = _elm.Css.Position || {};
-   if (_elm.Css.Position.values)
-   return _elm.Css.Position.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Position",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm);
-   var zIndex = F2(function (p,
-   styles) {
-      return A3($Css.style,
-      "z-index",
-      $Basics.toString(p),
-      styles);
-   });
-   var top = F2(function (t,
-   styles) {
-      return A3($Css.style,
-      "top",
-      $Css.px(t),
-      styles);
-   });
-   var right = F2(function (r,
-   styles) {
-      return A3($Css.style,
-      "right",
-      $Css.px(r),
-      styles);
-   });
-   var left = F2(function (l,
-   styles) {
-      return A3($Css.style,
-      "left",
-      $Css.px(l),
-      styles);
-   });
-   var bottom = F2(function (b,
-   styles) {
-      return A3($Css.style,
-      "bottom",
-      $Css.px(b),
-      styles);
-   });
-   var clip = F5(function (t,
-   r,
-   b,
-   l,
-   styles) {
-      return function () {
-         var string = A2($Basics._op["++"],
-         "rect(",
-         A2($Basics._op["++"],
-         $Basics.toString(t),
-         A2($Basics._op["++"],
-         "px, ",
-         A2($Basics._op["++"],
-         $Basics.toString(r),
-         A2($Basics._op["++"],
-         "px, ",
-         A2($Basics._op["++"],
-         $Basics.toString(b),
-         A2($Basics._op["++"],
-         "px, ",
-         A2($Basics._op["++"],
-         $Basics.toString(l),
-         "px)"))))))));
-         return A3($Css.style,
-         "clip",
-         string,
-         styles);
-      }();
-   });
-   var positionString = function (position) {
-      return function () {
-         switch (position.ctor)
-         {case "Absolute":
-            return "absolute";
-            case "Fixed": return "fixed";
-            case "Relative":
-            return "relative";
-            case "Static": return "static";}
-         _U.badCase($moduleName,
-         "between lines 100 and 123");
-      }();
-   };
-   var position = F2(function (p,
-   styles) {
-      return A3($Css.style,
-      "position",
-      positionString(p),
-      styles);
-   });
-   var overflowString = function (overflow) {
-      return function () {
-         switch (overflow.ctor)
-         {case "AutoOverflow":
-            return "auto";
-            case "Hidden": return "hidden";
-            case "Scroll": return "scroll";
-            case "Visible":
-            return "visible";}
-         _U.badCase($moduleName,
-         "between lines 78 and 97");
-      }();
-   };
-   var overflow = F2(function (o,
-   styles) {
-      return A3($Css.style,
-      "overflow",
-      overflowString(o),
-      styles);
-   });
-   var Static = {ctor: "Static"};
-   var Relative = {ctor: "Relative"};
-   var Fixed = {ctor: "Fixed"};
-   var Absolute = {ctor: "Absolute"};
-   var Visible = {ctor: "Visible"};
-   var Scroll = {ctor: "Scroll"};
-   var Hidden = {ctor: "Hidden"};
-   var AutoOverflow = {ctor: "AutoOverflow"};
-   _elm.Css.Position.values = {_op: _op
-                              ,AutoOverflow: AutoOverflow
-                              ,Hidden: Hidden
-                              ,Scroll: Scroll
-                              ,Visible: Visible
-                              ,Absolute: Absolute
-                              ,Fixed: Fixed
-                              ,Relative: Relative
-                              ,Static: Static
-                              ,overflowString: overflowString
-                              ,positionString: positionString
-                              ,clip: clip
-                              ,bottom: bottom
-                              ,left: left
-                              ,overflow: overflow
-                              ,position: position
-                              ,right: right
-                              ,top: top
-                              ,zIndex: zIndex};
-   return _elm.Css.Position.values;
 };
 Elm.Css = Elm.Css || {};
 Elm.Css.Shadow = Elm.Css.Shadow || {};
@@ -2937,7 +2520,7 @@ Elm.Css.Shadow.make = function (_elm) {
       return A3($Css.style,
       "box-shadow",
       A2(listBoxString,"",boxShadows),
-      _L.fromArray([]));
+      styles);
    });
    var textString = function (_v11) {
       return function () {
@@ -3232,7 +2815,7 @@ Elm.Css.Util.make = function (_elm) {
       0,
       0,
       0)(A2($Css$Font.size,
-      24,
+      18,
       styles)));
    };
    var getCode = function (_v0) {
@@ -6557,230 +6140,6 @@ Elm.List.make = function (_elm) {
                       ,sortBy: sortBy
                       ,sortWith: sortWith};
    return _elm.List.values;
-};
-Elm.Main = Elm.Main || {};
-Elm.Main.make = function (_elm) {
-   "use strict";
-   _elm.Main = _elm.Main || {};
-   if (_elm.Main.values)
-   return _elm.Main.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Main",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Background = Elm.Css.Background.make(_elm),
-   $Css$Border = Elm.Css.Border.make(_elm),
-   $Css$Cursor = Elm.Css.Cursor.make(_elm),
-   $Css$Dimension = Elm.Css.Dimension.make(_elm),
-   $Css$Display = Elm.Css.Display.make(_elm),
-   $Css$Flex = Elm.Css.Flex.make(_elm),
-   $Css$Font = Elm.Css.Font.make(_elm),
-   $Css$ListStyle = Elm.Css.ListStyle.make(_elm),
-   $Css$Margin = Elm.Css.Margin.make(_elm),
-   $Css$Shadow = Elm.Css.Shadow.make(_elm),
-   $Css$Text = Elm.Css.Text.make(_elm),
-   $Css$Util = Elm.Css.Util.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm);
-   var demo = function (xs) {
-      return function () {
-         var getHtml = F2(function (index,
-         x) {
-            return $Css$Util.toCss(A2($Basics._op["++"],
-            "a",
-            $Basics.toString(index)))(A2($Css$Text.whiteSpace,
-            x,
-            _L.fromArray([])));
-         });
-         return $Html.div(_L.fromArray([]))(A3($List.map2,
-         getHtml,
-         _L.range(1,$List.length(xs)),
-         xs));
-      }();
-   };
-   var demoStyles = function (styles) {
-      return $Css$Shadow.text(_L.fromArray([{ctor: "_Tuple4"
-                                            ,_0: 10
-                                            ,_1: 10
-                                            ,_2: 10
-                                            ,_3: A4($Color.rgba,
-                                            0,
-                                            0,
-                                            0,
-                                            1)}]))(A2($Css$Shadow.box,
-      _L.fromArray([{ctor: "_Tuple6"
-                    ,_0: 10
-                    ,_1: 10
-                    ,_2: 10
-                    ,_3: 10
-                    ,_4: A4($Color.rgba,0,0,0,1)
-                    ,_5: true}]),
-      styles));
-   };
-   var main = function () {
-      var squareWidth = 100;
-      var numSquares = 13;
-      return A2($Html.div,
-      _L.fromArray([]),
-      _L.fromArray([$Css.setViewport
-                   ,$Css$Util.toCss("a")(demoStyles(_L.fromArray([])))
-                   ,demo(_L.fromArray([$Css$Text.NormalWhiteSpace
-                                      ,$Css$Text.NoWrap
-                                      ,$Css$Text.Pre
-                                      ,$Css$Text.PreLine
-                                      ,$Css$Text.PreWrap]))]));
-   }();
-   var listItem = function (index) {
-      return A2($Html.li,
-      _L.fromArray([]),
-      _L.fromArray([$Html.text(A2($Basics._op["++"],
-      "item ",
-      $Basics.toString(index)))]));
-   };
-   var listItems = function (num) {
-      return A2($List.map,
-      listItem,
-      _L.range(1,num));
-   };
-   var listStyle = function (styles) {
-      return $Css$Margin.left(100)(A2($Css$ListStyle.bulletType,
-      $Css$ListStyle.UpperRoman,
-      styles));
-   };
-   var getColor = function (index) {
-      return _U.eq(A2($Basics._op["%"],
-      index,
-      3),
-      0) ? A4($Color.rgba,
-      26,
-      188,
-      156,
-      1) : _U.eq(A2($Basics._op["%"],
-      index,
-      2),
-      0) ? A4($Color.rgba,
-      46,
-      204,
-      113,
-      1) : A4($Color.rgba,
-      52,
-      152,
-      219,
-      1);
-   };
-   var squaresStyle = function (styles) {
-      return $Css$Display.display($Css$Display.Flex)(A3($Css$Flex.flow,
-      $Css$Flex.Row,
-      $Css$Flex.Wrap,
-      styles));
-   };
-   var shadows = _L.fromArray([{ctor: "_Tuple6"
-                               ,_0: 10
-                               ,_1: 10
-                               ,_2: 10
-                               ,_3: 0
-                               ,_4: A4($Color.rgba,0,0,255,1)
-                               ,_5: false}
-                              ,{ctor: "_Tuple6"
-                               ,_0: -5
-                               ,_1: -5
-                               ,_2: 10
-                               ,_3: 0
-                               ,_4: A4($Color.rgba,0,0,100,1)
-                               ,_5: false}]);
-   var squareStyle = F5(function (num,
-   index,
-   width,
-   color,
-   styles) {
-      return function () {
-         var i = $Basics.toFloat(index);
-         var n = $Basics.toFloat(num);
-         var w = $Basics.toFloat(width) / 2;
-         var segment1 = $Basics.round(w / n * i);
-         var segment2 = $Basics.round(w / n * (n - i));
-         return $Css$Display.display($Css$Display.Flex)($Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(A4($Css$Border.radius,
-         segment1,
-         segment2,
-         segment1,
-         segment2)($Css$Cursor.cursor($Css$Cursor.Cell)($Css$Shadow.box(shadows)(A4($Css$Margin.all,
-         10,
-         0,
-         0,
-         10)($Css$Font.size(width / 4 | 0)($Css$Text.color(A4($Color.rgba,
-         236,
-         240,
-         241,
-         1))($Css$Background.color(color)($Css$Dimension.height(width)(A2($Css$Dimension.width,
-         width,
-         styles))))))))))));
-      }();
-   });
-   var square = F4(function (num,
-   index,
-   width,
-   color) {
-      return A2($Html.div,
-      _L.fromArray([$Html$Attributes.style(A5(squareStyle,
-      num,
-      index,
-      width,
-      color,
-      _L.fromArray([])))]),
-      _L.fromArray([$Html.text($Basics.toString(index))]));
-   });
-   var squares = F3(function (num,
-   width,
-   color) {
-      return $Html.div(_L.fromArray([$Html$Attributes.style(squaresStyle(_L.fromArray([])))]))(A2($List.map,
-      function (index) {
-         return A4(square,
-         num,
-         index,
-         width,
-         color(index));
-      },
-      _L.range(1,num)));
-   });
-   var showStyles = F3(function (num,
-   width,
-   colorFrom) {
-      return function () {
-         var getStyleHtml = function (index) {
-            return $Css$Util.toCss(A2($Basics._op["++"],
-            "square",
-            $Basics.toString(index)))(A5(squareStyle,
-            num,
-            index,
-            width,
-            colorFrom(index),
-            _L.fromArray([])));
-         };
-         return A2($List.map,
-         getStyleHtml,
-         _L.range(1,num));
-      }();
-   });
-   _elm.Main.values = {_op: _op
-                      ,shadows: shadows
-                      ,squareStyle: squareStyle
-                      ,squaresStyle: squaresStyle
-                      ,square: square
-                      ,squares: squares
-                      ,getColor: getColor
-                      ,showStyles: showStyles
-                      ,listStyle: listStyle
-                      ,listItem: listItem
-                      ,listItems: listItems
-                      ,demoStyles: demoStyles
-                      ,demo: demo
-                      ,main: main};
-   return _elm.Main.values;
 };
 Elm.Maybe = Elm.Maybe || {};
 Elm.Maybe.make = function (_elm) {
@@ -14946,6 +14305,75 @@ Elm.Native.VirtualDom.make = function(elm)
 
 },{}]},{},[39]);
 
+Elm.Native = Elm.Native || {};
+Elm.Native.Window = {};
+Elm.Native.Window.make = function(localRuntime) {
+
+	localRuntime.Native = localRuntime.Native || {};
+	localRuntime.Native.Window = localRuntime.Native.Window || {};
+	if (localRuntime.Native.Window.values)
+	{
+		return localRuntime.Native.Window.values;
+	}
+
+	var NS = Elm.Native.Signal.make(localRuntime);
+	var Tuple2 = Elm.Native.Utils.make(localRuntime).Tuple2;
+
+
+	function getWidth()
+	{
+		return localRuntime.node.clientWidth;
+	}
+
+
+	function getHeight()
+	{
+		if (localRuntime.isFullscreen())
+		{
+			return window.innerHeight;
+		}
+		return localRuntime.node.clientHeight;
+	}
+
+
+	var dimensions = NS.input('Window.dimensions', Tuple2(getWidth(), getHeight()));
+
+
+	function resizeIfNeeded()
+	{
+		// Do not trigger event if the dimensions have not changed.
+		// This should be most of the time.
+		var w = getWidth();
+		var h = getHeight();
+		if (dimensions.value._0 === w && dimensions.value._1 === h)
+		{
+			return;
+		}
+
+		setTimeout(function () {
+			// Check again to see if the dimensions have changed.
+			// It is conceivable that the dimensions have changed
+			// again while some other event was being processed.
+			var w = getWidth();
+			var h = getHeight();
+			if (dimensions.value._0 === w && dimensions.value._1 === h)
+			{
+				return;
+			}
+			localRuntime.notify(dimensions.id, Tuple2(w,h));
+		}, 0);
+	}
+
+
+	localRuntime.addListener([dimensions.id], window, 'resize', resizeIfNeeded);
+
+
+	return localRuntime.Native.Window.values = {
+		dimensions: dimensions,
+		resizeIfNeeded: resizeIfNeeded
+	};
+};
+
 Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
    "use strict";
@@ -15852,4 +15280,31 @@ Elm.VirtualDom.make = function (_elm) {
                             ,lazy2: lazy2
                             ,lazy3: lazy3};
    return _elm.VirtualDom.values;
+};
+Elm.Window = Elm.Window || {};
+Elm.Window.make = function (_elm) {
+   "use strict";
+   _elm.Window = _elm.Window || {};
+   if (_elm.Window.values)
+   return _elm.Window.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Window",
+   $Basics = Elm.Basics.make(_elm),
+   $Native$Window = Elm.Native.Window.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var dimensions = $Native$Window.dimensions;
+   var width = A2($Signal.map,
+   $Basics.fst,
+   dimensions);
+   var height = A2($Signal.map,
+   $Basics.snd,
+   dimensions);
+   _elm.Window.values = {_op: _op
+                        ,dimensions: dimensions
+                        ,width: width
+                        ,height: height};
+   return _elm.Window.values;
 };

@@ -1,0 +1,98 @@
+module Css.Example where
+
+import Window
+import Signal exposing ((<~), (~), constant)
+import Color exposing (Color, rgba, complement)
+
+import Html exposing (Html, div, text, pre, code, ul, li)
+import Html.Attributes as Attributes exposing (style)
+
+import Css exposing (Styles, setViewport)
+import Css.Flex as Flex
+import Css.Display as Display exposing (display)
+import Css.Shadow as Shadow
+import Css.Background as Background
+import Css.Text as Text
+import Css.Font as Font
+import Css.Padding as Padding
+import Css.Dimension as Dimension
+import Css.Margin as Margin
+
+import Css.Example.Util exposing (Example)
+import Css.Example.Example1 exposing (example1)
+import Css.Example.Example2 exposing (example2)
+import Css.Example.Example3 exposing (example3)
+
+centered : Styles -> Styles
+centered styles =
+  Flex.justifyContent Flex.JCCenter
+  <| Flex.alignItems Flex.AICenter
+  <| display Display.Flex styles
+
+
+middle : Styles -> Styles
+middle styles =
+  display Display.Flex
+  <| Flex.justifyContent Flex.JCCenter styles
+
+
+wrap : Styles -> Styles
+wrap styles =
+  Flex.wrap Flex.Wrap styles
+
+
+column : Styles -> Styles
+column styles =
+  Flex.direction Flex.Column styles
+
+
+header : Html
+header =
+  let styles =
+    Shadow.box [ (0, 0, 10, 1, (rgba 0 0 0 1), False) ]
+    <| Background.color (rgba 26 188 156 1)
+    <| Text.color (rgba 255 255 255 1)
+    <| Font.size 36
+    <| Padding.all 10 0 10 0
+    <| centered []
+  in
+    div
+    [ style styles ]
+    [ text "Elm Css" ]
+
+
+example : (Int, Int) -> Example -> Html
+example (width, height) (name, description, codeString, view, explanation) =
+  let styles =
+    Padding.all 20 20 0 20
+    <| Dimension.maxWidth 1000
+    <| Dimension.width width []
+  in
+    div
+    [ style styles ]
+    [ div [ style <| Font.size 24 [] ] [ text name ]
+    , div [ style <| Margin.top 10 [] ] [ text description ]
+    , div
+      [ style <| middle <| wrap <| Margin.bottom 10 [] ]
+      [ pre [] [ code [ style <| Font.size 18 [] ] [ text codeString ] ]
+      , view
+      ]
+    , explanation
+    ]
+
+
+view : (Int, Int) -> Html
+view dimensions =
+  div
+  []
+  [ setViewport
+  , header
+  , div
+    [ style <| column <| centered [] ]
+    <| List.map (example dimensions) [ example1, example2, example3 dimensions ]
+  ]
+
+
+main : Signal Html
+main =
+  view <~ Window.dimensions

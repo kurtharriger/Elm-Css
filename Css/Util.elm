@@ -36,7 +36,7 @@ codeStyle : Styles -> Styles
 codeStyle styles =
   Margin.all 0 0 0 0
   <| Padding.all 0 0 0 0
-  <| Font.size 24 styles
+  <| Font.size 18 styles
 
 
 -- Arrange items in a column, and apply a 20px margin to the top and bottom.

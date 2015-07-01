@@ -135,7 +135,7 @@ listBoxString accumulator boxShadows =
 -}
 box : List Box -> Styles -> Styles
 box boxShadows styles =
-  Css.style "box-shadow" (listBoxString "" boxShadows) []
+  Css.style "box-shadow" (listBoxString "" boxShadows) styles
 
 
 {-| Set the shadow effect added to text.
