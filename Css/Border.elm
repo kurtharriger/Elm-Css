@@ -75,12 +75,12 @@ style s styles =
     -}
     Border.width 5 []
 -}
-width : Int -> Styles -> Styles
-width w styles =
-  BorderBottom.width w
-  <| BorderLeft.width w
-  <| BorderRight.width w
-  <| BorderTop.width w styles
+width : Int -> Int -> Int -> Int -> Styles -> Styles
+width t r b l styles =
+  BorderBottom.width b
+  <| BorderLeft.width l
+  <| BorderRight.width r
+  <| BorderTop.width t styles
 
 
 {-| Sets the radius of the

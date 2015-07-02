@@ -127,7 +127,6 @@ color c styles =
 
 {-| Set the background image.
 
-
     import Css.Background as Background
 
     -- [ ("background-image", "url(\"paper.gif\")") ]
@@ -142,9 +141,9 @@ image path styles =
 
     import Css.Background as Background
 
-    -- [ ("background-image", "url(\"smiley.gif\")")
+    {-- [ ("background-image", "url(\"smiley.gif\")")
        , ("background-position", "50px 100px")
-       ]
+       ] --}
     Background.image "smiley.gif"
     <| Background.position 50 100 []
 -}
@@ -157,9 +156,9 @@ position x y styles =
 
     import Css.Background as Background
 
-    -- [ ("background-image", "url(\"img_flwr.gif\")")
+    {-- [ ("background-image", "url(\"img_flwr.gif\")")
        , ("background-size", "80px 60px")
-       ]
+       ] --}
     Background.image "img_flwr.gif"
     <| Background.size 80 60 []
 -}
@@ -172,10 +171,10 @@ size width height styles =
 
     import Css.Background as Background
 
-    -- [ ("background-image", "url(\"img_flwr.gif\")")
+    {-- [ ("background-image", "url(\"img_flwr.gif\")")
        , ("background-size", "80px 60px")
        , ("background-repeat", "no-repeat")
-       ]
+       ] --}
     Background.image "img_flwr.gif"
     <| Background.size 80 60
     <| Background.repeat Background.NoRepeat []
@@ -190,10 +189,10 @@ or scrolls with the rest of the page.
 
     import Css.Background as Background
 
-    -- [ ("background-image", "url(\"w3css.gif\")")
+    {-- [ ("background-image", "url(\"w3css.gif\")")
        , ("background-repeat", "no-repeat")
        , ("background-attachment", "fixed")
-       ]
+       ] --}
     Background.image "img_flwr.gif"
     <| Background.repeat Background.NoRepeat
     <| Background.attachment Background.Fixed []

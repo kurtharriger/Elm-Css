@@ -57,9 +57,9 @@ width w styles =
   Css.style "border-bottom-width" (px w) styles
 
 
-{-| Sets the right radius of the bottom border
+{-| Set the bottom right border radius
 
-    -- Sets the right radius of the bottom border to 25 pixels
+    -- Set the bottom right border radius to 25 pixels
     import Css.Border.Bottom as BorderBottom
 
 
@@ -71,11 +71,9 @@ rightRadius r styles =
   Css.style "border-bottom-right-radius" (px r) styles
 
 
-{-| Sets the left radius of the bottom border
-
-    -- Sets the left radius of the bottom border to 25 pixels
+{-| Set the bottom left border radius
+    -- Set the bottom left border radius to 25 pixels
     import Css.Border.Bottom as BorderBottom
-
 
     -- [ ("border-bottom-left-radius, "25px") ]
     BorderBottom.leftRadius 25 []

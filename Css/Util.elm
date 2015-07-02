@@ -31,7 +31,7 @@ columnStyle styles =
   <| Flex.direction Flex.Column styles
 
 
--- Remove all margin, padding, and increase the font size to 24px
+-- Remove all margin, padding, and increase the font size to 18px
 codeStyle : Styles -> Styles
 codeStyle styles =
   Margin.all 0 0 0 0
@@ -46,7 +46,7 @@ containerStyle styles =
   <| Margin.all 20 0 20 0 styles
 
 
-{-- In Elm css styles are just a list of (String, String). This makes it really
+{-- In Elm, css styles are just a list of (String, String). This makes it really
 easy to modify and manipulate them. In this case we want to actually show
 them as they would appear in css. So we add a : between the name and value
 as well as a ; to the end of the line.

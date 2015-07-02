@@ -1,6 +1,6 @@
 module Css.Border.Top where
 
-{-| This library allows you to set the bottom border of any html element.
+{-| This library allows you to set the top border of any html element.
 You can set the color, style, width, and radius of the top border.
 
 # Functions
@@ -55,9 +55,9 @@ width w styles =
   Css.style "border-top-width" (px w) styles
 
 
-{-| Set the top radius of the top border
+{-| Set the top right border radius
 
-    -- Set the top radius of the top border to 25 pixels
+    -- Set the top right border radius to 25 pixels
     import Css.Border.Top as BorderTop
 
 
@@ -69,11 +69,9 @@ rightRadius r styles =
   Css.style "border-top-right-radius" (px r) styles
 
 
-{-| Set the top radius of the top border
-
-    -- Set the top radius of the top border to 25 pixels
+{-| Set the top left border radius
+    -- Set the top left border radius to 25 pixels
     import Css.Border.Top as BorderTop
-
 
     -- [ ("border-top-left-radius, "25px") ]
     BorderTop.leftRadius 25 []

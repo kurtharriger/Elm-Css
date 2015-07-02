@@ -19,7 +19,7 @@ import Css exposing (Styles, (:::), url)
 {-| Represent if the list item markers should appear inside
 or outside the content flow.
 
-Position -
+Inside -
   Indents the marker and the text.  The bullets appear inside the content flow.
 
 Outside -
