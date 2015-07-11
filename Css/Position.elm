@@ -18,7 +18,7 @@ element's content is too big.
 import String
 
 -- My Imports
-import Css exposing (Styles, (:::), url, px)
+import Css exposing (Styles, url, px)
 
 
 {-| Represent what happens if content overflows an element's box.

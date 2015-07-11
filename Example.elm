@@ -1,8 +1,9 @@
 module Css.Example where
 
 import Window
-import Signal exposing ((<~), (~), constant)
+import Signal exposing ((<~), (~), constant, foldp)
 import Color exposing (Color, rgba, complement)
+import Time exposing (fps)
 
 import Html exposing (Html, div, text, pre, code, ul, li)
 import Html.Attributes as Attributes exposing (style)
@@ -22,6 +23,8 @@ import Css.Example.Util exposing (Example)
 import Css.Example.Example1 exposing (example1)
 import Css.Example.Example2 exposing (example2)
 import Css.Example.Example3 exposing (example3)
+import Css.Example.Example4 exposing (example4)
+
 
 centered : Styles -> Styles
 centered styles =
@@ -81,18 +84,28 @@ example (width, height) (name, description, codeString, view, explanation) =
     ]
 
 
-view : (Int, Int) -> Html
-view dimensions =
+view : (Int, Int) -> Float -> Html
+view dimensions time =
   div
   []
   [ setViewport
   , header
   , div
     [ style <| column <| centered [] ]
-    <| List.map (example dimensions) [ example1, example2, example3 dimensions ]
+    <| List.map (example dimensions)
+        [ example1
+        , example2
+        , example3 dimensions
+        , example4 time
+        ]
   ]
+
+
+getTime : Float -> Float -> Float
+getTime delta accumulator =
+  accumulator + (delta / 60)
 
 
 main : Signal Html
 main =
-  view <~ Window.dimensions
+  view <~ Window.dimensions ~ (foldp getTime 0 (fps 60))

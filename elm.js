@@ -897,6 +897,46 @@ Elm.Css.make = function (_elm) {
       value,
       styles);
    });
+   var moz = F3(function (name,
+   value,
+   styles) {
+      return A3(style,
+      name,
+      A2($Basics._op["++"],
+      "-moz-",
+      value),
+      styles);
+   });
+   var mozName = F3(function (name,
+   value,
+   styles) {
+      return A3(style,
+      A2($Basics._op["++"],
+      "-moz-",
+      name),
+      value,
+      styles);
+   });
+   var o = F3(function (name,
+   value,
+   styles) {
+      return A3(style,
+      name,
+      A2($Basics._op["++"],
+      "-o-",
+      value),
+      styles);
+   });
+   var oName = F3(function (name,
+   value,
+   styles) {
+      return A3(style,
+      A2($Basics._op["++"],
+      "-o-",
+      name),
+      value,
+      styles);
+   });
    _elm.Css.values = {_op: _op
                      ,colorString: colorString
                      ,px: px
@@ -906,6 +946,10 @@ Elm.Css.make = function (_elm) {
                      ,webkitName: webkitName
                      ,ms: ms
                      ,msName: msName
+                     ,moz: moz
+                     ,mozName: mozName
+                     ,o: o
+                     ,oName: oName
                      ,style: style};
    return _elm.Css.values;
 };
@@ -1237,6 +1281,7 @@ Elm.Css.Example.make = function (_elm) {
    $Css$Example$Example1 = Elm.Css.Example.Example1.make(_elm),
    $Css$Example$Example2 = Elm.Css.Example.Example2.make(_elm),
    $Css$Example$Example3 = Elm.Css.Example.Example3.make(_elm),
+   $Css$Example$Example4 = Elm.Css.Example.Example4.make(_elm),
    $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
    $Css$Flex = Elm.Css.Flex.make(_elm),
    $Css$Font = Elm.Css.Font.make(_elm),
@@ -1248,7 +1293,12 @@ Elm.Css.Example.make = function (_elm) {
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
    $List = Elm.List.make(_elm),
    $Signal = Elm.Signal.make(_elm),
+   $Time = Elm.Time.make(_elm),
    $Window = Elm.Window.make(_elm);
+   var getTime = F2(function (delta,
+   accumulator) {
+      return accumulator + delta / 60;
+   });
    var column = function (styles) {
       return A2($Css$Flex.direction,
       $Css$Flex.Column,
@@ -1307,10 +1357,10 @@ Elm.Css.Example.make = function (_elm) {
                                       ,_v1._4]));
                       }();}
                  _U.badCase($moduleName,
-                 "between lines 66 and 81");
+                 "between lines 69 and 84");
               }();}
          _U.badCase($moduleName,
-         "between lines 66 and 81");
+         "between lines 69 and 84");
       }();
    });
    var centered = function (styles) {
@@ -1342,7 +1392,8 @@ Elm.Css.Example.make = function (_elm) {
       _L.fromArray([$Html$Attributes.style(styles)]),
       _L.fromArray([$Html.text("Elm Css")]));
    }();
-   var view = function (dimensions) {
+   var view = F2(function (dimensions,
+   time) {
       return A2($Html.div,
       _L.fromArray([]),
       _L.fromArray([$Css.setViewport
@@ -1351,11 +1402,17 @@ Elm.Css.Example.make = function (_elm) {
                    example(dimensions),
                    _L.fromArray([$Css$Example$Example1.example1
                                 ,$Css$Example$Example2.example2
-                                ,$Css$Example$Example3.example3(dimensions)])))]));
-   };
-   var main = A2($Signal._op["<~"],
+                                ,$Css$Example$Example3.example3(dimensions)
+                                ,$Css$Example$Example4.example4(time)])))]));
+   });
+   var main = A2($Signal._op["~"],
+   A2($Signal._op["<~"],
    view,
-   $Window.dimensions);
+   $Window.dimensions),
+   A3($Signal.foldp,
+   getTime,
+   0,
+   $Time.fps(60)));
    _elm.Css.Example.values = {_op: _op
                              ,centered: centered
                              ,middle: middle
@@ -1364,6 +1421,7 @@ Elm.Css.Example.make = function (_elm) {
                              ,header: header
                              ,example: example
                              ,view: view
+                             ,getTime: getTime
                              ,main: main};
    return _elm.Css.Example.values;
 };
@@ -1750,6 +1808,98 @@ Elm.Css.Example.Example3.make = function (_elm) {
                                       ,column: column
                                       ,centered: centered};
    return _elm.Css.Example.Example3.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Example = Elm.Css.Example || {};
+Elm.Css.Example.Example4 = Elm.Css.Example.Example4 || {};
+Elm.Css.Example.Example4.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Example = _elm.Css.Example || {};
+   _elm.Css.Example.Example4 = _elm.Css.Example.Example4 || {};
+   if (_elm.Css.Example.Example4.values)
+   return _elm.Css.Example.Example4.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Example.Example4",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $Css$Dimension = Elm.Css.Dimension.make(_elm),
+   $Css$Display = Elm.Css.Display.make(_elm),
+   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
+   $Css$Flex = Elm.Css.Flex.make(_elm),
+   $Css$Gradient = Elm.Css.Gradient.make(_elm),
+   $Css$Margin = Elm.Css.Margin.make(_elm),
+   $Css$Text = Elm.Css.Text.make(_elm),
+   $Css$Transform3 = Elm.Css.Transform3.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm);
+   var flex = function (styles) {
+      return A2($Css$Display.display,
+      $Css$Display.Flex,
+      styles);
+   };
+   var column = function (styles) {
+      return flex(A2($Css$Flex.direction,
+      $Css$Flex.Column,
+      styles));
+   };
+   var centered = function (styles) {
+      return flex($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Flex.justifyContent,
+      $Css$Flex.JCCenter,
+      styles)));
+   };
+   var view = function (time) {
+      return A2($Html.div,
+      _L.fromArray([$Html$Attributes.style(centered(A2($Css$Text.color,
+      A4($Color.rgba,255,255,255,1),
+      _L.fromArray([]))))]),
+      _L.fromArray([A2($Html.div,
+      _L.fromArray([$Html$Attributes.style(centered($Css$Dimension.width(200)($Css$Dimension.height(200)($Css$Transform3.transform3(_L.fromArray([A4($Css$Transform3.rotate3,
+      1,
+      1,
+      1,
+      time)]))(A3($Css$Gradient.linear,
+      45,
+      _L.fromArray([A4($Color.rgba,
+                   255,
+                   0,
+                   0,
+                   1)
+                   ,A4($Color.rgba,0,0,255,1)]),
+      _L.fromArray([])))))))]),
+      _L.fromArray([A2($Html.div,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text("rotating square")]))]))]));
+   };
+   var explanation = A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(column(_L.fromArray([])))]),
+   _L.fromArray([A2($Html.div,
+   _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
+   10,
+   _L.fromArray([])))]),
+   _L.fromArray([$Html.text("\nHere we can see that we can apply a background gradient to the element using\nan angle of application as well as a list of colors to use. We also use the\ntime since the application began, normalized to return the current seconds.\nThis is useful to apply a 3D rotation to the element.\n")]))]));
+   var codeString = "\nmain : Signal Html\nmain =\n  view <~ (foldp getTime 0 (fps 60))\n\n\ngetTime : Float -> Float -> Float\ngetTime delta accumulator =\n  accumulator + (delta / 60)\n\n\nview : Float -> Html\nview time =\n  div\n  [ style\n    <| centered\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div\n    [ style\n      <| centered\n      <| Dimension.width 200\n      <| Dimension.height 200\n      <| transform3 [ rotate3 1 1 1 time ]\n      <| Gradient.linear 45 [ rgba 255 0 0 1, rgba 0 0 255 1 ] []\n    ]\n    [ div [] [ text \"rotating square\" ] ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  flex\n  <| Flex.direction Flex.Column styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  flex\n  <| Flex.alignItems Flex.AICenter\n  <| Flex.justifyContent Flex.JCCenter styles\n";
+   var example4 = function (time) {
+      return {ctor: "_Tuple5"
+             ,_0: "Example 4"
+             ,_1: "CSS3 also allows you to do basic animation as well as transformations.\n     While the transformations are very useful, I think that animations should\n     be handled using signals, by knowing how much time has passed since a given\n     point in the past."
+             ,_2: codeString
+             ,_3: view(time)
+             ,_4: explanation};
+   };
+   _elm.Css.Example.Example4.values = {_op: _op
+                                      ,example4: example4
+                                      ,codeString: codeString
+                                      ,explanation: explanation
+                                      ,view: view
+                                      ,flex: flex
+                                      ,column: column
+                                      ,centered: centered};
+   return _elm.Css.Example.Example4.values;
 };
 Elm.Css = Elm.Css || {};
 Elm.Css.Example = Elm.Css.Example || {};
@@ -2331,6 +2481,85 @@ Elm.Css.Font.make = function (_elm) {
    return _elm.Css.Font.values;
 };
 Elm.Css = Elm.Css || {};
+Elm.Css.Gradient = Elm.Css.Gradient || {};
+Elm.Css.Gradient.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Gradient = _elm.Css.Gradient || {};
+   if (_elm.Css.Gradient.values)
+   return _elm.Css.Gradient.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Gradient",
+   $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $String = Elm.String.make(_elm);
+   var radial = F2(function (colors,
+   styles) {
+      return function () {
+         var colorStrings = A2($String.join,
+         ",",
+         A2($List.map,
+         $Css.colorString,
+         colors));
+         var string = A2($Basics._op["++"],
+         "radial-gradient(",
+         A2($Basics._op["++"],
+         colorStrings,
+         ")"));
+         return A2($Css.style,
+         "background",
+         string)(A2($Css.webkit,
+         "background",
+         string)(A2($Css.moz,
+         "background",
+         string)(A3($Css.o,
+         "background",
+         string,
+         styles))));
+      }();
+   });
+   var linear = F3(function (degrees,
+   colors,
+   styles) {
+      return function () {
+         var degreeString = A2($Basics._op["++"],
+         $Basics.toString(degrees),
+         "deg, ");
+         var colorStrings = A2($String.join,
+         ",",
+         A2($List.map,
+         $Css.colorString,
+         colors));
+         var string = A2($Basics._op["++"],
+         "linear-gradient(",
+         A2($Basics._op["++"],
+         degreeString,
+         A2($Basics._op["++"],
+         colorStrings,
+         ")")));
+         return A2($Css.style,
+         "background",
+         string)(A2($Css.webkit,
+         "background",
+         string)(A2($Css.moz,
+         "background",
+         string)(A3($Css.o,
+         "background",
+         string,
+         styles))));
+      }();
+   });
+   _elm.Css.Gradient.values = {_op: _op
+                              ,linear: linear
+                              ,radial: radial};
+   return _elm.Css.Gradient.values;
+};
+Elm.Css = Elm.Css || {};
 Elm.Css.Margin = Elm.Css.Margin || {};
 Elm.Css.Margin.make = function (_elm) {
    "use strict";
@@ -2780,6 +3009,107 @@ Elm.Css.Text.make = function (_elm) {
                           ,whiteSpace: whiteSpace
                           ,wordSpacing: wordSpacing};
    return _elm.Css.Text.values;
+};
+Elm.Css = Elm.Css || {};
+Elm.Css.Transform3 = Elm.Css.Transform3 || {};
+Elm.Css.Transform3.make = function (_elm) {
+   "use strict";
+   _elm.Css = _elm.Css || {};
+   _elm.Css.Transform3 = _elm.Css.Transform3 || {};
+   if (_elm.Css.Transform3.values)
+   return _elm.Css.Transform3.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Css.Transform3",
+   $Basics = Elm.Basics.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $String = Elm.String.make(_elm);
+   var scale3 = F3(function (x,
+   y,
+   z) {
+      return A2($Basics._op["++"],
+      "scale3d(",
+      A2($Basics._op["++"],
+      $Basics.toString(x),
+      A2($Basics._op["++"],
+      ", ",
+      A2($Basics._op["++"],
+      $Basics.toString(y),
+      A2($Basics._op["++"],
+      ", ",
+      A2($Basics._op["++"],
+      $Basics.toString(z),
+      ")"))))));
+   });
+   var rotate3 = F4(function (x,
+   y,
+   z,
+   angle) {
+      return A2($Basics._op["++"],
+      "rotate3d(",
+      A2($Basics._op["++"],
+      $Basics.toString(x),
+      A2($Basics._op["++"],
+      ", ",
+      A2($Basics._op["++"],
+      $Basics.toString(y),
+      A2($Basics._op["++"],
+      ", ",
+      A2($Basics._op["++"],
+      $Basics.toString(z),
+      A2($Basics._op["++"],
+      ", ",
+      A2($Basics._op["++"],
+      $Basics.toString(angle),
+      "deg)"))))))));
+   });
+   var translate3 = F3(function (x,
+   y,
+   z) {
+      return A2($Basics._op["++"],
+      "translate3d(",
+      A2($Basics._op["++"],
+      $Basics.toString(x),
+      A2($Basics._op["++"],
+      "px, ",
+      A2($Basics._op["++"],
+      $Basics.toString(y),
+      A2($Basics._op["++"],
+      "px, ",
+      A2($Basics._op["++"],
+      $Basics.toString(z),
+      "px)"))))));
+   });
+   var perspective = function (p) {
+      return A2($Basics._op["++"],
+      "perspective(",
+      A2($Basics._op["++"],
+      $Basics.toString(p),
+      ")"));
+   };
+   var transform3 = F2(function (transforms,
+   styles) {
+      return function () {
+         var string = A2($String.join,
+         " ",
+         transforms);
+         return A2($Css.style,
+         "transform",
+         string)(A3($Css.webkitName,
+         "transform",
+         string,
+         styles));
+      }();
+   });
+   _elm.Css.Transform3.values = {_op: _op
+                                ,transform3: transform3
+                                ,perspective: perspective
+                                ,translate3: translate3
+                                ,rotate3: rotate3
+                                ,scale3: scale3};
+   return _elm.Css.Transform3.values;
 };
 Elm.Css = Elm.Css || {};
 Elm.Css.Util = Elm.Css.Util || {};
@@ -11846,6 +12176,117 @@ Elm.Native.Text.make = function(localRuntime) {
 	};
 };
 
+Elm.Native.Time = {};
+Elm.Native.Time.make = function(localRuntime)
+{
+
+	localRuntime.Native = localRuntime.Native || {};
+	localRuntime.Native.Time = localRuntime.Native.Time || {};
+	if (localRuntime.Native.Time.values)
+	{
+		return localRuntime.Native.Time.values;
+	}
+
+	var NS = Elm.Native.Signal.make(localRuntime);
+	var Maybe = Elm.Maybe.make(localRuntime);
+
+
+	// FRAMES PER SECOND
+
+	function fpsWhen(desiredFPS, isOn)
+	{
+		var msPerFrame = 1000 / desiredFPS;
+		var ticker = NS.input('fps-' + desiredFPS, null);
+
+		function notifyTicker()
+		{
+			localRuntime.notify(ticker.id, null);
+		}
+
+		function firstArg(x, y)
+		{
+			return x;
+		}
+
+		// input fires either when isOn changes, or when ticker fires.
+		// Its value is a tuple with the current timestamp, and the state of isOn
+		var input = NS.timestamp(A3(NS.map2, F2(firstArg), NS.dropRepeats(isOn), ticker));
+
+		var initialState = {
+			isOn: false,
+			time: localRuntime.timer.programStart,
+			delta: 0
+		};
+
+		var timeoutId;
+
+		function update(input,state)
+		{
+			var currentTime = input._0;
+			var isOn = input._1;
+			var wasOn = state.isOn;
+			var previousTime = state.time;
+
+			if (isOn)
+			{
+				timeoutId = localRuntime.setTimeout(notifyTicker, msPerFrame);
+			}
+			else if (wasOn)
+			{
+				clearTimeout(timeoutId);
+			}
+
+			return {
+				isOn: isOn,
+				time: currentTime,
+				delta: (isOn && !wasOn) ? 0 : currentTime - previousTime
+			};
+		}
+
+		return A2(
+			NS.map,
+			function(state) { return state.delta; },
+			A3(NS.foldp, F2(update), update(input.value,initialState), input)
+		);
+	}
+
+
+	// EVERY
+
+	function every(t)
+	{
+		var ticker = NS.input('every-' + t, null);
+		function tellTime()
+		{
+			localRuntime.notify(ticker.id, null);
+		}
+		var clock = A2( NS.map, fst, NS.timestamp(ticker) );
+		setInterval(tellTime, t);
+		return clock;
+	}
+
+
+	function fst(pair)
+	{
+		return pair._0;
+	}
+
+
+	function read(s)
+	{
+		var t = Date.parse(s);
+		return isNaN(t) ? Maybe.Nothing : Maybe.Just(t);
+	}
+
+	return localRuntime.Native.Time.values = {
+		fpsWhen: F2(fpsWhen),
+		every: every,
+		toDate: function(t) { return new window.Date(t); },
+		read: read
+	};
+
+};
+
 Elm.Native.Transform2D = {};
 Elm.Native.Transform2D.make = function(localRuntime) {
 
@@ -15173,6 +15614,85 @@ Elm.Text.make = function (_elm) {
                       ,Over: Over
                       ,Through: Through};
    return _elm.Text.values;
+};
+Elm.Time = Elm.Time || {};
+Elm.Time.make = function (_elm) {
+   "use strict";
+   _elm.Time = _elm.Time || {};
+   if (_elm.Time.values)
+   return _elm.Time.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Time",
+   $Basics = Elm.Basics.make(_elm),
+   $Native$Signal = Elm.Native.Signal.make(_elm),
+   $Native$Time = Elm.Native.Time.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var delay = $Native$Signal.delay;
+   var since = F2(function (time,
+   signal) {
+      return function () {
+         var stop = A2($Signal.map,
+         $Basics.always(-1),
+         A2(delay,time,signal));
+         var start = A2($Signal.map,
+         $Basics.always(1),
+         signal);
+         var delaydiff = A3($Signal.foldp,
+         F2(function (x,y) {
+            return x + y;
+         }),
+         0,
+         A2($Signal.merge,start,stop));
+         return A2($Signal.map,
+         F2(function (x,y) {
+            return !_U.eq(x,y);
+         })(0),
+         delaydiff);
+      }();
+   });
+   var timestamp = $Native$Signal.timestamp;
+   var every = $Native$Time.every;
+   var fpsWhen = $Native$Time.fpsWhen;
+   var fps = function (targetFrames) {
+      return A2(fpsWhen,
+      targetFrames,
+      $Signal.constant(true));
+   };
+   var inMilliseconds = function (t) {
+      return t;
+   };
+   var millisecond = 1;
+   var second = 1000 * millisecond;
+   var minute = 60 * second;
+   var hour = 60 * minute;
+   var inHours = function (t) {
+      return t / hour;
+   };
+   var inMinutes = function (t) {
+      return t / minute;
+   };
+   var inSeconds = function (t) {
+      return t / second;
+   };
+   _elm.Time.values = {_op: _op
+                      ,millisecond: millisecond
+                      ,second: second
+                      ,minute: minute
+                      ,hour: hour
+                      ,inMilliseconds: inMilliseconds
+                      ,inSeconds: inSeconds
+                      ,inMinutes: inMinutes
+                      ,inHours: inHours
+                      ,fps: fps
+                      ,fpsWhen: fpsWhen
+                      ,every: every
+                      ,timestamp: timestamp
+                      ,delay: delay
+                      ,since: since};
+   return _elm.Time.values;
 };
 Elm.Transform2D = Elm.Transform2D || {};
 Elm.Transform2D.make = function (_elm) {
