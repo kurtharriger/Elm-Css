@@ -12,8 +12,11 @@ and position.
 -- Native Imports
 import String
 
+-- Third Party Imports
+import Vendor
+
 -- My Imports
-import Css exposing (Styles, style, msName, webkitName)
+import Css exposing (Styles, style)
 
 
 {-| This function takes a list of transforms and applies them
@@ -27,10 +30,12 @@ to the element.
 transform2 : List String -> Styles -> Styles
 transform2 transforms styles =
   let string = String.join " " transforms
+      prefix = Vendor.prefix
+      name = "transform"
   in
-    style "transform" string
-    <| msName "transform" string
-    <| webkitName "transform" string styles
+    if | prefix == Webkit -> style ("-webkit-" ++ name) string styles
+       | prefix == MS -> style ("-ms-" ++ name) string styles
+       | otherwise -> style name string styles
 
 
 {-| Moves an element from its current position (according to the

@@ -11,8 +11,11 @@ two or more specified colors.
 import Color exposing (Color)
 import String
 
+-- Third Party Imports
+import Vendor
+
 -- My Imports
-import Css exposing (Styles, webkit, moz, o, colorString)
+import Css exposing (Styles, style, colorString)
 
 
 {-| To create a linear gradient you must define at least two color stops.
@@ -28,13 +31,14 @@ linear : Int -> List Color -> Styles -> Styles
 linear degrees colors styles =
   let colorStrings = String.join "," (List.map colorString colors)
       degreeString = (toString degrees) ++ "deg, "
-      string =
-        "linear-gradient(" ++ degreeString ++ colorStrings ++ ")"
+      string = "linear-gradient(" ++ degreeString ++ colorStrings ++ ")"
+      prefix = Vendor.prefix
+      name = "background"
   in
-    Css.style "background" string
-    <| Css.webkit "background" string
-    <| Css.moz "background" string
-    <| Css.o "background" string styles
+    if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ string) styles
+       | prefix == Vendor.Moz -> style name ("-moz-" ++ string) styles
+       | prefix == Vendor.O -> style name ("-o-" ++ string) styles
+       | otherwise -> style name string styles
 
 
 {-| A radial gradient is defined by its center. To create a radial gradient
@@ -48,10 +52,11 @@ you must also define at least two color stops.
 radial : List Color -> Styles -> Styles
 radial colors styles =
   let colorStrings = String.join "," (List.map colorString colors)
-      string =
-        "radial-gradient(" ++ colorStrings ++ ")"
+      string = "radial-gradient(" ++ colorStrings ++ ")"
+      prefix = Vendor.prefix
+      name = "background"
   in
-    Css.style "background" string
-    <| Css.webkit "background" string
-    <| Css.moz "background" string
-    <| Css.o "background" string styles
+    if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ string) styles
+       | prefix == Vendor.Moz -> style name ("-moz-" ++ string) styles
+       | prefix == Vendor.O -> style name ("-o-" ++ string) styles
+       | otherwise -> style name string styles

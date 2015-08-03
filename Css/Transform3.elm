@@ -12,8 +12,11 @@ and position.
 -- Native Imports
 import String
 
+-- Third Party Imports
+import Vendor
+
 -- My Imports
-import Css exposing (Styles, style, webkitName)
+import Css exposing (Styles, style)
 
 
 {-| This function takes a list of transforms and applies them
@@ -27,10 +30,11 @@ to the element.
 transform3 : List String -> Styles -> Styles
 transform3 transforms styles =
   let string = String.join " " transforms
+      prefix = Vendor.prefix
+      name = "transform"
   in
-    style "transform" string
-    <| webkitName "transform" string styles
-
+    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) string styles
+       | otherwise -> style name string styles
 
 
 {-| Defines a perspective view for a 3D transformed element.

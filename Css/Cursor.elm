@@ -12,8 +12,11 @@ module Css.Cursor where
 @docs cursor
 -}
 
+-- Third Party Imports
+import Vendor
+
 -- My Imports
-import Css exposing (Styles, (:::), url, webkit, style)
+import Css exposing (Styles, (:::), url, style)
 
 
 {-| Represent the type of cursor to be displayed when pointing on an element.
@@ -305,15 +308,21 @@ string cursor =
 -}
 cursor : Cursor -> Styles -> Styles
 cursor c styles =
-  case c of
-    Grab ->
-      webkit "cursor" (string c)
-      <| style "cursor" (string c) styles
-    ZoomIn ->
-      webkit "cursor" (string c)
-      <| style "cursor" (string c) styles
-    ZoomOut ->
-      webkit "cursor" (string c)
-      <| style "cursor" (string c) styles
-    _ ->
-      style "cursor" (string c) styles
+  let prefix = Vendor.prefix
+      name = "cursor"
+  in
+    case c of
+      Grab ->
+        if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ (string c)) styles
+           | otherwise -> style name (string c) styles
+
+      ZoomIn ->
+        if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ (string c)) styles
+           | otherwise -> style name (string c) styles
+
+      ZoomOut ->
+        if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ (string c)) styles
+           | otherwise -> style name (string c) styles
+
+      _ ->
+        style "cursor" (string c) styles

@@ -857,99 +857,11 @@ Elm.Css.make = function (_elm) {
       name,
       value)]));
    });
-   var webkit = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      name,
-      A2($Basics._op["++"],
-      "-webkit-",
-      value),
-      styles);
-   });
-   var webkitName = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      A2($Basics._op["++"],
-      "-webkit-",
-      name),
-      value,
-      styles);
-   });
-   var ms = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      name,
-      A2($Basics._op["++"],
-      "-ms-",
-      value),
-      styles);
-   });
-   var msName = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      A2($Basics._op["++"],
-      "-ms-",
-      name),
-      value,
-      styles);
-   });
-   var moz = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      name,
-      A2($Basics._op["++"],
-      "-moz-",
-      value),
-      styles);
-   });
-   var mozName = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      A2($Basics._op["++"],
-      "-moz-",
-      name),
-      value,
-      styles);
-   });
-   var o = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      name,
-      A2($Basics._op["++"],
-      "-o-",
-      value),
-      styles);
-   });
-   var oName = F3(function (name,
-   value,
-   styles) {
-      return A3(style,
-      A2($Basics._op["++"],
-      "-o-",
-      name),
-      value,
-      styles);
-   });
    _elm.Css.values = {_op: _op
                      ,colorString: colorString
                      ,px: px
                      ,url: url
                      ,setViewport: setViewport
-                     ,webkit: webkit
-                     ,webkitName: webkitName
-                     ,ms: ms
-                     ,msName: msName
-                     ,moz: moz
-                     ,mozName: mozName
-                     ,o: o
-                     ,oName: oName
                      ,style: style};
    return _elm.Css.values;
 };
@@ -1148,7 +1060,8 @@ Elm.Css.Display.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Css.Display",
    $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $Vendor = Elm.Vendor.make(_elm);
    var string = function (display) {
       return function () {
          switch (display.ctor)
@@ -1183,39 +1096,46 @@ Elm.Css.Display.make = function (_elm) {
             case "TableRowGroup":
             return "table-row-group";}
          _U.badCase($moduleName,
-         "between lines 105 and 167");
+         "between lines 109 and 171");
       }();
    };
    var display = F2(function (d,
    styles) {
       return function () {
-         switch (d.ctor)
-         {case "Flex":
-            return A2($Css.style,
-              "display",
-              "flex")(A2($Css.webkit,
-              "display",
-              "box")(A2($Css.webkit,
-              "display",
-              "flex")(A3($Css.ms,
-              "display",
-              "flexbox",
-              styles))));
-            case "InlineFlex":
-            return A2($Css.style,
-              "display",
-              "inline-flex")(A2($Css.webkit,
-              "display",
-              "inline-box")(A2($Css.webkit,
-              "display",
-              "inline-flex")(A3($Css.ms,
-              "display",
-              "inline-flexbox",
-              styles))));}
-         return A3($Css.style,
-         "display",
-         string(d),
-         styles);
+         var prefix = $Vendor.prefix;
+         return function () {
+            switch (d.ctor)
+            {case "Flex":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 "display",
+                 "-webkit-flex",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "display",
+                 "-ms-flexbox",
+                 styles) : A3($Css.style,
+                 "display",
+                 "flex",
+                 styles);
+               case "InlineFlex":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 "display",
+                 "-webkit-inline-flex",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "display",
+                 "-ms-infline-flexbox",
+                 styles) : A3($Css.style,
+                 "display",
+                 "flex",
+                 styles);}
+            return A3($Css.style,
+            "display",
+            string(d),
+            styles);
+         }();
       }();
    });
    var None = {ctor: "None"};
@@ -1311,7 +1231,7 @@ Elm.Css.Example.make = function (_elm) {
    };
    var middle = function (styles) {
       return $Css$Display.display($Css$Display.Flex)(A2($Css$Flex.justifyContent,
-      $Css$Flex.JCCenter,
+      $Css$Flex.JCAround,
       styles));
    };
    var example = F2(function (_v0,
@@ -1934,174 +1854,256 @@ Elm.Css.Flex.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Css.Flex",
    $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $Vendor = Elm.Vendor.make(_elm);
    var basis = F2(function (b,
    styles) {
-      return A2($Css.style,
-      "flex-basis",
-      $Basics.toString(b))(A2($Css.webkitName,
-      "flex-basis",
-      $Basics.toString(b))(A3($Css.msName,
-      "flex-preferred-size",
-      $Basics.toString(b),
-      styles)));
+      return function () {
+         var name = "flex-basis";
+         var prefix = $Vendor.prefix;
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         A2($Basics._op["++"],
+         "-webkit-",
+         name),
+         $Basics.toString(b),
+         styles) : _U.eq(prefix,
+         $Vendor.MS) ? A3($Css.style,
+         "-ms-flex-preferred-size",
+         $Basics.toString(b),
+         styles) : A3($Css.style,
+         name,
+         $Basics.toString(b),
+         styles);
+      }();
    });
    var shrink = F2(function (s,
    styles) {
-      return A2($Css.style,
-      "flex-shrink",
-      $Basics.toString(s))(A2($Css.webkitName,
-      "flex-shrink",
-      $Basics.toString(s))(A3($Css.msName,
-      "flex-negative",
-      $Basics.toString(s),
-      styles)));
+      return function () {
+         var name = "flex-shrink";
+         var prefix = $Vendor.prefix;
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         A2($Basics._op["++"],
+         "-webkit-",
+         name),
+         $Basics.toString(s),
+         styles) : _U.eq(prefix,
+         $Vendor.MS) ? A3($Css.style,
+         "-ms-flex-negative",
+         $Basics.toString(s),
+         styles) : A3($Css.style,
+         name,
+         $Basics.toString(s),
+         styles);
+      }();
    });
    var grow = F2(function (g,
    styles) {
-      return A2($Css.style,
-      "flex-grow",
-      $Basics.toString(g))(A2($Css.webkitName,
-      "box-flex",
-      $Basics.toString(g))(A2($Css.webkitName,
-      "flex-grow",
-      $Basics.toString(g))(A3($Css.msName,
-      "flex-positive",
-      $Basics.toString(g),
-      styles))));
+      return function () {
+         var name = "flex-grow";
+         var prefix = $Vendor.prefix;
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         A2($Basics._op["++"],
+         "-webkit-",
+         name),
+         $Basics.toString(g),
+         styles) : _U.eq(prefix,
+         $Vendor.MS) ? A3($Css.style,
+         "-ms-flex-positive",
+         $Basics.toString(g),
+         styles) : A3($Css.style,
+         name,
+         $Basics.toString(g),
+         styles);
+      }();
    });
    var order = F2(function (o,
    styles) {
-      return A2($Css.style,
-      "order",
-      $Basics.toString(o))(A2($Css.webkitName,
-      "box-ordinal-group",
-      $Basics.toString(o + 1))(A2($Css.webkitName,
-      "order",
-      $Basics.toString(o))(A3($Css.msName,
-      "flex-order",
-      $Basics.toString(o),
-      styles))));
+      return function () {
+         var name = "order";
+         var prefix = $Vendor.prefix;
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         A2($Basics._op["++"],
+         "-webkit-",
+         name),
+         $Basics.toString(o),
+         styles) : _U.eq(prefix,
+         $Vendor.MS) ? A3($Css.style,
+         "-ms-flex-order",
+         $Basics.toString(o),
+         styles) : A3($Css.style,
+         name,
+         $Basics.toString(o),
+         styles);
+      }();
    });
    var justifyContent = F2(function (j,
    styles) {
       return function () {
-         switch (j.ctor)
-         {case "JCAround":
-            return A2($Css.style,
-              "justify-content",
-              "space-around")(A2($Css.webkitName,
-              "justify-content",
-              "space-around")(A3($Css.msName,
-              "flex-pack",
-              "distribute",
-              styles)));
-            case "JCBetween":
-            return A2($Css.style,
-              "justify-content",
-              "space-around")(A2($Css.webkitName,
-              "box-pack",
-              "justify")(A2($Css.webkitName,
-              "justify-content",
-              "space-between")(A3($Css.msName,
-              "flex-pack",
-              "justify",
-              styles))));
-            case "JCCenter":
-            return A2($Css.style,
-              "justify-content",
-              "space-around")(A2($Css.webkitName,
-              "box-pack",
-              "center")(A2($Css.webkitName,
-              "justify-content",
-              "center")(A3($Css.msName,
-              "flex-pack",
-              "center",
-              styles))));
-            case "JCEnd":
-            return A2($Css.style,
-              "justify-content",
-              "space-around")(A2($Css.webkitName,
-              "box-pack",
-              "end")(A2($Css.webkitName,
-              "justify-content",
-              "flex-end")(A3($Css.msName,
-              "flex-pack",
-              "end",
-              styles))));
-            case "JCStart":
-            return A2($Css.style,
-              "justify-content",
-              "space-around")(A2($Css.webkitName,
-              "box-pack",
-              "start")(A2($Css.webkitName,
-              "justify-content",
-              "flex-start")(A3($Css.msName,
-              "flex-pack",
-              "start",
-              styles))));}
-         _U.badCase($moduleName,
-         "between lines 344 and 383");
+         var name = "justify-content";
+         var prefix = $Vendor.prefix;
+         return function () {
+            switch (j.ctor)
+            {case "JCAround":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "space-around",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-pack",
+                 "distribute",
+                 styles) : A3($Css.style,
+                 name,
+                 "space-around",
+                 styles);
+               case "JCBetween":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "space-between",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-pack",
+                 "justify",
+                 styles) : A3($Css.style,
+                 name,
+                 "space-between",
+                 styles);
+               case "JCCenter":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "center",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-pack",
+                 "center",
+                 styles) : A3($Css.style,
+                 name,
+                 "center",
+                 styles);
+               case "JCEnd":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "flex-end",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-pack",
+                 "end",
+                 styles) : A3($Css.style,
+                 name,
+                 "flex-end",
+                 styles);
+               case "JCStart":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "flex-start",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-pack",
+                 "start",
+                 styles) : A3($Css.style,
+                 name,
+                 "flex-start",
+                 styles);}
+            _U.badCase($moduleName,
+            "between lines 348 and 383");
+         }();
       }();
    });
    var direction = F2(function (d,
    styles) {
       return function () {
-         switch (d.ctor)
-         {case "Column":
-            return A2($Css.style,
-              "flex-direction",
-              "column")(A2($Css.webkitName,
-              "box-orient",
-              "vertical")(A2($Css.webkitName,
-              "box-direction",
-              "normal")(A2($Css.webkitName,
-              "flex-direction",
-              "column")(A3($Css.msName,
-              "flex-direction",
-              "column",
-              styles)))));
-            case "ColumnReverse":
-            return A2($Css.style,
-              "flex-direction",
-              "column-reverse")(A2($Css.webkitName,
-              "box-orient",
-              "vertical")(A2($Css.webkitName,
-              "box-direction",
-              "reverse")(A2($Css.webkitName,
-              "flex-direction",
-              "column-reverse")(A3($Css.msName,
-              "flex-direction",
-              "column-reverse",
-              styles)))));
-            case "Row":
-            return A2($Css.style,
-              "flex-direction",
-              "row")(A2($Css.webkitName,
-              "box-orient",
-              "horizontal")(A2($Css.webkitName,
-              "box-direction",
-              "normal")(A2($Css.webkitName,
-              "flex-direction",
-              "row")(A3($Css.msName,
-              "flex-direction",
-              "row",
-              styles)))));
-            case "RowReverse":
-            return A2($Css.style,
-              "flex-direction",
-              "row-reverse")(A2($Css.webkitName,
-              "box-orient",
-              "horizontal")(A2($Css.webkitName,
-              "box-direction",
-              "reverse")(A2($Css.webkitName,
-              "flex-direction",
-              "row-reverse")(A3($Css.msName,
-              "flex-direction",
-              "row-reverse",
-              styles)))));}
-         _U.badCase($moduleName,
-         "between lines 276 and 312");
+         var name = "flex-direction";
+         var prefix = $Vendor.prefix;
+         return function () {
+            switch (d.ctor)
+            {case "Column":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "column",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-ms-",
+                 name),
+                 "column",
+                 styles) : A3($Css.style,
+                 name,
+                 "column",
+                 styles);
+               case "ColumnReverse":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "column-reverse",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-ms-",
+                 name),
+                 "column-reverse",
+                 styles) : A3($Css.style,
+                 name,
+                 "column-reverse",
+                 styles);
+               case "Row": return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "row",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-ms-",
+                 name),
+                 "row",
+                 styles) : A3($Css.style,
+                 name,
+                 "row",
+                 styles);
+               case "RowReverse":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "row-reverse",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-ms-",
+                 name),
+                 "row-reverse",
+                 styles) : A3($Css.style,
+                 name,
+                 "row-reverse",
+                 styles);}
+            _U.badCase($moduleName,
+            "between lines 282 and 310");
+         }();
       }();
    });
    var alignContentString = function (align) {
@@ -2119,57 +2121,91 @@ Elm.Css.Flex.make = function (_elm) {
             case "ACStretch":
             return "stretch";}
          _U.badCase($moduleName,
-         "between lines 246 and 273");
+         "between lines 249 and 276");
       }();
    };
    var alignContent = F2(function (a,
    styles) {
       return function () {
-         switch (a.ctor)
-         {case "ACAround":
-            return A2($Css.style,
-              "align-content",
-              alignContentString(a))(A2($Css.webkitName,
-              "align-content",
-              "space-around")(A3($Css.msName,
-              "flex-line-pack",
-              "distribute",
-              styles)));
-            case "ACBetween":
-            return A2($Css.style,
-              "align-content",
-              alignContentString(a))(A2($Css.webkitName,
-              "align-content",
-              "space-between")(A3($Css.msName,
-              "flex-line-pack",
-              "justify",
-              styles)));
-            case "ACEnd":
-            return A2($Css.style,
-              "align-content",
-              alignContentString(a))(A2($Css.webkitName,
-              "align-content",
-              "flex-end")(A3($Css.msName,
-              "flex-line-pack",
-              "end",
-              styles)));
-            case "ACStart":
-            return A2($Css.style,
-              "align-content",
-              alignContentString(a))(A2($Css.webkitName,
-              "align-content",
-              "flex-start")(A3($Css.msName,
-              "flex-line-pack",
-              "start",
-              styles)));}
-         return A2($Css.style,
-         "align-content",
-         alignContentString(a))(A2($Css.webkitName,
-         "align-content",
-         alignContentString(a))(A3($Css.msName,
-         "flex-line-pack",
-         alignContentString(a),
-         styles)));
+         var name = "align-content";
+         var prefix = $Vendor.prefix;
+         return function () {
+            switch (a.ctor)
+            {case "ACAround":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "space-around",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-line-pack",
+                 "distribute",
+                 styles) : A3($Css.style,
+                 name,
+                 "space-around",
+                 styles);
+               case "ACBetween":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "space-between",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-line-pack",
+                 "justify",
+                 styles) : A3($Css.style,
+                 name,
+                 "space-between",
+                 styles);
+               case "ACEnd":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "flex-end",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-line-pack",
+                 "end",
+                 styles) : A3($Css.style,
+                 name,
+                 "flex-end",
+                 styles);
+               case "ACStart":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "flex-start",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-line-pack",
+                 "start",
+                 styles) : A3($Css.style,
+                 name,
+                 "flex-start",
+                 styles);}
+            return _U.eq(prefix,
+            $Vendor.Webkit) ? A3($Css.style,
+            A2($Basics._op["++"],
+            "-webkit-",
+            name),
+            alignContentString(a),
+            styles) : _U.eq(prefix,
+            $Vendor.MS) ? A3($Css.style,
+            "-ms-flex-line-pack",
+            alignContentString(a),
+            styles) : A3($Css.style,
+            name,
+            alignContentString(a),
+            styles);
+         }();
       }();
    });
    var alignItemString = function (align) {
@@ -2185,77 +2221,108 @@ Elm.Css.Flex.make = function (_elm) {
             case "AIStretch":
             return "stretch";}
          _U.badCase($moduleName,
-         "between lines 221 and 243");
+         "between lines 224 and 246");
       }();
    };
    var alignItems = F2(function (a,
    styles) {
       return function () {
-         switch (a.ctor)
-         {case "AIEnd":
-            return A2($Css.style,
-              "align-items",
-              alignItemString(a))(A2($Css.webkitName,
-              "box-align",
-              "end")(A2($Css.webkitName,
-              "align-items",
-              "flex-end")(A3($Css.msName,
-              "flex-align",
-              "end",
-              styles))));
-            case "AIStart":
-            return A2($Css.style,
-              "align-items",
-              alignItemString(a))(A2($Css.webkitName,
-              "box-align",
-              "start")(A2($Css.webkitName,
-              "align-items",
-              "flex-start")(A3($Css.msName,
-              "flex-align",
-              "start",
-              styles))));}
-         return A2($Css.style,
-         "align-items",
-         alignItemString(a))(A2($Css.webkitName,
-         "box-align",
-         alignItemString(a))(A2($Css.webkitName,
-         "align-items",
-         alignItemString(a))(A3($Css.msName,
-         "flex-align",
-         alignItemString(a),
-         styles))));
+         var prefix = $Vendor.prefix;
+         return function () {
+            switch (a.ctor)
+            {case "AIEnd":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 "-webkit-align-items",
+                 "flex-end",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-align",
+                 "end",
+                 styles) : A3($Css.style,
+                 "align-items",
+                 alignItemString(a),
+                 styles);
+               case "AIStart":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 "-webkit-align-items",
+                 "flex-start",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-align",
+                 "start",
+                 styles) : A3($Css.style,
+                 "align-items",
+                 alignItemString(a),
+                 styles);}
+            return _U.eq(prefix,
+            $Vendor.Webkit) ? A3($Css.style,
+            "-webkit-align-items",
+            alignItemString(a),
+            styles) : _U.eq(prefix,
+            $Vendor.MS) ? A3($Css.style,
+            "-ms-flex-align",
+            alignItemString(a),
+            styles) : A3($Css.style,
+            "align-items",
+            alignItemString(a),
+            styles);
+         }();
       }();
    });
    var alignSelf = F2(function (a,
    styles) {
       return function () {
-         switch (a.ctor)
-         {case "AIEnd":
-            return A2($Css.style,
-              "align-self",
-              alignItemString(a))(A2($Css.webkitName,
-              "align-self",
-              "flex-end")(A3($Css.msName,
-              "flex-item-align",
-              "end",
-              styles)));
-            case "AIStart":
-            return A2($Css.style,
-              "align-self",
-              "flex-start")(A2($Css.webkitName,
-              "align-self",
-              "flex-start")(A3($Css.msName,
-              "flex-item-align",
-              "start",
-              styles)));}
-         return A2($Css.style,
-         "align-self",
-         alignItemString(a))(A2($Css.webkitName,
-         "align-self",
-         alignItemString(a))(A3($Css.msName,
-         "flex-item-align",
-         alignItemString(a),
-         styles)));
+         var name = "align-self";
+         var prefix = $Vendor.prefix;
+         return function () {
+            switch (a.ctor)
+            {case "AIEnd":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "flex-end",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-item-align",
+                 "end",
+                 styles) : A3($Css.style,
+                 name,
+                 "flex-end",
+                 styles);
+               case "AIStart":
+               return _U.eq(prefix,
+                 $Vendor.Webkit) ? A3($Css.style,
+                 A2($Basics._op["++"],
+                 "-webkit-",
+                 name),
+                 "flex-start",
+                 styles) : _U.eq(prefix,
+                 $Vendor.MS) ? A3($Css.style,
+                 "-ms-flex-item-align",
+                 "start",
+                 styles) : A3($Css.style,
+                 name,
+                 "flex-start",
+                 styles);}
+            return _U.eq(prefix,
+            $Vendor.Webkit) ? A3($Css.style,
+            A2($Basics._op["++"],
+            "-webkit-",
+            name),
+            alignItemString(a),
+            styles) : _U.eq(prefix,
+            $Vendor.MS) ? A3($Css.style,
+            "-ms-flex-item-align",
+            alignItemString(a),
+            styles) : A3($Css.style,
+            name,
+            alignItemString(a),
+            styles);
+         }();
       }();
    });
    var justifyContentString = function (justify) {
@@ -2271,7 +2338,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "JCStart":
             return "flex-start";}
          _U.badCase($moduleName,
-         "between lines 196 and 218");
+         "between lines 199 and 221");
       }();
    };
    var wrapString = function (wrap) {
@@ -2282,19 +2349,31 @@ Elm.Css.Flex.make = function (_elm) {
             case "WrapReverse":
             return "wrap-reverse";}
          _U.badCase($moduleName,
-         "between lines 177 and 193");
+         "between lines 180 and 196");
       }();
    };
    var wrap = F2(function (w,
    styles) {
-      return A2($Css.style,
-      "flex-wrap",
-      wrapString(w))(A2($Css.webkitName,
-      "flex-wrap",
-      wrapString(w))(A3($Css.msName,
-      "flex-wrap",
-      wrapString(w),
-      styles)));
+      return function () {
+         var name = "flex-wrap";
+         var prefix = $Vendor.prefix;
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         A2($Basics._op["++"],
+         "-webkit-",
+         name),
+         wrapString(w),
+         styles) : _U.eq(prefix,
+         $Vendor.MS) ? A3($Css.style,
+         A2($Basics._op["++"],
+         "-ms-",
+         name),
+         wrapString(w),
+         styles) : A3($Css.style,
+         name,
+         wrapString(w),
+         styles);
+      }();
    });
    var flow = F3(function (d,
    w,
@@ -2313,7 +2392,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "RowReverse":
             return "row-reverse";}
          _U.badCase($moduleName,
-         "between lines 155 and 174");
+         "between lines 158 and 177");
       }();
    };
    var ACAround = {ctor: "ACAround"};
@@ -2497,10 +2576,13 @@ Elm.Css.Gradient.make = function (_elm) {
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm),
-   $String = Elm.String.make(_elm);
+   $String = Elm.String.make(_elm),
+   $Vendor = Elm.Vendor.make(_elm);
    var radial = F2(function (colors,
    styles) {
       return function () {
+         var name = "background";
+         var prefix = $Vendor.prefix;
          var colorStrings = A2($String.join,
          ",",
          A2($List.map,
@@ -2511,22 +2593,36 @@ Elm.Css.Gradient.make = function (_elm) {
          A2($Basics._op["++"],
          colorStrings,
          ")"));
-         return A2($Css.style,
-         "background",
-         string)(A2($Css.webkit,
-         "background",
-         string)(A2($Css.moz,
-         "background",
-         string)(A3($Css.o,
-         "background",
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         name,
+         A2($Basics._op["++"],
+         "-webkit-",
+         string),
+         styles) : _U.eq(prefix,
+         $Vendor.Moz) ? A3($Css.style,
+         name,
+         A2($Basics._op["++"],
+         "-moz-",
+         string),
+         styles) : _U.eq(prefix,
+         $Vendor.O) ? A3($Css.style,
+         name,
+         A2($Basics._op["++"],
+         "-o-",
+         string),
+         styles) : A3($Css.style,
+         name,
          string,
-         styles))));
+         styles);
       }();
    });
    var linear = F3(function (degrees,
    colors,
    styles) {
       return function () {
+         var name = "background";
+         var prefix = $Vendor.prefix;
          var degreeString = A2($Basics._op["++"],
          $Basics.toString(degrees),
          "deg, ");
@@ -2542,16 +2638,28 @@ Elm.Css.Gradient.make = function (_elm) {
          A2($Basics._op["++"],
          colorStrings,
          ")")));
-         return A2($Css.style,
-         "background",
-         string)(A2($Css.webkit,
-         "background",
-         string)(A2($Css.moz,
-         "background",
-         string)(A3($Css.o,
-         "background",
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         name,
+         A2($Basics._op["++"],
+         "-webkit-",
+         string),
+         styles) : _U.eq(prefix,
+         $Vendor.Moz) ? A3($Css.style,
+         name,
+         A2($Basics._op["++"],
+         "-moz-",
+         string),
+         styles) : _U.eq(prefix,
+         $Vendor.O) ? A3($Css.style,
+         name,
+         A2($Basics._op["++"],
+         "-o-",
+         string),
+         styles) : A3($Css.style,
+         name,
          string,
-         styles))));
+         styles);
       }();
    });
    _elm.Css.Gradient.values = {_op: _op
@@ -3025,7 +3133,8 @@ Elm.Css.Transform3.make = function (_elm) {
    $moduleName = "Css.Transform3",
    $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
-   $String = Elm.String.make(_elm);
+   $String = Elm.String.make(_elm),
+   $Vendor = Elm.Vendor.make(_elm);
    var scale3 = F3(function (x,
    y,
    z) {
@@ -3092,15 +3201,21 @@ Elm.Css.Transform3.make = function (_elm) {
    var transform3 = F2(function (transforms,
    styles) {
       return function () {
+         var name = "transform";
+         var prefix = $Vendor.prefix;
          var string = A2($String.join,
          " ",
          transforms);
-         return A2($Css.style,
-         "transform",
-         string)(A3($Css.webkitName,
-         "transform",
+         return _U.eq(prefix,
+         $Vendor.Webkit) ? A3($Css.style,
+         A2($Basics._op["++"],
+         "-webkit-",
+         name),
          string,
-         styles));
+         styles) : A3($Css.style,
+         name,
+         string,
+         styles);
       }();
    });
    _elm.Css.Transform3.values = {_op: _op
@@ -12763,6 +12878,23 @@ Elm.Native.Utils.make = function(localRuntime) {
 	};
 };
 
+Elm.Native.Vendor = Elm.Native.Vendor || {};
+Elm.Native.Vendor.make = function(elm) {
+    elm.Native = elm.Native || {};
+    elm.Native.Vendor = elm.Native.Vendor || {};
+    if (elm.Native.Vendor.values) return elm.Native.Vendor.values;
+
+    // thanks to -- https://github.com/daniel-lundin/snabbt.js/blob/master/snabbt.js
+    var styles = window.getComputedStyle(document.documentElement, '');
+    var vendorPrefix = (Array.prototype.slice
+        .call(styles)
+        .join('')
+        .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
+    )[1];
+
+    return elm.Native.Vendor.values = { prefix: vendorPrefix };
+};
+
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = createHash
 
@@ -15758,6 +15890,40 @@ Elm.Transform2D.make = function (_elm) {
                              ,scaleX: scaleX
                              ,scaleY: scaleY};
    return _elm.Transform2D.values;
+};
+Elm.Vendor = Elm.Vendor || {};
+Elm.Vendor.make = function (_elm) {
+   "use strict";
+   _elm.Vendor = _elm.Vendor || {};
+   if (_elm.Vendor.values)
+   return _elm.Vendor.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Vendor",
+   $Native$Vendor = Elm.Native.Vendor.make(_elm);
+   var O = {ctor: "O"};
+   var MS = {ctor: "MS"};
+   var Webkit = {ctor: "Webkit"};
+   var Moz = {ctor: "Moz"};
+   var prefix = function () {
+      var _v0 = $Native$Vendor.prefix;
+      switch (_v0)
+      {case "moz": return Moz;
+         case "ms": return MS;
+         case "o": return O;
+         case "webkit": return Webkit;}
+      _U.badCase($moduleName,
+      "between lines 27 and 31");
+   }();
+   _elm.Vendor.values = {_op: _op
+                        ,prefix: prefix
+                        ,Moz: Moz
+                        ,Webkit: Webkit
+                        ,MS: MS
+                        ,O: O};
+   return _elm.Vendor.values;
 };
 Elm.VirtualDom = Elm.VirtualDom || {};
 Elm.VirtualDom.make = function (_elm) {

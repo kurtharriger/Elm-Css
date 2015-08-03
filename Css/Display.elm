@@ -12,8 +12,12 @@ module Css.Display where
 @docs display
 -}
 
+-- Third Party Imports
+import Vendor
+
+
 -- My Imports
-import Css exposing (Styles, (:::), webkit, ms, style)
+import Css exposing (Styles, (:::), style)
 
 {-| Represent the display types an element can have.
 
@@ -167,18 +171,18 @@ string display =
 -}
 display : Display -> Styles -> Styles
 display d styles =
-  case d of
-    Flex ->
-      style "display" "flex"
-      <| webkit "display" "box"
-      <| webkit "display" "flex"
-      <| ms "display" "flexbox" styles
+  let prefix = Vendor.prefix
+  in
+    case d of
+      Flex ->
+        if | prefix == Vendor.Webkit -> style "display" "-webkit-flex" styles
+           | prefix == Vendor.MS -> style "display" "-ms-flexbox" styles
+           | otherwise -> style "display" "flex" styles
 
-    InlineFlex ->
-      style "display" "inline-flex"
-      <| webkit "display" "inline-box"
-      <| webkit "display" "inline-flex"
-      <| ms "display" "inline-flexbox" styles
+      InlineFlex ->
+        if | prefix == Vendor.Webkit -> style "display" "-webkit-inline-flex" styles
+           | prefix == Vendor.MS -> style "display" "-ms-infline-flexbox" styles
+           | otherwise -> style "display" "flex" styles
 
-    _ ->
-      style "display" (string d) styles
+      _ ->
+        style "display" (string d) styles

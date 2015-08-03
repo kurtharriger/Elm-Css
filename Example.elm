@@ -36,7 +36,7 @@ centered styles =
 middle : Styles -> Styles
 middle styles =
   display Display.Flex
-  <| Flex.justifyContent Flex.JCCenter styles
+  <| Flex.justifyContent Flex.JCAround styles
 
 
 wrap : Styles -> Styles
