@@ -33,7 +33,7 @@
       "Css.Transform3",
       "Css.Util"
     ],
-    "native-modules": true,
+    "native-modules": false,
     "dependencies": {
         "coreytrampe/elm-vendor": "1.0.2 <= v < 2.0.0",
         "elm-lang/core": "2.1.0 <= v < 3.0.0",
