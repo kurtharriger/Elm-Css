@@ -329,8 +329,9 @@ wrap w styles =
 -}
 flow : Direction -> Wrap -> Styles -> Styles
 flow d w styles =
-  direction d
-  <| wrap w styles
+  styles
+    |> direction d
+    |> wrap w
 
 
 {-| Set the alignment along the main axis.
