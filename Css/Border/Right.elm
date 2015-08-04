@@ -50,6 +50,6 @@ style s styles =
     -- [ ("border-right-width, "5px") ]
     BorderRight.width 5 []
 -}
-width : Int -> Styles -> Styles
+width : number -> Styles -> Styles
 width w styles =
   Css.style "border-right-width" (px w) styles

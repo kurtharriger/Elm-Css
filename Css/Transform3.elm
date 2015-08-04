@@ -42,7 +42,7 @@ transform3 transforms styles =
   -- [ ("transform", "perspective(800)") ]
   transform3 [ perspective 800 ]
 -}
-perspective : Int -> String
+perspective : number -> String
 perspective p =
   "perspective(" ++ (toString p) ++ ")"
 
@@ -55,7 +55,7 @@ parameters given for the X-axis and the Y-axis).
     -- [ ("transform", "translate3d(100px, 100px, 0px)") ]
     transform3 [ translate3 100 100 0 ] []
 -}
-translate3 : Float -> Float -> Float -> String
+translate3 : number -> number -> number -> String
 translate3 x y z =
   "translate3d(" ++ (toString x) ++ "px, " ++
   (toString y) ++ "px, " ++ (toString z) ++ "px)"
@@ -68,7 +68,7 @@ translate3 x y z =
     -- [ ("transform", "rotate3d(1, 1, 1, 45deg)") ]
     transform3 [ rotate3 1 1 1 45 ] []
 -}
-rotate3 : Float -> Float -> Float -> Float -> String
+rotate3 : number -> number -> number -> number -> String
 rotate3 x y z angle =
   "rotate3d(" ++ (toString x) ++ ", " ++
   (toString y) ++ ", " ++ (toString z) ++ ", " ++
@@ -82,7 +82,7 @@ rotate3 x y z angle =
     -- [ ("transform", "scale3d(1, 2, 1)") ]
     transform3 [ scale3 1 2 1 ] []
 -}
-scale3 : Float -> Float -> Float -> String
+scale3 : number -> number -> number -> String
 scale3 x y z =
   "scale3d(" ++ (toString x) ++ ", " ++
   (toString y) ++ ", " ++ (toString z) ++ ")"

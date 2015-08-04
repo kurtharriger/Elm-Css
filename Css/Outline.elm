@@ -143,7 +143,7 @@ style s styles =
     -- [ ("outline-width", "2px") ]
     Outline.width 2 []
 -}
-width : Int -> Styles -> Styles
+width : number -> Styles -> Styles
 width w styles =
   Css.style "outline-width" (px w) styles
 
@@ -160,7 +160,7 @@ width w styles =
     --}
     Outline.all (rgba 255 0 0 1) Outline.Dashed 2 []
 -}
-all : Color -> Style -> Int -> Styles -> Styles
+all : Color -> Style -> number -> Styles -> Styles
 all c s w styles =
   styles
     |> color c

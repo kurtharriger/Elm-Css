@@ -41,9 +41,10 @@ The code you do write is also much simpler to test and refactor, as well as guar
 ### Centering Content
     centered : Styles -> Styles
     centered styles =
-        display Display.Flex
-        <| Flex.justifyContent Flex.JCCenter
-        <| Flex.alignItems Flex.AICenter styles
+      styles
+        |> display Display.Flex
+        |> Flex.justifyContent Flex.JCCenter
+        |> Flex.alignItems Flex.AICenter
 
     view : Html
     view =

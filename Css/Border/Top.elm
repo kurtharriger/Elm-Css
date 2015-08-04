@@ -50,7 +50,7 @@ style s styles =
     -- [ ("border-top-width, "5px") ]
     BorderTop.width 5 []
 -}
-width : Int -> Styles -> Styles
+width : number -> Styles -> Styles
 width w styles =
   Css.style "border-top-width" (px w) styles
 
@@ -64,7 +64,7 @@ width w styles =
     -- [ ("border-top-right-radius, "25px") ]
     BorderTop.rightRadius 25 []
 -}
-rightRadius : Int -> Styles -> Styles
+rightRadius : number -> Styles -> Styles
 rightRadius r styles =
   Css.style "border-top-right-radius" (px r) styles
 
@@ -76,6 +76,6 @@ rightRadius r styles =
     -- [ ("border-top-left-radius, "25px") ]
     BorderTop.leftRadius 25 []
 -}
-leftRadius : Int -> Styles -> Styles
+leftRadius : number -> Styles -> Styles
 leftRadius l styles =
   Css.style "border-top-left-radius" (px l) styles

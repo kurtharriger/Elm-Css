@@ -112,7 +112,7 @@ family f styles =
     -- [ ("font-size", "24px") ]
     Font.size 24 []
 -}
-size : Int -> Styles -> Styles
+size : number -> Styles -> Styles
 size length styles =
   Css.style "font-size" (px length) styles
 

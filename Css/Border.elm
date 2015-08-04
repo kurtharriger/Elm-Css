@@ -77,7 +77,7 @@ style s styles =
     -}
     Border.width 5 []
 -}
-width : Int -> Int -> Int -> Int -> Styles -> Styles
+width : number -> number -> number -> number -> Styles -> Styles
 width t r b l styles =
   styles
     |> BorderBottom.width b
@@ -100,7 +100,7 @@ top left, top right, bottom right, and bottom left.
     -}
     Border.radius 25 25 25 25 []
 -}
-radius : Int -> Int -> Int -> Int -> Styles -> Styles
+radius : number -> number -> number -> number -> Styles -> Styles
 radius tl tr br bl styles =
   styles
     |> BorderTop.leftRadius tl

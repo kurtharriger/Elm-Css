@@ -108,7 +108,7 @@ attachmentString attachment =
 
     Background.pointString 5 10 -- "5px 10px"
 -}
-pointString : Int -> Int -> String
+pointString : number -> number -> String
 pointString x y =
   (px x) ++ (px y)
 
@@ -147,7 +147,7 @@ image path styles =
     Background.image "smiley.gif"
     <| Background.position 50 100 []
 -}
-position : Int -> Int -> Styles -> Styles
+position : number -> number -> Styles -> Styles
 position x y styles =
   Css.style "background-position" (pointString x y) styles
 
@@ -162,7 +162,7 @@ position x y styles =
     Background.image "img_flwr.gif"
     <| Background.size 80 60 []
 -}
-size : Int -> Int -> Styles -> Styles
+size : number -> number -> Styles -> Styles
 size width height styles =
   Css.style "background-size" (pointString width height) styles
 
