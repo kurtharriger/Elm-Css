@@ -11,7 +11,7 @@ You can set the color, style, width, and border radius
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing (Styles, (:::))
+import Css exposing (Styles)
 import Css.Border.Bottom as BorderBottom
 import Css.Border.Left as BorderLeft
 import Css.Border.Right as BorderRight

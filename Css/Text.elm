@@ -16,7 +16,7 @@ module Css.Text where
 import Color exposing (Color, rgba)
 
 -- My Imports
-import Css exposing ((:::), Styles, colorString, px)
+import Css exposing (Styles, colorString, px)
 
 
 {-| Represent the text direction/writing direction.

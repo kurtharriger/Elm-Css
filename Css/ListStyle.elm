@@ -13,7 +13,7 @@ module Css.ListStyle where
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::), url)
+import Css exposing (Styles, url)
 
 
 {-| Represent if the list item markers should appear inside

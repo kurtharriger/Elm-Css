@@ -17,7 +17,7 @@ import Vendor
 
 
 -- My Imports
-import Css exposing (Styles, (:::), style)
+import Css exposing (Styles, style)
 
 {-| Represent the display types an element can have.
 

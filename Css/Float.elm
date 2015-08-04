@@ -14,7 +14,7 @@ allowing other elements to wrap around it.
 -}
 
 -- My Imports
-import Css exposing (Styles, (:::))
+import Css exposing (Styles)
 
 
 {-| Represent the sides of an element where

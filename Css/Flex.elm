@@ -22,7 +22,7 @@ module Css.Flex where
 import Vendor
 
 -- My Imports
-import Css exposing (Styles, (:::), style)
+import Css exposing (Styles, style)
 
 {-| Represent the main-axis, thus defining the direction
 flex items are placed in the flex container.

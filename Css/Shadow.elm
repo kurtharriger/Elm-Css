@@ -16,7 +16,7 @@ module Css.Shadow where
 import Color exposing (Color)
 
 -- My Imports
-import Css exposing (Styles, (:::), colorString, px)
+import Css exposing (Styles, colorString, px)
 
 {-| Represent a text shadow.
 

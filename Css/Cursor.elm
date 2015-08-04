@@ -16,7 +16,7 @@ module Css.Cursor where
 import Vendor
 
 -- My Imports
-import Css exposing (Styles, (:::), url, style)
+import Css exposing (Styles, url, style)
 
 
 {-| Represent the type of cursor to be displayed when pointing on an element.
