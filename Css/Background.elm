@@ -4,7 +4,7 @@ module Css.Background where
 You can set the color, image, position, size, repeat, and attachment.
 
 #Definitions
-@docs Repeat, Attachment, Size, Position
+@docs Repeat, Attachment
 
 #Strings
 @docs repeatString, attachmentString, pointString

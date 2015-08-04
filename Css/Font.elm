@@ -14,13 +14,13 @@ Monospace -
   All monospace characters have the same width.
 
 #Definition
-@docs Style
+@docs Style, Variant
 
 #Strings
 @docs styleString, variantString
 
 #Functions
-@docs family, size, style, variant, weight, all
+@docs family, size, style, variant, weight
 -}
 
 -- My Imports

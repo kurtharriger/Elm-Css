@@ -11,7 +11,7 @@ element's content is too big.
 @docs overflowString, positionString
 
 #Functions
-@docs bottom, left, overflow, position, right, top, zIndex
+@docs clip, bottom, left, overflow, position, right, top, zIndex
 -}
 
 -- Native Imports
