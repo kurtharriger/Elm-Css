@@ -24,17 +24,17 @@ import Html exposing (Html, Attribute, div, code, text, pre, node)
 import Html.Attributes exposing (style, content, name)
 
 
-{-- This type alias allows us to be more expressive. --}
+{-| This type alias allows us to be more expressive. -}
 type alias Styles = List (String, String)
 
 
-{-- This is the one and only infix operator used in this library.
+{-| This is the one and only infix operator used in this library.
 It is only used internally but is also available for you if it is convenient.
 
 It allows you to write tuples slightly differently
 
 [ ("color", "rgba(0, 0, 0, 1)") ] -> [ "color" ::: "rgba(0, 0, 0, 1)" ]
---}
+-}
 (:::) = (,)
 
 
