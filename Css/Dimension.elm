@@ -21,7 +21,7 @@ import Css exposing (Styles, px)
     -- [ ("height", "100px") ]
     Dimension.height 100 []
 -}
-height : Int -> Styles -> Styles
+height : number -> Styles -> Styles
 height h styles =
   Css.style "height" (px h) styles
 
@@ -33,7 +33,7 @@ height h styles =
     -- [ ("max-height", "50px") ]
     Dimension.maxHeight 50 []
 -}
-maxHeight : Int -> Styles -> Styles
+maxHeight : number -> Styles -> Styles
 maxHeight h styles =
   Css.style "max-height" (px h) styles
 
@@ -45,7 +45,7 @@ maxHeight h styles =
     -- [ ("max-width", "50px") ]
     Dimension.maxWidth 50 []
 -}
-maxWidth : Int -> Styles -> Styles
+maxWidth : number -> Styles -> Styles
 maxWidth w styles =
   Css.style "max-width" (px w) styles
 
@@ -57,7 +57,7 @@ maxWidth w styles =
     -- [ ("min-height", "50px") ]
     Dimension.minHeight 50 []
 -}
-minHeight : Int -> Styles -> Styles
+minHeight : number -> Styles -> Styles
 minHeight h styles =
   Css.style "min-height" (px h) styles
 
@@ -69,7 +69,7 @@ minHeight h styles =
     -- [ ("min-width", "50px") ]
     Dimension.minWidth 50 []
 -}
-minWidth : Int -> Styles -> Styles
+minWidth : number -> Styles -> Styles
 minWidth w styles =
   Css.style "min-width" (px w) styles
 
@@ -81,6 +81,6 @@ minWidth w styles =
     -- [ ("width", "50px") ]
     Dimension.width 50 []
 -}
-width : Int -> Styles -> Styles
+width : number -> Styles -> Styles
 width w styles =
   Css.style "width" (px w) styles

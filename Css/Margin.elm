@@ -17,7 +17,7 @@ import Css exposing (Styles, px)
     -- [ ("margin-bottom", "10px")]
     Margin.bottom 10 []
 -}
-bottom : Int -> Styles -> Styles
+bottom : number -> Styles -> Styles
 bottom b styles =
   Css.style "margin-bottom" (px b) styles
 
@@ -29,7 +29,7 @@ bottom b styles =
     -- [ ("margin-left", "10px")]
     Margin.left 10 []
 -}
-left : Int -> Styles -> Styles
+left : number -> Styles -> Styles
 left l styles =
   Css.style "margin-left" (px l) styles
 
@@ -41,7 +41,7 @@ left l styles =
     -- [ ("margin-right", "10px")]
     Margin.right 10 []
 -}
-right : Int -> Styles -> Styles
+right : number -> Styles -> Styles
 right r styles =
   Css.style "margin-right" (px r) styles
 
@@ -53,7 +53,7 @@ right r styles =
     -- [ ("margin-top", "10px")]
     Margin.top 10 []
 -}
-top : Int -> Styles -> Styles
+top : number -> Styles -> Styles
 top t styles =
   Css.style "margin-top" (px t) styles
 
@@ -65,7 +65,7 @@ top t styles =
     -- [ ("margin", "10px 10px 5px 8px")]
     Margin.top 10 10 5 8 []
 -}
-all : Int -> Int -> Int -> Int -> Styles -> Styles
+all : number -> number -> number -> number -> Styles -> Styles
 all t r b l styles =
   styles
     |> top t

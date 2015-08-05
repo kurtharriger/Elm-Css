@@ -53,6 +53,6 @@ style s styles =
     -- [ ("border-left-width, "5px") ]
     BorderLeft.width 5 []
 -}
-width : Int -> Styles -> Styles
+width : number -> Styles -> Styles
 width w styles =
   Css.style "border-left-width" (px w) styles

@@ -121,7 +121,7 @@ all from the top-left corner of the element to be clipped.
     -- [ ("clip", "rect(0px, 60px, 200px, 0px)") ]
     Position.clip 0 60 200 0 []
 -}
-clip : Int -> Int -> Int -> Int -> Styles -> Styles
+clip : number -> number -> number -> number -> Styles -> Styles
 clip t r b l styles =
   let string =
     "rect(" ++ (toString t) ++ "px, " ++ (toString r) ++
@@ -137,7 +137,7 @@ clip t r b l styles =
     -- [ ("bottom", "20px") ]
     Position.bottom 20 []
 -}
-bottom : Int -> Styles -> Styles
+bottom : number -> Styles -> Styles
 bottom b styles =
   Css.style "bottom" (px b) styles
 
@@ -149,7 +149,7 @@ bottom b styles =
     -- [ ("cursor", "crosshair") ]
     Position.cursor Position.CrossHair []
 -}
-left : Int -> Styles -> Styles
+left : number -> Styles -> Styles
 left l styles =
   Css.style "left" (px l) styles
 
@@ -185,7 +185,7 @@ position p styles =
     -- [ ("right", "24px") ]
     Position.right 24 []
 -}
-right : Int -> Styles -> Styles
+right : number -> Styles -> Styles
 right r styles =
   Css.style "right" (px r) styles
 
@@ -197,7 +197,7 @@ right r styles =
     -- [ ("top", "24px") ]
     Position.top 24 []
 -}
-top : Int -> Styles -> Styles
+top : number -> Styles -> Styles
 top t styles =
   Css.style "top" (px t) styles
 

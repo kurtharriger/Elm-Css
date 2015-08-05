@@ -52,7 +52,7 @@ style s styles =
     -- [ ("border-bottom-width, "5px") ]
     BorderBottom.width 5 []
 -}
-width : Int -> Styles -> Styles
+width : number -> Styles -> Styles
 width w styles =
   Css.style "border-bottom-width" (px w) styles
 
@@ -66,7 +66,7 @@ width w styles =
     -- [ ("border-bottom-right-radius, "25px") ]
     BorderBottom.rightRadius 25 []
 -}
-rightRadius : Int -> Styles -> Styles
+rightRadius : number -> Styles -> Styles
 rightRadius r styles =
   Css.style "border-bottom-right-radius" (px r) styles
 
@@ -78,6 +78,6 @@ rightRadius r styles =
     -- [ ("border-bottom-left-radius, "25px") ]
     BorderBottom.leftRadius 25 []
 -}
-leftRadius : Int -> Styles -> Styles
+leftRadius : number -> Styles -> Styles
 leftRadius l styles =
   Css.style "border-bottom-left-radius" (px l) styles

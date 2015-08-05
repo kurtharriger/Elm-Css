@@ -46,7 +46,7 @@ parameters given for the X-axis and the Y-axis).
     -- [ ("transform", "translate(100px, 100px)") ]
     transform2 [ translate2 100 100 ] []
 -}
-translate2 : Float -> Float -> String
+translate2 : number -> number -> String
 translate2 x y =
   "translate(" ++ (toString x) ++ "px, " ++ (toString y) ++ "px)"
 
@@ -59,7 +59,7 @@ to the given degree.
     -- [ ("transform", "rotate(45deg)") ]
     transform2 [ rotate2 45 ] []
 -}
-rotate2 : Float -> String
+rotate2 : number -> String
 rotate2 degrees =
   "rotate(" ++ (toString degrees) ++ "deg)"
 
@@ -72,7 +72,7 @@ to the parameters given for the width and height).
     -- [ ("transform", "scale(0.5, 0.5)") ]
     transform2 [ scale2 0.5 0.5 ] []
 -}
-scale2 : Float -> Float -> String
+scale2 : number -> number -> String
 scale2 x y =
   "scale(" ++ (toString x) ++ "," ++ (toString y) ++ ")"
 
@@ -84,7 +84,7 @@ scale2 x y =
     -- [ ("transform", "skew(20deg, 20deg)") ]
     transform2 [ skew2 20 20 ] []
 -}
-skew2 : Float -> Float -> String
+skew2 : number -> number -> String
 skew2 x y =
   "skew(" ++ (toString x) ++ "deg, " ++ (toString y) ++ "deg)"
 
@@ -97,7 +97,9 @@ which allow you to rotate, scale, move (translate), and skew elements.
 The default matrix has the following form
 
 1 0 0
+
 1 0 0
+
 0 0 1
 
 This means that the element has a scale of 1 in the x and y direction,
@@ -107,7 +109,9 @@ The browser multiplies this by a vector which represents a particular
 point within the local coordinate space.
 
 x
+
 y
+
 1
 
 If you look at the parameters that this function takes you may also notice
@@ -115,14 +119,18 @@ that it doesn't take a rotation. So how do we accomplish this? By placing
 opposite values into the x and y skew you will have a rotation.
 
 1 -0.5 0.5
+
 1   0   0
+
 0   0   1
 
 We only need to specify the first six parameters as the last three will always
 be 0 0 1.
 
 scalex skewx skewy
+
 scaley   x     y
+
   0      0     1
 
     import Css.Transform2 exposing (..)
@@ -130,7 +138,7 @@ scaley   x     y
     -- [ ("transform", "matrix(1, 0, 0, 1, 0, 0)") ]
     transform2 [ matrix2 1 0 0 1 0 0 ] []
 -}
-matrix2 : Float -> Float -> Float -> Float -> Float -> Float -> String
+matrix2 : number -> number -> number -> number -> number -> number -> String
 matrix2 scalex skewx skewy scaley x y =
   "matrix(" ++ (toString scalex) ++ ", " ++ (toString skewx) ++ ", " ++
   (toString skewy) ++ ", " ++ (toString scaley) ++ ", " ++

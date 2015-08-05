@@ -17,7 +17,7 @@ import Css exposing (Styles, px)
     -- [ ("padding-bottom", "20px") ]
     Padding.bottom 20 []
 -}
-bottom : Int -> Styles -> Styles
+bottom : number -> Styles -> Styles
 bottom b styles =
   Css.style "padding-bottom" (px b) styles
 
@@ -29,7 +29,7 @@ bottom b styles =
     -- [ ("padding-left", "20px") ]
     Padding.left 20 []
 -}
-left : Int -> Styles -> Styles
+left : number -> Styles -> Styles
 left l styles =
   Css.style "padding-left" (px l) styles
 
@@ -41,7 +41,7 @@ left l styles =
     -- [ ("padding-right", "20px") ]
     Padding.right 20 []
 -}
-right : Int -> Styles -> Styles
+right : number -> Styles -> Styles
 right r styles =
   Css.style "padding-right" (px r) styles
 
@@ -53,7 +53,7 @@ right r styles =
     -- [ ("padding-top", "20px") ]
     Padding.top 20 []
 -}
-top : Int -> Styles -> Styles
+top : number -> Styles -> Styles
 top t styles =
   Css.style "padding-top" (px t) styles
 
@@ -69,7 +69,7 @@ top t styles =
     --}
     Padding.all 10 20 16 8 []
 -}
-all : Int -> Int -> Int -> Int -> Styles -> Styles
+all : number -> number -> number -> number -> Styles -> Styles
 all t r b l styles =
   styles
     |> top t

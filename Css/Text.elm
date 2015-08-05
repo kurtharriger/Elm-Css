@@ -260,7 +260,7 @@ direction d styles =
     -- [ ("letter-spacing", "2px") ]
     Text.letterSpacing 2 []
 -}
-letterSpacing : Int -> Styles -> Styles
+letterSpacing : number -> Styles -> Styles
 letterSpacing length styles =
   Css.style "letter-spacing" (px length) styles
 
@@ -272,7 +272,7 @@ letterSpacing length styles =
     -- [ ("line-height", "14px") ]
     Text.lineHeight 14 []
 -}
-lineHeight : Int -> Styles -> Styles
+lineHeight : number -> Styles -> Styles
 lineHeight length styles =
   Css.style "line-height" (px length) styles
 
@@ -308,7 +308,7 @@ decoration d styles =
     -- [ ("text-indent", "20px") ]
     Text.indent 20 []
 -}
-indent : Int -> Styles -> Styles
+indent : number -> Styles -> Styles
 indent length styles =
   Css.style "text-indent" (px length) styles
 
@@ -346,6 +346,6 @@ whiteSpace ws styles =
     -- [ ("word-spacing", "2px") ]
     Text.wordSpacing 2 []
 -}
-wordSpacing : Int -> Styles -> Styles
+wordSpacing : number -> Styles -> Styles
 wordSpacing length styles =
   Css.style "word-spacing" (px length) styles

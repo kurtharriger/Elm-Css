@@ -27,7 +27,7 @@ You must also set the angle along with the gradient effect.
     -- [ ("background", "linear-gradient(90deg, rgba(255, 0, 0, 1), rgba(0, 255, 0, 1))") ]
     Gradient.linear 90 [ rgba 255 0 0 1, rgba 0 255 0 1 ] []
 -}
-linear : Int -> List Color -> Styles -> Styles
+linear : number -> List Color -> Styles -> Styles
 linear degrees colors styles =
   let colorStrings = String.join "," (List.map colorString colors)
       degreeString = (toString degrees) ++ "deg, "

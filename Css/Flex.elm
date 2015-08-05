@@ -461,16 +461,17 @@ order o styles =
 
 
 {-| Set the ability for a flex item to grow if necessary.
-It accepts a unit less value that serves as a proportion.
+It accepts a unitless value that serves as a proportion.
 It dictates what amount of the available space inside the
-flex container the item should take up.
+flex container the item should take up. Negative numbers
+are invalid.
 
     import Css.Flex as Flex
 
     -- [ ("flex-grow", "1") ]
     Flex.grow 1 []
 -}
-grow : Int -> Styles -> Styles
+grow : number -> Styles -> Styles
 grow g styles =
   let prefix = Vendor.prefix
       name = "flex-grow"
@@ -481,13 +482,14 @@ grow g styles =
 
 
 {-| Set the ability for a flex item to shrink if necessary.
+Negative numbers are invalid.
 
     import Css.Flex as Flex
 
     -- [ ("flex-shrink", "1") ]
     Flex.shrink 1 []
 -}
-shrink : Int -> Styles -> Styles
+shrink : number -> Styles -> Styles
 shrink s styles =
   let prefix = Vendor.prefix
       name = "flex-shrink"
@@ -504,7 +506,7 @@ shrink s styles =
     -- [ ("flex-basis", "1") ]
     Flex.basis 1 []
 -}
-basis : Int -> Styles -> Styles
+basis : number -> Styles -> Styles
 basis b styles =
   let prefix = Vendor.prefix
       name = "flex-basis"

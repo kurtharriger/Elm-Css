@@ -508,7 +508,7 @@ Elm.Color.make = function (_elm) {
                         ,saturation: s};
               }();}
          _U.badCase($moduleName,
-         "between lines 114 and 121");
+         "between lines 114 and 118");
       }();
    };
    var HSLA = F4(function (a,
@@ -564,7 +564,7 @@ Elm.Color.make = function (_elm) {
                  color._3);
               }();}
          _U.badCase($moduleName,
-         "between lines 105 and 111");
+         "between lines 105 and 108");
       }();
    };
    var grayscale = function (p) {
@@ -800,7 +800,19 @@ Elm.Css.make = function (_elm) {
    $Color = Elm.Color.make(_elm),
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm);
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var style = F3(function (name,
+   value,
+   styles) {
+      return A2($List.append,
+      styles,
+      _L.fromArray([{ctor: "_Tuple2"
+                    ,_0: name
+                    ,_1: value}]));
+   });
    var setViewport = A3($Html.node,
    "meta",
    _L.fromArray([$Html$Attributes.name("viewport")
@@ -842,21 +854,6 @@ Elm.Css.make = function (_elm) {
          A2($Basics._op["++"],b,a)));
       }();
    };
-   _op[":::"] = F2(function (v0,
-   v1) {
-      return {ctor: "_Tuple2"
-             ,_0: v0
-             ,_1: v1};
-   });
-   var style = F3(function (name,
-   value,
-   styles) {
-      return A2($List.append,
-      styles,
-      _L.fromArray([A2(_op[":::"],
-      name,
-      value)]));
-   });
    _elm.Css.values = {_op: _op
                      ,colorString: colorString
                      ,px: px
@@ -880,7 +877,11 @@ Elm.Css.Background.make = function (_elm) {
    $moduleName = "Css.Background",
    $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var image = F2(function (path,
    styles) {
       return A3($Css.style,
@@ -924,7 +925,7 @@ Elm.Css.Background.make = function (_elm) {
             case "Local": return "local";
             case "Scroll": return "scroll";}
          _U.badCase($moduleName,
-         "between lines 94 and 110");
+         "between lines 94 and 102");
       }();
    };
    var attachment = F2(function (a,
@@ -945,7 +946,7 @@ Elm.Css.Background.make = function (_elm) {
             case "RepeatY":
             return "repeat-y";}
          _U.badCase($moduleName,
-         "between lines 72 and 91");
+         "between lines 72 and 83");
       }();
    };
    var repeat = F2(function (r,
@@ -994,7 +995,12 @@ Elm.Css.Dimension.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Dimension",
-   $Css = Elm.Css.make(_elm);
+   $Basics = Elm.Basics.make(_elm),
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var width = F2(function (w,
    styles) {
       return A3($Css.style,
@@ -1061,6 +1067,10 @@ Elm.Css.Display.make = function (_elm) {
    $moduleName = "Css.Display",
    $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $Vendor = Elm.Vendor.make(_elm);
    var string = function (display) {
       return function () {
@@ -1096,7 +1106,7 @@ Elm.Css.Display.make = function (_elm) {
             case "TableRowGroup":
             return "table-row-group";}
          _U.badCase($moduleName,
-         "between lines 109 and 171");
+         "between lines 109 and 162");
       }();
    };
    var display = F2(function (d,
@@ -1212,6 +1222,8 @@ Elm.Css.Example.make = function (_elm) {
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
    $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm),
    $Time = Elm.Time.make(_elm),
    $Window = Elm.Window.make(_elm);
@@ -1230,9 +1242,7 @@ Elm.Css.Example.make = function (_elm) {
       styles);
    };
    var middle = function (styles) {
-      return $Css$Display.display($Css$Display.Flex)(A2($Css$Flex.justifyContent,
-      $Css$Flex.JCAround,
-      styles));
+      return $Css$Display.display($Css$Display.Flex)($Css$Flex.justifyContent($Css$Flex.JCAround)(styles));
    };
    var example = F2(function (_v0,
    _v1) {
@@ -1243,13 +1253,11 @@ Elm.Css.Example.make = function (_elm) {
                  switch (_v0.ctor)
                  {case "_Tuple2":
                     return function () {
-                         var styles = A4($Css$Padding.all,
+                         var styles = $Css$Dimension.width(_v0._0)($Css$Dimension.maxWidth(1000)(A4($Css$Padding.all,
                          20,
                          20,
                          0,
-                         20)($Css$Dimension.maxWidth(1000)(A2($Css$Dimension.width,
-                         _v0._0,
-                         _L.fromArray([]))));
+                         20)(_L.fromArray([]))));
                          return A2($Html.div,
                          _L.fromArray([$Html$Attributes.style(styles)]),
                          _L.fromArray([A2($Html.div,
@@ -1277,37 +1285,35 @@ Elm.Css.Example.make = function (_elm) {
                                       ,_v1._4]));
                       }();}
                  _U.badCase($moduleName,
-                 "between lines 69 and 84");
+                 "between lines 72 and 88");
               }();}
          _U.badCase($moduleName,
-         "between lines 69 and 84");
+         "between lines 72 and 88");
       }();
    });
    var centered = function (styles) {
-      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Display.display,
-      $Css$Display.Flex,
-      styles)));
+      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)($Css$Display.display($Css$Display.Flex)(styles)));
    };
    var header = function () {
-      var styles = $Css$Shadow.box(_L.fromArray([{ctor: "_Tuple6"
-                                                 ,_0: 0
-                                                 ,_1: 0
-                                                 ,_2: 10
-                                                 ,_3: 1
-                                                 ,_4: A4($Color.rgba,0,0,0,1)
-                                                 ,_5: false}]))($Css$Background.color(A4($Color.rgba,
-      26,
-      188,
-      156,
-      1))($Css$Text.color(A4($Color.rgba,
-      255,
-      255,
-      255,
-      1))($Css$Font.size(36)(A4($Css$Padding.all,
+      var styles = A4($Css$Padding.all,
       10,
       0,
       10,
-      0)(centered(_L.fromArray([])))))));
+      0)($Css$Font.size(36)($Css$Text.color(A4($Color.rgba,
+      255,
+      255,
+      255,
+      1))($Css$Background.color(A4($Color.rgba,
+      26,
+      188,
+      156,
+      1))($Css$Shadow.box(_L.fromArray([{ctor: "_Tuple6"
+                                        ,_0: 0
+                                        ,_1: 0
+                                        ,_2: 10
+                                        ,_3: 1
+                                        ,_4: A4($Color.rgba,0,0,0,1)
+                                        ,_5: false}]))(centered(_L.fromArray([])))))));
       return A2($Html.div,
       _L.fromArray([$Html$Attributes.style(styles)]),
       _L.fromArray([$Html.text("Elm Css")]));
@@ -1374,16 +1380,17 @@ Elm.Css.Example.Example1.make = function (_elm) {
    $Css$Util = Elm.Css.Util.make(_elm),
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm);
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var column = function (styles) {
       return A2($Css$Flex.direction,
       $Css$Flex.Column,
       styles);
    };
    var centered = function (styles) {
-      return $Css$Flex.justifyContent($Css$Flex.JCCenter)(A2($Css$Flex.alignItems,
-      $Css$Flex.AICenter,
-      styles));
+      return $Css$Flex.alignItems($Css$Flex.AICenter)($Css$Flex.justifyContent($Css$Flex.JCCenter)(styles));
    };
    var flex = function (styles) {
       return A2($Css$Display.display,
@@ -1392,21 +1399,19 @@ Elm.Css.Example.Example1.make = function (_elm) {
    };
    var square = function (sideLength) {
       return function () {
-         var styles = flex(centered(A4($Css$Margin.all,
-         10,
-         10,
-         10,
-         10)($Css$Text.color(A4($Color.rgba,
-         255,
-         255,
-         255,
-         1))($Css$Background.color(A4($Color.rgba,
+         var styles = $Css$Dimension.height(sideLength)($Css$Dimension.width(sideLength)($Css$Background.color(A4($Color.rgba,
          255,
          0,
          0,
-         1))($Css$Dimension.width(sideLength)(A2($Css$Dimension.height,
-         sideLength,
-         _L.fromArray([]))))))));
+         1))($Css$Text.color(A4($Color.rgba,
+         255,
+         255,
+         255,
+         1))(A4($Css$Margin.all,
+         10,
+         10,
+         10,
+         10)(centered(flex(_L.fromArray([]))))))));
          return A2($Html.div,
          _L.fromArray([$Html$Attributes.style(styles)]),
          _L.fromArray([$Html.text($Basics.toString(sideLength))]));
@@ -1443,7 +1448,7 @@ Elm.Css.Example.Example1.make = function (_elm) {
                 _L.fromArray([])))]),
                 _L.fromArray([$Html.text("Util.toCss \"centered\" <| centered []")]))]))
                 ,$Css$Util.toCss("centered")(centered(_L.fromArray([])))]));
-   var codeString = "\nmain : Html\nmain =\n  div\n  [ style <| centered <| column <| flex [] ]\n  <| List.map square [ 50, 60, 70, 80, 90 ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  Flex.justifyContent Flex.JCCenter\n  <| Flex.alignItems Flex.AICenter styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  Flex.direction Flex.Column styles\n\n\nsquare : Int ->  Html\nsquare sideLength =\n  let styles = flex\n    <| centered\n    <| Margin.all 10 10 10 10\n    <| Text.color (rgba 255 255 255 1)\n    <| Background.color (rgba 255 0 0 1)\n    <| Dimension.width sideLength\n    <| Dimension.height sideLength []\n  in div\n    [ style styles ]\n    [ text <| toString sideLength ]\n";
+   var codeString = "\nmain : Html\nmain =\n  div\n  [ style <| centered <| column <| flex [] ]\n  <| List.map square [ 50, 60, 70, 80, 90 ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> Flex.justifyContent Flex.JCCenter\n    |> Flex.alignItems Flex.AICenter\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  Flex.direction Flex.Column styles\n\n\nsquare : Int ->  Html\nsquare sideLength =\n  let styles =\n    []\n      |> flex\n      |> centered\n      |> Margin.all 10 10 10 10\n      |> Text.color (rgba 255 255 255 1)\n      |> Background.color (rgba 255 0 0 1)\n      |> Dimension.width sideLength\n      |> Dimension.height sideLength\n  in div\n    [ style styles ]\n    [ text <| toString sideLength ]\n";
    var example1 = {ctor: "_Tuple5"
                   ,_0: "Example 1"
                   ,_1: "Elm Css allows you to harness all the power of Css inside of Elm.\n     This allows you to construct all of your styles dynamically.\n     Here is an example of how we can create a reusable square component."
@@ -1487,42 +1492,42 @@ Elm.Css.Example.Example2.make = function (_elm) {
    $Css$Margin = Elm.Css.Margin.make(_elm),
    $Css$Text = Elm.Css.Text.make(_elm),
    $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm);
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var flex = function (styles) {
       return A2($Css$Display.display,
       $Css$Display.Flex,
       styles);
    };
    var column = function (styles) {
-      return flex(A2($Css$Flex.direction,
-      $Css$Flex.Column,
-      styles));
+      return $Css$Flex.direction($Css$Flex.Column)(flex(styles));
    };
    var centered = function (styles) {
-      return flex($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Flex.justifyContent,
-      $Css$Flex.JCCenter,
-      styles)));
+      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(flex(styles)));
    };
    var end = function (styles) {
-      return $Css$Dimension.height(50)($Css$Background.color(A4($Color.rgba,
+      return centered($Css$Background.color(A4($Color.rgba,
       26,
       188,
       156,
-      1))(centered(styles)));
+      1))($Css$Dimension.height(50)(styles)));
    };
    var side = function (styles) {
-      return $Css$Dimension.width(50)($Css$Background.color(A4($Color.rgba,
+      return centered($Css$Background.color(A4($Color.rgba,
       52,
       152,
       219,
-      1))(centered(styles)));
+      1))($Css$Dimension.width(50)(styles)));
    };
    var content = function (styles) {
-      return $Css$Dimension.width(200)($Css$Dimension.height(200)($Css$Background.color(A4($Color.rgba,
+      return centered($Css$Background.color(A4($Color.rgba,
       52,
       73,
       94,
-      1))(centered(styles))));
+      1))($Css$Dimension.height(200)($Css$Dimension.width(200)(styles))));
    };
    var view = A2($Html.div,
    _L.fromArray([$Html$Attributes.style(column(A2($Css$Text.color,
@@ -1554,7 +1559,7 @@ Elm.Css.Example.Example2.make = function (_elm) {
    10,
    _L.fromArray([])))]),
    _L.fromArray([$Html.text("\nHere we use the \"setViewport\" function to enable a meta tag which effectively\nallows us to have a nice design regardless of the size of the screen.\n")]))]));
-   var codeString = "\nmain : Html\nmain =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div [ style <| end [] ] [ text \"header\" ]\n  , div\n    [ style <| flex [] ]\n    [ div [ style <| side [] ] [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div [ style <| side [] ] [ text \"right\" ]\n    ]\n  , div [ style <| end [] ] [ text \"footer\" ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nend : Styles -> Styles\nend styles =\n  Dimension.height 50\n  <| Background.color (rgba 26 188 156 1)\n  <| centered styles\n\n\nside : Styles -> Styles\nside styles =\n  Dimension.width 50\n  <| Background.color (rgba 52 152 219 1)\n  <| centered styles\n\n\ncontent : Styles -> Styles\ncontent styles =\n  Dimension.width 200\n  <| Dimension.height 200\n  <| Background.color (rgba 52 73 94 1)\n  <| centered styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  flex\n  <| Flex.direction Flex.Column styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  flex\n  <| Flex.alignItems Flex.AICenter\n  <| Flex.justifyContent Flex.JCCenter styles\n";
+   var codeString = "\nmain : Html\nmain =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div [ style <| end [] ] [ text \"header\" ]\n  , div\n    [ style <| flex [] ]\n    [ div [ style <| side [] ] [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div [ style <| side [] ] [ text \"right\" ]\n    ]\n  , div [ style <| end [] ] [ text \"footer\" ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nend : Styles -> Styles\nend styles =\n  styles\n    |> Dimension.height 50\n    |> Background.color (rgba 26 188 156 1)\n    |> centered\n\n\nside : Styles -> Styles\nside styles =\n  styles\n    |> Dimension.width 50\n    |> Background.color (rgba 52 152 219 1)\n    |> centered\n\n\ncontent : Styles -> Styles\ncontent styles =\n  styles\n    |> Dimension.width 200\n    |> Dimension.height 200\n    |> Background.color (rgba 52 73 94 1)\n    |> centered\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  styles\n    |> flex\n    |> Flex.direction Flex.Column\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> flex\n    |> Flex.alignItems Flex.AICenter\n    |> Flex.justifyContent Flex.JCCenter\n";
    var example2 = {ctor: "_Tuple5"
                   ,_0: "Example 2"
                   ,_1: "Now that we know how to create styles, and view a snapshot of the generated Css,\n     lets do something a little more practical. Lets see how we can create the\n     \"Holy Grail\" layout with flexbox."
@@ -1600,35 +1605,35 @@ Elm.Css.Example.Example3.make = function (_elm) {
    $Css$Margin = Elm.Css.Margin.make(_elm),
    $Css$Text = Elm.Css.Text.make(_elm),
    $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm);
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var flex = function (styles) {
       return A2($Css$Display.display,
       $Css$Display.Flex,
       styles);
    };
    var column = function (styles) {
-      return flex(A2($Css$Flex.direction,
-      $Css$Flex.Column,
-      styles));
+      return $Css$Flex.direction($Css$Flex.Column)(flex(styles));
    };
    var centered = function (styles) {
-      return flex($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Flex.justifyContent,
-      $Css$Flex.JCCenter,
-      styles)));
+      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(flex(styles)));
    };
    var end = function (styles) {
-      return $Css$Dimension.height(50)($Css$Background.color(A4($Color.rgba,
+      return centered($Css$Background.color(A4($Color.rgba,
       26,
       188,
       156,
-      1))(centered(styles)));
+      1))($Css$Dimension.height(50)(styles)));
    };
    var content = function (styles) {
-      return $Css$Dimension.width(200)($Css$Dimension.height(200)($Css$Background.color(A4($Color.rgba,
+      return centered($Css$Background.color(A4($Color.rgba,
       52,
       73,
       94,
-      1))(centered(styles))));
+      1))($Css$Dimension.height(200)($Css$Dimension.width(200)(styles))));
    };
    var medium = 900;
    var responsiveRow = F2(function (width,
@@ -1646,11 +1651,11 @@ Elm.Css.Example.Example3.make = function (_elm) {
          medium) < 0 ? h : styles;
          var w = _U.cmp(width,
          medium) < 0 ? 200 : 50;
-         return $Css$Dimension.width(w)($Css$Background.color(A4($Color.rgba,
+         return centered($Css$Background.color(A4($Color.rgba,
          52,
          152,
          219,
-         1))(centered(s)));
+         1))($Css$Dimension.width(w)(s)));
       }();
    });
    var view = function (_v0) {
@@ -1687,7 +1692,7 @@ Elm.Css.Example.Example3.make = function (_elm) {
                            _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
                            _L.fromArray([$Html.text("footer")]))]));}
          _U.badCase($moduleName,
-         "between lines 141 and 159");
+         "between lines 146 and 164");
       }();
    };
    var explanation = A2($Html.div,
@@ -1697,7 +1702,7 @@ Elm.Css.Example.Example3.make = function (_elm) {
    10,
    _L.fromArray([])))]),
    _L.fromArray([$Html.text("\nIf we know the size of the screen we can create different styles based on\nthe dimensions, and allow our site to feel natural regardless screen size and\nresolution.\n")]))]));
-   var codeString = "\nmain : Signal Html\nmain =\n  view <~ Window.dimensions\n\n\nview : (Int, Int) -> Html\nview (width, height) =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) []\n  ]\n  [ setViewport\n  , div\n    [ style <| end [] ]\n    [ text \"header\" ]\n  , div\n    [ style <| responsiveRow width [] ]\n    [ div\n      [ style <| side width [] ]\n      [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div\n      [ style <| side width [] ]\n      [ text \"right\" ]\n    ]\n  , div\n    [ style <| end [] ]\n    [ text \"footer\" ]\n  ]\n\n\nmedium : Int\nmedium =\n  900\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nresponsiveRow : Int -> Styles -> Styles\nresponsiveRow width styles =\n  if | width < medium -> column <| flex styles\n     | otherwise -> flex styles\n\n\nend : Styles -> Styles\nend styles =\n  Dimension.height 50\n  <| Background.color (rgba 26 188 156 1)\n  <| centered styles\n\n\nside : Int -> Styles -> Styles\nside width styles =\n  let w = if width < medium then 200 else 50\n      h = Dimension.height 50 styles\n      s = if width < medium then h else styles\n  in\n    Dimension.width w\n    <| Background.color (rgba 52 152 219 1)\n    <| centered s\n\n\ncontent : Styles -> Styles\ncontent styles =\n  Dimension.width 200\n  <| Dimension.height 200\n  <| Background.color (rgba 52 73 94 1)\n  <| centered styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  flex\n  <| Flex.direction Flex.Column styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  flex\n  <| Flex.alignItems Flex.AICenter\n  <| Flex.justifyContent Flex.JCCenter styles\n";
+   var codeString = "\nmain : Signal Html\nmain =\n  view <~ Window.dimensions\n\n\nview : (Int, Int) -> Html\nview (width, height) =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) []\n  ]\n  [ setViewport\n  , div\n    [ style <| end [] ]\n    [ text \"header\" ]\n  , div\n    [ style <| responsiveRow width [] ]\n    [ div\n      [ style <| side width [] ]\n      [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div\n      [ style <| side width [] ]\n      [ text \"right\" ]\n    ]\n  , div\n    [ style <| end [] ]\n    [ text \"footer\" ]\n  ]\n\n\nmedium : Int\nmedium =\n  900\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nresponsiveRow : Int -> Styles -> Styles\nresponsiveRow width styles =\n  if | width < medium -> column <| flex styles\n     | otherwise -> flex styles\n\n\nend : Styles -> Styles\nend styles =\n  styles\n    |> Dimension.height 50\n    |> Background.color (rgba 26 188 156 1)\n    |> centered\n\n\nside : Int -> Styles -> Styles\nside width styles =\n  let w = if width < medium then 200 else 50\n      h = Dimension.height 50 styles\n      s = if width < medium then h else styles\n  in\n    s\n      |> Dimension.width w\n      |> Background.color (rgba 52 152 219 1)\n      |> centered\n\n\ncontent : Styles -> Styles\ncontent styles =\n  styles\n    |> Dimension.width 200\n    |> Dimension.height 200\n    |> Background.color (rgba 52 73 94 1)\n    |> centered\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  styles\n    |> flex\n    |> Flex.direction Flex.Column\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> flex\n    |> Flex.alignItems Flex.AICenter\n    |> Flex.justifyContent Flex.JCCenter\n";
    var example3 = function (_v4) {
       return function () {
          switch (_v4.ctor)
@@ -1756,21 +1761,21 @@ Elm.Css.Example.Example4.make = function (_elm) {
    $Css$Text = Elm.Css.Text.make(_elm),
    $Css$Transform3 = Elm.Css.Transform3.make(_elm),
    $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm);
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var flex = function (styles) {
       return A2($Css$Display.display,
       $Css$Display.Flex,
       styles);
    };
    var column = function (styles) {
-      return flex(A2($Css$Flex.direction,
-      $Css$Flex.Column,
-      styles));
+      return $Css$Flex.direction($Css$Flex.Column)(flex(styles));
    };
    var centered = function (styles) {
-      return flex($Css$Flex.alignItems($Css$Flex.AICenter)(A2($Css$Flex.justifyContent,
-      $Css$Flex.JCCenter,
-      styles)));
+      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(flex(styles)));
    };
    var view = function (time) {
       return A2($Html.div,
@@ -1802,7 +1807,7 @@ Elm.Css.Example.Example4.make = function (_elm) {
    10,
    _L.fromArray([])))]),
    _L.fromArray([$Html.text("\nHere we can see that we can apply a background gradient to the element using\nan angle of application as well as a list of colors to use. We also use the\ntime since the application began, normalized to return the current seconds.\nThis is useful to apply a 3D rotation to the element.\n")]))]));
-   var codeString = "\nmain : Signal Html\nmain =\n  view <~ (foldp getTime 0 (fps 60))\n\n\ngetTime : Float -> Float -> Float\ngetTime delta accumulator =\n  accumulator + (delta / 60)\n\n\nview : Float -> Html\nview time =\n  div\n  [ style\n    <| centered\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div\n    [ style\n      <| centered\n      <| Dimension.width 200\n      <| Dimension.height 200\n      <| transform3 [ rotate3 1 1 1 time ]\n      <| Gradient.linear 45 [ rgba 255 0 0 1, rgba 0 0 255 1 ] []\n    ]\n    [ div [] [ text \"rotating square\" ] ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  flex\n  <| Flex.direction Flex.Column styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  flex\n  <| Flex.alignItems Flex.AICenter\n  <| Flex.justifyContent Flex.JCCenter styles\n";
+   var codeString = "\nmain : Signal Html\nmain =\n  view <~ (foldp getTime 0 (fps 60))\n\n\ngetTime : Float -> Float -> Float\ngetTime delta accumulator =\n  accumulator + (delta / 60)\n\n\nview : Float -> Html\nview time =\n  div\n  [ style\n    <| centered\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div\n    [ style\n      <| centered\n      <| Dimension.width 200\n      <| Dimension.height 200\n      <| transform3 [ rotate3 1 1 1 time ]\n      <| Gradient.linear 45 [ rgba 255 0 0 1, rgba 0 0 255 1 ] []\n    ]\n    [ div [] [ text \"rotating square\" ] ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  styles\n    |> flex\n    |> Flex.direction Flex.Column\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> flex\n    |> Flex.alignItems Flex.AICenter\n    |> Flex.justifyContent Flex.JCCenter\n";
    var example4 = function (time) {
       return {ctor: "_Tuple5"
              ,_0: "Example 4"
@@ -1836,7 +1841,12 @@ Elm.Css.Example.Util.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Example.Util",
-   $Html = Elm.Html.make(_elm);
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    _elm.Css.Example.Util.values = {_op: _op};
    return _elm.Css.Example.Util.values;
 };
@@ -1855,6 +1865,10 @@ Elm.Css.Flex.make = function (_elm) {
    $moduleName = "Css.Flex",
    $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $Vendor = Elm.Vendor.make(_elm);
    var basis = F2(function (b,
    styles) {
@@ -2023,7 +2037,7 @@ Elm.Css.Flex.make = function (_elm) {
                  "flex-start",
                  styles);}
             _U.badCase($moduleName,
-            "between lines 348 and 383");
+            "between lines 349 and 373");
          }();
       }();
    });
@@ -2102,7 +2116,7 @@ Elm.Css.Flex.make = function (_elm) {
                  "row-reverse",
                  styles);}
             _U.badCase($moduleName,
-            "between lines 282 and 310");
+            "between lines 282 and 301");
          }();
       }();
    });
@@ -2121,7 +2135,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "ACStretch":
             return "stretch";}
          _U.badCase($moduleName,
-         "between lines 249 and 276");
+         "between lines 249 and 266");
       }();
    };
    var alignContent = F2(function (a,
@@ -2221,7 +2235,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "AIStretch":
             return "stretch";}
          _U.badCase($moduleName,
-         "between lines 224 and 246");
+         "between lines 224 and 238");
       }();
    };
    var alignItems = F2(function (a,
@@ -2338,7 +2352,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "JCStart":
             return "flex-start";}
          _U.badCase($moduleName,
-         "between lines 199 and 221");
+         "between lines 199 and 213");
       }();
    };
    var wrapString = function (wrap) {
@@ -2349,7 +2363,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "WrapReverse":
             return "wrap-reverse";}
          _U.badCase($moduleName,
-         "between lines 180 and 196");
+         "between lines 180 and 188");
       }();
    };
    var wrap = F2(function (w,
@@ -2378,9 +2392,7 @@ Elm.Css.Flex.make = function (_elm) {
    var flow = F3(function (d,
    w,
    styles) {
-      return direction(d)(A2(wrap,
-      w,
-      styles));
+      return wrap(w)(direction(d)(styles));
    });
    var directionString = function (direction) {
       return function () {
@@ -2392,7 +2404,7 @@ Elm.Css.Flex.make = function (_elm) {
             case "RowReverse":
             return "row-reverse";}
          _U.badCase($moduleName,
-         "between lines 158 and 177");
+         "between lines 158 and 169");
       }();
    };
    var ACAround = {ctor: "ACAround"};
@@ -2474,7 +2486,11 @@ Elm.Css.Font.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Css.Font",
    $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var weight = F2(function (w,
    styles) {
       return function () {
@@ -2510,7 +2526,7 @@ Elm.Css.Font.make = function (_elm) {
             case "SmallCaps":
             return "small-caps";}
          _U.badCase($moduleName,
-         "between lines 88 and 102");
+         "between lines 88 and 93");
       }();
    };
    var variant = F2(function (v,
@@ -2529,7 +2545,7 @@ Elm.Css.Font.make = function (_elm) {
             case "Oblique":
             return "oblique";}
          _U.badCase($moduleName,
-         "between lines 69 and 85");
+         "between lines 69 and 77");
       }();
    };
    var style = F2(function (s,
@@ -2576,6 +2592,9 @@ Elm.Css.Gradient.make = function (_elm) {
    $Color = Elm.Color.make(_elm),
    $Css = Elm.Css.make(_elm),
    $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $String = Elm.String.make(_elm),
    $Vendor = Elm.Vendor.make(_elm);
    var radial = F2(function (colors,
@@ -2681,7 +2700,11 @@ Elm.Css.Margin.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Css.Margin",
    $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var top = F2(function (t,
    styles) {
       return A3($Css.style,
@@ -2715,9 +2738,7 @@ Elm.Css.Margin.make = function (_elm) {
    b,
    l,
    styles) {
-      return top(t)(right(r)(bottom(b)(A2(left,
-      l,
-      styles))));
+      return left(l)(bottom(b)(right(r)(top(t)(styles))));
    });
    _elm.Css.Margin.values = {_op: _op
                             ,bottom: bottom
@@ -2741,7 +2762,11 @@ Elm.Css.Padding.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Css.Padding",
    $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var top = F2(function (t,
    styles) {
       return A3($Css.style,
@@ -2775,9 +2800,7 @@ Elm.Css.Padding.make = function (_elm) {
    b,
    l,
    styles) {
-      return top(t)(right(r)(bottom(b)(A2(left,
-      l,
-      styles))));
+      return left(l)(bottom(b)(right(r)(top(t)(styles))));
    });
    _elm.Css.Padding.values = {_op: _op
                              ,bottom: bottom
@@ -2802,7 +2825,11 @@ Elm.Css.Shadow.make = function (_elm) {
    $moduleName = "Css.Shadow",
    $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var boxString = function (_v0) {
       return function () {
          switch (_v0.ctor)
@@ -2849,7 +2876,7 @@ Elm.Css.Shadow.make = function (_elm) {
               boxShadows._1);
             case "[]": return accumulator;}
          _U.badCase($moduleName,
-         "between lines 123 and 135");
+         "between lines 123 and 126");
       }();
    });
    var box = F2(function (boxShadows,
@@ -2895,7 +2922,7 @@ Elm.Css.Shadow.make = function (_elm) {
               textShadows._1);
             case "[]": return accumulator;}
          _U.badCase($moduleName,
-         "between lines 89 and 101");
+         "between lines 89 and 92");
       }();
    });
    var text = F2(function (textShadows,
@@ -2929,8 +2956,13 @@ Elm.Css.Text.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Css.Text",
+   $Basics = Elm.Basics.make(_elm),
    $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm);
+   $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var wordSpacing = F2(function (length,
    styles) {
       return A3($Css.style,
@@ -2978,7 +3010,7 @@ Elm.Css.Text.make = function (_elm) {
             case "PreWrap":
             return "pre-wrap";}
          _U.badCase($moduleName,
-         "between lines 215 and 238");
+         "between lines 215 and 229");
       }();
    };
    var whiteSpace = F2(function (ws,
@@ -2997,7 +3029,7 @@ Elm.Css.Text.make = function (_elm) {
             case "NormalUnicodeBidi":
             return "normal";}
          _U.badCase($moduleName,
-         "between lines 197 and 213");
+         "between lines 197 and 205");
       }();
    };
    var unicodeBidi = F2(function (u,
@@ -3019,7 +3051,7 @@ Elm.Css.Text.make = function (_elm) {
             case "Underline":
             return "underline";}
          _U.badCase($moduleName,
-         "between lines 175 and 194");
+         "between lines 175 and 186");
       }();
    };
    var decoration = F2(function (d,
@@ -3038,7 +3070,7 @@ Elm.Css.Text.make = function (_elm) {
             case "Left": return "left";
             case "Right": return "right";}
          _U.badCase($moduleName,
-         "between lines 153 and 172");
+         "between lines 153 and 164");
       }();
    };
    var align = F2(function (a,
@@ -3054,7 +3086,7 @@ Elm.Css.Text.make = function (_elm) {
          {case "Ltr": return "ltr";
             case "Rtl": return "Rtl";}
          _U.badCase($moduleName,
-         "between lines 137 and 150");
+         "between lines 137 and 142");
       }();
    };
    var direction = F2(function (d,
@@ -3133,6 +3165,10 @@ Elm.Css.Transform3.make = function (_elm) {
    $moduleName = "Css.Transform3",
    $Basics = Elm.Basics.make(_elm),
    $Css = Elm.Css.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $String = Elm.String.make(_elm),
    $Vendor = Elm.Vendor.make(_elm);
    var scale3 = F3(function (x,
@@ -3249,6 +3285,9 @@ Elm.Css.Util.make = function (_elm) {
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
    $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $String = Elm.String.make(_elm);
    var codeStyle = function (styles) {
       return A4($Css$Margin.all,
@@ -3389,7 +3428,7 @@ Elm.Dict.make = function (_elm) {
               A3(foldr,f,acc,t._4)),
               t._3);}
          _U.badCase($moduleName,
-         "between lines 417 and 425");
+         "between lines 417 and 421");
       }();
    });
    var keys = function (dict) {
@@ -3445,7 +3484,7 @@ Elm.Dict.make = function (_elm) {
               A3(foldl,f,acc,dict._3)),
               dict._4);}
          _U.badCase($moduleName,
-         "between lines 406 and 414");
+         "between lines 406 and 410");
       }();
    });
    var isBBlack = function (dict) {
@@ -3469,7 +3508,7 @@ Elm.Dict.make = function (_elm) {
             case "Remove": return "Remove";
             case "Same": return "Same";}
          _U.badCase($moduleName,
-         "between lines 182 and 188");
+         "between lines 182 and 185");
       }();
    };
    var Same = {ctor: "Same"};
@@ -3499,10 +3538,10 @@ Elm.Dict.make = function (_elm) {
                       targetKey,
                       dict._3);}
                  _U.badCase($moduleName,
-                 "between lines 129 and 135");
+                 "between lines 129 and 132");
               }();}
          _U.badCase($moduleName,
-         "between lines 124 and 135");
+         "between lines 124 and 132");
       }();
    });
    var member = F2(function (key,
@@ -3513,7 +3552,7 @@ Elm.Dict.make = function (_elm) {
          {case "Just": return true;
             case "Nothing": return false;}
          _U.badCase($moduleName,
-         "between lines 138 and 146");
+         "between lines 138 and 140");
       }();
    });
    var max = function (dict) {
@@ -3529,7 +3568,7 @@ Elm.Dict.make = function (_elm) {
                         ,_1: dict._2};}
               return max(dict._4);}
          _U.badCase($moduleName,
-         "between lines 100 and 121");
+         "between lines 100 and 108");
       }();
    };
    var min = function (dict) {
@@ -3601,7 +3640,7 @@ Elm.Dict.make = function (_elm) {
               A2(map,f,dict._3),
               A2(map,f,dict._4));}
          _U.badCase($moduleName,
-         "between lines 394 and 403");
+         "between lines 394 and 399");
       }();
    });
    var showNColor = function (c) {
@@ -3650,7 +3689,7 @@ Elm.Dict.make = function (_elm) {
                    dict._4);}
               break;}
          _U.badCase($moduleName,
-         "between lines 154 and 166");
+         "between lines 154 and 162");
       }();
    };
    var blackish = function (t) {
@@ -3734,7 +3773,7 @@ Elm.Dict.make = function (_elm) {
               t._3,
               t._4);}
          _U.badCase($moduleName,
-         "between lines 386 and 391");
+         "between lines 386 and 388");
       }();
    };
    var balance_node = function (t) {
@@ -4201,7 +4240,7 @@ Elm.Dict.make = function (_elm) {
                case "Same":
                return updatedDict;}
             _U.badCase($moduleName,
-            "between lines 222 and 228");
+            "between lines 222 and 225");
          }();
       }();
    });
@@ -4462,7 +4501,7 @@ Elm.Graphics.Collage.make = function (_elm) {
                               ,["y",f.y + _v0._1]],
               f);}
          _U.badCase($moduleName,
-         "on line 226, column 7 to 35");
+         "on line 226, column 3 to 37");
       }();
    });
    var form = function (f) {
@@ -5145,7 +5184,7 @@ Elm.Graphics.Element.make = function (_elm) {
                  maxOrZero(ws),
                  $List.sum(hs));}
             _U.badCase($moduleName,
-            "between lines 362 and 373");
+            "between lines 362 and 368");
          }();
       }();
    });
@@ -5244,7 +5283,12 @@ Elm.Html.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Html",
+   $Basics = Elm.Basics.make(_elm),
    $Graphics$Element = Elm.Graphics.Element.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $VirtualDom = Elm.VirtualDom.make(_elm);
    var fromElement = $VirtualDom.fromElement;
    var toElement = $VirtualDom.toElement;
@@ -5472,6 +5516,9 @@ Elm.Html.Attributes.make = function (_elm) {
    $Html = Elm.Html.make(_elm),
    $Json$Encode = Elm.Json.Encode.make(_elm),
    $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $String = Elm.String.make(_elm),
    $VirtualDom = Elm.VirtualDom.make(_elm);
    var attribute = $VirtualDom.attribute;
@@ -6348,7 +6395,7 @@ Elm.List.make = function (_elm) {
             case "[]":
             return $Maybe.Nothing;}
          _U.badCase($moduleName,
-         "between lines 87 and 95");
+         "between lines 87 and 89");
       }();
    };
    var head = function (list) {
@@ -6359,7 +6406,7 @@ Elm.List.make = function (_elm) {
             case "[]":
             return $Maybe.Nothing;}
          _U.badCase($moduleName,
-         "between lines 75 and 84");
+         "between lines 75 and 77");
       }();
    };
    _op["::"] = $Native$List.cons;
@@ -6398,7 +6445,7 @@ Elm.List.make = function (_elm) {
             return A2(_op["::"],_v15._0,xs);
             case "Nothing": return xs;}
          _U.badCase($moduleName,
-         "between lines 179 and 186");
+         "between lines 179 and 181");
       }();
    });
    var filterMap = F2(function (f,
@@ -6545,7 +6592,7 @@ Elm.List.make = function (_elm) {
             case "[]":
             return _L.fromArray([]);}
          _U.badCase($moduleName,
-         "between lines 350 and 361");
+         "between lines 350 and 356");
       }();
    });
    _elm.List.values = {_op: _op
@@ -6605,7 +6652,7 @@ Elm.Maybe.make = function (_elm) {
             case "Nothing":
             return $default;}
          _U.badCase($moduleName,
-         "between lines 45 and 56");
+         "between lines 45 and 47");
       }();
    });
    var Nothing = {ctor: "Nothing"};
@@ -6618,11 +6665,11 @@ Elm.Maybe.make = function (_elm) {
                     case "Nothing":
                     return oneOf(maybes._1);}
                  _U.badCase($moduleName,
-                 "between lines 64 and 73");
+                 "between lines 64 and 66");
               }();
             case "[]": return Nothing;}
          _U.badCase($moduleName,
-         "between lines 59 and 73");
+         "between lines 59 and 66");
       }();
    };
    var andThen = F2(function (maybeValue,
@@ -6647,7 +6694,7 @@ Elm.Maybe.make = function (_elm) {
             return Just(f(maybe._0));
             case "Nothing": return Nothing;}
          _U.badCase($moduleName,
-         "between lines 76 and 107");
+         "between lines 76 and 78");
       }();
    });
    _elm.Maybe.values = {_op: _op
@@ -14967,7 +15014,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return $Maybe.Just(result._0);}
          _U.badCase($moduleName,
-         "between lines 164 and 177");
+         "between lines 164 and 166");
       }();
    };
    var Err = function (a) {
@@ -14982,7 +15029,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return callback(result._0);}
          _U.badCase($moduleName,
-         "between lines 126 and 145");
+         "between lines 126 and 128");
       }();
    });
    var Ok = function (a) {
@@ -14996,7 +15043,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return Ok(func(ra._0));}
          _U.badCase($moduleName,
-         "between lines 41 and 52");
+         "between lines 41 and 43");
       }();
    });
    var map2 = F3(function (func,
@@ -15150,7 +15197,7 @@ Elm.Result.make = function (_elm) {
                  return Err(_v39._4._0);}
               break;}
          _U.badCase($moduleName,
-         "between lines 82 and 123");
+         "between lines 82 and 88");
       }();
    });
    var formatError = F2(function (f,
@@ -15162,7 +15209,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return Ok(result._0);}
          _U.badCase($moduleName,
-         "between lines 148 and 161");
+         "between lines 148 and 150");
       }();
    });
    var fromMaybe = F2(function (err,
@@ -15293,7 +15340,7 @@ Elm.Signal.make = function (_elm) {
             case "[]":
             return $Debug.crash("mergeMany was given an empty list!");}
          _U.badCase($moduleName,
-         "between lines 177 and 197");
+         "between lines 177 and 182");
       }();
    };
    var foldp = $Native$Signal.foldp;
@@ -15902,7 +15949,12 @@ Elm.Vendor.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Vendor",
-   $Native$Vendor = Elm.Native.Vendor.make(_elm);
+   $Basics = Elm.Basics.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Native$Vendor = Elm.Native.Vendor.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var O = {ctor: "O"};
    var MS = {ctor: "MS"};
    var Webkit = {ctor: "Webkit"};
@@ -15936,9 +15988,13 @@ Elm.VirtualDom.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "VirtualDom",
+   $Basics = Elm.Basics.make(_elm),
    $Graphics$Element = Elm.Graphics.Element.make(_elm),
    $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
    $Native$VirtualDom = Elm.Native.VirtualDom.make(_elm),
+   $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
    var lazy3 = $Native$VirtualDom.lazy3;
    var lazy2 = $Native$VirtualDom.lazy2;

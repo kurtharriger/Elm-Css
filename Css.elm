@@ -47,7 +47,7 @@ colorString color =
 
     px 5 -- "5px"
 -}
-px : Int -> String
+px : number -> String
 px num =
   (toString num) ++ "px "
 
