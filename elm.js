@@ -863,2087 +863,6 @@ Elm.Css.make = function (_elm) {
    return _elm.Css.values;
 };
 Elm.Css = Elm.Css || {};
-Elm.Css.Background = Elm.Css.Background || {};
-Elm.Css.Background.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Background = _elm.Css.Background || {};
-   if (_elm.Css.Background.values)
-   return _elm.Css.Background.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Background",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var image = F2(function (path,
-   styles) {
-      return A3($Css.style,
-      "background-image",
-      $Css.url(path),
-      styles);
-   });
-   var color = F2(function (c,
-   styles) {
-      return A3($Css.style,
-      "background-color",
-      $Css.colorString(c),
-      styles);
-   });
-   var pointString = F2(function (x,
-   y) {
-      return A2($Basics._op["++"],
-      $Css.px(x),
-      $Css.px(y));
-   });
-   var position = F3(function (x,
-   y,
-   styles) {
-      return A3($Css.style,
-      "background-position",
-      A2(pointString,x,y),
-      styles);
-   });
-   var size = F3(function (width,
-   height,
-   styles) {
-      return A3($Css.style,
-      "background-size",
-      A2(pointString,width,height),
-      styles);
-   });
-   var attachmentString = function (attachment) {
-      return function () {
-         switch (attachment.ctor)
-         {case "Fixed": return "fixed";
-            case "Local": return "local";
-            case "Scroll": return "scroll";}
-         _U.badCase($moduleName,
-         "between lines 94 and 102");
-      }();
-   };
-   var attachment = F2(function (a,
-   styles) {
-      return A3($Css.style,
-      "background-attachment",
-      attachmentString(a),
-      styles);
-   });
-   var repeatString = function (repeat) {
-      return function () {
-         switch (repeat.ctor)
-         {case "NoRepeat":
-            return "no-repeat";
-            case "Repeat": return "repeat";
-            case "RepeatX":
-            return "repeat-x";
-            case "RepeatY":
-            return "repeat-y";}
-         _U.badCase($moduleName,
-         "between lines 72 and 83");
-      }();
-   };
-   var repeat = F2(function (r,
-   styles) {
-      return A3($Css.style,
-      "background-repeat",
-      repeatString(r),
-      styles);
-   });
-   var Local = {ctor: "Local"};
-   var Fixed = {ctor: "Fixed"};
-   var Scroll = {ctor: "Scroll"};
-   var NoRepeat = {ctor: "NoRepeat"};
-   var RepeatY = {ctor: "RepeatY"};
-   var RepeatX = {ctor: "RepeatX"};
-   var Repeat = {ctor: "Repeat"};
-   _elm.Css.Background.values = {_op: _op
-                                ,Repeat: Repeat
-                                ,RepeatX: RepeatX
-                                ,RepeatY: RepeatY
-                                ,NoRepeat: NoRepeat
-                                ,Scroll: Scroll
-                                ,Fixed: Fixed
-                                ,Local: Local
-                                ,repeatString: repeatString
-                                ,attachmentString: attachmentString
-                                ,pointString: pointString
-                                ,color: color
-                                ,image: image
-                                ,position: position
-                                ,size: size
-                                ,repeat: repeat
-                                ,attachment: attachment};
-   return _elm.Css.Background.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Dimension = Elm.Css.Dimension || {};
-Elm.Css.Dimension.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Dimension = _elm.Css.Dimension || {};
-   if (_elm.Css.Dimension.values)
-   return _elm.Css.Dimension.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Dimension",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var width = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "width",
-      $Css.px(w),
-      styles);
-   });
-   var minWidth = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "min-width",
-      $Css.px(w),
-      styles);
-   });
-   var minHeight = F2(function (h,
-   styles) {
-      return A3($Css.style,
-      "min-height",
-      $Css.px(h),
-      styles);
-   });
-   var maxWidth = F2(function (w,
-   styles) {
-      return A3($Css.style,
-      "max-width",
-      $Css.px(w),
-      styles);
-   });
-   var maxHeight = F2(function (h,
-   styles) {
-      return A3($Css.style,
-      "max-height",
-      $Css.px(h),
-      styles);
-   });
-   var height = F2(function (h,
-   styles) {
-      return A3($Css.style,
-      "height",
-      $Css.px(h),
-      styles);
-   });
-   _elm.Css.Dimension.values = {_op: _op
-                               ,height: height
-                               ,maxHeight: maxHeight
-                               ,maxWidth: maxWidth
-                               ,minHeight: minHeight
-                               ,minWidth: minWidth
-                               ,width: width};
-   return _elm.Css.Dimension.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Display = Elm.Css.Display || {};
-Elm.Css.Display.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Display = _elm.Css.Display || {};
-   if (_elm.Css.Display.values)
-   return _elm.Css.Display.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Display",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $Vendor = Elm.Vendor.make(_elm);
-   var string = function (display) {
-      return function () {
-         switch (display.ctor)
-         {case "Block": return "block";
-            case "Flex": return "flex";
-            case "Inline": return "inline";
-            case "InlineBlock":
-            return "inline-block";
-            case "InlineFlex":
-            return "inline-flex";
-            case "InlineTable":
-            return "inline-table";
-            case "ListItem":
-            return "list-item";
-            case "None": return "none";
-            case "RunIn": return "run-in";
-            case "Table": return "table";
-            case "TableCaption":
-            return "table-caption";
-            case "TableCell":
-            return "table-cell";
-            case "TableColumn":
-            return "table-column";
-            case "TableColumnGroup":
-            return "table-column-group";
-            case "TableFooterGroup":
-            return "table-footer-group";
-            case "TableHeaderGroup":
-            return "table-header-group";
-            case "TableRow":
-            return "table-row";
-            case "TableRowGroup":
-            return "table-row-group";}
-         _U.badCase($moduleName,
-         "between lines 109 and 162");
-      }();
-   };
-   var display = F2(function (d,
-   styles) {
-      return function () {
-         var prefix = $Vendor.prefix;
-         return function () {
-            switch (d.ctor)
-            {case "Flex":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 "display",
-                 "-webkit-flex",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "display",
-                 "-ms-flexbox",
-                 styles) : A3($Css.style,
-                 "display",
-                 "flex",
-                 styles);
-               case "InlineFlex":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 "display",
-                 "-webkit-inline-flex",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "display",
-                 "-ms-infline-flexbox",
-                 styles) : A3($Css.style,
-                 "display",
-                 "flex",
-                 styles);}
-            return A3($Css.style,
-            "display",
-            string(d),
-            styles);
-         }();
-      }();
-   });
-   var None = {ctor: "None"};
-   var TableRow = {ctor: "TableRow"};
-   var TableColumn = {ctor: "TableColumn"};
-   var TableCell = {ctor: "TableCell"};
-   var TableRowGroup = {ctor: "TableRowGroup"};
-   var TableFooterGroup = {ctor: "TableFooterGroup"};
-   var TableHeaderGroup = {ctor: "TableHeaderGroup"};
-   var TableColumnGroup = {ctor: "TableColumnGroup"};
-   var TableCaption = {ctor: "TableCaption"};
-   var Table = {ctor: "Table"};
-   var RunIn = {ctor: "RunIn"};
-   var ListItem = {ctor: "ListItem"};
-   var InlineTable = {ctor: "InlineTable"};
-   var InlineFlex = {ctor: "InlineFlex"};
-   var InlineBlock = {ctor: "InlineBlock"};
-   var Flex = {ctor: "Flex"};
-   var Block = {ctor: "Block"};
-   var Inline = {ctor: "Inline"};
-   _elm.Css.Display.values = {_op: _op
-                             ,Inline: Inline
-                             ,Block: Block
-                             ,Flex: Flex
-                             ,InlineBlock: InlineBlock
-                             ,InlineFlex: InlineFlex
-                             ,InlineTable: InlineTable
-                             ,ListItem: ListItem
-                             ,RunIn: RunIn
-                             ,Table: Table
-                             ,TableCaption: TableCaption
-                             ,TableColumnGroup: TableColumnGroup
-                             ,TableHeaderGroup: TableHeaderGroup
-                             ,TableFooterGroup: TableFooterGroup
-                             ,TableRowGroup: TableRowGroup
-                             ,TableCell: TableCell
-                             ,TableColumn: TableColumn
-                             ,TableRow: TableRow
-                             ,None: None
-                             ,string: string
-                             ,display: display};
-   return _elm.Css.Display.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Example = Elm.Css.Example || {};
-Elm.Css.Example.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Example = _elm.Css.Example || {};
-   if (_elm.Css.Example.values)
-   return _elm.Css.Example.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Example",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Background = Elm.Css.Background.make(_elm),
-   $Css$Dimension = Elm.Css.Dimension.make(_elm),
-   $Css$Display = Elm.Css.Display.make(_elm),
-   $Css$Example$Example1 = Elm.Css.Example.Example1.make(_elm),
-   $Css$Example$Example2 = Elm.Css.Example.Example2.make(_elm),
-   $Css$Example$Example3 = Elm.Css.Example.Example3.make(_elm),
-   $Css$Example$Example4 = Elm.Css.Example.Example4.make(_elm),
-   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
-   $Css$Flex = Elm.Css.Flex.make(_elm),
-   $Css$Font = Elm.Css.Font.make(_elm),
-   $Css$Margin = Elm.Css.Margin.make(_elm),
-   $Css$Padding = Elm.Css.Padding.make(_elm),
-   $Css$Shadow = Elm.Css.Shadow.make(_elm),
-   $Css$Text = Elm.Css.Text.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $Time = Elm.Time.make(_elm),
-   $Window = Elm.Window.make(_elm);
-   var getTime = F2(function (delta,
-   accumulator) {
-      return accumulator + delta / 60;
-   });
-   var column = function (styles) {
-      return A2($Css$Flex.direction,
-      $Css$Flex.Column,
-      styles);
-   };
-   var wrap = function (styles) {
-      return A2($Css$Flex.wrap,
-      $Css$Flex.Wrap,
-      styles);
-   };
-   var middle = function (styles) {
-      return $Css$Display.display($Css$Display.Flex)($Css$Flex.justifyContent($Css$Flex.JCAround)(styles));
-   };
-   var example = F2(function (_v0,
-   _v1) {
-      return function () {
-         switch (_v1.ctor)
-         {case "_Tuple5":
-            return function () {
-                 switch (_v0.ctor)
-                 {case "_Tuple2":
-                    return function () {
-                         var styles = $Css$Dimension.width(_v0._0)($Css$Dimension.maxWidth(1000)(A4($Css$Padding.all,
-                         20,
-                         20,
-                         0,
-                         20)(_L.fromArray([]))));
-                         return A2($Html.div,
-                         _L.fromArray([$Html$Attributes.style(styles)]),
-                         _L.fromArray([A2($Html.div,
-                                      _L.fromArray([$Html$Attributes.style(A2($Css$Font.size,
-                                      24,
-                                      _L.fromArray([])))]),
-                                      _L.fromArray([$Html.text(_v1._0)]))
-                                      ,A2($Html.div,
-                                      _L.fromArray([$Html$Attributes.style(A2($Css$Margin.top,
-                                      10,
-                                      _L.fromArray([])))]),
-                                      _L.fromArray([$Html.text(_v1._1)]))
-                                      ,A2($Html.div,
-                                      _L.fromArray([$Html$Attributes.style(middle(wrap(A2($Css$Margin.bottom,
-                                      10,
-                                      _L.fromArray([])))))]),
-                                      _L.fromArray([A2($Html.pre,
-                                                   _L.fromArray([]),
-                                                   _L.fromArray([A2($Html.code,
-                                                   _L.fromArray([$Html$Attributes.style(A2($Css$Font.size,
-                                                   18,
-                                                   _L.fromArray([])))]),
-                                                   _L.fromArray([$Html.text(_v1._2)]))]))
-                                                   ,_v1._3]))
-                                      ,_v1._4]));
-                      }();}
-                 _U.badCase($moduleName,
-                 "between lines 72 and 88");
-              }();}
-         _U.badCase($moduleName,
-         "between lines 72 and 88");
-      }();
-   });
-   var centered = function (styles) {
-      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)($Css$Display.display($Css$Display.Flex)(styles)));
-   };
-   var header = function () {
-      var styles = A4($Css$Padding.all,
-      10,
-      0,
-      10,
-      0)($Css$Font.size(36)($Css$Text.color(A4($Color.rgba,
-      255,
-      255,
-      255,
-      1))($Css$Background.color(A4($Color.rgba,
-      26,
-      188,
-      156,
-      1))($Css$Shadow.box(_L.fromArray([{ctor: "_Tuple6"
-                                        ,_0: 0
-                                        ,_1: 0
-                                        ,_2: 10
-                                        ,_3: 1
-                                        ,_4: A4($Color.rgba,0,0,0,1)
-                                        ,_5: false}]))(centered(_L.fromArray([])))))));
-      return A2($Html.div,
-      _L.fromArray([$Html$Attributes.style(styles)]),
-      _L.fromArray([$Html.text("Elm Css")]));
-   }();
-   var view = F2(function (dimensions,
-   time) {
-      return A2($Html.div,
-      _L.fromArray([]),
-      _L.fromArray([$Css.setViewport
-                   ,header
-                   ,$Html.div(_L.fromArray([$Html$Attributes.style(column(centered(_L.fromArray([]))))]))(A2($List.map,
-                   example(dimensions),
-                   _L.fromArray([$Css$Example$Example1.example1
-                                ,$Css$Example$Example2.example2
-                                ,$Css$Example$Example3.example3(dimensions)
-                                ,$Css$Example$Example4.example4(time)])))]));
-   });
-   var main = A2($Signal._op["~"],
-   A2($Signal._op["<~"],
-   view,
-   $Window.dimensions),
-   A3($Signal.foldp,
-   getTime,
-   0,
-   $Time.fps(60)));
-   _elm.Css.Example.values = {_op: _op
-                             ,centered: centered
-                             ,middle: middle
-                             ,wrap: wrap
-                             ,column: column
-                             ,header: header
-                             ,example: example
-                             ,view: view
-                             ,getTime: getTime
-                             ,main: main};
-   return _elm.Css.Example.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Example = Elm.Css.Example || {};
-Elm.Css.Example.Example1 = Elm.Css.Example.Example1 || {};
-Elm.Css.Example.Example1.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Example = _elm.Css.Example || {};
-   _elm.Css.Example.Example1 = _elm.Css.Example.Example1 || {};
-   if (_elm.Css.Example.Example1.values)
-   return _elm.Css.Example.Example1.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Example.Example1",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Background = Elm.Css.Background.make(_elm),
-   $Css$Dimension = Elm.Css.Dimension.make(_elm),
-   $Css$Display = Elm.Css.Display.make(_elm),
-   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
-   $Css$Flex = Elm.Css.Flex.make(_elm),
-   $Css$Font = Elm.Css.Font.make(_elm),
-   $Css$Margin = Elm.Css.Margin.make(_elm),
-   $Css$Text = Elm.Css.Text.make(_elm),
-   $Css$Util = Elm.Css.Util.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var column = function (styles) {
-      return A2($Css$Flex.direction,
-      $Css$Flex.Column,
-      styles);
-   };
-   var centered = function (styles) {
-      return $Css$Flex.alignItems($Css$Flex.AICenter)($Css$Flex.justifyContent($Css$Flex.JCCenter)(styles));
-   };
-   var flex = function (styles) {
-      return A2($Css$Display.display,
-      $Css$Display.Flex,
-      styles);
-   };
-   var square = function (sideLength) {
-      return function () {
-         var styles = $Css$Dimension.height(sideLength)($Css$Dimension.width(sideLength)($Css$Background.color(A4($Color.rgba,
-         255,
-         0,
-         0,
-         1))($Css$Text.color(A4($Color.rgba,
-         255,
-         255,
-         255,
-         1))(A4($Css$Margin.all,
-         10,
-         10,
-         10,
-         10)(centered(flex(_L.fromArray([]))))))));
-         return A2($Html.div,
-         _L.fromArray([$Html$Attributes.style(styles)]),
-         _L.fromArray([$Html.text($Basics.toString(sideLength))]));
-      }();
-   };
-   var view = $Html.div(_L.fromArray([$Html$Attributes.style(centered(column(flex(_L.fromArray([])))))]))(A2($List.map,
-   square,
-   _L.fromArray([50
-                ,60
-                ,70
-                ,80
-                ,90])));
-   var explanation = A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(column(A2($Css$Margin.bottom,
-   50,
-   _L.fromArray([]))))]),
-   _L.fromArray([A2($Html.div,
-                _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
-                10,
-                _L.fromArray([])))]),
-                _L.fromArray([$Html.text("\nThe first thing to notice is how every style is composable. We can mix and match\nstyles as a result of this allowing us to have progressively more and more\ncomplex styles. Using this approach also allows for type checking in our Css.\nThis means it becomes a lot simpler to diagnose the cause of problems, and allows\nthe compiler to help you not make mistakes.\n")]))
-                ,A2($Html.div,
-                _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
-                10,
-                _L.fromArray([])))]),
-                _L.fromArray([$Html.text("\nWhen creating simple styles it may be easy to see how it transforms into Css,\nbut as the scale of your projects increases this may no longer be the case.\nFor debugging purposes it may be desirable to see a representation of what\nthe Css looks like for a given style. It takes in the class name as well as a\nlist of styles.\n")]))
-                ,A2($Html.div,
-                _L.fromArray([$Html$Attributes.style(flex(centered(A2($Css$Font.size,
-                18,
-                _L.fromArray([])))))]),
-                _L.fromArray([A2($Html.code,
-                _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
-                10,
-                _L.fromArray([])))]),
-                _L.fromArray([$Html.text("Util.toCss \"centered\" <| centered []")]))]))
-                ,$Css$Util.toCss("centered")(centered(_L.fromArray([])))]));
-   var codeString = "\nmain : Html\nmain =\n  div\n  [ style <| centered <| column <| flex [] ]\n  <| List.map square [ 50, 60, 70, 80, 90 ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> Flex.justifyContent Flex.JCCenter\n    |> Flex.alignItems Flex.AICenter\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  Flex.direction Flex.Column styles\n\n\nsquare : Int ->  Html\nsquare sideLength =\n  let styles =\n    []\n      |> flex\n      |> centered\n      |> Margin.all 10 10 10 10\n      |> Text.color (rgba 255 255 255 1)\n      |> Background.color (rgba 255 0 0 1)\n      |> Dimension.width sideLength\n      |> Dimension.height sideLength\n  in div\n    [ style styles ]\n    [ text <| toString sideLength ]\n";
-   var example1 = {ctor: "_Tuple5"
-                  ,_0: "Example 1"
-                  ,_1: "Elm Css allows you to harness all the power of Css inside of Elm.\n     This allows you to construct all of your styles dynamically.\n     Here is an example of how we can create a reusable square component."
-                  ,_2: codeString
-                  ,_3: view
-                  ,_4: explanation};
-   _elm.Css.Example.Example1.values = {_op: _op
-                                      ,example1: example1
-                                      ,codeString: codeString
-                                      ,explanation: explanation
-                                      ,view: view
-                                      ,flex: flex
-                                      ,centered: centered
-                                      ,column: column
-                                      ,square: square};
-   return _elm.Css.Example.Example1.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Example = Elm.Css.Example || {};
-Elm.Css.Example.Example2 = Elm.Css.Example.Example2 || {};
-Elm.Css.Example.Example2.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Example = _elm.Css.Example || {};
-   _elm.Css.Example.Example2 = _elm.Css.Example.Example2 || {};
-   if (_elm.Css.Example.Example2.values)
-   return _elm.Css.Example.Example2.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Example.Example2",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Background = Elm.Css.Background.make(_elm),
-   $Css$Dimension = Elm.Css.Dimension.make(_elm),
-   $Css$Display = Elm.Css.Display.make(_elm),
-   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
-   $Css$Flex = Elm.Css.Flex.make(_elm),
-   $Css$Margin = Elm.Css.Margin.make(_elm),
-   $Css$Text = Elm.Css.Text.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var flex = function (styles) {
-      return A2($Css$Display.display,
-      $Css$Display.Flex,
-      styles);
-   };
-   var column = function (styles) {
-      return $Css$Flex.direction($Css$Flex.Column)(flex(styles));
-   };
-   var centered = function (styles) {
-      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(flex(styles)));
-   };
-   var end = function (styles) {
-      return centered($Css$Background.color(A4($Color.rgba,
-      26,
-      188,
-      156,
-      1))($Css$Dimension.height(50)(styles)));
-   };
-   var side = function (styles) {
-      return centered($Css$Background.color(A4($Color.rgba,
-      52,
-      152,
-      219,
-      1))($Css$Dimension.width(50)(styles)));
-   };
-   var content = function (styles) {
-      return centered($Css$Background.color(A4($Color.rgba,
-      52,
-      73,
-      94,
-      1))($Css$Dimension.height(200)($Css$Dimension.width(200)(styles))));
-   };
-   var view = A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(column(A2($Css$Text.color,
-   A4($Color.rgba,255,255,255,1),
-   _L.fromArray([]))))]),
-   _L.fromArray([A2($Html.div,
-                _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
-                _L.fromArray([$Html.text("header")]))
-                ,A2($Html.div,
-                _L.fromArray([$Html$Attributes.style(flex(_L.fromArray([])))]),
-                _L.fromArray([A2($Html.div,
-                             _L.fromArray([$Html$Attributes.style(side(_L.fromArray([])))]),
-                             _L.fromArray([$Html.text("left")]))
-                             ,A2($Html.div,
-                             _L.fromArray([$Html$Attributes.style(content(_L.fromArray([])))]),
-                             _L.fromArray([A2($Html.div,
-                             _L.fromArray([]),
-                             _L.fromArray([$Html.text("content")]))]))
-                             ,A2($Html.div,
-                             _L.fromArray([$Html$Attributes.style(side(_L.fromArray([])))]),
-                             _L.fromArray([$Html.text("right")]))]))
-                ,A2($Html.div,
-                _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
-                _L.fromArray([$Html.text("footer")]))]));
-   var explanation = A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(column(_L.fromArray([])))]),
-   _L.fromArray([A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
-   10,
-   _L.fromArray([])))]),
-   _L.fromArray([$Html.text("\nHere we use the \"setViewport\" function to enable a meta tag which effectively\nallows us to have a nice design regardless of the size of the screen.\n")]))]));
-   var codeString = "\nmain : Html\nmain =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div [ style <| end [] ] [ text \"header\" ]\n  , div\n    [ style <| flex [] ]\n    [ div [ style <| side [] ] [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div [ style <| side [] ] [ text \"right\" ]\n    ]\n  , div [ style <| end [] ] [ text \"footer\" ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nend : Styles -> Styles\nend styles =\n  styles\n    |> Dimension.height 50\n    |> Background.color (rgba 26 188 156 1)\n    |> centered\n\n\nside : Styles -> Styles\nside styles =\n  styles\n    |> Dimension.width 50\n    |> Background.color (rgba 52 152 219 1)\n    |> centered\n\n\ncontent : Styles -> Styles\ncontent styles =\n  styles\n    |> Dimension.width 200\n    |> Dimension.height 200\n    |> Background.color (rgba 52 73 94 1)\n    |> centered\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  styles\n    |> flex\n    |> Flex.direction Flex.Column\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> flex\n    |> Flex.alignItems Flex.AICenter\n    |> Flex.justifyContent Flex.JCCenter\n";
-   var example2 = {ctor: "_Tuple5"
-                  ,_0: "Example 2"
-                  ,_1: "Now that we know how to create styles, and view a snapshot of the generated Css,\n     lets do something a little more practical. Lets see how we can create the\n     \"Holy Grail\" layout with flexbox."
-                  ,_2: codeString
-                  ,_3: view
-                  ,_4: explanation};
-   _elm.Css.Example.Example2.values = {_op: _op
-                                      ,example2: example2
-                                      ,codeString: codeString
-                                      ,explanation: explanation
-                                      ,view: view
-                                      ,flex: flex
-                                      ,end: end
-                                      ,side: side
-                                      ,content: content
-                                      ,column: column
-                                      ,centered: centered};
-   return _elm.Css.Example.Example2.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Example = Elm.Css.Example || {};
-Elm.Css.Example.Example3 = Elm.Css.Example.Example3 || {};
-Elm.Css.Example.Example3.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Example = _elm.Css.Example || {};
-   _elm.Css.Example.Example3 = _elm.Css.Example.Example3 || {};
-   if (_elm.Css.Example.Example3.values)
-   return _elm.Css.Example.Example3.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Example.Example3",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Background = Elm.Css.Background.make(_elm),
-   $Css$Dimension = Elm.Css.Dimension.make(_elm),
-   $Css$Display = Elm.Css.Display.make(_elm),
-   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
-   $Css$Flex = Elm.Css.Flex.make(_elm),
-   $Css$Margin = Elm.Css.Margin.make(_elm),
-   $Css$Text = Elm.Css.Text.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var flex = function (styles) {
-      return A2($Css$Display.display,
-      $Css$Display.Flex,
-      styles);
-   };
-   var column = function (styles) {
-      return $Css$Flex.direction($Css$Flex.Column)(flex(styles));
-   };
-   var centered = function (styles) {
-      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(flex(styles)));
-   };
-   var end = function (styles) {
-      return centered($Css$Background.color(A4($Color.rgba,
-      26,
-      188,
-      156,
-      1))($Css$Dimension.height(50)(styles)));
-   };
-   var content = function (styles) {
-      return centered($Css$Background.color(A4($Color.rgba,
-      52,
-      73,
-      94,
-      1))($Css$Dimension.height(200)($Css$Dimension.width(200)(styles))));
-   };
-   var medium = 900;
-   var responsiveRow = F2(function (width,
-   styles) {
-      return _U.cmp(width,
-      medium) < 0 ? column(flex(styles)) : flex(styles);
-   });
-   var side = F2(function (width,
-   styles) {
-      return function () {
-         var h = A2($Css$Dimension.height,
-         50,
-         styles);
-         var s = _U.cmp(width,
-         medium) < 0 ? h : styles;
-         var w = _U.cmp(width,
-         medium) < 0 ? 200 : 50;
-         return centered($Css$Background.color(A4($Color.rgba,
-         52,
-         152,
-         219,
-         1))($Css$Dimension.width(w)(s)));
-      }();
-   });
-   var view = function (_v0) {
-      return function () {
-         switch (_v0.ctor)
-         {case "_Tuple2":
-            return A2($Html.div,
-              _L.fromArray([$Html$Attributes.style(column(A2($Css$Text.color,
-              A4($Color.rgba,255,255,255,1),
-              _L.fromArray([]))))]),
-              _L.fromArray([A2($Html.div,
-                           _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
-                           _L.fromArray([$Html.text("header")]))
-                           ,A2($Html.div,
-                           _L.fromArray([$Html$Attributes.style(A2(responsiveRow,
-                           _v0._0,
-                           _L.fromArray([])))]),
-                           _L.fromArray([A2($Html.div,
-                                        _L.fromArray([$Html$Attributes.style(A2(side,
-                                        _v0._0,
-                                        _L.fromArray([])))]),
-                                        _L.fromArray([$Html.text("left")]))
-                                        ,A2($Html.div,
-                                        _L.fromArray([$Html$Attributes.style(content(_L.fromArray([])))]),
-                                        _L.fromArray([A2($Html.div,
-                                        _L.fromArray([]),
-                                        _L.fromArray([$Html.text("content")]))]))
-                                        ,A2($Html.div,
-                                        _L.fromArray([$Html$Attributes.style(A2(side,
-                                        _v0._0,
-                                        _L.fromArray([])))]),
-                                        _L.fromArray([$Html.text("right")]))]))
-                           ,A2($Html.div,
-                           _L.fromArray([$Html$Attributes.style(end(_L.fromArray([])))]),
-                           _L.fromArray([$Html.text("footer")]))]));}
-         _U.badCase($moduleName,
-         "between lines 146 and 164");
-      }();
-   };
-   var explanation = A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(column(_L.fromArray([])))]),
-   _L.fromArray([A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
-   10,
-   _L.fromArray([])))]),
-   _L.fromArray([$Html.text("\nIf we know the size of the screen we can create different styles based on\nthe dimensions, and allow our site to feel natural regardless screen size and\nresolution.\n")]))]));
-   var codeString = "\nmain : Signal Html\nmain =\n  view <~ Window.dimensions\n\n\nview : (Int, Int) -> Html\nview (width, height) =\n  div\n  [ style\n    <| column\n    <| Text.color (rgba 255 255 255 1 ) []\n  ]\n  [ setViewport\n  , div\n    [ style <| end [] ]\n    [ text \"header\" ]\n  , div\n    [ style <| responsiveRow width [] ]\n    [ div\n      [ style <| side width [] ]\n      [ text \"left\" ]\n    , div\n      [ style <| content [] ]\n      [ div [] [ text \"content\" ] ]\n    , div\n      [ style <| side width [] ]\n      [ text \"right\" ]\n    ]\n  , div\n    [ style <| end [] ]\n    [ text \"footer\" ]\n  ]\n\n\nmedium : Int\nmedium =\n  900\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\nresponsiveRow : Int -> Styles -> Styles\nresponsiveRow width styles =\n  if | width < medium -> column <| flex styles\n     | otherwise -> flex styles\n\n\nend : Styles -> Styles\nend styles =\n  styles\n    |> Dimension.height 50\n    |> Background.color (rgba 26 188 156 1)\n    |> centered\n\n\nside : Int -> Styles -> Styles\nside width styles =\n  let w = if width < medium then 200 else 50\n      h = Dimension.height 50 styles\n      s = if width < medium then h else styles\n  in\n    s\n      |> Dimension.width w\n      |> Background.color (rgba 52 152 219 1)\n      |> centered\n\n\ncontent : Styles -> Styles\ncontent styles =\n  styles\n    |> Dimension.width 200\n    |> Dimension.height 200\n    |> Background.color (rgba 52 73 94 1)\n    |> centered\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  styles\n    |> flex\n    |> Flex.direction Flex.Column\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> flex\n    |> Flex.alignItems Flex.AICenter\n    |> Flex.justifyContent Flex.JCCenter\n";
-   var example3 = function (_v4) {
-      return function () {
-         switch (_v4.ctor)
-         {case "_Tuple2":
-            return {ctor: "_Tuple5"
-                   ,_0: "Example 3"
-                   ,_1: "Lets expand on our idea and tackle another common challenge we face.\n     Mobile is a huge industry and we must take this into consideration.\n     Allowing our websites to react seamlessly to the size of the device the user\n     is viewing is a difficult problem that is made a little easier with signals."
-                   ,_2: codeString
-                   ,_3: view({ctor: "_Tuple2"
-                             ,_0: _v4._0
-                             ,_1: _v4._1})
-                   ,_4: explanation};}
-         _U.badCase($moduleName,
-         "between lines 22 and 29");
-      }();
-   };
-   _elm.Css.Example.Example3.values = {_op: _op
-                                      ,example3: example3
-                                      ,codeString: codeString
-                                      ,explanation: explanation
-                                      ,view: view
-                                      ,medium: medium
-                                      ,flex: flex
-                                      ,responsiveRow: responsiveRow
-                                      ,end: end
-                                      ,side: side
-                                      ,content: content
-                                      ,column: column
-                                      ,centered: centered};
-   return _elm.Css.Example.Example3.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Example = Elm.Css.Example || {};
-Elm.Css.Example.Example4 = Elm.Css.Example.Example4 || {};
-Elm.Css.Example.Example4.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Example = _elm.Css.Example || {};
-   _elm.Css.Example.Example4 = _elm.Css.Example.Example4 || {};
-   if (_elm.Css.Example.Example4.values)
-   return _elm.Css.Example.Example4.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Example.Example4",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Dimension = Elm.Css.Dimension.make(_elm),
-   $Css$Display = Elm.Css.Display.make(_elm),
-   $Css$Example$Util = Elm.Css.Example.Util.make(_elm),
-   $Css$Flex = Elm.Css.Flex.make(_elm),
-   $Css$Gradient = Elm.Css.Gradient.make(_elm),
-   $Css$Margin = Elm.Css.Margin.make(_elm),
-   $Css$Text = Elm.Css.Text.make(_elm),
-   $Css$Transform3 = Elm.Css.Transform3.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var flex = function (styles) {
-      return A2($Css$Display.display,
-      $Css$Display.Flex,
-      styles);
-   };
-   var column = function (styles) {
-      return $Css$Flex.direction($Css$Flex.Column)(flex(styles));
-   };
-   var centered = function (styles) {
-      return $Css$Flex.justifyContent($Css$Flex.JCCenter)($Css$Flex.alignItems($Css$Flex.AICenter)(flex(styles)));
-   };
-   var view = function (time) {
-      return A2($Html.div,
-      _L.fromArray([$Html$Attributes.style(centered(A2($Css$Text.color,
-      A4($Color.rgba,255,255,255,1),
-      _L.fromArray([]))))]),
-      _L.fromArray([A2($Html.div,
-      _L.fromArray([$Html$Attributes.style(centered($Css$Dimension.width(200)($Css$Dimension.height(200)($Css$Transform3.transform3(_L.fromArray([A4($Css$Transform3.rotate3,
-      1,
-      1,
-      1,
-      time)]))(A3($Css$Gradient.linear,
-      45,
-      _L.fromArray([A4($Color.rgba,
-                   255,
-                   0,
-                   0,
-                   1)
-                   ,A4($Color.rgba,0,0,255,1)]),
-      _L.fromArray([])))))))]),
-      _L.fromArray([A2($Html.div,
-      _L.fromArray([]),
-      _L.fromArray([$Html.text("rotating square")]))]))]));
-   };
-   var explanation = A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(column(_L.fromArray([])))]),
-   _L.fromArray([A2($Html.div,
-   _L.fromArray([$Html$Attributes.style(A2($Css$Margin.bottom,
-   10,
-   _L.fromArray([])))]),
-   _L.fromArray([$Html.text("\nHere we can see that we can apply a background gradient to the element using\nan angle of application as well as a list of colors to use. We also use the\ntime since the application began, normalized to return the current seconds.\nThis is useful to apply a 3D rotation to the element.\n")]))]));
-   var codeString = "\nmain : Signal Html\nmain =\n  view <~ (foldp getTime 0 (fps 60))\n\n\ngetTime : Float -> Float -> Float\ngetTime delta accumulator =\n  accumulator + (delta / 60)\n\n\nview : Float -> Html\nview time =\n  div\n  [ style\n    <| centered\n    <| Text.color (rgba 255 255 255 1 ) [] ]\n  [ setViewport\n  , div\n    [ style\n      <| centered\n      <| Dimension.width 200\n      <| Dimension.height 200\n      <| transform3 [ rotate3 1 1 1 time ]\n      <| Gradient.linear 45 [ rgba 255 0 0 1, rgba 0 0 255 1 ] []\n    ]\n    [ div [] [ text \"rotating square\" ] ]\n  ]\n\n\nflex : Styles -> Styles\nflex styles =\n  display Display.Flex styles\n\n\ncolumn : Styles -> Styles\ncolumn styles =\n  styles\n    |> flex\n    |> Flex.direction Flex.Column\n\n\ncentered : Styles -> Styles\ncentered styles =\n  styles\n    |> flex\n    |> Flex.alignItems Flex.AICenter\n    |> Flex.justifyContent Flex.JCCenter\n";
-   var example4 = function (time) {
-      return {ctor: "_Tuple5"
-             ,_0: "Example 4"
-             ,_1: "CSS3 also allows you to do basic animation as well as transformations.\n     While the transformations are very useful, I think that animations should\n     be handled using signals, by knowing how much time has passed since a given\n     point in the past."
-             ,_2: codeString
-             ,_3: view(time)
-             ,_4: explanation};
-   };
-   _elm.Css.Example.Example4.values = {_op: _op
-                                      ,example4: example4
-                                      ,codeString: codeString
-                                      ,explanation: explanation
-                                      ,view: view
-                                      ,flex: flex
-                                      ,column: column
-                                      ,centered: centered};
-   return _elm.Css.Example.Example4.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Example = Elm.Css.Example || {};
-Elm.Css.Example.Util = Elm.Css.Example.Util || {};
-Elm.Css.Example.Util.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Example = _elm.Css.Example || {};
-   _elm.Css.Example.Util = _elm.Css.Example.Util || {};
-   if (_elm.Css.Example.Util.values)
-   return _elm.Css.Example.Util.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Example.Util",
-   $Basics = Elm.Basics.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   _elm.Css.Example.Util.values = {_op: _op};
-   return _elm.Css.Example.Util.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Flex = Elm.Css.Flex || {};
-Elm.Css.Flex.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Flex = _elm.Css.Flex || {};
-   if (_elm.Css.Flex.values)
-   return _elm.Css.Flex.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Flex",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $Vendor = Elm.Vendor.make(_elm);
-   var basis = F2(function (b,
-   styles) {
-      return function () {
-         var name = "flex-basis";
-         var prefix = $Vendor.prefix;
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         A2($Basics._op["++"],
-         "-webkit-",
-         name),
-         $Basics.toString(b),
-         styles) : _U.eq(prefix,
-         $Vendor.MS) ? A3($Css.style,
-         "-ms-flex-preferred-size",
-         $Basics.toString(b),
-         styles) : A3($Css.style,
-         name,
-         $Basics.toString(b),
-         styles);
-      }();
-   });
-   var shrink = F2(function (s,
-   styles) {
-      return function () {
-         var name = "flex-shrink";
-         var prefix = $Vendor.prefix;
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         A2($Basics._op["++"],
-         "-webkit-",
-         name),
-         $Basics.toString(s),
-         styles) : _U.eq(prefix,
-         $Vendor.MS) ? A3($Css.style,
-         "-ms-flex-negative",
-         $Basics.toString(s),
-         styles) : A3($Css.style,
-         name,
-         $Basics.toString(s),
-         styles);
-      }();
-   });
-   var grow = F2(function (g,
-   styles) {
-      return function () {
-         var name = "flex-grow";
-         var prefix = $Vendor.prefix;
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         A2($Basics._op["++"],
-         "-webkit-",
-         name),
-         $Basics.toString(g),
-         styles) : _U.eq(prefix,
-         $Vendor.MS) ? A3($Css.style,
-         "-ms-flex-positive",
-         $Basics.toString(g),
-         styles) : A3($Css.style,
-         name,
-         $Basics.toString(g),
-         styles);
-      }();
-   });
-   var order = F2(function (o,
-   styles) {
-      return function () {
-         var name = "order";
-         var prefix = $Vendor.prefix;
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         A2($Basics._op["++"],
-         "-webkit-",
-         name),
-         $Basics.toString(o),
-         styles) : _U.eq(prefix,
-         $Vendor.MS) ? A3($Css.style,
-         "-ms-flex-order",
-         $Basics.toString(o),
-         styles) : A3($Css.style,
-         name,
-         $Basics.toString(o),
-         styles);
-      }();
-   });
-   var justifyContent = F2(function (j,
-   styles) {
-      return function () {
-         var name = "justify-content";
-         var prefix = $Vendor.prefix;
-         return function () {
-            switch (j.ctor)
-            {case "JCAround":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "space-around",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-pack",
-                 "distribute",
-                 styles) : A3($Css.style,
-                 name,
-                 "space-around",
-                 styles);
-               case "JCBetween":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "space-between",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-pack",
-                 "justify",
-                 styles) : A3($Css.style,
-                 name,
-                 "space-between",
-                 styles);
-               case "JCCenter":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "center",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-pack",
-                 "center",
-                 styles) : A3($Css.style,
-                 name,
-                 "center",
-                 styles);
-               case "JCEnd":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "flex-end",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-pack",
-                 "end",
-                 styles) : A3($Css.style,
-                 name,
-                 "flex-end",
-                 styles);
-               case "JCStart":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "flex-start",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-pack",
-                 "start",
-                 styles) : A3($Css.style,
-                 name,
-                 "flex-start",
-                 styles);}
-            _U.badCase($moduleName,
-            "between lines 349 and 373");
-         }();
-      }();
-   });
-   var direction = F2(function (d,
-   styles) {
-      return function () {
-         var name = "flex-direction";
-         var prefix = $Vendor.prefix;
-         return function () {
-            switch (d.ctor)
-            {case "Column":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "column",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-ms-",
-                 name),
-                 "column",
-                 styles) : A3($Css.style,
-                 name,
-                 "column",
-                 styles);
-               case "ColumnReverse":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "column-reverse",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-ms-",
-                 name),
-                 "column-reverse",
-                 styles) : A3($Css.style,
-                 name,
-                 "column-reverse",
-                 styles);
-               case "Row": return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "row",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-ms-",
-                 name),
-                 "row",
-                 styles) : A3($Css.style,
-                 name,
-                 "row",
-                 styles);
-               case "RowReverse":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "row-reverse",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-ms-",
-                 name),
-                 "row-reverse",
-                 styles) : A3($Css.style,
-                 name,
-                 "row-reverse",
-                 styles);}
-            _U.badCase($moduleName,
-            "between lines 282 and 301");
-         }();
-      }();
-   });
-   var alignContentString = function (align) {
-      return function () {
-         switch (align.ctor)
-         {case "ACAround":
-            return "space-around";
-            case "ACBetween":
-            return "space-between";
-            case "ACCenter":
-            return "center";
-            case "ACEnd": return "flex-end";
-            case "ACStart":
-            return "flex-start";
-            case "ACStretch":
-            return "stretch";}
-         _U.badCase($moduleName,
-         "between lines 249 and 266");
-      }();
-   };
-   var alignContent = F2(function (a,
-   styles) {
-      return function () {
-         var name = "align-content";
-         var prefix = $Vendor.prefix;
-         return function () {
-            switch (a.ctor)
-            {case "ACAround":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "space-around",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-line-pack",
-                 "distribute",
-                 styles) : A3($Css.style,
-                 name,
-                 "space-around",
-                 styles);
-               case "ACBetween":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "space-between",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-line-pack",
-                 "justify",
-                 styles) : A3($Css.style,
-                 name,
-                 "space-between",
-                 styles);
-               case "ACEnd":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "flex-end",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-line-pack",
-                 "end",
-                 styles) : A3($Css.style,
-                 name,
-                 "flex-end",
-                 styles);
-               case "ACStart":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "flex-start",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-line-pack",
-                 "start",
-                 styles) : A3($Css.style,
-                 name,
-                 "flex-start",
-                 styles);}
-            return _U.eq(prefix,
-            $Vendor.Webkit) ? A3($Css.style,
-            A2($Basics._op["++"],
-            "-webkit-",
-            name),
-            alignContentString(a),
-            styles) : _U.eq(prefix,
-            $Vendor.MS) ? A3($Css.style,
-            "-ms-flex-line-pack",
-            alignContentString(a),
-            styles) : A3($Css.style,
-            name,
-            alignContentString(a),
-            styles);
-         }();
-      }();
-   });
-   var alignItemString = function (align) {
-      return function () {
-         switch (align.ctor)
-         {case "AIBaseline":
-            return "baseline";
-            case "AICenter":
-            return "center";
-            case "AIEnd": return "flex-end";
-            case "AIStart":
-            return "flex-start";
-            case "AIStretch":
-            return "stretch";}
-         _U.badCase($moduleName,
-         "between lines 224 and 238");
-      }();
-   };
-   var alignItems = F2(function (a,
-   styles) {
-      return function () {
-         var prefix = $Vendor.prefix;
-         return function () {
-            switch (a.ctor)
-            {case "AIEnd":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 "-webkit-align-items",
-                 "flex-end",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-align",
-                 "end",
-                 styles) : A3($Css.style,
-                 "align-items",
-                 alignItemString(a),
-                 styles);
-               case "AIStart":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 "-webkit-align-items",
-                 "flex-start",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-align",
-                 "start",
-                 styles) : A3($Css.style,
-                 "align-items",
-                 alignItemString(a),
-                 styles);}
-            return _U.eq(prefix,
-            $Vendor.Webkit) ? A3($Css.style,
-            "-webkit-align-items",
-            alignItemString(a),
-            styles) : _U.eq(prefix,
-            $Vendor.MS) ? A3($Css.style,
-            "-ms-flex-align",
-            alignItemString(a),
-            styles) : A3($Css.style,
-            "align-items",
-            alignItemString(a),
-            styles);
-         }();
-      }();
-   });
-   var alignSelf = F2(function (a,
-   styles) {
-      return function () {
-         var name = "align-self";
-         var prefix = $Vendor.prefix;
-         return function () {
-            switch (a.ctor)
-            {case "AIEnd":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "flex-end",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-item-align",
-                 "end",
-                 styles) : A3($Css.style,
-                 name,
-                 "flex-end",
-                 styles);
-               case "AIStart":
-               return _U.eq(prefix,
-                 $Vendor.Webkit) ? A3($Css.style,
-                 A2($Basics._op["++"],
-                 "-webkit-",
-                 name),
-                 "flex-start",
-                 styles) : _U.eq(prefix,
-                 $Vendor.MS) ? A3($Css.style,
-                 "-ms-flex-item-align",
-                 "start",
-                 styles) : A3($Css.style,
-                 name,
-                 "flex-start",
-                 styles);}
-            return _U.eq(prefix,
-            $Vendor.Webkit) ? A3($Css.style,
-            A2($Basics._op["++"],
-            "-webkit-",
-            name),
-            alignItemString(a),
-            styles) : _U.eq(prefix,
-            $Vendor.MS) ? A3($Css.style,
-            "-ms-flex-item-align",
-            alignItemString(a),
-            styles) : A3($Css.style,
-            name,
-            alignItemString(a),
-            styles);
-         }();
-      }();
-   });
-   var justifyContentString = function (justify) {
-      return function () {
-         switch (justify.ctor)
-         {case "JCAround":
-            return "space-around";
-            case "JCBetween":
-            return "space-between";
-            case "JCCenter":
-            return "center";
-            case "JCEnd": return "flex-end";
-            case "JCStart":
-            return "flex-start";}
-         _U.badCase($moduleName,
-         "between lines 199 and 213");
-      }();
-   };
-   var wrapString = function (wrap) {
-      return function () {
-         switch (wrap.ctor)
-         {case "NoWrap": return "nowrap";
-            case "Wrap": return "wrap";
-            case "WrapReverse":
-            return "wrap-reverse";}
-         _U.badCase($moduleName,
-         "between lines 180 and 188");
-      }();
-   };
-   var wrap = F2(function (w,
-   styles) {
-      return function () {
-         var name = "flex-wrap";
-         var prefix = $Vendor.prefix;
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         A2($Basics._op["++"],
-         "-webkit-",
-         name),
-         wrapString(w),
-         styles) : _U.eq(prefix,
-         $Vendor.MS) ? A3($Css.style,
-         A2($Basics._op["++"],
-         "-ms-",
-         name),
-         wrapString(w),
-         styles) : A3($Css.style,
-         name,
-         wrapString(w),
-         styles);
-      }();
-   });
-   var flow = F3(function (d,
-   w,
-   styles) {
-      return wrap(w)(direction(d)(styles));
-   });
-   var directionString = function (direction) {
-      return function () {
-         switch (direction.ctor)
-         {case "Column": return "column";
-            case "ColumnReverse":
-            return "column-reverse";
-            case "Row": return "row";
-            case "RowReverse":
-            return "row-reverse";}
-         _U.badCase($moduleName,
-         "between lines 158 and 169");
-      }();
-   };
-   var ACAround = {ctor: "ACAround"};
-   var ACBetween = {ctor: "ACBetween"};
-   var ACStretch = {ctor: "ACStretch"};
-   var ACCenter = {ctor: "ACCenter"};
-   var ACEnd = {ctor: "ACEnd"};
-   var ACStart = {ctor: "ACStart"};
-   var AIBaseline = {ctor: "AIBaseline"};
-   var AIStretch = {ctor: "AIStretch"};
-   var AICenter = {ctor: "AICenter"};
-   var AIEnd = {ctor: "AIEnd"};
-   var AIStart = {ctor: "AIStart"};
-   var JCAround = {ctor: "JCAround"};
-   var JCBetween = {ctor: "JCBetween"};
-   var JCCenter = {ctor: "JCCenter"};
-   var JCEnd = {ctor: "JCEnd"};
-   var JCStart = {ctor: "JCStart"};
-   var WrapReverse = {ctor: "WrapReverse"};
-   var Wrap = {ctor: "Wrap"};
-   var NoWrap = {ctor: "NoWrap"};
-   var ColumnReverse = {ctor: "ColumnReverse"};
-   var Column = {ctor: "Column"};
-   var RowReverse = {ctor: "RowReverse"};
-   var Row = {ctor: "Row"};
-   _elm.Css.Flex.values = {_op: _op
-                          ,Row: Row
-                          ,RowReverse: RowReverse
-                          ,Column: Column
-                          ,ColumnReverse: ColumnReverse
-                          ,NoWrap: NoWrap
-                          ,Wrap: Wrap
-                          ,WrapReverse: WrapReverse
-                          ,JCStart: JCStart
-                          ,JCEnd: JCEnd
-                          ,JCCenter: JCCenter
-                          ,JCBetween: JCBetween
-                          ,JCAround: JCAround
-                          ,AIStart: AIStart
-                          ,AIEnd: AIEnd
-                          ,AICenter: AICenter
-                          ,AIStretch: AIStretch
-                          ,AIBaseline: AIBaseline
-                          ,ACStart: ACStart
-                          ,ACEnd: ACEnd
-                          ,ACCenter: ACCenter
-                          ,ACStretch: ACStretch
-                          ,ACBetween: ACBetween
-                          ,ACAround: ACAround
-                          ,directionString: directionString
-                          ,wrapString: wrapString
-                          ,justifyContentString: justifyContentString
-                          ,alignItemString: alignItemString
-                          ,alignContentString: alignContentString
-                          ,direction: direction
-                          ,wrap: wrap
-                          ,flow: flow
-                          ,justifyContent: justifyContent
-                          ,alignItems: alignItems
-                          ,alignContent: alignContent
-                          ,order: order
-                          ,grow: grow
-                          ,shrink: shrink
-                          ,basis: basis
-                          ,alignSelf: alignSelf};
-   return _elm.Css.Flex.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Font = Elm.Css.Font || {};
-Elm.Css.Font.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Font = _elm.Css.Font || {};
-   if (_elm.Css.Font.values)
-   return _elm.Css.Font.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Font",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var weight = F2(function (w,
-   styles) {
-      return function () {
-         var ub = _U.cmp(w,
-         9) > 0 ? 9 : w;
-         var lb = _U.cmp(ub,
-         1) < 0 ? 1 : ub;
-         return A3($Css.style,
-         "font-weight",
-         $Basics.toString(lb * 100),
-         styles);
-      }();
-   });
-   var size = F2(function (length,
-   styles) {
-      return A3($Css.style,
-      "font-size",
-      $Css.px(length),
-      styles);
-   });
-   var family = F2(function (f,
-   styles) {
-      return A3($Css.style,
-      "font-family",
-      f,
-      styles);
-   });
-   var variantString = function (v) {
-      return function () {
-         switch (v.ctor)
-         {case "NormalVariant":
-            return "normal";
-            case "SmallCaps":
-            return "small-caps";}
-         _U.badCase($moduleName,
-         "between lines 88 and 93");
-      }();
-   };
-   var variant = F2(function (v,
-   styles) {
-      return A3($Css.style,
-      "font-variant",
-      variantString(v),
-      styles);
-   });
-   var styleString = function (style) {
-      return function () {
-         switch (style.ctor)
-         {case "Italic": return "italic";
-            case "NormalStyle":
-            return "normal";
-            case "Oblique":
-            return "oblique";}
-         _U.badCase($moduleName,
-         "between lines 69 and 77");
-      }();
-   };
-   var style = F2(function (s,
-   styles) {
-      return A3($Css.style,
-      "font-style",
-      styleString(s),
-      styles);
-   });
-   var SmallCaps = {ctor: "SmallCaps"};
-   var NormalVariant = {ctor: "NormalVariant"};
-   var Oblique = {ctor: "Oblique"};
-   var Italic = {ctor: "Italic"};
-   var NormalStyle = {ctor: "NormalStyle"};
-   _elm.Css.Font.values = {_op: _op
-                          ,NormalStyle: NormalStyle
-                          ,Italic: Italic
-                          ,Oblique: Oblique
-                          ,NormalVariant: NormalVariant
-                          ,SmallCaps: SmallCaps
-                          ,styleString: styleString
-                          ,variantString: variantString
-                          ,family: family
-                          ,size: size
-                          ,style: style
-                          ,variant: variant
-                          ,weight: weight};
-   return _elm.Css.Font.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Gradient = Elm.Css.Gradient || {};
-Elm.Css.Gradient.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Gradient = _elm.Css.Gradient || {};
-   if (_elm.Css.Gradient.values)
-   return _elm.Css.Gradient.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Gradient",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm),
-   $Vendor = Elm.Vendor.make(_elm);
-   var radial = F2(function (colors,
-   styles) {
-      return function () {
-         var name = "background";
-         var prefix = $Vendor.prefix;
-         var colorStrings = A2($String.join,
-         ",",
-         A2($List.map,
-         $Css.colorString,
-         colors));
-         var string = A2($Basics._op["++"],
-         "radial-gradient(",
-         A2($Basics._op["++"],
-         colorStrings,
-         ")"));
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         name,
-         A2($Basics._op["++"],
-         "-webkit-",
-         string),
-         styles) : _U.eq(prefix,
-         $Vendor.Moz) ? A3($Css.style,
-         name,
-         A2($Basics._op["++"],
-         "-moz-",
-         string),
-         styles) : _U.eq(prefix,
-         $Vendor.O) ? A3($Css.style,
-         name,
-         A2($Basics._op["++"],
-         "-o-",
-         string),
-         styles) : A3($Css.style,
-         name,
-         string,
-         styles);
-      }();
-   });
-   var linear = F3(function (degrees,
-   colors,
-   styles) {
-      return function () {
-         var name = "background";
-         var prefix = $Vendor.prefix;
-         var degreeString = A2($Basics._op["++"],
-         $Basics.toString(degrees),
-         "deg, ");
-         var colorStrings = A2($String.join,
-         ",",
-         A2($List.map,
-         $Css.colorString,
-         colors));
-         var string = A2($Basics._op["++"],
-         "linear-gradient(",
-         A2($Basics._op["++"],
-         degreeString,
-         A2($Basics._op["++"],
-         colorStrings,
-         ")")));
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         name,
-         A2($Basics._op["++"],
-         "-webkit-",
-         string),
-         styles) : _U.eq(prefix,
-         $Vendor.Moz) ? A3($Css.style,
-         name,
-         A2($Basics._op["++"],
-         "-moz-",
-         string),
-         styles) : _U.eq(prefix,
-         $Vendor.O) ? A3($Css.style,
-         name,
-         A2($Basics._op["++"],
-         "-o-",
-         string),
-         styles) : A3($Css.style,
-         name,
-         string,
-         styles);
-      }();
-   });
-   _elm.Css.Gradient.values = {_op: _op
-                              ,linear: linear
-                              ,radial: radial};
-   return _elm.Css.Gradient.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Margin = Elm.Css.Margin || {};
-Elm.Css.Margin.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Margin = _elm.Css.Margin || {};
-   if (_elm.Css.Margin.values)
-   return _elm.Css.Margin.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Margin",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var top = F2(function (t,
-   styles) {
-      return A3($Css.style,
-      "margin-top",
-      $Css.px(t),
-      styles);
-   });
-   var right = F2(function (r,
-   styles) {
-      return A3($Css.style,
-      "margin-right",
-      $Css.px(r),
-      styles);
-   });
-   var left = F2(function (l,
-   styles) {
-      return A3($Css.style,
-      "margin-left",
-      $Css.px(l),
-      styles);
-   });
-   var bottom = F2(function (b,
-   styles) {
-      return A3($Css.style,
-      "margin-bottom",
-      $Css.px(b),
-      styles);
-   });
-   var all = F5(function (t,
-   r,
-   b,
-   l,
-   styles) {
-      return left(l)(bottom(b)(right(r)(top(t)(styles))));
-   });
-   _elm.Css.Margin.values = {_op: _op
-                            ,bottom: bottom
-                            ,left: left
-                            ,right: right
-                            ,top: top
-                            ,all: all};
-   return _elm.Css.Margin.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Padding = Elm.Css.Padding || {};
-Elm.Css.Padding.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Padding = _elm.Css.Padding || {};
-   if (_elm.Css.Padding.values)
-   return _elm.Css.Padding.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Padding",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var top = F2(function (t,
-   styles) {
-      return A3($Css.style,
-      "padding-top",
-      $Css.px(t),
-      styles);
-   });
-   var right = F2(function (r,
-   styles) {
-      return A3($Css.style,
-      "padding-right",
-      $Css.px(r),
-      styles);
-   });
-   var left = F2(function (l,
-   styles) {
-      return A3($Css.style,
-      "padding-left",
-      $Css.px(l),
-      styles);
-   });
-   var bottom = F2(function (b,
-   styles) {
-      return A3($Css.style,
-      "padding-bottom",
-      $Css.px(b),
-      styles);
-   });
-   var all = F5(function (t,
-   r,
-   b,
-   l,
-   styles) {
-      return left(l)(bottom(b)(right(r)(top(t)(styles))));
-   });
-   _elm.Css.Padding.values = {_op: _op
-                             ,bottom: bottom
-                             ,left: left
-                             ,right: right
-                             ,top: top
-                             ,all: all};
-   return _elm.Css.Padding.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Shadow = Elm.Css.Shadow || {};
-Elm.Css.Shadow.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Shadow = _elm.Css.Shadow || {};
-   if (_elm.Css.Shadow.values)
-   return _elm.Css.Shadow.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Shadow",
-   $Basics = Elm.Basics.make(_elm),
-   $Color = Elm.Color.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var boxString = function (_v0) {
-      return function () {
-         switch (_v0.ctor)
-         {case "_Tuple6":
-            return function () {
-                 var i = _v0._5 ? " inset" : "";
-                 var c = $Css.colorString(_v0._4);
-                 var s = $Css.px(_v0._3);
-                 var b = $Css.px(_v0._2);
-                 var v = $Css.px(_v0._1);
-                 var h = $Css.px(_v0._0);
-                 return A2($Basics._op["++"],
-                 h,
-                 A2($Basics._op["++"],
-                 v,
-                 A2($Basics._op["++"],
-                 b,
-                 A2($Basics._op["++"],
-                 s,
-                 A2($Basics._op["++"],c,i)))));
-              }();}
-         _U.badCase($moduleName,
-         "between lines 104 and 111");
-      }();
-   };
-   var listBoxString = F2(function (accumulator,
-   boxShadows) {
-      return function () {
-         switch (boxShadows.ctor)
-         {case "::":
-            switch (boxShadows._1.ctor)
-              {case "[]":
-                 return A2(listBoxString,
-                   A2($Basics._op["++"],
-                   accumulator,
-                   boxString(boxShadows._0)),
-                   _L.fromArray([]));}
-              return A2(listBoxString,
-              A2($Basics._op["++"],
-              accumulator,
-              A2($Basics._op["++"],
-              boxString(boxShadows._0),
-              ", ")),
-              boxShadows._1);
-            case "[]": return accumulator;}
-         _U.badCase($moduleName,
-         "between lines 123 and 126");
-      }();
-   });
-   var box = F2(function (boxShadows,
-   styles) {
-      return A3($Css.style,
-      "box-shadow",
-      A2(listBoxString,"",boxShadows),
-      styles);
-   });
-   var textString = function (_v11) {
-      return function () {
-         switch (_v11.ctor)
-         {case "_Tuple4":
-            return A2($Basics._op["++"],
-              $Css.px(_v11._0),
-              A2($Basics._op["++"],
-              $Css.px(_v11._1),
-              A2($Basics._op["++"],
-              $Css.px(_v11._2),
-              $Css.colorString(_v11._3))));}
-         _U.badCase($moduleName,
-         "on line 77, column 4 to 70");
-      }();
-   };
-   var listTextString = F2(function (accumulator,
-   textShadows) {
-      return function () {
-         switch (textShadows.ctor)
-         {case "::":
-            switch (textShadows._1.ctor)
-              {case "[]":
-                 return A2(listTextString,
-                   A2($Basics._op["++"],
-                   accumulator,
-                   textString(textShadows._0)),
-                   _L.fromArray([]));}
-              return A2(listTextString,
-              A2($Basics._op["++"],
-              accumulator,
-              A2($Basics._op["++"],
-              textString(textShadows._0),
-              ", ")),
-              textShadows._1);
-            case "[]": return accumulator;}
-         _U.badCase($moduleName,
-         "between lines 89 and 92");
-      }();
-   });
-   var text = F2(function (textShadows,
-   styles) {
-      return A3($Css.style,
-      "text-shadow",
-      A2(listTextString,
-      "",
-      textShadows),
-      styles);
-   });
-   _elm.Css.Shadow.values = {_op: _op
-                            ,textString: textString
-                            ,listTextString: listTextString
-                            ,boxString: boxString
-                            ,listBoxString: listBoxString
-                            ,box: box
-                            ,text: text};
-   return _elm.Css.Shadow.values;
-};
-Elm.Css = Elm.Css || {};
 Elm.Css.Text = Elm.Css.Text || {};
 Elm.Css.Text.make = function (_elm) {
    "use strict";
@@ -3149,225 +1068,6 @@ Elm.Css.Text.make = function (_elm) {
                           ,whiteSpace: whiteSpace
                           ,wordSpacing: wordSpacing};
    return _elm.Css.Text.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Transform3 = Elm.Css.Transform3 || {};
-Elm.Css.Transform3.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Transform3 = _elm.Css.Transform3 || {};
-   if (_elm.Css.Transform3.values)
-   return _elm.Css.Transform3.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Transform3",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm),
-   $Vendor = Elm.Vendor.make(_elm);
-   var scale3 = F3(function (x,
-   y,
-   z) {
-      return A2($Basics._op["++"],
-      "scale3d(",
-      A2($Basics._op["++"],
-      $Basics.toString(x),
-      A2($Basics._op["++"],
-      ", ",
-      A2($Basics._op["++"],
-      $Basics.toString(y),
-      A2($Basics._op["++"],
-      ", ",
-      A2($Basics._op["++"],
-      $Basics.toString(z),
-      ")"))))));
-   });
-   var rotate3 = F4(function (x,
-   y,
-   z,
-   angle) {
-      return A2($Basics._op["++"],
-      "rotate3d(",
-      A2($Basics._op["++"],
-      $Basics.toString(x),
-      A2($Basics._op["++"],
-      ", ",
-      A2($Basics._op["++"],
-      $Basics.toString(y),
-      A2($Basics._op["++"],
-      ", ",
-      A2($Basics._op["++"],
-      $Basics.toString(z),
-      A2($Basics._op["++"],
-      ", ",
-      A2($Basics._op["++"],
-      $Basics.toString(angle),
-      "deg)"))))))));
-   });
-   var translate3 = F3(function (x,
-   y,
-   z) {
-      return A2($Basics._op["++"],
-      "translate3d(",
-      A2($Basics._op["++"],
-      $Basics.toString(x),
-      A2($Basics._op["++"],
-      "px, ",
-      A2($Basics._op["++"],
-      $Basics.toString(y),
-      A2($Basics._op["++"],
-      "px, ",
-      A2($Basics._op["++"],
-      $Basics.toString(z),
-      "px)"))))));
-   });
-   var perspective = function (p) {
-      return A2($Basics._op["++"],
-      "perspective(",
-      A2($Basics._op["++"],
-      $Basics.toString(p),
-      ")"));
-   };
-   var transform3 = F2(function (transforms,
-   styles) {
-      return function () {
-         var name = "transform";
-         var prefix = $Vendor.prefix;
-         var string = A2($String.join,
-         " ",
-         transforms);
-         return _U.eq(prefix,
-         $Vendor.Webkit) ? A3($Css.style,
-         A2($Basics._op["++"],
-         "-webkit-",
-         name),
-         string,
-         styles) : A3($Css.style,
-         name,
-         string,
-         styles);
-      }();
-   });
-   _elm.Css.Transform3.values = {_op: _op
-                                ,transform3: transform3
-                                ,perspective: perspective
-                                ,translate3: translate3
-                                ,rotate3: rotate3
-                                ,scale3: scale3};
-   return _elm.Css.Transform3.values;
-};
-Elm.Css = Elm.Css || {};
-Elm.Css.Util = Elm.Css.Util || {};
-Elm.Css.Util.make = function (_elm) {
-   "use strict";
-   _elm.Css = _elm.Css || {};
-   _elm.Css.Util = _elm.Css.Util || {};
-   if (_elm.Css.Util.values)
-   return _elm.Css.Util.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Css.Util",
-   $Basics = Elm.Basics.make(_elm),
-   $Css = Elm.Css.make(_elm),
-   $Css$Display = Elm.Css.Display.make(_elm),
-   $Css$Flex = Elm.Css.Flex.make(_elm),
-   $Css$Font = Elm.Css.Font.make(_elm),
-   $Css$Margin = Elm.Css.Margin.make(_elm),
-   $Css$Padding = Elm.Css.Padding.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm);
-   var codeStyle = function (styles) {
-      return A4($Css$Margin.all,
-      0,
-      0,
-      0,
-      0)(A4($Css$Padding.all,
-      0,
-      0,
-      0,
-      0)(A2($Css$Font.size,
-      18,
-      styles)));
-   };
-   var getCode = function (_v0) {
-      return function () {
-         switch (_v0.ctor)
-         {case "_Tuple2":
-            return function () {
-                 var pc = A2($String.right,
-                 1,
-                 _v0._1);
-                 var v = _U.eq(pc,
-                 " ") ? A2($String.dropRight,
-                 1,
-                 _v0._1) : _v0._1;
-                 return A2($Html.pre,
-                 _L.fromArray([$Html$Attributes.style(codeStyle(_L.fromArray([])))]),
-                 _L.fromArray([A2($Html.code,
-                 _L.fromArray([$Html$Attributes.style(codeStyle(_L.fromArray([])))]),
-                 _L.fromArray([$Html.text(A2($Basics._op["++"],
-                 "  ",
-                 A2($Basics._op["++"],
-                 _v0._0,
-                 A2($Basics._op["++"],
-                 ": ",
-                 A2($Basics._op["++"],
-                 v,
-                 ";")))))]))]));
-              }();}
-         _U.badCase($moduleName,
-         "between lines 58 and 66");
-      }();
-   };
-   var columnStyle = function (styles) {
-      return $Css$Display.display($Css$Display.Flex)(A2($Css$Flex.direction,
-      $Css$Flex.Column,
-      styles));
-   };
-   var containerStyle = function (styles) {
-      return columnStyle(A5($Css$Margin.all,
-      20,
-      0,
-      20,
-      0,
-      styles));
-   };
-   var toCss = F2(function (className,
-   styles) {
-      return A2($Html.div,
-      _L.fromArray([$Html$Attributes.style(containerStyle(_L.fromArray([])))]),
-      _L.fromArray([A2($Html.code,
-                   _L.fromArray([$Html$Attributes.style(codeStyle(_L.fromArray([])))]),
-                   _L.fromArray([$Html.text(A2($Basics._op["++"],
-                   ".",
-                   A2($Basics._op["++"],
-                   className,
-                   " {")))]))
-                   ,$Html.div(_L.fromArray([$Html$Attributes.style(columnStyle(_L.fromArray([])))]))(A2($List.map,
-                   function (s) {
-                      return getCode(s);
-                   },
-                   styles))
-                   ,A2($Html.code,
-                   _L.fromArray([$Html$Attributes.style(codeStyle(_L.fromArray([])))]),
-                   _L.fromArray([$Html.text("}")]))]));
-   });
-   _elm.Css.Util.values = {_op: _op
-                          ,toCss: toCss};
-   return _elm.Css.Util.values;
 };
 Elm.Debug = Elm.Debug || {};
 Elm.Debug.make = function (_elm) {
@@ -6017,7 +3717,7 @@ Elm.Html.Attributes.make = function (_elm) {
                       ,_0: _v0._0
                       ,_1: $Json$Encode.string(_v0._1)};}
             _U.badCase($moduleName,
-            "on line 133, column 35 to 57");
+            "on line 156, column 35 to 57");
          }();
       })(props)));
    };
@@ -6029,47 +3729,11 @@ Elm.Html.Attributes.make = function (_elm) {
    _elm.Html.Attributes.values = {_op: _op
                                  ,key: key
                                  ,style: style
-                                 ,classList: classList
-                                 ,property: property
-                                 ,stringProperty: stringProperty
-                                 ,boolProperty: boolProperty
-                                 ,attribute: attribute
                                  ,$class: $class
-                                 ,hidden: hidden
+                                 ,classList: classList
                                  ,id: id
                                  ,title: title
-                                 ,accesskey: accesskey
-                                 ,contenteditable: contenteditable
-                                 ,contextmenu: contextmenu
-                                 ,dir: dir
-                                 ,draggable: draggable
-                                 ,dropzone: dropzone
-                                 ,itemprop: itemprop
-                                 ,lang: lang
-                                 ,spellcheck: spellcheck
-                                 ,tabindex: tabindex
-                                 ,async: async
-                                 ,charset: charset
-                                 ,content: content
-                                 ,defer: defer
-                                 ,httpEquiv: httpEquiv
-                                 ,language: language
-                                 ,scoped: scoped
-                                 ,src: src
-                                 ,height: height
-                                 ,width: width
-                                 ,alt: alt
-                                 ,autoplay: autoplay
-                                 ,controls: controls
-                                 ,loop: loop
-                                 ,preload: preload
-                                 ,poster: poster
-                                 ,$default: $default
-                                 ,kind: kind
-                                 ,srclang: srclang
-                                 ,sandbox: sandbox
-                                 ,seamless: seamless
-                                 ,srcdoc: srcdoc
+                                 ,hidden: hidden
                                  ,type$: type$
                                  ,value: value
                                  ,checked: checked
@@ -6085,8 +3749,8 @@ Elm.Html.Attributes.make = function (_elm) {
                                  ,enctype: enctype
                                  ,formaction: formaction
                                  ,list: list
-                                 ,minlength: minlength
                                  ,maxlength: maxlength
+                                 ,minlength: minlength
                                  ,method: method
                                  ,multiple: multiple
                                  ,name: name
@@ -6103,14 +3767,6 @@ Elm.Html.Attributes.make = function (_elm) {
                                  ,cols: cols
                                  ,rows: rows
                                  ,wrap: wrap
-                                 ,ismap: ismap
-                                 ,usemap: usemap
-                                 ,shape: shape
-                                 ,coords: coords
-                                 ,challenge: challenge
-                                 ,keytype: keytype
-                                 ,align: align
-                                 ,cite: cite
                                  ,href: href
                                  ,target: target
                                  ,download: download
@@ -6119,15 +3775,57 @@ Elm.Html.Attributes.make = function (_elm) {
                                  ,media: media
                                  ,ping: ping
                                  ,rel: rel
-                                 ,datetime: datetime
-                                 ,pubdate: pubdate
+                                 ,ismap: ismap
+                                 ,usemap: usemap
+                                 ,shape: shape
+                                 ,coords: coords
+                                 ,src: src
+                                 ,height: height
+                                 ,width: width
+                                 ,alt: alt
+                                 ,autoplay: autoplay
+                                 ,controls: controls
+                                 ,loop: loop
+                                 ,preload: preload
+                                 ,poster: poster
+                                 ,$default: $default
+                                 ,kind: kind
+                                 ,srclang: srclang
+                                 ,sandbox: sandbox
+                                 ,seamless: seamless
+                                 ,srcdoc: srcdoc
                                  ,reversed: reversed
                                  ,start: start
+                                 ,align: align
                                  ,colspan: colspan
-                                 ,headers: headers
                                  ,rowspan: rowspan
+                                 ,headers: headers
                                  ,scope: scope
-                                 ,manifest: manifest};
+                                 ,async: async
+                                 ,charset: charset
+                                 ,content: content
+                                 ,defer: defer
+                                 ,httpEquiv: httpEquiv
+                                 ,language: language
+                                 ,scoped: scoped
+                                 ,accesskey: accesskey
+                                 ,contenteditable: contenteditable
+                                 ,contextmenu: contextmenu
+                                 ,dir: dir
+                                 ,draggable: draggable
+                                 ,dropzone: dropzone
+                                 ,itemprop: itemprop
+                                 ,lang: lang
+                                 ,spellcheck: spellcheck
+                                 ,tabindex: tabindex
+                                 ,challenge: challenge
+                                 ,keytype: keytype
+                                 ,cite: cite
+                                 ,datetime: datetime
+                                 ,pubdate: pubdate
+                                 ,manifest: manifest
+                                 ,property: property
+                                 ,attribute: attribute};
    return _elm.Html.Attributes.values;
 };
 Elm.Json = Elm.Json || {};
@@ -12338,117 +10036,6 @@ Elm.Native.Text.make = function(localRuntime) {
 	};
 };
 
-Elm.Native.Time = {};
-Elm.Native.Time.make = function(localRuntime)
-{
-
-	localRuntime.Native = localRuntime.Native || {};
-	localRuntime.Native.Time = localRuntime.Native.Time || {};
-	if (localRuntime.Native.Time.values)
-	{
-		return localRuntime.Native.Time.values;
-	}
-
-	var NS = Elm.Native.Signal.make(localRuntime);
-	var Maybe = Elm.Maybe.make(localRuntime);
-
-
-	// FRAMES PER SECOND
-
-	function fpsWhen(desiredFPS, isOn)
-	{
-		var msPerFrame = 1000 / desiredFPS;
-		var ticker = NS.input('fps-' + desiredFPS, null);
-
-		function notifyTicker()
-		{
-			localRuntime.notify(ticker.id, null);
-		}
-
-		function firstArg(x, y)
-		{
-			return x;
-		}
-
-		// input fires either when isOn changes, or when ticker fires.
-		// Its value is a tuple with the current timestamp, and the state of isOn
-		var input = NS.timestamp(A3(NS.map2, F2(firstArg), NS.dropRepeats(isOn), ticker));
-
-		var initialState = {
-			isOn: false,
-			time: localRuntime.timer.programStart,
-			delta: 0
-		};
-
-		var timeoutId;
-
-		function update(input,state)
-		{
-			var currentTime = input._0;
-			var isOn = input._1;
-			var wasOn = state.isOn;
-			var previousTime = state.time;
-
-			if (isOn)
-			{
-				timeoutId = localRuntime.setTimeout(notifyTicker, msPerFrame);
-			}
-			else if (wasOn)
-			{
-				clearTimeout(timeoutId);
-			}
-
-			return {
-				isOn: isOn,
-				time: currentTime,
-				delta: (isOn && !wasOn) ? 0 : currentTime - previousTime
-			};
-		}
-
-		return A2(
-			NS.map,
-			function(state) { return state.delta; },
-			A3(NS.foldp, F2(update), update(input.value,initialState), input)
-		);
-	}
-
-
-	// EVERY
-
-	function every(t)
-	{
-		var ticker = NS.input('every-' + t, null);
-		function tellTime()
-		{
-			localRuntime.notify(ticker.id, null);
-		}
-		var clock = A2( NS.map, fst, NS.timestamp(ticker) );
-		setInterval(tellTime, t);
-		return clock;
-	}
-
-
-	function fst(pair)
-	{
-		return pair._0;
-	}
-
-
-	function read(s)
-	{
-		var t = Date.parse(s);
-		return isNaN(t) ? Maybe.Nothing : Maybe.Just(t);
-	}
-
-	return localRuntime.Native.Time.values = {
-		fpsWhen: F2(fpsWhen),
-		every: every,
-		toDate: function(t) { return new window.Date(t); },
-		read: read
-	};
-
-};
-
 Elm.Native.Transform2D = {};
 Elm.Native.Transform2D.make = function(localRuntime) {
 
@@ -12925,492 +10512,12 @@ Elm.Native.Utils.make = function(localRuntime) {
 	};
 };
 
-Elm.Native.Vendor = Elm.Native.Vendor || {};
-Elm.Native.Vendor.make = function(elm) {
-    elm.Native = elm.Native || {};
-    elm.Native.Vendor = elm.Native.Vendor || {};
-    if (elm.Native.Vendor.values) return elm.Native.Vendor.values;
-
-    // thanks to -- https://github.com/daniel-lundin/snabbt.js/blob/master/snabbt.js
-    var styles = window.getComputedStyle(document.documentElement, '');
-    var vendorPrefix = (Array.prototype.slice
-        .call(styles)
-        .join('')
-        .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
-    )[1];
-
-    return elm.Native.Vendor.values = { prefix: vendorPrefix };
-};
-
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports = createHash
+var createElement = require("./vdom/create-element.js")
 
-function createHash(elem) {
-    var attributes = elem.attributes
-    var hash = {}
+module.exports = createElement
 
-    if (attributes === null || attributes === undefined) {
-        return hash
-    }
-
-    for (var i = 0; i < attributes.length; i++) {
-        var attr = attributes[i]
-
-        if (attr.name.substr(0,5) !== "data-") {
-            continue
-        }
-
-        hash[attr.name.substr(5)] = attr.value
-    }
-
-    return hash
-}
-
-},{}],2:[function(require,module,exports){
-var createStore = require("weakmap-shim/create-store")
-var Individual = require("individual")
-
-var createHash = require("./create-hash.js")
-
-var hashStore = Individual("__DATA_SET_WEAKMAP@3", createStore())
-
-module.exports = DataSet
-
-function DataSet(elem) {
-    var store = hashStore(elem)
-
-    if (!store.hash) {
-        store.hash = createHash(elem)
-    }
-
-    return store.hash
-}
-
-},{"./create-hash.js":1,"individual":3,"weakmap-shim/create-store":4}],3:[function(require,module,exports){
-(function (global){
-var root = typeof window !== 'undefined' ?
-    window : typeof global !== 'undefined' ?
-    global : {};
-
-module.exports = Individual
-
-function Individual(key, value) {
-    if (root[key]) {
-        return root[key]
-    }
-
-    Object.defineProperty(root, key, {
-        value: value
-        , configurable: true
-    })
-
-    return value
-}
-
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
-var hiddenStore = require('./hidden-store.js');
-
-module.exports = createStore;
-
-function createStore() {
-    var key = {};
-
-    return function (obj) {
-        if (typeof obj !== 'object' || obj === null) {
-            throw new Error('Weakmap-shim: Key must be object')
-        }
-
-        var store = obj.valueOf(key);
-        return store && store.identity === key ?
-            store : hiddenStore(obj, key);
-    };
-}
-
-},{"./hidden-store.js":5}],5:[function(require,module,exports){
-module.exports = hiddenStore;
-
-function hiddenStore(obj, key) {
-    var store = { identity: key };
-    var valueOf = obj.valueOf;
-
-    Object.defineProperty(obj, "valueOf", {
-        value: function (value) {
-            return value !== key ?
-                valueOf.apply(this, arguments) : store;
-        },
-        writable: true
-    });
-
-    return store;
-}
-
-},{}],6:[function(require,module,exports){
-var DataSet = require("data-set")
-
-module.exports = addEvent
-
-function addEvent(target, type, handler) {
-    var ds = DataSet(target)
-    var events = ds[type]
-
-    if (!events) {
-        ds[type] = handler
-    } else if (Array.isArray(events)) {
-        if (events.indexOf(handler) === -1) {
-            events.push(handler)
-        }
-    } else if (events !== handler) {
-        ds[type] = [events, handler]
-    }
-}
-
-},{"data-set":2}],7:[function(require,module,exports){
-var globalDocument = require("global/document")
-var DataSet = require("data-set")
-var createStore = require("weakmap-shim/create-store")
-
-var addEvent = require("./add-event.js")
-var removeEvent = require("./remove-event.js")
-var ProxyEvent = require("./proxy-event.js")
-
-var HANDLER_STORE = createStore()
-
-module.exports = DOMDelegator
-
-function DOMDelegator(document) {
-    document = document || globalDocument
-
-    this.target = document.documentElement
-    this.events = {}
-    this.rawEventListeners = {}
-    this.globalListeners = {}
-}
-
-DOMDelegator.prototype.addEventListener = addEvent
-DOMDelegator.prototype.removeEventListener = removeEvent
-
-DOMDelegator.prototype.allocateHandle =
-    function allocateHandle(func) {
-        var handle = new Handle()
-
-        HANDLER_STORE(handle).func = func;
-
-        return handle
-    }
-
-DOMDelegator.prototype.transformHandle =
-    function transformHandle(handle, lambda) {
-        var func = HANDLER_STORE(handle).func
-
-        return this.allocateHandle(function (ev) {
-            var result = lambda(ev)
-            if (result) {
-                func(result)
-            }
-        })
-    }
-
-DOMDelegator.prototype.addGlobalEventListener =
-    function addGlobalEventListener(eventName, fn) {
-        var listeners = this.globalListeners[eventName] || [];
-        if (listeners.indexOf(fn) === -1) {
-            listeners.push(fn)
-        }
-
-        this.globalListeners[eventName] = listeners;
-    }
-
-DOMDelegator.prototype.removeGlobalEventListener =
-    function removeGlobalEventListener(eventName, fn) {
-        var listeners = this.globalListeners[eventName] || [];
-
-        var index = listeners.indexOf(fn)
-        if (index !== -1) {
-            listeners.splice(index, 1)
-        }
-    }
-
-DOMDelegator.prototype.listenTo = function listenTo(eventName) {
-    if (this.events[eventName]) {
-        return
-    }
-
-    this.events[eventName] = true
-
-    var listener = this.rawEventListeners[eventName]
-    if (!listener) {
-        listener = this.rawEventListeners[eventName] =
-            createHandler(eventName, this)
-    }
-
-    this.target.addEventListener(eventName, listener, true)
-}
-
-DOMDelegator.prototype.unlistenTo = function unlistenTo(eventName) {
-    if (!this.events[eventName]) {
-        return
-    }
-
-    this.events[eventName] = false
-    var listener = this.rawEventListeners[eventName]
-
-    if (!listener) {
-        throw new Error("dom-delegator#unlistenTo: cannot " +
-            "unlisten to " + eventName)
-    }
-
-    this.target.removeEventListener(eventName, listener, true)
-}
-
-function createHandler(eventName, delegator) {
-    var globalListeners = delegator.globalListeners;
-    var delegatorTarget = delegator.target;
-
-    return handler
-
-    function handler(ev) {
-        var globalHandlers = globalListeners[eventName] || []
-
-        if (globalHandlers.length > 0) {
-            var globalEvent = new ProxyEvent(ev);
-            globalEvent.currentTarget = delegatorTarget;
-            callListeners(globalHandlers, globalEvent)
-        }
-
-        findAndInvokeListeners(ev.target, ev, eventName)
-    }
-}
-
-function findAndInvokeListeners(elem, ev, eventName) {
-    var listener = getListener(elem, eventName)
-
-    if (listener && listener.handlers.length > 0) {
-        var listenerEvent = new ProxyEvent(ev);
-        listenerEvent.currentTarget = listener.currentTarget
-        callListeners(listener.handlers, listenerEvent)
-
-        if (listenerEvent._bubbles) {
-            var nextTarget = listener.currentTarget.parentNode
-            findAndInvokeListeners(nextTarget, ev, eventName)
-        }
-    }
-}
-
-function getListener(target, type) {
-    // terminate recursion if parent is `null`
-    if (target === null) {
-        return null
-    }
-
-    var ds = DataSet(target)
-    // fetch list of handler fns for this event
-    var handler = ds[type]
-    var allHandler = ds.event
-
-    if (!handler && !allHandler) {
-        return getListener(target.parentNode, type)
-    }
-
-    var handlers = [].concat(handler || [], allHandler || [])
-    return new Listener(target, handlers)
-}
-
-function callListeners(handlers, ev) {
-    handlers.forEach(function (handler) {
-        if (typeof handler === "function") {
-            handler(ev)
-        } else if (typeof handler.handleEvent === "function") {
-            handler.handleEvent(ev)
-        } else if (handler.type === "dom-delegator-handle") {
-            HANDLER_STORE(handler).func(ev)
-        } else {
-            throw new Error("dom-delegator: unknown handler " +
-                "found: " + JSON.stringify(handlers));
-        }
-    })
-}
-
-function Listener(target, handlers) {
-    this.currentTarget = target
-    this.handlers = handlers
-}
-
-function Handle() {
-    this.type = "dom-delegator-handle"
-}
-
-},{"./add-event.js":6,"./proxy-event.js":15,"./remove-event.js":16,"data-set":2,"global/document":10,"weakmap-shim/create-store":13}],8:[function(require,module,exports){
-var Individual = require("individual")
-var cuid = require("cuid")
-var globalDocument = require("global/document")
-
-var DOMDelegator = require("./dom-delegator.js")
-
-var delegatorCache = Individual("__DOM_DELEGATOR_CACHE@9", {
-    delegators: {}
-})
-var commonEvents = [
-    "blur", "change", "click",  "contextmenu", "dblclick",
-    "error","focus", "focusin", "focusout", "input", "keydown",
-    "keypress", "keyup", "load", "mousedown", "mouseup",
-    "resize", "scroll", "select", "submit", "touchcancel",
-    "touchend", "touchstart", "unload"
-]
-
-/*  Delegator is a thin wrapper around a singleton `DOMDelegator`
-        instance.
-
-    Only one DOMDelegator should exist because we do not want
-        duplicate event listeners bound to the DOM.
-
-    `Delegator` will also `listenTo()` all events unless 
-        every caller opts out of it
-*/
-module.exports = Delegator
-
-function Delegator(opts) {
-    opts = opts || {}
-    var document = opts.document || globalDocument
-
-    var cacheKey = document["__DOM_DELEGATOR_CACHE_TOKEN@9"]
-
-    if (!cacheKey) {
-        cacheKey =
-            document["__DOM_DELEGATOR_CACHE_TOKEN@9"] = cuid()
-    }
-
-    var delegator = delegatorCache.delegators[cacheKey]
-
-    if (!delegator) {
-        delegator = delegatorCache.delegators[cacheKey] =
-            new DOMDelegator(document)
-    }
-
-    if (opts.defaultEvents !== false) {
-        for (var i = 0; i < commonEvents.length; i++) {
-            delegator.listenTo(commonEvents[i])
-        }
-    }
-
-    return delegator
-}
-
-
-
-},{"./dom-delegator.js":7,"cuid":9,"global/document":10,"individual":11}],9:[function(require,module,exports){
-/**
- * cuid.js
- * Collision-resistant UID generator for browsers and node.
- * Sequential for fast db lookups and recency sorting.
- * Safe for element IDs and server-side lookups.
- *
- * Extracted from CLCTR
- * 
- * Copyright (c) Eric Elliott 2012
- * MIT License
- */
-
-/*global window, navigator, document, require, process, module */
-(function (app) {
-  'use strict';
-  var namespace = 'cuid',
-    c = 0,
-    blockSize = 4,
-    base = 36,
-    discreteValues = Math.pow(base, blockSize),
-
-    pad = function pad(num, size) {
-      var s = "000000000" + num;
-      return s.substr(s.length-size);
-    },
-
-    randomBlock = function randomBlock() {
-      return pad((Math.random() *
-            discreteValues << 0)
-            .toString(base), blockSize);
-    },
-
-    safeCounter = function () {
-      c = (c < discreteValues) ? c : 0;
-      c++; // this is not subliminal
-      return c - 1;
-    },
-
-    api = function cuid() {
-      // Starting with a lowercase letter makes
-      // it HTML element ID friendly.
-      var letter = 'c', // hard-coded allows for sequential access
-
-        // timestamp
-        // warning: this exposes the exact date and time
-        // that the uid was created.
-        timestamp = (new Date().getTime()).toString(base),
-
-        // Prevent same-machine collisions.
-        counter,
-
-        // A few chars to generate distinct ids for different
-        // clients (so different computers are far less
-        // likely to generate the same id)
-        fingerprint = api.fingerprint(),
-
-        // Grab some more chars from Math.random()
-        random = randomBlock() + randomBlock();
-
-        counter = pad(safeCounter().toString(base), blockSize);
-
-      return  (letter + timestamp + counter + fingerprint + random);
-    };
-
-  api.slug = function slug() {
-    var date = new Date().getTime().toString(36),
-      counter,
-      print = api.fingerprint().slice(0,1) +
-        api.fingerprint().slice(-1),
-      random = randomBlock().slice(-2);
-
-      counter = safeCounter().toString(36).slice(-4);
-
-    return date.slice(-2) + 
-      counter + print + random;
-  };
-
-  api.globalCount = function globalCount() {
-    // We want to cache the results of this
-    var cache = (function calc() {
-        var i,
-          count = 0;
-
-        for (i in window) {
-          count++;
-        }
-
-        return count;
-      }());
-
-    api.globalCount = function () { return cache; };
-    return cache;
-  };
-
-  api.fingerprint = function browserPrint() {
-    return pad((navigator.mimeTypes.length +
-      navigator.userAgent.length).toString(36) +
-      api.globalCount().toString(36), 4);
-  };
-
-  // don't change anything from here down.
-  if (app.register) {
-    app.register(namespace, api);
-  } else if (typeof module !== 'undefined') {
-    module.exports = api;
-  } else {
-    app[namespace] = api;
-  }
-
-}(this.applitude || this));
-
-},{}],10:[function(require,module,exports){
+},{"./vdom/create-element.js":6}],2:[function(require,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
@@ -13429,141 +10536,26 @@ if (typeof document !== 'undefined') {
 }
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":40}],11:[function(require,module,exports){
-module.exports=require(3)
-},{}],12:[function(require,module,exports){
-if (typeof Object.create === 'function') {
-  // implementation from standard node.js 'util' module
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-  };
-} else {
-  // old school shim for old browsers
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
-  }
+},{"min-document":24}],3:[function(require,module,exports){
+"use strict";
+
+module.exports = function isObject(x) {
+	return typeof x === "object" && x !== null;
+};
+
+},{}],4:[function(require,module,exports){
+var nativeIsArray = Array.isArray
+var toString = Object.prototype.toString
+
+module.exports = nativeIsArray || isArray
+
+function isArray(obj) {
+    return toString.call(obj) === "[object Array]"
 }
 
-},{}],13:[function(require,module,exports){
-module.exports=require(4)
-},{"./hidden-store.js":14}],14:[function(require,module,exports){
-module.exports=require(5)
-},{}],15:[function(require,module,exports){
-var inherits = require("inherits")
-
-var ALL_PROPS = [
-    "altKey", "bubbles", "cancelable", "ctrlKey",
-    "eventPhase", "metaKey", "relatedTarget", "shiftKey",
-    "target", "timeStamp", "type", "view", "which"
-]
-var KEY_PROPS = ["char", "charCode", "key", "keyCode"]
-var MOUSE_PROPS = [
-    "button", "buttons", "clientX", "clientY", "layerX",
-    "layerY", "offsetX", "offsetY", "pageX", "pageY",
-    "screenX", "screenY", "toElement"
-]
-
-var rkeyEvent = /^key|input/
-var rmouseEvent = /^(?:mouse|pointer|contextmenu)|click/
-
-module.exports = ProxyEvent
-
-function ProxyEvent(ev) {
-    if (!(this instanceof ProxyEvent)) {
-        return new ProxyEvent(ev)
-    }
-
-    if (rkeyEvent.test(ev.type)) {
-        return new KeyEvent(ev)
-    } else if (rmouseEvent.test(ev.type)) {
-        return new MouseEvent(ev)
-    }
-
-    for (var i = 0; i < ALL_PROPS.length; i++) {
-        var propKey = ALL_PROPS[i]
-        this[propKey] = ev[propKey]
-    }
-
-    this._rawEvent = ev
-    this._bubbles = false;
-}
-
-ProxyEvent.prototype.preventDefault = function () {
-    this._rawEvent.preventDefault()
-}
-
-ProxyEvent.prototype.startPropagation = function () {
-    this._bubbles = true;
-}
-
-function MouseEvent(ev) {
-    for (var i = 0; i < ALL_PROPS.length; i++) {
-        var propKey = ALL_PROPS[i]
-        this[propKey] = ev[propKey]
-    }
-
-    for (var j = 0; j < MOUSE_PROPS.length; j++) {
-        var mousePropKey = MOUSE_PROPS[j]
-        this[mousePropKey] = ev[mousePropKey]
-    }
-
-    this._rawEvent = ev
-}
-
-inherits(MouseEvent, ProxyEvent)
-
-function KeyEvent(ev) {
-    for (var i = 0; i < ALL_PROPS.length; i++) {
-        var propKey = ALL_PROPS[i]
-        this[propKey] = ev[propKey]
-    }
-
-    for (var j = 0; j < KEY_PROPS.length; j++) {
-        var keyPropKey = KEY_PROPS[j]
-        this[keyPropKey] = ev[keyPropKey]
-    }
-
-    this._rawEvent = ev
-}
-
-inherits(KeyEvent, ProxyEvent)
-
-},{"inherits":12}],16:[function(require,module,exports){
-var DataSet = require("data-set")
-
-module.exports = removeEvent
-
-function removeEvent(target, type, handler) {
-    var ds = DataSet(target)
-    var events = ds[type]
-
-    if (!events) {
-        return
-    } else if (Array.isArray(events)) {
-        var index = events.indexOf(handler)
-        if (index !== -1) {
-            events.splice(index, 1)
-        }
-    } else if (events === handler) {
-        ds[type] = null
-    }
-}
-
-},{"data-set":2}],17:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var isObject = require("is-object")
-var isHook = require("vtree/is-vhook")
+var isHook = require("../vnode/is-vhook.js")
 
 module.exports = applyProperties
 
@@ -13572,22 +10564,25 @@ function applyProperties(node, props, previous) {
         var propValue = props[propName]
 
         if (propValue === undefined) {
-            removeProperty(node, props, previous, propName);
+            removeProperty(node, propName, propValue, previous);
         } else if (isHook(propValue)) {
-            propValue.hook(node,
-                propName,
-                previous ? previous[propName] : undefined)
+            removeProperty(node, propName, propValue, previous)
+            if (propValue.hook) {
+                propValue.hook(node,
+                    propName,
+                    previous ? previous[propName] : undefined)
+            }
         } else {
             if (isObject(propValue)) {
                 patchObject(node, props, previous, propName, propValue);
-            } else if (propValue !== undefined) {
+            } else {
                 node[propName] = propValue
             }
         }
     }
 }
 
-function removeProperty(node, props, previous, propName) {
+function removeProperty(node, propName, propValue, previous) {
     if (previous) {
         var previousValue = previous[propName]
 
@@ -13605,6 +10600,8 @@ function removeProperty(node, props, previous, propName) {
             } else {
                 node[propName] = null
             }
+        } else if (previousValue.unhook) {
+            previousValue.unhook(node, propName, propValue)
         }
     }
 }
@@ -13655,15 +10652,15 @@ function getPrototype(value) {
     }
 }
 
-},{"is-object":21,"vtree/is-vhook":29}],18:[function(require,module,exports){
+},{"../vnode/is-vhook.js":13,"is-object":3}],6:[function(require,module,exports){
 var document = require("global/document")
 
 var applyProperties = require("./apply-properties")
 
-var isVNode = require("vtree/is-vnode")
-var isVText = require("vtree/is-vtext")
-var isWidget = require("vtree/is-widget")
-var handleThunk = require("vtree/handle-thunk")
+var isVNode = require("../vnode/is-vnode.js")
+var isVText = require("../vnode/is-vtext.js")
+var isWidget = require("../vnode/is-widget.js")
+var handleThunk = require("../vnode/handle-thunk.js")
 
 module.exports = createElement
 
@@ -13703,7 +10700,7 @@ function createElement(vnode, opts) {
     return node
 }
 
-},{"./apply-properties":17,"global/document":20,"vtree/handle-thunk":27,"vtree/is-vnode":30,"vtree/is-vtext":31,"vtree/is-widget":32}],19:[function(require,module,exports){
+},{"../vnode/handle-thunk.js":11,"../vnode/is-vnode.js":14,"../vnode/is-vtext.js":15,"../vnode/is-widget.js":16,"./apply-properties":5,"global/document":2}],7:[function(require,module,exports){
 // Maps a virtual DOM tree onto a real DOM tree in an efficient manner.
 // We don't want to read all of the DOM nodes in the tree so we use
 // the in-order tree indexing to eliminate recursion down certain branches.
@@ -13790,30 +10787,11 @@ function ascending(a, b) {
     return a > b ? 1 : -1
 }
 
-},{}],20:[function(require,module,exports){
-module.exports=require(10)
-},{"min-document":40}],21:[function(require,module,exports){
-module.exports = isObject
-
-function isObject(x) {
-    return typeof x === "object" && x !== null
-}
-
-},{}],22:[function(require,module,exports){
-var nativeIsArray = Array.isArray
-var toString = Object.prototype.toString
-
-module.exports = nativeIsArray || isArray
-
-function isArray(obj) {
-    return toString.call(obj) === "[object Array]"
-}
-
-},{}],23:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var applyProperties = require("./apply-properties")
 
-var isWidget = require("vtree/is-widget")
-var VPatch = require("vtree/vpatch")
+var isWidget = require("../vnode/is-widget.js")
+var VPatch = require("../vnode/vpatch.js")
 
 var render = require("./create-element")
 var updateWidget = require("./update-widget")
@@ -13882,42 +10860,44 @@ function stringPatch(domNode, leftVNode, vText, renderOptions) {
         var parentNode = domNode.parentNode
         newNode = render(vText, renderOptions)
 
-        if (parentNode) {
+        if (parentNode && newNode !== domNode) {
             parentNode.replaceChild(newNode, domNode)
         }
     }
-
-    destroyWidget(domNode, leftVNode)
 
     return newNode
 }
 
 function widgetPatch(domNode, leftVNode, widget, renderOptions) {
-    if (updateWidget(leftVNode, widget)) {
-        return widget.update(leftVNode, domNode) || domNode
+    var updating = updateWidget(leftVNode, widget)
+    var newNode
+
+    if (updating) {
+        newNode = widget.update(leftVNode, domNode) || domNode
+    } else {
+        newNode = render(widget, renderOptions)
     }
 
     var parentNode = domNode.parentNode
-    var newWidget = render(widget, renderOptions)
 
-    if (parentNode) {
-        parentNode.replaceChild(newWidget, domNode)
+    if (parentNode && newNode !== domNode) {
+        parentNode.replaceChild(newNode, domNode)
     }
 
-    destroyWidget(domNode, leftVNode)
+    if (!updating) {
+        destroyWidget(domNode, leftVNode)
+    }
 
-    return newWidget
+    return newNode
 }
 
 function vNodePatch(domNode, leftVNode, vNode, renderOptions) {
     var parentNode = domNode.parentNode
     var newNode = render(vNode, renderOptions)
 
-    if (parentNode) {
+    if (parentNode && newNode !== domNode) {
         parentNode.replaceChild(newNode, domNode)
     }
-
-    destroyWidget(domNode, leftVNode)
 
     return newNode
 }
@@ -13928,58 +10908,40 @@ function destroyWidget(domNode, w) {
     }
 }
 
-function reorderChildren(domNode, bIndex) {
-    var children = []
+function reorderChildren(domNode, moves) {
     var childNodes = domNode.childNodes
-    var len = childNodes.length
-    var i
-    var reverseIndex = bIndex.reverse
+    var keyMap = {}
+    var node
+    var remove
+    var insert
 
-    for (i = 0; i < len; i++) {
-        children.push(domNode.childNodes[i])
+    for (var i = 0; i < moves.removes.length; i++) {
+        remove = moves.removes[i]
+        node = childNodes[remove.from]
+        if (remove.key) {
+            keyMap[remove.key] = node
+        }
+        domNode.removeChild(node)
     }
 
-    var insertOffset = 0
-    var move
-    var node
-    var insertNode
-    for (i = 0; i < len; i++) {
-        move = bIndex[i]
-        if (move !== undefined && move !== i) {
-            // the element currently at this index will be moved later so increase the insert offset
-            if (reverseIndex[i] > i) {
-                insertOffset++
-            }
-
-            node = children[move]
-            insertNode = childNodes[i + insertOffset] || null
-            if (node !== insertNode) {
-                domNode.insertBefore(node, insertNode)
-            }
-
-            // the moved element came from the front of the array so reduce the insert offset
-            if (move < i) {
-                insertOffset--
-            }
-        }
-
-        // element at this index is scheduled to be removed so increase insert offset
-        if (i in bIndex.removes) {
-            insertOffset++
-        }
+    var length = childNodes.length
+    for (var j = 0; j < moves.inserts.length; j++) {
+        insert = moves.inserts[j]
+        node = keyMap[insert.key]
+        // this is the weirdest bug i've ever seen in webkit
+        domNode.insertBefore(node, insert.to >= length++ ? null : childNodes[insert.to])
     }
 }
 
 function replaceRoot(oldRoot, newRoot) {
     if (oldRoot && newRoot && oldRoot !== newRoot && oldRoot.parentNode) {
-        console.log(oldRoot)
         oldRoot.parentNode.replaceChild(newRoot, oldRoot)
     }
 
     return newRoot;
 }
 
-},{"./apply-properties":17,"./create-element":18,"./update-widget":25,"vtree/is-widget":32,"vtree/vpatch":37}],24:[function(require,module,exports){
+},{"../vnode/is-widget.js":16,"../vnode/vpatch.js":19,"./apply-properties":5,"./create-element":6,"./update-widget":10}],9:[function(require,module,exports){
 var document = require("global/document")
 var isArray = require("x-is-array")
 
@@ -14057,8 +11019,8 @@ function patchIndices(patches) {
     return indices
 }
 
-},{"./dom-index":19,"./patch-op":23,"global/document":20,"x-is-array":22}],25:[function(require,module,exports){
-var isWidget = require("vtree/is-widget")
+},{"./dom-index":7,"./patch-op":8,"global/document":2,"x-is-array":4}],10:[function(require,module,exports){
+var isWidget = require("../vnode/is-widget.js")
 
 module.exports = updateWidget
 
@@ -14074,353 +11036,7 @@ function updateWidget(a, b) {
     return false
 }
 
-},{"vtree/is-widget":32}],26:[function(require,module,exports){
-var isArray = require("x-is-array")
-var isObject = require("is-object")
-
-var VPatch = require("./vpatch")
-var isVNode = require("./is-vnode")
-var isVText = require("./is-vtext")
-var isWidget = require("./is-widget")
-var isThunk = require("./is-thunk")
-var handleThunk = require("./handle-thunk")
-
-module.exports = diff
-
-function diff(a, b) {
-    var patch = { a: a }
-    walk(a, b, patch, 0)
-    return patch
-}
-
-function walk(a, b, patch, index) {
-    if (a === b) {
-        if (isThunk(a) || isThunk(b)) {
-            thunks(a, b, patch, index)
-        } else {
-            hooks(b, patch, index)
-        }
-        return
-    }
-
-    var apply = patch[index]
-
-    if (b == null) {
-        apply = appendPatch(apply, new VPatch(VPatch.REMOVE, a, b))
-        destroyWidgets(a, patch, index)
-    } else if (isThunk(a) || isThunk(b)) {
-        thunks(a, b, patch, index)
-    } else if (isVNode(b)) {
-        if (isVNode(a)) {
-            if (a.tagName === b.tagName &&
-                a.namespace === b.namespace &&
-                a.key === b.key) {
-                var propsPatch = diffProps(a.properties, b.properties, b.hooks)
-                if (propsPatch) {
-                    apply = appendPatch(apply,
-                        new VPatch(VPatch.PROPS, a, propsPatch))
-                }
-                apply = diffChildren(a, b, patch, apply, index)
-            } else {
-                apply = appendPatch(apply, new VPatch(VPatch.VNODE, a, b))
-                destroyWidgets(a, patch, index)
-            }
-        } else {
-            apply = appendPatch(apply, new VPatch(VPatch.VNODE, a, b))
-            destroyWidgets(a, patch, index)
-        }
-    } else if (isVText(b)) {
-        if (!isVText(a)) {
-            apply = appendPatch(apply, new VPatch(VPatch.VTEXT, a, b))
-            destroyWidgets(a, patch, index)
-        } else if (a.text !== b.text) {
-            apply = appendPatch(apply, new VPatch(VPatch.VTEXT, a, b))
-        }
-    } else if (isWidget(b)) {
-        apply = appendPatch(apply, new VPatch(VPatch.WIDGET, a, b))
-
-        if (!isWidget(a)) {
-            destroyWidgets(a, patch, index)
-        }
-    }
-
-    if (apply) {
-        patch[index] = apply
-    }
-}
-
-function diffProps(a, b, hooks) {
-    var diff
-
-    for (var aKey in a) {
-        if (!(aKey in b)) {
-            diff = diff || {}
-            diff[aKey] = undefined
-        }
-
-        var aValue = a[aKey]
-        var bValue = b[aKey]
-
-        if (hooks && aKey in hooks) {
-            diff = diff || {}
-            diff[aKey] = bValue
-        } else {
-            if (isObject(aValue) && isObject(bValue)) {
-                if (getPrototype(bValue) !== getPrototype(aValue)) {
-                    diff = diff || {}
-                    diff[aKey] = bValue
-                } else {
-                    var objectDiff = diffProps(aValue, bValue)
-                    if (objectDiff) {
-                        diff = diff || {}
-                        diff[aKey] = objectDiff
-                    }
-                }
-            } else if (aValue !== bValue) {
-                diff = diff || {}
-                diff[aKey] = bValue
-            }
-        }
-    }
-
-    for (var bKey in b) {
-        if (!(bKey in a)) {
-            diff = diff || {}
-            diff[bKey] = b[bKey]
-        }
-    }
-
-    return diff
-}
-
-function getPrototype(value) {
-    if (Object.getPrototypeOf) {
-        return Object.getPrototypeOf(value)
-    } else if (value.__proto__) {
-        return value.__proto__
-    } else if (value.constructor) {
-        return value.constructor.prototype
-    }
-}
-
-function diffChildren(a, b, patch, apply, index) {
-    var aChildren = a.children
-    var bChildren = reorder(aChildren, b.children)
-
-    var aLen = aChildren.length
-    var bLen = bChildren.length
-    var len = aLen > bLen ? aLen : bLen
-
-    for (var i = 0; i < len; i++) {
-        var leftNode = aChildren[i]
-        var rightNode = bChildren[i]
-        index += 1
-
-        if (!leftNode) {
-            if (rightNode) {
-                // Excess nodes in b need to be added
-                apply = appendPatch(apply,
-                    new VPatch(VPatch.INSERT, null, rightNode))
-            }
-        } else if (!rightNode) {
-            if (leftNode) {
-                // Excess nodes in a need to be removed
-                patch[index] = new VPatch(VPatch.REMOVE, leftNode, null)
-                destroyWidgets(leftNode, patch, index)
-            }
-        } else {
-            walk(leftNode, rightNode, patch, index)
-        }
-
-        if (isVNode(leftNode) && leftNode.count) {
-            index += leftNode.count
-        }
-    }
-
-    if (bChildren.moves) {
-        // Reorder nodes last
-        apply = appendPatch(apply, new VPatch(VPatch.ORDER, a, bChildren.moves))
-    }
-
-    return apply
-}
-
-// Patch records for all destroyed widgets must be added because we need
-// a DOM node reference for the destroy function
-function destroyWidgets(vNode, patch, index) {
-    if (isWidget(vNode)) {
-        if (typeof vNode.destroy === "function") {
-            patch[index] = new VPatch(VPatch.REMOVE, vNode, null)
-        }
-    } else if (isVNode(vNode) && vNode.hasWidgets) {
-        var children = vNode.children
-        var len = children.length
-        for (var i = 0; i < len; i++) {
-            var child = children[i]
-            index += 1
-
-            destroyWidgets(child, patch, index)
-
-            if (isVNode(child) && child.count) {
-                index += child.count
-            }
-        }
-    }
-}
-
-// Create a sub-patch for thunks
-function thunks(a, b, patch, index) {
-    var nodes = handleThunk(a, b);
-    var thunkPatch = diff(nodes.a, nodes.b)
-    if (hasPatches(thunkPatch)) {
-        patch[index] = new VPatch(VPatch.THUNK, null, thunkPatch)
-    }
-}
-
-function hasPatches(patch) {
-    for (var index in patch) {
-        if (index !== "a") {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-// Execute hooks when two nodes are identical
-function hooks(vNode, patch, index) {
-    if (isVNode(vNode)) {
-        if (vNode.hooks) {
-            patch[index] = new VPatch(VPatch.PROPS, vNode.hooks, vNode.hooks)
-        }
-
-        if (vNode.descendantHooks) {
-            var children = vNode.children
-            var len = children.length
-            for (var i = 0; i < len; i++) {
-                var child = children[i]
-                index += 1
-
-                hooks(child, patch, index)
-
-                if (isVNode(child) && child.count) {
-                    index += child.count
-                }
-            }
-        }
-    }
-}
-
-// List diff, naive left to right reordering
-function reorder(aChildren, bChildren) {
-
-    var bKeys = keyIndex(bChildren)
-
-    if (!bKeys) {
-        return bChildren
-    }
-
-    var aKeys = keyIndex(aChildren)
-
-    if (!aKeys) {
-        return bChildren
-    }
-
-    var bMatch = {}, aMatch = {}
-
-    for (var key in bKeys) {
-        bMatch[bKeys[key]] = aKeys[key]
-    }
-
-    for (var key in aKeys) {
-        aMatch[aKeys[key]] = bKeys[key]
-    }
-
-    var aLen = aChildren.length
-    var bLen = bChildren.length
-    var len = aLen > bLen ? aLen : bLen
-    var shuffle = []
-    var freeIndex = 0
-    var i = 0
-    var moveIndex = 0
-    var moves = {}
-    var removes = moves.removes = {}
-    var reverse = moves.reverse = {}
-    var hasMoves = false
-
-    while (freeIndex < len) {
-        var move = aMatch[i]
-        if (move !== undefined) {
-            shuffle[i] = bChildren[move]
-            if (move !== moveIndex) {
-                moves[move] = moveIndex
-                reverse[moveIndex] = move
-                hasMoves = true
-            }
-            moveIndex++
-        } else if (i in aMatch) {
-            shuffle[i] = undefined
-            removes[i] = moveIndex++
-            hasMoves = true
-        } else {
-            while (bMatch[freeIndex] !== undefined) {
-                freeIndex++
-            }
-
-            if (freeIndex < len) {
-                var freeChild = bChildren[freeIndex]
-                if (freeChild) {
-                    shuffle[i] = freeChild
-                    if (freeIndex !== moveIndex) {
-                        hasMoves = true
-                        moves[freeIndex] = moveIndex
-                        reverse[moveIndex] = freeIndex
-                    }
-                    moveIndex++
-                }
-                freeIndex++
-            }
-        }
-        i++
-    }
-
-    if (hasMoves) {
-        shuffle.moves = moves
-    }
-
-    return shuffle
-}
-
-function keyIndex(children) {
-    var i, keys
-
-    for (i = 0; i < children.length; i++) {
-        var child = children[i]
-
-        if (child.key !== undefined) {
-            keys = keys || {}
-            keys[child.key] = i
-        }
-    }
-
-    return keys
-}
-
-function appendPatch(apply, patch) {
-    if (apply) {
-        if (isArray(apply)) {
-            apply.push(patch)
-        } else {
-            apply = [apply, patch]
-        }
-
-        return apply
-    } else {
-        return patch
-    }
-}
-
-},{"./handle-thunk":27,"./is-thunk":28,"./is-vnode":30,"./is-vtext":31,"./is-widget":32,"./vpatch":37,"is-object":33,"x-is-array":34}],27:[function(require,module,exports){
+},{"../vnode/is-widget.js":16}],11:[function(require,module,exports){
 var isVNode = require("./is-vnode")
 var isVText = require("./is-vtext")
 var isWidget = require("./is-widget")
@@ -14462,22 +11078,23 @@ function renderThunk(thunk, previous) {
     return renderedThunk
 }
 
-},{"./is-thunk":28,"./is-vnode":30,"./is-vtext":31,"./is-widget":32}],28:[function(require,module,exports){
+},{"./is-thunk":12,"./is-vnode":14,"./is-vtext":15,"./is-widget":16}],12:[function(require,module,exports){
 module.exports = isThunk
 
 function isThunk(t) {
     return t && t.type === "Thunk"
 }
 
-},{}],29:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = isHook
 
 function isHook(hook) {
-    return hook && typeof hook.hook === "function" &&
-        !hook.hasOwnProperty("hook")
+    return hook &&
+      (typeof hook.hook === "function" && !hook.hasOwnProperty("hook") ||
+       typeof hook.unhook === "function" && !hook.hasOwnProperty("unhook"))
 }
 
-},{}],30:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var version = require("./version")
 
 module.exports = isVirtualNode
@@ -14486,7 +11103,7 @@ function isVirtualNode(x) {
     return x && x.type === "VirtualNode" && x.version === version
 }
 
-},{"./version":35}],31:[function(require,module,exports){
+},{"./version":17}],15:[function(require,module,exports){
 var version = require("./version")
 
 module.exports = isVirtualText
@@ -14495,24 +11112,21 @@ function isVirtualText(x) {
     return x && x.type === "VirtualText" && x.version === version
 }
 
-},{"./version":35}],32:[function(require,module,exports){
+},{"./version":17}],16:[function(require,module,exports){
 module.exports = isWidget
 
 function isWidget(w) {
     return w && w.type === "Widget"
 }
 
-},{}],33:[function(require,module,exports){
-module.exports=require(21)
-},{}],34:[function(require,module,exports){
-module.exports=require(22)
-},{}],35:[function(require,module,exports){
-module.exports = "1"
+},{}],17:[function(require,module,exports){
+module.exports = "2"
 
-},{}],36:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var version = require("./version")
 var isVNode = require("./is-vnode")
 var isWidget = require("./is-widget")
+var isThunk = require("./is-thunk")
 var isVHook = require("./is-vhook")
 
 module.exports = VirtualNode
@@ -14530,13 +11144,14 @@ function VirtualNode(tagName, properties, children, key, namespace) {
     var count = (children && children.length) || 0
     var descendants = 0
     var hasWidgets = false
+    var hasThunks = false
     var descendantHooks = false
     var hooks
 
     for (var propName in properties) {
         if (properties.hasOwnProperty(propName)) {
             var property = properties[propName]
-            if (isVHook(property)) {
+            if (isVHook(property) && property.unhook) {
                 if (!hooks) {
                     hooks = {}
                 }
@@ -14555,6 +11170,10 @@ function VirtualNode(tagName, properties, children, key, namespace) {
                 hasWidgets = true
             }
 
+            if (!hasThunks && child.hasThunks) {
+                hasThunks = true
+            }
+
             if (!descendantHooks && (child.hooks || child.descendantHooks)) {
                 descendantHooks = true
             }
@@ -14562,11 +11181,14 @@ function VirtualNode(tagName, properties, children, key, namespace) {
             if (typeof child.destroy === "function") {
                 hasWidgets = true
             }
+        } else if (!hasThunks && isThunk(child)) {
+            hasThunks = true;
         }
     }
 
     this.count = count + descendants
     this.hasWidgets = hasWidgets
+    this.hasThunks = hasThunks
     this.hooks = hooks
     this.descendantHooks = descendantHooks
 }
@@ -14574,7 +11196,7 @@ function VirtualNode(tagName, properties, children, key, namespace) {
 VirtualNode.prototype.version = version
 VirtualNode.prototype.type = "VirtualNode"
 
-},{"./is-vhook":29,"./is-vnode":30,"./is-widget":32,"./version":35}],37:[function(require,module,exports){
+},{"./is-thunk":12,"./is-vhook":13,"./is-vnode":14,"./is-widget":16,"./version":17}],19:[function(require,module,exports){
 var version = require("./version")
 
 VirtualPatch.NONE = 0
@@ -14598,7 +11220,7 @@ function VirtualPatch(type, vNode, patch) {
 VirtualPatch.prototype.version = version
 VirtualPatch.prototype.type = "VirtualPatch"
 
-},{"./version":35}],38:[function(require,module,exports){
+},{"./version":17}],20:[function(require,module,exports){
 var version = require("./version")
 
 module.exports = VirtualText
@@ -14610,16 +11232,503 @@ function VirtualText(text) {
 VirtualText.prototype.version = version
 VirtualText.prototype.type = "VirtualText"
 
-},{"./version":35}],39:[function(require,module,exports){
+},{"./version":17}],21:[function(require,module,exports){
+var isObject = require("is-object")
+var isHook = require("../vnode/is-vhook")
 
-var VNode = require('vtree/vnode');
-var VText = require('vtree/vtext');
-var diff = require('vtree/diff');
-var patch = require('vdom/patch');
-var createElement = require('vdom/create-element');
-var DataSet = require("data-set");
-var Delegator = require("dom-delegator");
-var isHook = require("vtree/is-vhook");
+module.exports = diffProps
+
+function diffProps(a, b) {
+    var diff
+
+    for (var aKey in a) {
+        if (!(aKey in b)) {
+            diff = diff || {}
+            diff[aKey] = undefined
+        }
+
+        var aValue = a[aKey]
+        var bValue = b[aKey]
+
+        if (aValue === bValue) {
+            continue
+        } else if (isObject(aValue) && isObject(bValue)) {
+            if (getPrototype(bValue) !== getPrototype(aValue)) {
+                diff = diff || {}
+                diff[aKey] = bValue
+            } else if (isHook(bValue)) {
+                 diff = diff || {}
+                 diff[aKey] = bValue
+            } else {
+                var objectDiff = diffProps(aValue, bValue)
+                if (objectDiff) {
+                    diff = diff || {}
+                    diff[aKey] = objectDiff
+                }
+            }
+        } else {
+            diff = diff || {}
+            diff[aKey] = bValue
+        }
+    }
+
+    for (var bKey in b) {
+        if (!(bKey in a)) {
+            diff = diff || {}
+            diff[bKey] = b[bKey]
+        }
+    }
+
+    return diff
+}
+
+function getPrototype(value) {
+  if (Object.getPrototypeOf) {
+    return Object.getPrototypeOf(value)
+  } else if (value.__proto__) {
+    return value.__proto__
+  } else if (value.constructor) {
+    return value.constructor.prototype
+  }
+}
+
+},{"../vnode/is-vhook":13,"is-object":3}],22:[function(require,module,exports){
+var isArray = require("x-is-array")
+
+var VPatch = require("../vnode/vpatch")
+var isVNode = require("../vnode/is-vnode")
+var isVText = require("../vnode/is-vtext")
+var isWidget = require("../vnode/is-widget")
+var isThunk = require("../vnode/is-thunk")
+var handleThunk = require("../vnode/handle-thunk")
+
+var diffProps = require("./diff-props")
+
+module.exports = diff
+
+function diff(a, b) {
+    var patch = { a: a }
+    walk(a, b, patch, 0)
+    return patch
+}
+
+function walk(a, b, patch, index) {
+    if (a === b) {
+        return
+    }
+
+    var apply = patch[index]
+    var applyClear = false
+
+    if (isThunk(a) || isThunk(b)) {
+        thunks(a, b, patch, index)
+    } else if (b == null) {
+
+        // If a is a widget we will add a remove patch for it
+        // Otherwise any child widgets/hooks must be destroyed.
+        // This prevents adding two remove patches for a widget.
+        if (!isWidget(a)) {
+            clearState(a, patch, index)
+            apply = patch[index]
+        }
+
+        apply = appendPatch(apply, new VPatch(VPatch.REMOVE, a, b))
+    } else if (isVNode(b)) {
+        if (isVNode(a)) {
+            if (a.tagName === b.tagName &&
+                a.namespace === b.namespace &&
+                a.key === b.key) {
+                var propsPatch = diffProps(a.properties, b.properties)
+                if (propsPatch) {
+                    apply = appendPatch(apply,
+                        new VPatch(VPatch.PROPS, a, propsPatch))
+                }
+                apply = diffChildren(a, b, patch, apply, index)
+            } else {
+                apply = appendPatch(apply, new VPatch(VPatch.VNODE, a, b))
+                applyClear = true
+            }
+        } else {
+            apply = appendPatch(apply, new VPatch(VPatch.VNODE, a, b))
+            applyClear = true
+        }
+    } else if (isVText(b)) {
+        if (!isVText(a)) {
+            apply = appendPatch(apply, new VPatch(VPatch.VTEXT, a, b))
+            applyClear = true
+        } else if (a.text !== b.text) {
+            apply = appendPatch(apply, new VPatch(VPatch.VTEXT, a, b))
+        }
+    } else if (isWidget(b)) {
+        if (!isWidget(a)) {
+            applyClear = true
+        }
+
+        apply = appendPatch(apply, new VPatch(VPatch.WIDGET, a, b))
+    }
+
+    if (apply) {
+        patch[index] = apply
+    }
+
+    if (applyClear) {
+        clearState(a, patch, index)
+    }
+}
+
+function diffChildren(a, b, patch, apply, index) {
+    var aChildren = a.children
+    var orderedSet = reorder(aChildren, b.children)
+    var bChildren = orderedSet.children
+
+    var aLen = aChildren.length
+    var bLen = bChildren.length
+    var len = aLen > bLen ? aLen : bLen
+
+    for (var i = 0; i < len; i++) {
+        var leftNode = aChildren[i]
+        var rightNode = bChildren[i]
+        index += 1
+
+        if (!leftNode) {
+            if (rightNode) {
+                // Excess nodes in b need to be added
+                apply = appendPatch(apply,
+                    new VPatch(VPatch.INSERT, null, rightNode))
+            }
+        } else {
+            walk(leftNode, rightNode, patch, index)
+        }
+
+        if (isVNode(leftNode) && leftNode.count) {
+            index += leftNode.count
+        }
+    }
+
+    if (orderedSet.moves) {
+        // Reorder nodes last
+        apply = appendPatch(apply, new VPatch(
+            VPatch.ORDER,
+            a,
+            orderedSet.moves
+        ))
+    }
+
+    return apply
+}
+
+function clearState(vNode, patch, index) {
+    // TODO: Make this a single walk, not two
+    unhook(vNode, patch, index)
+    destroyWidgets(vNode, patch, index)
+}
+
+// Patch records for all destroyed widgets must be added because we need
+// a DOM node reference for the destroy function
+function destroyWidgets(vNode, patch, index) {
+    if (isWidget(vNode)) {
+        if (typeof vNode.destroy === "function") {
+            patch[index] = appendPatch(
+                patch[index],
+                new VPatch(VPatch.REMOVE, vNode, null)
+            )
+        }
+    } else if (isVNode(vNode) && (vNode.hasWidgets || vNode.hasThunks)) {
+        var children = vNode.children
+        var len = children.length
+        for (var i = 0; i < len; i++) {
+            var child = children[i]
+            index += 1
+
+            destroyWidgets(child, patch, index)
+
+            if (isVNode(child) && child.count) {
+                index += child.count
+            }
+        }
+    } else if (isThunk(vNode)) {
+        thunks(vNode, null, patch, index)
+    }
+}
+
+// Create a sub-patch for thunks
+function thunks(a, b, patch, index) {
+    var nodes = handleThunk(a, b)
+    var thunkPatch = diff(nodes.a, nodes.b)
+    if (hasPatches(thunkPatch)) {
+        patch[index] = new VPatch(VPatch.THUNK, null, thunkPatch)
+    }
+}
+
+function hasPatches(patch) {
+    for (var index in patch) {
+        if (index !== "a") {
+            return true
+        }
+    }
+
+    return false
+}
+
+// Execute hooks when two nodes are identical
+function unhook(vNode, patch, index) {
+    if (isVNode(vNode)) {
+        if (vNode.hooks) {
+            patch[index] = appendPatch(
+                patch[index],
+                new VPatch(
+                    VPatch.PROPS,
+                    vNode,
+                    undefinedKeys(vNode.hooks)
+                )
+            )
+        }
+
+        if (vNode.descendantHooks || vNode.hasThunks) {
+            var children = vNode.children
+            var len = children.length
+            for (var i = 0; i < len; i++) {
+                var child = children[i]
+                index += 1
+
+                unhook(child, patch, index)
+
+                if (isVNode(child) && child.count) {
+                    index += child.count
+                }
+            }
+        }
+    } else if (isThunk(vNode)) {
+        thunks(vNode, null, patch, index)
+    }
+}
+
+function undefinedKeys(obj) {
+    var result = {}
+
+    for (var key in obj) {
+        result[key] = undefined
+    }
+
+    return result
+}
+
+// List diff, naive left to right reordering
+function reorder(aChildren, bChildren) {
+    // O(M) time, O(M) memory
+    var bChildIndex = keyIndex(bChildren)
+    var bKeys = bChildIndex.keys
+    var bFree = bChildIndex.free
+
+    if (bFree.length === bChildren.length) {
+        return {
+            children: bChildren,
+            moves: null
+        }
+    }
+
+    // O(N) time, O(N) memory
+    var aChildIndex = keyIndex(aChildren)
+    var aKeys = aChildIndex.keys
+    var aFree = aChildIndex.free
+
+    if (aFree.length === aChildren.length) {
+        return {
+            children: bChildren,
+            moves: null
+        }
+    }
+
+    // O(MAX(N, M)) memory
+    var newChildren = []
+
+    var freeIndex = 0
+    var freeCount = bFree.length
+    var deletedItems = 0
+
+    // Iterate through a and match a node in b
+    // O(N) time,
+    for (var i = 0 ; i < aChildren.length; i++) {
+        var aItem = aChildren[i]
+        var itemIndex
+
+        if (aItem.key) {
+            if (bKeys.hasOwnProperty(aItem.key)) {
+                // Match up the old keys
+                itemIndex = bKeys[aItem.key]
+                newChildren.push(bChildren[itemIndex])
+
+            } else {
+                // Remove old keyed items
+                itemIndex = i - deletedItems++
+                newChildren.push(null)
+            }
+        } else {
+            // Match the item in a with the next free item in b
+            if (freeIndex < freeCount) {
+                itemIndex = bFree[freeIndex++]
+                newChildren.push(bChildren[itemIndex])
+            } else {
+                // There are no free items in b to match with
+                // the free items in a, so the extra free nodes
+                // are deleted.
+                itemIndex = i - deletedItems++
+                newChildren.push(null)
+            }
+        }
+    }
+
+    var lastFreeIndex = freeIndex >= bFree.length ?
+        bChildren.length :
+        bFree[freeIndex]
+
+    // Iterate through b and append any new keys
+    // O(M) time
+    for (var j = 0; j < bChildren.length; j++) {
+        var newItem = bChildren[j]
+
+        if (newItem.key) {
+            if (!aKeys.hasOwnProperty(newItem.key)) {
+                // Add any new keyed items
+                // We are adding new items to the end and then sorting them
+                // in place. In future we should insert new items in place.
+                newChildren.push(newItem)
+            }
+        } else if (j >= lastFreeIndex) {
+            // Add any leftover non-keyed items
+            newChildren.push(newItem)
+        }
+    }
+
+    var simulate = newChildren.slice()
+    var simulateIndex = 0
+    var removes = []
+    var inserts = []
+    var simulateItem
+
+    for (var k = 0; k < bChildren.length;) {
+        var wantedItem = bChildren[k]
+        simulateItem = simulate[simulateIndex]
+
+        // remove items
+        while (simulateItem === null && simulate.length) {
+            removes.push(remove(simulate, simulateIndex, null))
+            simulateItem = simulate[simulateIndex]
+        }
+
+        if (!simulateItem || simulateItem.key !== wantedItem.key) {
+            // if we need a key in this position...
+            if (wantedItem.key) {
+                if (simulateItem && simulateItem.key) {
+                    // if an insert doesn't put this key in place, it needs to move
+                    if (bKeys[simulateItem.key] !== k + 1) {
+                        removes.push(remove(simulate, simulateIndex, simulateItem.key))
+                        simulateItem = simulate[simulateIndex]
+                        // if the remove didn't put the wanted item in place, we need to insert it
+                        if (!simulateItem || simulateItem.key !== wantedItem.key) {
+                            inserts.push({key: wantedItem.key, to: k})
+                        }
+                        // items are matching, so skip ahead
+                        else {
+                            simulateIndex++
+                        }
+                    }
+                    else {
+                        inserts.push({key: wantedItem.key, to: k})
+                    }
+                }
+                else {
+                    inserts.push({key: wantedItem.key, to: k})
+                }
+                k++
+            }
+            // a key in simulate has no matching wanted key, remove it
+            else if (simulateItem && simulateItem.key) {
+                removes.push(remove(simulate, simulateIndex, simulateItem.key))
+            }
+        }
+        else {
+            simulateIndex++
+            k++
+        }
+    }
+
+    // remove all the remaining nodes from simulate
+    while(simulateIndex < simulate.length) {
+        simulateItem = simulate[simulateIndex]
+        removes.push(remove(simulate, simulateIndex, simulateItem && simulateItem.key))
+    }
+
+    // If the only moves we have are deletes then we can just
+    // let the delete patch remove these items.
+    if (removes.length === deletedItems && !inserts.length) {
+        return {
+            children: newChildren,
+            moves: null
+        }
+    }
+
+    return {
+        children: newChildren,
+        moves: {
+            removes: removes,
+            inserts: inserts
+        }
+    }
+}
+
+function remove(arr, index, key) {
+    arr.splice(index, 1)
+
+    return {
+        from: index,
+        key: key
+    }
+}
+
+function keyIndex(children) {
+    var keys = {}
+    var free = []
+    var length = children.length
+
+    for (var i = 0; i < length; i++) {
+        var child = children[i]
+
+        if (child.key) {
+            keys[child.key] = i
+        } else {
+            free.push(i)
+        }
+    }
+
+    return {
+        keys: keys,     // A hash of key name to index
+        free: free,     // An array of unkeyed item indices
+    }
+}
+
+function appendPatch(apply, patch) {
+    if (apply) {
+        if (isArray(apply)) {
+            apply.push(patch)
+        } else {
+            apply = [apply, patch]
+        }
+
+        return apply
+    } else {
+        return patch
+    }
+}
+
+},{"../vnode/handle-thunk":11,"../vnode/is-thunk":12,"../vnode/is-vnode":14,"../vnode/is-vtext":15,"../vnode/is-widget":16,"../vnode/vpatch":19,"./diff-props":21,"x-is-array":4}],23:[function(require,module,exports){
+var VNode = require('virtual-dom/vnode/vnode');
+var VText = require('virtual-dom/vnode/vtext');
+var diff = require('virtual-dom/vtree/diff');
+var patch = require('virtual-dom/vdom/patch');
+var createElement = require('virtual-dom/create-element');
+var isHook = require("virtual-dom/vnode/is-vhook");
+
 
 Elm.Native.VirtualDom = {};
 Elm.Native.VirtualDom.make = function(elm)
@@ -14630,10 +11739,6 @@ Elm.Native.VirtualDom.make = function(elm)
 	{
 		return elm.Native.VirtualDom.values;
 	}
-
-	// This manages event listeners. Somehow...
-	// Save a reference for use in on(...)
-	var delegator = Delegator();
 
 	var Element = Elm.Native.Graphics.Element.make(elm);
 	var Json = Elm.Native.Json.make(elm);
@@ -14663,7 +11768,14 @@ Elm.Native.VirtualDom.make = function(elm)
 		return object;
 	}
 
-	function node(name, propertyList, contents)
+	function node(name)
+	{
+		return F2(function(propertyList, contents) {
+			return makeNode(name, propertyList, contents);
+		});
+	}
+
+	function makeNode(name, propertyList, contents)
 	{
 		var props = listToProperties(propertyList);
 
@@ -14715,36 +11827,26 @@ Elm.Native.VirtualDom.make = function(elm)
 		};
 	}
 
-	function on(name, decoder, createMessage)
+	function on(name, options, decoder, createMessage)
 	{
-		// Ensure we're listening for this type of event
-		delegator.listenTo(name);
 		function eventHandler(event)
 		{
 			var value = A2(Json.runDecoderValue, decoder, event);
 			if (value.ctor === 'Ok')
 			{
+				if (options.stopPropagation)
+				{
+					event.stopPropagation();
+				}
+				if (options.preventDefault)
+				{
+					event.preventDefault();
+				}
 				Signal.sendMessage(createMessage(value._0));
 			}
 		}
-		return property(name, DataSetHook(eventHandler));
+		return property('on' + name, eventHandler);
 	}
-
-	function DataSetHook(value)
-	{
-		if (!(this instanceof DataSetHook))
-		{
-			return new DataSetHook(value);
-		}
-
-		this.value = value;
-	}
-
-	DataSetHook.prototype.hook = function (node, propertyName) {
-		var ds = DataSet(node);
-		ds[propertyName] = this.value;
-	};
-
 
 	function SoftSetHook(value)
 	{
@@ -14769,21 +11871,26 @@ Elm.Native.VirtualDom.make = function(elm)
 		return new VText(string);
 	}
 
+	function ElementWidget(element)
+	{
+		this.element = element;
+	}
+
+	ElementWidget.prototype.type = "Widget";
+
+	ElementWidget.prototype.init = function init()
+	{
+		return Element.render(this.element);
+	};
+
+	ElementWidget.prototype.update = function update(previous, node)
+	{
+		return Element.update(node, previous.element, this.element);
+	};
+
 	function fromElement(element)
 	{
-		return {
-			type: "Widget",
-
-			element: element,
-
-			init: function () {
-				return Element.render(element);
-			},
-
-			update: function (previous, node) {
-				return Element.update(node, previous.element, element);
-			}
-		};
+		return new ElementWidget(element);
 	}
 
 	function toElement(width, height, html)
@@ -14902,9 +12009,9 @@ Elm.Native.VirtualDom.make = function(elm)
 	}
 
 	return Elm.Native.VirtualDom.values = {
-		node: F3(node),
+		node: node,
 		text: text,
-		on: F3(on),
+		on: F4(on),
 
 		property: F2(property),
 		attribute: F2(attribute),
@@ -14921,78 +12028,9 @@ Elm.Native.VirtualDom.make = function(elm)
 	};
 };
 
-},{"data-set":2,"dom-delegator":8,"vdom/create-element":18,"vdom/patch":24,"vtree/diff":26,"vtree/is-vhook":29,"vtree/vnode":36,"vtree/vtext":38}],40:[function(require,module,exports){
+},{"virtual-dom/create-element":1,"virtual-dom/vdom/patch":9,"virtual-dom/vnode/is-vhook":13,"virtual-dom/vnode/vnode":18,"virtual-dom/vnode/vtext":20,"virtual-dom/vtree/diff":22}],24:[function(require,module,exports){
 
-},{}]},{},[39]);
-
-Elm.Native = Elm.Native || {};
-Elm.Native.Window = {};
-Elm.Native.Window.make = function(localRuntime) {
-
-	localRuntime.Native = localRuntime.Native || {};
-	localRuntime.Native.Window = localRuntime.Native.Window || {};
-	if (localRuntime.Native.Window.values)
-	{
-		return localRuntime.Native.Window.values;
-	}
-
-	var NS = Elm.Native.Signal.make(localRuntime);
-	var Tuple2 = Elm.Native.Utils.make(localRuntime).Tuple2;
-
-
-	function getWidth()
-	{
-		return localRuntime.node.clientWidth;
-	}
-
-
-	function getHeight()
-	{
-		if (localRuntime.isFullscreen())
-		{
-			return window.innerHeight;
-		}
-		return localRuntime.node.clientHeight;
-	}
-
-
-	var dimensions = NS.input('Window.dimensions', Tuple2(getWidth(), getHeight()));
-
-
-	function resizeIfNeeded()
-	{
-		// Do not trigger event if the dimensions have not changed.
-		// This should be most of the time.
-		var w = getWidth();
-		var h = getHeight();
-		if (dimensions.value._0 === w && dimensions.value._1 === h)
-		{
-			return;
-		}
-
-		setTimeout(function () {
-			// Check again to see if the dimensions have changed.
-			// It is conceivable that the dimensions have changed
-			// again while some other event was being processed.
-			var w = getWidth();
-			var h = getHeight();
-			if (dimensions.value._0 === w && dimensions.value._1 === h)
-			{
-				return;
-			}
-			localRuntime.notify(dimensions.id, Tuple2(w,h));
-		}, 0);
-	}
-
-
-	localRuntime.addListener([dimensions.id], window, 'resize', resizeIfNeeded);
-
-
-	return localRuntime.Native.Window.values = {
-		dimensions: dimensions,
-		resizeIfNeeded: resizeIfNeeded
-	};
-};
+},{}]},{},[23]);
 
 Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
@@ -15794,85 +12832,6 @@ Elm.Text.make = function (_elm) {
                       ,Through: Through};
    return _elm.Text.values;
 };
-Elm.Time = Elm.Time || {};
-Elm.Time.make = function (_elm) {
-   "use strict";
-   _elm.Time = _elm.Time || {};
-   if (_elm.Time.values)
-   return _elm.Time.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Time",
-   $Basics = Elm.Basics.make(_elm),
-   $Native$Signal = Elm.Native.Signal.make(_elm),
-   $Native$Time = Elm.Native.Time.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var delay = $Native$Signal.delay;
-   var since = F2(function (time,
-   signal) {
-      return function () {
-         var stop = A2($Signal.map,
-         $Basics.always(-1),
-         A2(delay,time,signal));
-         var start = A2($Signal.map,
-         $Basics.always(1),
-         signal);
-         var delaydiff = A3($Signal.foldp,
-         F2(function (x,y) {
-            return x + y;
-         }),
-         0,
-         A2($Signal.merge,start,stop));
-         return A2($Signal.map,
-         F2(function (x,y) {
-            return !_U.eq(x,y);
-         })(0),
-         delaydiff);
-      }();
-   });
-   var timestamp = $Native$Signal.timestamp;
-   var every = $Native$Time.every;
-   var fpsWhen = $Native$Time.fpsWhen;
-   var fps = function (targetFrames) {
-      return A2(fpsWhen,
-      targetFrames,
-      $Signal.constant(true));
-   };
-   var inMilliseconds = function (t) {
-      return t;
-   };
-   var millisecond = 1;
-   var second = 1000 * millisecond;
-   var minute = 60 * second;
-   var hour = 60 * minute;
-   var inHours = function (t) {
-      return t / hour;
-   };
-   var inMinutes = function (t) {
-      return t / minute;
-   };
-   var inSeconds = function (t) {
-      return t / second;
-   };
-   _elm.Time.values = {_op: _op
-                      ,millisecond: millisecond
-                      ,second: second
-                      ,minute: minute
-                      ,hour: hour
-                      ,inMilliseconds: inMilliseconds
-                      ,inSeconds: inSeconds
-                      ,inMinutes: inMinutes
-                      ,inHours: inHours
-                      ,fps: fps
-                      ,fpsWhen: fpsWhen
-                      ,every: every
-                      ,timestamp: timestamp
-                      ,delay: delay
-                      ,since: since};
-   return _elm.Time.values;
-};
 Elm.Transform2D = Elm.Transform2D || {};
 Elm.Transform2D.make = function (_elm) {
    "use strict";
@@ -15938,45 +12897,6 @@ Elm.Transform2D.make = function (_elm) {
                              ,scaleY: scaleY};
    return _elm.Transform2D.values;
 };
-Elm.Vendor = Elm.Vendor || {};
-Elm.Vendor.make = function (_elm) {
-   "use strict";
-   _elm.Vendor = _elm.Vendor || {};
-   if (_elm.Vendor.values)
-   return _elm.Vendor.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Vendor",
-   $Basics = Elm.Basics.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Native$Vendor = Elm.Native.Vendor.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var O = {ctor: "O"};
-   var MS = {ctor: "MS"};
-   var Webkit = {ctor: "Webkit"};
-   var Moz = {ctor: "Moz"};
-   var prefix = function () {
-      var _v0 = $Native$Vendor.prefix;
-      switch (_v0)
-      {case "moz": return Moz;
-         case "ms": return MS;
-         case "o": return O;
-         case "webkit": return Webkit;}
-      _U.badCase($moduleName,
-      "between lines 27 and 31");
-   }();
-   _elm.Vendor.values = {_op: _op
-                        ,prefix: prefix
-                        ,Moz: Moz
-                        ,Webkit: Webkit
-                        ,MS: MS
-                        ,O: O};
-   return _elm.Vendor.values;
-};
 Elm.VirtualDom = Elm.VirtualDom || {};
 Elm.VirtualDom.make = function (_elm) {
    "use strict";
@@ -15999,7 +12919,25 @@ Elm.VirtualDom.make = function (_elm) {
    var lazy3 = $Native$VirtualDom.lazy3;
    var lazy2 = $Native$VirtualDom.lazy2;
    var lazy = $Native$VirtualDom.lazy;
-   var on = $Native$VirtualDom.on;
+   var defaultOptions = {_: {}
+                        ,preventDefault: false
+                        ,stopPropagation: false};
+   var Options = F2(function (a,
+   b) {
+      return {_: {}
+             ,preventDefault: b
+             ,stopPropagation: a};
+   });
+   var onWithOptions = $Native$VirtualDom.on;
+   var on = F3(function (eventName,
+   decoder,
+   toMessage) {
+      return A4($Native$VirtualDom.on,
+      eventName,
+      defaultOptions,
+      decoder,
+      toMessage);
+   });
    var attribute = $Native$VirtualDom.attribute;
    var property = $Native$VirtualDom.property;
    var Property = {ctor: "Property"};
@@ -16009,44 +12947,18 @@ Elm.VirtualDom.make = function (_elm) {
    var node = $Native$VirtualDom.node;
    var Node = {ctor: "Node"};
    _elm.VirtualDom.values = {_op: _op
-                            ,Node: Node
-                            ,node: node
                             ,text: text
+                            ,node: node
                             ,toElement: toElement
                             ,fromElement: fromElement
-                            ,Property: Property
                             ,property: property
                             ,attribute: attribute
                             ,on: on
+                            ,onWithOptions: onWithOptions
+                            ,defaultOptions: defaultOptions
                             ,lazy: lazy
                             ,lazy2: lazy2
-                            ,lazy3: lazy3};
+                            ,lazy3: lazy3
+                            ,Options: Options};
    return _elm.VirtualDom.values;
-};
-Elm.Window = Elm.Window || {};
-Elm.Window.make = function (_elm) {
-   "use strict";
-   _elm.Window = _elm.Window || {};
-   if (_elm.Window.values)
-   return _elm.Window.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Window",
-   $Basics = Elm.Basics.make(_elm),
-   $Native$Window = Elm.Native.Window.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var dimensions = $Native$Window.dimensions;
-   var width = A2($Signal.map,
-   $Basics.fst,
-   dimensions);
-   var height = A2($Signal.map,
-   $Basics.snd,
-   dimensions);
-   _elm.Window.values = {_op: _op
-                        ,dimensions: dimensions
-                        ,width: width
-                        ,height: height};
-   return _elm.Window.values;
 };
