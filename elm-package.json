@@ -28,6 +28,7 @@
       "Css.Padding",
       "Css.Position",
       "Css.Shadow",
+      "Css.Sheet",
       "Css.Text",
       "Css.Transform2",
       "Css.Transform3",
