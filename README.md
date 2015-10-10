@@ -59,3 +59,53 @@ This allows you to have very composable styles that can build off one another to
 ---
 Read the source code or the generated documentation!
 It provides you with all you need to know to get started as well as an overview of all the completed functions.
+
+## Extending Elm-CSS
+---
+Elm-Css is meant to be extended and customized so that it fits your needs.
+Say for example that you would like to have margin bottom function that relies on percents instead of pixels.
+
+    import Css exposing (Styles)
+
+
+    pc : number -> String
+    pc num =
+      (toString num) ++ "% "
+
+
+    bottom : number -> Styles -> Styles
+    bottom b styles =
+      Css.style "margin-bottom" (pc b) styles
+    
+Well that was easy, in fact while this library provides you with a lot of helper functions to make your life easier.
+It is entirely possible to follow this pattern in your project without using Elm-Css.
+
+    type alias Styles = List (String, String)
+
+
+    style : String -> String -> Styles -> Styles
+    style name value styles =
+      List.append styles [ (name, value) ]
+
+
+    pc : number -> String
+    pc num =
+      (toString num) ++ "% "
+
+
+    bottom : number -> Styles -> Styles
+    bottom b styles =
+      Css.style "margin-bottom" (pc b) styles
+    
+This could obviously be extended to become as complicated and elaborate as you would like.
+One strategy that seems to be popular is to accept a string instead of a number for the functions like so.
+
+    bottom : String -> Styles -> Styles
+    bottom b styles =
+      Css.style "margin-bottom" b styles
+
+Then you could use functions such as pc which generatates the appropriate strings based off of an input which can be type checked.
+
+In summary I don't think it is worth rewriting all of the things that this library provides for you,
+but I definitely think you should extend it and make it work the way that is best for you.
+If you would like to see how to deal with vendor prefixes I would look at the source for the flex 
