@@ -22,7 +22,7 @@ module Css.Flex where
 import Vendor
 
 -- My Imports
-import Css exposing (Styles, style)
+import Css exposing (Styles, style, px)
 
 {-| Represent the main-axis, thus defining the direction
 flex items are placed in the flex container.
@@ -511,9 +511,9 @@ basis b styles =
   let prefix = Vendor.prefix
       name = "flex-basis"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (toString b) styles
-       | prefix == Vendor.MS -> style "-ms-flex-preferred-size" (toString b) styles
-       | otherwise -> style name (toString b)  styles
+    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (px b) styles
+       | prefix == Vendor.MS -> style "-ms-flex-preferred-size" (px b) styles
+       | otherwise -> style name (px b)  styles
 
 
 {-| Set the default alignment (or the one specified by align-items)
