@@ -1,7 +1,7 @@
 module Css.Example where
 
 import Window
-import Signal exposing ((<~), (~), constant, foldp)
+import Signal exposing (map, map2, constant, foldp)
 import Color exposing (Color, rgba, complement)
 import Time exposing (fps)
 
@@ -112,4 +112,4 @@ getTime delta accumulator =
 
 main : Signal Html
 main =
-  view <~ Window.dimensions ~ (foldp getTime 0 (fps 60))
+  map2 view Window.dimensions (foldp getTime 0 (fps 60))

@@ -78,8 +78,8 @@ flex styles =
 
 responsiveRow : Int -> Styles -> Styles
 responsiveRow width styles =
-  if | width < medium -> column <| flex styles
-     | otherwise -> flex styles
+  if width < medium column <| flex styles
+     else flex styles
 
 
 end : Styles -> Styles
@@ -176,8 +176,8 @@ flex styles =
 
 responsiveRow : Int -> Styles -> Styles
 responsiveRow width styles =
-  if | width < medium -> column <| flex styles
-     | otherwise -> flex styles
+  if width < medium then column <| flex styles
+  else flex styles
 
 
 end : Styles -> Styles

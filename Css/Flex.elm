@@ -413,7 +413,7 @@ justifyContent j styles =
         else style name "space-around" styles
 
 
-{-else if Set how the flex items are laid out along the
+{-| else if Set how the flex items are laid out along the
 cross axis on the current line. Think of it as the justifyContent version
 for the cross axis (perpendicular to the main axis).
 
@@ -455,7 +455,7 @@ alignItems a styles =
         else style "align-items" (alignItemString a) styles
 
 
-{-else if Set how to align the flex container's lines within when
+{-| else if Set how to align the flex container's lines within when
 there is extra space in the cross axis.
 
     import Css.Flex as Flex
@@ -515,7 +515,7 @@ alignContent a styles =
         else style name (alignContentString a) styles
 
 
-{-else if Set the order in which items appear in the flex container.
+{-| else if Set the order in which items appear in the flex container.
 
     import Css.Flex as Flex
 
@@ -536,7 +536,7 @@ order o styles =
     else style name (toString o) styles
 
 
-{-else if Set the ability for a flex item to grow if necessary.
+{-| else if Set the ability for a flex item to grow if necessary.
 It accepts a unitless value that serves as a proportion.
 It dictates what amount of the available space inside the
 flex container the item should take up. Negative numbers
@@ -561,7 +561,7 @@ grow g styles =
     else style name (toString g) styles
 
 
-{-else if Set the ability for a flex item to shrink if necessary.
+{-| else if Set the ability for a flex item to shrink if necessary.
 Negative numbers are invalid.
 
     import Css.Flex as Flex
@@ -583,7 +583,7 @@ shrink s styles =
     else style name (toString s) styles
 
 
-{-else if Set the default size of an element before the remaining space is distributed.
+{-| else if Set the default size of an element before the remaining space is distributed.
 
     import Css.Flex as Flex
 
@@ -604,7 +604,7 @@ basis b styles =
     else style name (px b)  styles
 
 
-{-else if Set the default alignment (or the one specified by align-items)
+{-| else if Set the default alignment (or the one specified by align-items)
 to be overridden for individual flex items.
 
     import Css.Flex as Flex
