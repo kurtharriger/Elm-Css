@@ -175,14 +175,22 @@ display d styles =
   in
     case d of
       Flex ->
-        if | prefix == Vendor.Webkit -> style "display" "-webkit-flex" styles
-           | prefix == Vendor.MS -> style "display" "-ms-flexbox" styles
-           | otherwise -> style "display" "flex" styles
+        if prefix == Vendor.Webkit
+        then style "display" "-webkit-flex" styles
+
+        else if prefix == Vendor.MS
+        then style "display" "-ms-flexbox" styles
+
+        else style "display" "flex" styles
 
       InlineFlex ->
-        if | prefix == Vendor.Webkit -> style "display" "-webkit-inline-flex" styles
-           | prefix == Vendor.MS -> style "display" "-ms-infline-flexbox" styles
-           | otherwise -> style "display" "flex" styles
+        if prefix == Vendor.Webkit
+        then style "display" "-webkit-inline-flex" styles
+
+        else if prefix == Vendor.MS
+        then style "display" "-ms-infline-flexbox" styles
+
+        else style "display" "flex" styles
 
       _ ->
         style "display" (string d) styles

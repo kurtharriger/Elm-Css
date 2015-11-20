@@ -33,9 +33,13 @@ transform2 transforms styles =
       prefix = Vendor.prefix
       name = "transform"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) string styles
-       | prefix == Vendor.MS -> style ("-ms-" ++ name) string styles
-       | otherwise -> style name string styles
+    if prefix == Vendor.Webkit
+    then style ("-webkit-" ++ name) string styles
+
+    else if prefix == Vendor.MS
+    then style ("-ms-" ++ name) string styles
+
+    else style name string styles
 
 
 {-| Moves an element from its current position (according to the

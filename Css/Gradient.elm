@@ -35,10 +35,16 @@ linear degrees colors styles =
       prefix = Vendor.prefix
       name = "background"
   in
-    if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ string) styles
-       | prefix == Vendor.Moz -> style name ("-moz-" ++ string) styles
-       | prefix == Vendor.O -> style name ("-o-" ++ string) styles
-       | otherwise -> style name string styles
+    if prefix == Vendor.Webkit
+    then style name ("-webkit-" ++ string) styles
+
+    else if prefix == Vendor.Moz
+    then style name ("-moz-" ++ string) styles
+
+    else if prefix == Vendor.O
+    then style name ("-o-" ++ string) styles
+
+    else style name string styles
 
 
 {-| A radial gradient is defined by its center. To create a radial gradient
@@ -56,7 +62,13 @@ radial colors styles =
       prefix = Vendor.prefix
       name = "background"
   in
-    if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ string) styles
-       | prefix == Vendor.Moz -> style name ("-moz-" ++ string) styles
-       | prefix == Vendor.O -> style name ("-o-" ++ string) styles
-       | otherwise -> style name string styles
+    if prefix == Vendor.Webkit
+    then style name ("-webkit-" ++ string) styles
+
+    else if prefix == Vendor.Moz
+    then style name ("-moz-" ++ string) styles
+
+    else if prefix == Vendor.O
+    then style name ("-o-" ++ string) styles
+
+    else style name string styles
