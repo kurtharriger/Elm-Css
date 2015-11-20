@@ -33,8 +33,9 @@ transform3 transforms styles =
       prefix = Vendor.prefix
       name = "transform"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) string styles
-       | otherwise -> style name string styles
+    if prefix == Vendor.Webkit
+    then style ("-webkit-" ++ name) string styles
+    else style name string styles
 
 
 {-| Defines a perspective view for a 3D transformed element.

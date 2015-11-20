@@ -313,16 +313,20 @@ cursor c styles =
   in
     case c of
       Grab ->
-        if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ (string c)) styles
-           | otherwise -> style name (string c) styles
+        if prefix == Vendor.Webkit
+        then style name ("-webkit-" ++ (string c)) styles
+
+        else style name (string c) styles
 
       ZoomIn ->
-        if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ (string c)) styles
-           | otherwise -> style name (string c) styles
+        if prefix == Vendor.Webkit
+        then style name ("-webkit-" ++ (string c)) styles
+        else style name (string c) styles
 
       ZoomOut ->
-        if | prefix == Vendor.Webkit -> style name ("-webkit-" ++ (string c)) styles
-           | otherwise -> style name (string c) styles
+        if prefix == Vendor.Webkit
+        then style name ("-webkit-" ++ (string c)) styles
+        else style name (string c) styles
 
       _ ->
         style "cursor" (string c) styles

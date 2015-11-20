@@ -281,24 +281,40 @@ direction d styles =
   in
     case d of
       Row ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "row" styles
-           | prefix == Vendor.MS -> style ("-ms-" ++ name) "row" styles
-           | otherwise -> style name "row" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "row" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-" ++ name) "row" styles
+
+        else style name "row" styles
 
       RowReverse ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "row-reverse" styles
-           | prefix == Vendor.MS -> style ("-ms-" ++ name) "row-reverse" styles
-           | otherwise -> style name "row-reverse" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "row-reverse" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-" ++ name) "row-reverse" styles
+
+        else style name "row-reverse" styles
 
       Column ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "column" styles
-           | prefix == Vendor.MS -> style ("-ms-" ++ name) "column" styles
-           | otherwise -> style name "column" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "column" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-" ++ name) "column" styles
+
+        else style name "column" styles
 
       ColumnReverse ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "column-reverse" styles
-           | prefix == Vendor.MS -> style ("-ms-" ++ name) "column-reverse" styles
-           | otherwise -> style name "column-reverse" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "column-reverse" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-" ++ name) "column-reverse" styles
+
+        else style name "column-reverse" styles
 
 
 {-| Set the wrap behavior of flex items.
@@ -313,9 +329,13 @@ wrap w styles =
   let prefix = Vendor.prefix
       name = "flex-wrap"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (wrapString w) styles
-       | prefix == Vendor.MS -> style ("-ms-" ++ name) (wrapString w) styles
-       | otherwise -> style name (wrapString w) styles
+    if prefix == Vendor.Webkit
+    then style ("-webkit-" ++ name) (wrapString w) styles
+
+    else if prefix == Vendor.MS
+    then style ("-ms-" ++ name) (wrapString w) styles
+
+    else style name (wrapString w) styles
 
 
 {-| Set the direction and the wrap together.
@@ -348,32 +368,52 @@ justifyContent j styles =
   in
     case j of
       JCStart ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "flex-start" styles
-           | prefix == Vendor.MS -> style "-ms-flex-pack" "start" styles
-           | otherwise -> style name "flex-start" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "flex-start" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-pack" "start" styles
+
+        else style name "flex-start" styles
 
       JCEnd ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "flex-end" styles
-           | prefix == Vendor.MS -> style "-ms-flex-pack" "end" styles
-           | otherwise -> style name "flex-end" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "flex-end" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-pack" "end" styles
+
+        else style name "flex-end" styles
 
       JCCenter ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "center" styles
-           | prefix == Vendor.MS -> style "-ms-flex-pack" "center" styles
-           | otherwise -> style name "center" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "center" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-pack" "center" styles
+
+        else style name "center" styles
 
       JCBetween ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "space-between" styles
-           | prefix == Vendor.MS -> style "-ms-flex-pack" "justify" styles
-           | otherwise -> style name "space-between" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "space-between" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-pack" "justify" styles
+
+        else style name "space-between" styles
 
       JCAround ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "space-around" styles
-           | prefix == Vendor.MS -> style "-ms-flex-pack" "distribute" styles
-           | otherwise -> style name "space-around" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "space-around" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-pack" "distribute" styles
+
+        else style name "space-around" styles
 
 
-{-| Set how the flex items are laid out along the
+{-else if Set how the flex items are laid out along the
 cross axis on the current line. Think of it as the justifyContent version
 for the cross axis (perpendicular to the main axis).
 
@@ -388,22 +428,34 @@ alignItems a styles =
   in
     case a of
       AIStart ->
-        if | prefix == Vendor.Webkit -> style "-webkit-align-items" "flex-start" styles
-           | prefix == Vendor.MS -> style "-ms-flex-align" "start" styles
-           | otherwise -> style "align-items" (alignItemString a) styles
+        if prefix == Vendor.Webkit
+        then style "-webkit-align-items" "flex-start" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-align" "start" styles
+
+        else style "align-items" (alignItemString a) styles
 
       AIEnd ->
-        if | prefix == Vendor.Webkit -> style "-webkit-align-items" "flex-end" styles
-           | prefix == Vendor.MS -> style "-ms-flex-align" "end" styles
-           | otherwise -> style "align-items" (alignItemString a) styles
+        if prefix == Vendor.Webkit
+        then style "-webkit-align-items" "flex-end" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-align" "end" styles
+
+        else style "align-items" (alignItemString a) styles
 
       _ ->
-        if | prefix == Vendor.Webkit -> style "-webkit-align-items" (alignItemString a) styles
-           | prefix == Vendor.MS -> style "-ms-flex-align" (alignItemString a) styles
-           | otherwise -> style "align-items" (alignItemString a) styles
+        if prefix == Vendor.Webkit
+        then style "-webkit-align-items" (alignItemString a) styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-align" (alignItemString a) styles
+
+        else style "align-items" (alignItemString a) styles
 
 
-{-| Set how to align the flex container's lines within when
+{-else if Set how to align the flex container's lines within when
 there is extra space in the cross axis.
 
     import Css.Flex as Flex
@@ -418,32 +470,52 @@ alignContent a styles =
   in
     case a of
       ACStart ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "flex-start" styles
-           | prefix == Vendor.MS -> style ("-ms-flex-line-pack") "start" styles
-           | otherwise -> style name "flex-start" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "flex-start" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-flex-line-pack") "start" styles
+
+        else style name "flex-start" styles
 
       ACEnd ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "flex-end" styles
-           | prefix == Vendor.MS -> style ("-ms-flex-line-pack") "end" styles
-           | otherwise -> style name "flex-end" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "flex-end" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-flex-line-pack") "end" styles
+
+        else style name "flex-end" styles
 
       ACBetween ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "space-between" styles
-           | prefix == Vendor.MS -> style ("-ms-flex-line-pack") "justify" styles
-           | otherwise -> style name "space-between" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "space-between" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-flex-line-pack") "justify" styles
+
+        else style name "space-between" styles
 
       ACAround ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "space-around" styles
-           | prefix == Vendor.MS -> style ("-ms-flex-line-pack") "distribute" styles
-           | otherwise -> style name "space-around" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "space-around" styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-flex-line-pack") "distribute" styles
+
+        else style name "space-around" styles
 
       _ ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (alignContentString a) styles
-           | prefix == Vendor.MS -> style ("-ms-flex-line-pack") (alignContentString a) styles
-           | otherwise -> style name (alignContentString a) styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) (alignContentString a) styles
+
+        else if prefix == Vendor.MS
+        then style ("-ms-flex-line-pack") (alignContentString a) styles
+
+        else style name (alignContentString a) styles
 
 
-{-| Set the order in which items appear in the flex container.
+{-else if Set the order in which items appear in the flex container.
 
     import Css.Flex as Flex
 
@@ -455,12 +527,16 @@ order o styles =
   let prefix = Vendor.prefix
       name = "order"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (toString o) styles
-       | prefix == Vendor.MS -> style "-ms-flex-order" (toString o) styles
-       | otherwise -> style name (toString o) styles
+    if prefix == Vendor.Webkit
+    then style ("-webkit-" ++ name) (toString o) styles
+
+    else if prefix == Vendor.MS
+    then style "-ms-flex-order" (toString o) styles
+
+    else style name (toString o) styles
 
 
-{-| Set the ability for a flex item to grow if necessary.
+{-else if Set the ability for a flex item to grow if necessary.
 It accepts a unitless value that serves as a proportion.
 It dictates what amount of the available space inside the
 flex container the item should take up. Negative numbers
@@ -476,12 +552,16 @@ grow g styles =
   let prefix = Vendor.prefix
       name = "flex-grow"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (toString g) styles
-       | prefix == Vendor.MS -> style "-ms-flex-positive" (toString g) styles
-       | otherwise -> style name (toString g) styles
+    if prefix == Vendor.Webkit
+    then style ("-webkit-" ++ name) (toString g) styles
+
+    else if prefix == Vendor.MS
+    then style "-ms-flex-positive" (toString g) styles
+
+    else style name (toString g) styles
 
 
-{-| Set the ability for a flex item to shrink if necessary.
+{-else if Set the ability for a flex item to shrink if necessary.
 Negative numbers are invalid.
 
     import Css.Flex as Flex
@@ -494,12 +574,16 @@ shrink s styles =
   let prefix = Vendor.prefix
       name = "flex-shrink"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (toString s) styles
-       | prefix == Vendor.MS -> style "-ms-flex-negative" (toString s) styles
-       | otherwise -> style name (toString s) styles
+    if prefix == Vendor.Webkit
+    then style ("-webkit-" ++ name) (toString s) styles
+
+    else if prefix == Vendor.MS
+    then style "-ms-flex-negative" (toString s) styles
+
+    else style name (toString s) styles
 
 
-{-| Set the default size of an element before the remaining space is distributed.
+{-else if Set the default size of an element before the remaining space is distributed.
 
     import Css.Flex as Flex
 
@@ -511,12 +595,16 @@ basis b styles =
   let prefix = Vendor.prefix
       name = "flex-basis"
   in
-    if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (px b) styles
-       | prefix == Vendor.MS -> style "-ms-flex-preferred-size" (px b) styles
-       | otherwise -> style name (px b)  styles
+    if prefix == Vendor.Webkit
+    then style ("-webkit-" ++ name) (px b) styles
+
+    else if prefix == Vendor.MS
+    then style "-ms-flex-preferred-size" (px b) styles
+
+    else style name (px b)  styles
 
 
-{-| Set the default alignment (or the one specified by align-items)
+{-else if Set the default alignment (or the one specified by align-items)
 to be overridden for individual flex items.
 
     import Css.Flex as Flex
@@ -531,16 +619,28 @@ alignSelf a styles =
   in
     case a of
       AIStart ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "flex-start" styles
-           | prefix == Vendor.MS -> style "-ms-flex-item-align" "start" styles
-           | otherwise -> style name "flex-start" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "flex-start" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-item-align" "start" styles
+
+        else style name "flex-start" styles
 
       AIEnd ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) "flex-end" styles
-           | prefix == Vendor.MS -> style "-ms-flex-item-align" "end" styles
-           | otherwise -> style name "flex-end" styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) "flex-end" styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-item-align" "end" styles
+
+        else style name "flex-end" styles
 
       _ ->
-        if | prefix == Vendor.Webkit -> style ("-webkit-" ++ name) (alignItemString a) styles
-           | prefix == Vendor.MS -> style "-ms-flex-item-align" (alignItemString a) styles
-           | otherwise -> style name (alignItemString a) styles
+        if prefix == Vendor.Webkit
+        then style ("-webkit-" ++ name) (alignItemString a) styles
+
+        else if prefix == Vendor.MS
+        then style "-ms-flex-item-align" (alignItemString a) styles
+
+        else style name (alignItemString a) styles
